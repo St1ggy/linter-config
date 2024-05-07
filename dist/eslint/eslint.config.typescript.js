@@ -13,7 +13,6 @@ export default {
     ecmaVersion: 'latest',
     parser,
     sourceType: 'module',
-    project: ['tsconfig.json'],
     extraFileExtensions: ['.js'],
   },
   rules: {
