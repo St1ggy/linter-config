@@ -1,9 +1,7 @@
 import common from './src/eslint/eslint.config.common.js'
-import react from './src/eslint/eslint.config.react.js'
 
 export default [
-  // ...common,
-  ...react,
+  ...common,
   {
     rules: {
       'import/extensions': 'off',
