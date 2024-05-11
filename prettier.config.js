@@ -1,4 +1,4 @@
-import prettier from './dist/prettier/prettier.config.common.js'
+import prettier from './src/prettier/prettier.config.common.js'
 
 export default {
   ...prettier,

@@ -1,10 +1,11 @@
-import common from './dist/eslint/eslint.config.common.js'
+import common from './src/eslint/eslint.config.common.js'
 
 export default [
-  common,
+  ...common,
   {
     rules: {
       'import/extensions': 'off',
     },
+    ignores: ['dist/*'],
   },
 ]

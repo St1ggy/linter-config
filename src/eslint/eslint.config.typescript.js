@@ -1,22 +1,20 @@
-import tsPlugin from '@typescript-eslint/eslint-plugin'
-import parser from '@typescript-eslint/parser'
+import tseslint from 'typescript-eslint'
 
 import common from './eslint.config.common.js'
 
-export default {
-  ...common,
-  plugins: {
-    ...common.plugins,
-    '@typescript-eslint': tsPlugin,
-  },
+// export default tseslint.config(...tseslint.configs.strict, ...tseslint.configs.stylistic, ...common, {
+export default tseslint.config(...tseslint.configs.recommended, ...common, {
   languageOptions: {
-    ecmaVersion: 'latest',
-    parser,
-    sourceType: 'module',
-    extraFileExtensions: ['.js'],
+    parserOptions: {
+      project: ['tsconfig.json'],
+    },
+  },
+  settings: {
+    'import/resolver': {
+      typescript: {}, // this loads <rootdir>/tsconfig.json to eslint
+    },
   },
   rules: {
-    ...common.rules,
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/ban-types': ['warn'],
     '@typescript-eslint/no-shadow': [
@@ -49,4 +47,4 @@ export default {
       },
     ],
   },
-}
+})
