@@ -1,4 +1,5 @@
 import reactRecommended from 'eslint-plugin-react/configs/recommended.js'
+import reactJsxRuntime from 'eslint-plugin-react/configs/jsx-runtime.js'
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
 
 import typescript from './eslint.config.typescript.js'
@@ -6,6 +7,7 @@ import typescript from './eslint.config.typescript.js'
 export default [
   ...typescript,
   reactRecommended,
+  reactJsxRuntime,
   // reactHooksPlugin.configs.recommended,
   {
     plugins: { 'react-hooks': reactHooksPlugin },
