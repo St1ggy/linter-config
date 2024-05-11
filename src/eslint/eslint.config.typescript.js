@@ -2,8 +2,7 @@ import tseslint from 'typescript-eslint'
 
 import common from './eslint.config.common.js'
 
-// export default tseslint.config(...tseslint.configs.strict, ...tseslint.configs.stylistic, ...common, {
-export default tseslint.config(...tseslint.configs.recommended, ...common, {
+export default tseslint.config(...tseslint.configs.recommended, ...tseslint.configs.stylistic, ...common, {
   languageOptions: {
     parserOptions: {
       project: ['tsconfig.json'],
@@ -11,27 +10,12 @@ export default tseslint.config(...tseslint.configs.recommended, ...common, {
   },
   settings: {
     'import/resolver': {
-      typescript: {}, // this loads <rootdir>/tsconfig.json to eslint
+      typescript: {},
     },
   },
   rules: {
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/ban-types': ['warn'],
-    '@typescript-eslint/no-shadow': [
-      'error',
-      {
-        ignoreTypeValueShadow: true,
-      },
-    ],
-    '@typescript-eslint/no-var-requires': ['off'],
-    '@typescript-eslint/no-empty-function': ['off'],
-    '@typescript-eslint/no-use-before-define': ['error'],
-    '@typescript-eslint/no-unused-vars': [
-      'error',
-      {
-        ignoreRestSiblings: true,
-      },
-    ],
+    '@typescript-eslint/no-shadow': ['error', { ignoreTypeValueShadow: true }],
+    '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
     '@typescript-eslint/ban-ts-comment': [
       'error',
       {
@@ -40,11 +24,6 @@ export default tseslint.config(...tseslint.configs.recommended, ...common, {
       },
     ],
     '@typescript-eslint/switch-exhaustiveness-check': 'error',
-    '@typescript-eslint/consistent-type-imports': [
-      'error',
-      {
-        fixStyle: 'inline-type-imports',
-      },
-    ],
+    '@typescript-eslint/consistent-type-imports': ['error', { fixStyle: 'inline-type-imports' }],
   },
 })
