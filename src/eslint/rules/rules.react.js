@@ -1,5 +1,5 @@
-import reactRecommended from 'eslint-plugin-react/configs/recommended.js'
 import reactJsxRuntime from 'eslint-plugin-react/configs/jsx-runtime.js'
+import reactRecommended from 'eslint-plugin-react/configs/recommended.js'
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
 
 export default [
