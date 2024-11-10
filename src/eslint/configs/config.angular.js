@@ -12,6 +12,7 @@ export default tseslint.config(
     extends: [...angular.configs.templateAll],
     rules: {
       '@angular-eslint/template/i18n': 'off',
+      '@angular-eslint/template/no-call-expression': ['error', { allowPrefix: '$' }],
     },
   },
 )
