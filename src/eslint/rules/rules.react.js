@@ -1,10 +1,17 @@
 import reactJsxRuntime from 'eslint-plugin-react/configs/jsx-runtime.js'
 import reactRecommended from 'eslint-plugin-react/configs/recommended.js'
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
+import tseslint from 'typescript-eslint'
 
-export default [
-  reactRecommended,
-  reactJsxRuntime,
+export default tseslint.config(
+  {
+    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
+    extends: reactRecommended,
+  },
+  {
+    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
+    extends: reactJsxRuntime,
+  },
   {
     files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
     plugins: { 'react-hooks': reactHooksPlugin },
@@ -50,4 +57,4 @@ export default [
       ...reactHooksPlugin.configs.recommended.rules,
     },
   },
-]
+)

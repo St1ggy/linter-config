@@ -1,7 +1,11 @@
 import unicornPlugin from 'eslint-plugin-unicorn'
+import tseslint from 'typescript-eslint'
 
-export default [
-  unicornPlugin.configs['flat/recommended'],
+export default tseslint.config(
+  {
+    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
+    extends: unicornPlugin.configs['flat/recommended'],
+  },
   {
     files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
     rules: {
@@ -23,4 +27,4 @@ export default [
       ],
     },
   },
-]
+)

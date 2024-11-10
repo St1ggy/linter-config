@@ -1,11 +1,11 @@
 import tseslint from 'typescript-eslint'
 
-import common from './eslint.config.common.js'
-import typescriptRules from './rules/rules.typescript.js'
+import commonConfig from './eslint.config.common.js'
+import typescriptConfig from './rules/rules.typescript.js'
 
 export default tseslint.config(
-  ...common,
+  ...commonConfig,
   ...tseslint.configs.recommended,
   ...tseslint.configs.stylistic,
-  ...typescriptRules,
+  ...typescriptConfig,
 )
