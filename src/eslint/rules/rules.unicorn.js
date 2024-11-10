@@ -3,6 +3,7 @@ import unicornPlugin from 'eslint-plugin-unicorn'
 export default [
   unicornPlugin.configs['flat/recommended'],
   {
+    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
     rules: {
       'unicorn/consistent-destructuring': 'error',
       'unicorn/custom-error-definition': 'error',

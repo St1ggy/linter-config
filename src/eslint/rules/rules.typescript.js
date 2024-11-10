@@ -1,5 +1,6 @@
 export default [
   {
+    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
     languageOptions: {
       parserOptions: {
         project: ['tsconfig.json'],

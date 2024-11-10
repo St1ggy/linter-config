@@ -3,6 +3,7 @@ import eslint from '@eslint/js'
 export default [
   eslint.configs.recommended,
   {
+    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
     rules: {
       'no-console': 'warn',
       'no-debugger': 'warn',

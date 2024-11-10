@@ -6,6 +6,7 @@ export default [
   reactRecommended,
   reactJsxRuntime,
   {
+    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
     plugins: { 'react-hooks': reactHooksPlugin },
     rules: {
       'react/boolean-prop-naming': 'error',

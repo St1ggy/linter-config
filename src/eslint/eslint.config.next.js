@@ -5,6 +5,7 @@ import react from './eslint.config.react.js'
 export default [
   ...react,
   {
+    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
     plugins: {
       '@next/next': nextPlugin,
     },
