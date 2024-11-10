@@ -42,7 +42,7 @@
   },
   "type": "module",
   "exports": {
-    ".": "./index.js",
+    ".": "./src/index.js",
     "./eslint-next": "./src/eslint/eslint.config.next.js",
     "./eslint-react": "./src/eslint/eslint.config.react.js",
     "./eslint-typescript": "./src/eslint/eslint.config.typescript.js",
