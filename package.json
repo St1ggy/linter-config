@@ -7,6 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/st1ggy/linter-config.git"
   },
+  "main": "./index.js",
   "keywords": [
     "eslint",
     "prettier",
@@ -41,6 +42,7 @@
   },
   "type": "module",
   "exports": {
+    ".": "./index.js",
     "./eslint-next": "./src/eslint/eslint.config.next.js",
     "./eslint-react": "./src/eslint/eslint.config.react.js",
     "./eslint-typescript": "./src/eslint/eslint.config.typescript.js",
