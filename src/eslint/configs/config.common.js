@@ -102,6 +102,7 @@ export default config([
         { blankLine: 'always', prev: '*', next: 'case' },
         { blankLine: 'always', prev: 'if', next: '*' },
       ],
+      '@stylistic/js/multiline-comment-style': ['error', 'separate-lines', { checkJSDoc: true }],
     },
   },
 ])
