@@ -1,4 +1,4 @@
 import reactConfig from './configs/config.react.js'
-import typescriptConfig from './eslint.config.typescript.js'
+import commonConfig from './eslint.config.common.js'
 
-export default [...typescriptConfig, ...reactConfig]
+export default [...commonConfig, ...reactConfig]

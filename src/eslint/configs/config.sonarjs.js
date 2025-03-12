@@ -1,8 +1,14 @@
-import sonarjs from 'eslint-plugin-sonarjs'
+import { configs } from 'eslint-plugin-sonarjs'
+import { config } from 'typescript-eslint'
 
-export default [
-  sonarjs.configs.recommended.files,
+import { files } from './constants.js'
+
+export default config([
+  configs.recommended,
   {
-    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
+    files,
+    rules: {
+      'sonarjs/todo-tag': 'warn',
+    },
   },
-]
+])

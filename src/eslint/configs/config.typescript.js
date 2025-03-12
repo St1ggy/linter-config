@@ -1,18 +1,15 @@
-import tseslint from 'typescript-eslint'
+import { config, configs } from 'typescript-eslint'
 
-export default [
-  ...tseslint.configs.recommended,
-  ...tseslint.configs.stylistic,
+import { files } from './constants.js'
+
+export default config([
+  ...configs.recommended,
+  ...configs.stylistic,
   {
-    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
+    files,
     languageOptions: {
       parserOptions: {
         project: ['tsconfig.json'],
-      },
-    },
-    settings: {
-      'import/resolver': {
-        typescript: {},
       },
     },
     rules: {
@@ -29,4 +26,4 @@ export default [
       '@typescript-eslint/consistent-type-imports': ['error', { fixStyle: 'inline-type-imports' }],
     },
   },
-]
+])

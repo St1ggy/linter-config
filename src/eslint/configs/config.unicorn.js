@@ -1,10 +1,12 @@
 import unicornPlugin from 'eslint-plugin-unicorn'
+import { config } from 'typescript-eslint'
 
-export default [
-  unicornPlugin.configs['flat/recommended'],
+import { files } from './constants.js'
+
+export default config([
+  unicornPlugin.configs.recommended,
   {
-    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
-    plugins: { unicorn: unicornPlugin },
+    files,
     rules: {
       'unicorn/consistent-destructuring': 'error',
       'unicorn/custom-error-definition': 'error',
@@ -24,4 +26,4 @@ export default [
       ],
     },
   },
-]
+])

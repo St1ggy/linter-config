@@ -1,48 +1,28 @@
 import eslint from '@eslint/js'
+import stylisticJs from '@stylistic/eslint-plugin-js'
+import { config } from 'typescript-eslint'
 
-export default [
+import { files } from './constants.js'
+
+export default config([
   eslint.configs.recommended,
+  stylisticJs.configs.all,
   {
-    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
+    files,
+    plugins: { '@stylistic/js': stylisticJs },
     rules: {
       'no-console': 'warn',
       'no-debugger': 'warn',
-      'object-curly-newline': 'off',
-      'operator-linebreak': 'off',
-      'function-paren-newline': 'off',
-      'no-confusing-arrow': 'off',
-      'newline-per-chained-call': 'off',
-      indent: 'off',
-      'implicit-arrow-linebreak': 'off',
       'no-undef': 'off',
-      'lines-between-class-members': [
-        'error',
-        'always',
-        {
-          exceptAfterSingleLine: true,
-        },
-      ],
       'prefer-template': 'error',
       'arrow-body-style': ['error', 'as-needed'],
       'no-return-assign': 'off',
       'newline-before-return': ['error'],
       radix: 'off',
-      'no-mixed-operators': 'off',
-      'max-len': [
-        'error',
-        {
-          code: 120,
-          tabWidth: 2,
-          ignoreComments: true,
-          ignoreRegExpLiterals: true,
-          ignoreStrings: true,
-          ignoreTrailingComments: true,
-        },
-      ],
       camelcase: [
         'error',
         {
-          allow: ['Open_Sans'],
+          allow: [],
         },
       ],
       'no-shadow': 'off',
@@ -54,11 +34,9 @@ export default [
           ignoreDeclarationSort: true,
         },
       ],
-      quotes: ['error', 'single', { avoidEscape: true }],
       'object-shorthand': 'error',
       'prefer-const': 'error',
       'class-methods-use-this': 'off',
-      'spaced-comment': ['error', 'always'],
       'no-restricted-syntax': [
         'error',
         {
@@ -83,6 +61,47 @@ export default [
           message: 'Missing "g" flag in regular expression.',
         },
       ],
+      curly: ['error', 'all'],
+      // @stylistic
+      '@stylistic/js/object-curly-newline': 'off',
+      '@stylistic/js/operator-linebreak': 'off',
+      '@stylistic/js/function-paren-newline': 'off',
+      '@stylistic/js/no-confusing-arrow': 'off',
+      '@stylistic/js/newline-per-chained-call': 'off',
+      '@stylistic/js/indent': 'off',
+      '@stylistic/js/implicit-arrow-linebreak': 'off',
+      '@stylistic/js/lines-between-class-members': [
+        'error',
+        'always',
+        {
+          exceptAfterSingleLine: true,
+        },
+      ],
+      '@stylistic/js/no-mixed-operators': 'off',
+      '@stylistic/js/max-len': [
+        'error',
+        {
+          code: 120,
+          tabWidth: 2,
+          ignoreComments: true,
+          ignoreRegExpLiterals: true,
+          ignoreStrings: true,
+          ignoreTrailingComments: true,
+        },
+      ],
+      '@stylistic/js/quotes': ['error', 'single', { avoidEscape: true }],
+      '@stylistic/js/spaced-comment': ['error', 'always'],
+      '@stylistic/js/object-curly-spacing': ['error', 'always', { objectsInObjects: true }],
+      '@stylistic/js/padding-line-between-statements': [
+        'error',
+        { blankLine: 'always', prev: '*', next: 'if' },
+        { blankLine: 'always', prev: 'if', next: 'if' },
+        { blankLine: 'always', prev: ['const', 'let'], next: '*' },
+        { blankLine: 'any', prev: ['const', 'let'], next: ['const', 'let'] },
+        { blankLine: 'always', prev: '*', next: 'return' },
+        { blankLine: 'always', prev: '*', next: 'case' },
+        { blankLine: 'always', prev: 'if', next: '*' },
+      ],
     },
   },
-]
+])

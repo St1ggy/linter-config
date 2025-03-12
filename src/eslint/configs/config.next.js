@@ -1,8 +1,11 @@
 import nextPlugin from '@next/eslint-plugin-next'
+import { config } from 'typescript-eslint'
 
-export default [
+import { files } from './constants.js'
+
+export default config([
   {
-    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
+    files,
     plugins: {
       '@next/next': nextPlugin,
     },
@@ -11,4 +14,4 @@ export default [
       ...nextPlugin.configs['core-web-vitals'].rules,
     },
   },
-]
+])

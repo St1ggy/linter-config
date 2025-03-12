@@ -1,11 +1,14 @@
 import prettierConfig from 'eslint-config-prettier'
 import prettierPlugin from 'eslint-plugin-prettier'
+import { config } from 'typescript-eslint'
 
-export default [
+import { files } from './constants.js'
+
+export default config([
   prettierConfig,
   {
-    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
+    files,
     plugins: { prettier: prettierPlugin },
     rules: { 'prettier/prettier': 'error' },
   },
-]
+])

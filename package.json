@@ -19,32 +19,33 @@
     "url": "https://github.com/St1ggy/linter-config/issues"
   },
   "homepage": "https://github.com/St1ggy/linter-config#readme",
-  "peerDependencies": {
-    "@eslint/js": "^8.57.0",
-    "angular-eslint": "^18.4.0",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^14.1.4",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-prettier": "^5.1.3",
-    "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-sonarjs": "^1.0.3",
-    "eslint-plugin-unicorn": "^51.0.1",
-    "gently-copy": "^3.2.0",
-    "prettier": "^3.2.5",
-    "stylelint": "^16.2.1",
-    "stylelint-config-recommended": "^14.0.0",
-    "stylelint-config-sass-guidelines": "^11.1.0",
-    "stylelint-config-tailwindcss": "^0.0.7",
-    "typescript": "^5.4.3",
-    "typescript-eslint": "^8.0.0"
+  "dependencies": {
+    "@eslint/js": "^9.22.0",
+    "@stylistic/eslint-plugin-js": "^4.2.0",
+    "@stylistic/eslint-plugin-jsx": "^4.2.0",
+    "@stylistic/eslint-plugin-migrate": "^4.2.0",
+    "@stylistic/eslint-plugin-ts": "^4.2.0",
+    "eslint": "^9.22.0",
+    "eslint-config-next": "^15.2.2",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-import-resolver-typescript": "^3.8.5",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-sonarjs": "^3.0.2",
+    "eslint-plugin-unicorn": "^57.0.0",
+    "prettier": "^3.5.3",
+    "stylelint": "^16.15.0",
+    "stylelint-config-recommended": "^15.0.0",
+    "stylelint-config-sass-guidelines": "^12.1.0",
+    "stylelint-config-tailwindcss": "^1.0.0",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.26.1"
   },
   "type": "module",
   "exports": {
     ".": "./src/index.js",
-    "./eslint-angular": "./src/eslint/eslint.config.angular.js",
     "./eslint-next": "./src/eslint/eslint.config.next.js",
     "./eslint-react": "./src/eslint/eslint.config.react.js",
     "./eslint-typescript": "./src/eslint/eslint.config.typescript.js",
@@ -53,5 +54,11 @@
     "./stylelint-common": "./src/stylelint/stylelint.config.common.js",
     "./stylelint-scss": "./src/stylelint/stylelint.config.scss.js"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  }
 }

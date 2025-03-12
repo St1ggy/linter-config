@@ -1,16 +1,20 @@
 import importPlugin from 'eslint-plugin-import'
+import { config } from 'typescript-eslint'
 
-export default [
+import { files } from './constants.js'
+
+export default config([
+  importPlugin.flatConfigs.recommended,
+  importPlugin.flatConfigs.typescript,
   {
-    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
-    plugins: { import: importPlugin },
+    files,
     rules: {
       'import/newline-after-import': 'error',
       'import/order': [
         'error',
         {
           'newlines-between': 'always',
-          groups: [['builtin', 'external'], ['internal'], ['sibling', 'parent', 'index', 'object'], ['type']],
+          groups: [['builtin', 'external'], ['internal'], ['parent'], ['sibling', 'index', 'object'], ['type']],
           pathGroups: [
             {
               pattern: '@/**',
@@ -41,5 +45,11 @@ export default [
       ],
       'import/no-unresolved': ['error', {}],
     },
+    settings: {
+      'import/resolver': {
+        typescript: true,
+        node: true,
+      },
+    },
   },
-]
+])

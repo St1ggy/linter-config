@@ -1,5 +1,1 @@
-import prettier from './src/prettier/prettier.config.common.js'
-
-export default {
-  ...prettier,
-}
+export { default } from './src/prettier/prettier.config.common.js'
