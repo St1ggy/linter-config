@@ -24,6 +24,7 @@ export default config([
       ],
       '@typescript-eslint/switch-exhaustiveness-check': 'error',
       '@typescript-eslint/consistent-type-imports': ['error', { fixStyle: 'inline-type-imports' }],
+      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     },
   },
 ])

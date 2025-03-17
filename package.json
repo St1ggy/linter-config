@@ -34,8 +34,10 @@
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-sonarjs": "^3.0.2",
+    "eslint-plugin-svelte": "^3.1.0",
     "eslint-plugin-unicorn": "^57.0.0",
     "prettier": "^3.5.3",
+    "prettier-plugin-svelte": "^3.3.3",
     "stylelint": "^16.15.0",
     "stylelint-config-recommended": "^15.0.0",
     "stylelint-config-sass-guidelines": "^12.1.0",
@@ -46,11 +48,16 @@
   "type": "module",
   "exports": {
     ".": "./src/index.js",
+
     "./eslint-next": "./src/eslint/eslint.config.next.js",
     "./eslint-react": "./src/eslint/eslint.config.react.js",
+    "./eslint-svelte": "./src/eslint/eslint.config.svelte.js",
     "./eslint-typescript": "./src/eslint/eslint.config.typescript.js",
     "./eslint-common": "./src/eslint/eslint.config.common.js",
+
     "./prettier-common": "./src/prettier/prettier.config.common.js",
+    "./prettier-svelte": "./src/prettier/prettier.config.svelte.js",
+
     "./stylelint-common": "./src/stylelint/stylelint.config.common.js",
     "./stylelint-scss": "./src/stylelint/stylelint.config.scss.js"
   },
@@ -60,5 +67,9 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "svelte": "^5.23.0"
   }
 }
