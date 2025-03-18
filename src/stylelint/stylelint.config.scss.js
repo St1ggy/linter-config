@@ -28,6 +28,5 @@ export default {
     'declaration-empty-line-before': null,
     'order/properties-order': [propertiesOrder, { severity: 'error', unspecified: 'bottomAlphabetical' }],
     'declaration-property-value-no-unknown': null,
-    'scss/import-notation': null,
   },
 }
