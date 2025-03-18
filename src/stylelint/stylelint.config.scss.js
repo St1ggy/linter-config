@@ -8,10 +8,10 @@ const propertiesOrder = propertyGroups.map((properties) => ({
 
 export default {
   extends: [
-    'stylelint-config-standard',
-    'stylelint-config-standard-scss',
+    'stylelint-config-recommended',
+    'stylelint-config-recommended-scss',
     'stylelint-config-sass-guidelines',
-    'stylelint-config-tailwindcss/scss',
+    'stylelint-config-tailwindcss',
   ],
   plugins: ['stylelint-order', 'stylelint-prettier'],
   rules: {
