@@ -10,8 +10,8 @@ export default {
   extends: [
     'stylelint-config-standard',
     'stylelint-config-standard-scss',
-    // 'stylelint-config-sass-guidelines',
-    // 'stylelint-config-tailwindcss/scss',
+    'stylelint-config-sass-guidelines',
+    'stylelint-config-tailwindcss/scss',
   ],
   plugins: ['stylelint-order', 'stylelint-prettier'],
   rules: {
