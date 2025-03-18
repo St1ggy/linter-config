@@ -10,7 +10,7 @@ export default {
   extends: [
     'stylelint-config-recommended',
     'stylelint-config-standard-scss',
-    // 'stylelint-config-sass-guidelines',
+    'stylelint-config-sass-guidelines',
     'stylelint-config-tailwindcss/scss',
   ],
   plugins: ['stylelint-order', 'stylelint-prettier'],
@@ -28,5 +28,6 @@ export default {
     'declaration-empty-line-before': null,
     'order/properties-order': [propertiesOrder, { severity: 'error', unspecified: 'bottomAlphabetical' }],
     'declaration-property-value-no-unknown': null,
+    'scss/import-notation': null,
   },
 }
