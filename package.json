@@ -64,7 +64,8 @@
     "./stylelint-scss": "./src/stylelint/stylelint.config.scss.js"
   },
   "files": [
-    "src"
+    "src",
+    "patches"
   ],
   "scripts": {
     "lint": "eslint .",
