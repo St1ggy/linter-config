@@ -64,7 +64,8 @@
   },
   "files": [
     "src",
-    "patches"
+    "patches",
+    "scripts"
   ],
   "scripts": {
     "lint": "eslint .",
