@@ -60,7 +60,6 @@
     "./eslint-common": "./src/eslint/eslint.config.common.js",
     "./prettier-common": "./src/prettier/prettier.config.common.js",
     "./prettier-svelte": "./src/prettier/prettier.config.svelte.js",
-    "./stylelint-common": "./src/stylelint/stylelint.config.common.js",
     "./stylelint-scss": "./src/stylelint/stylelint.config.scss.js"
   },
   "files": [
