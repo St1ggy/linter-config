@@ -11,7 +11,7 @@ export default {
     'stylelint-config-recommended',
     'stylelint-config-recommended-scss',
     'stylelint-config-sass-guidelines',
-    'stylelint-config-tailwindcss',
+    'stylelint-config-tailwindcss/scss',
   ],
   plugins: ['stylelint-order', 'stylelint-prettier'],
   rules: {
