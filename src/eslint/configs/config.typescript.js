@@ -1,8 +1,9 @@
-import { config, configs } from 'typescript-eslint'
+import { defineConfig } from 'eslint/config'
+import { configs } from 'typescript-eslint'
 
 import { files } from './constants.js'
 
-export default config([
+export default defineConfig([
   ...configs.recommended,
   ...configs.stylistic,
   {

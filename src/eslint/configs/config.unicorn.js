@@ -1,9 +1,9 @@
+import { defineConfig } from 'eslint/config'
 import unicornPlugin from 'eslint-plugin-unicorn'
-import { config } from 'typescript-eslint'
 
 import { files } from './constants.js'
 
-export default config([
+export default defineConfig([
   unicornPlugin.configs.recommended,
   {
     files,

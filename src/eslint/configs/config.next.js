@@ -1,9 +1,9 @@
 import nextPlugin from '@next/eslint-plugin-next'
-import { config } from 'typescript-eslint'
+import { defineConfig } from 'eslint/config'
 
 import { files } from './constants.js'
 
-export default config([
+export default defineConfig([
   {
     files,
     plugins: {

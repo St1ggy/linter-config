@@ -1,9 +1,9 @@
+import { defineConfig } from 'eslint/config'
 import { configs } from 'eslint-plugin-sonarjs'
-import { config } from 'typescript-eslint'
 
 import { files } from './constants.js'
 
-export default config([
+export default defineConfig([
   configs.recommended,
   {
     files,

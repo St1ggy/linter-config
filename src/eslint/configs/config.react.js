@@ -1,11 +1,11 @@
 import stylisticJsx from '@stylistic/eslint-plugin-jsx'
+import { defineConfig } from 'eslint/config'
 import reactPlugin from 'eslint-plugin-react'
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
-import { config } from 'typescript-eslint'
 
 import { files } from './constants.js'
 
-export default config([
+export default defineConfig([
   reactPlugin.configs.flat.recommended,
   reactPlugin.configs.flat['jsx-runtime'],
   stylisticJsx.configs.recommended,

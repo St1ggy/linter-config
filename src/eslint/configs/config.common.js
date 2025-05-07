@@ -1,10 +1,10 @@
 import eslint from '@eslint/js'
 import stylisticJs from '@stylistic/eslint-plugin-js'
-import { config } from 'typescript-eslint'
+import { defineConfig } from 'eslint/config'
 
 import { files } from './constants.js'
 
-export default config([
+export default defineConfig([
   eslint.configs.recommended,
   stylisticJs.configs.all,
   {

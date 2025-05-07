@@ -1,9 +1,10 @@
+import { defineConfig } from 'eslint/config'
 import sveltePlugin from 'eslint-plugin-svelte'
-import { config, parser } from 'typescript-eslint'
+import { parser } from 'typescript-eslint'
 
 import { files } from './constants.js'
 
-export default config([
+export default defineConfig([
   sveltePlugin.configs['flat/recommended'],
   {
     files,

@@ -1,9 +1,9 @@
+import { defineConfig } from 'eslint/config'
 import importPlugin from 'eslint-plugin-import'
-import { config } from 'typescript-eslint'
 
 import { files } from './constants.js'
 
-export default config([
+export default defineConfig([
   importPlugin.flatConfigs.recommended,
   importPlugin.flatConfigs.typescript,
   {

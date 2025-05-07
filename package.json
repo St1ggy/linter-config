@@ -1,6 +1,6 @@
 {
   "name": "@st1ggy/linter-config",
-  "version": "2.22.0",
+  "version": "2.23.0",
   "description": "ESLint, Stylelint and Prettier configs for React, Vue [WIP] and Svelte [WIP]",
   "private": false,
   "repository": {
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/St1ggy/linter-config#readme",
   "dependencies": {
+    "@eslint/compat": "^1.2.9",
     "@eslint/js": "^9.26.0",
     "@stylistic/eslint-plugin-js": "^4.2.0",
     "@stylistic/eslint-plugin-jsx": "^4.2.0",
@@ -36,6 +37,7 @@
     "eslint-plugin-sonarjs": "^3.0.2",
     "eslint-plugin-svelte": "^3.5.1",
     "eslint-plugin-unicorn": "^59.0.1",
+    "find-up-simple": "^1.0.1",
     "patch-package": "^8.0.0",
     "prettier": "^3.5.3",
     "prettier-plugin-svelte": "^3.3.3",

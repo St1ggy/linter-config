@@ -1,10 +1,10 @@
+import { defineConfig } from 'eslint/config'
 import prettierConfig from 'eslint-config-prettier'
 import prettierPlugin from 'eslint-plugin-prettier'
-import { config } from 'typescript-eslint'
 
 import { files } from './constants.js'
 
-export default config([
+export default defineConfig([
   prettierConfig,
   {
     files,
