@@ -4,7 +4,7 @@ import { parser } from 'typescript-eslint'
 
 import { files } from './constants.js'
 
-const extensions = ['.js', '.ts', '.svelte']
+const extensions = ['.js']
 
 export default defineConfig([
   sveltePlugin.configs['flat/recommended'],
