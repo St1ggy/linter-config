@@ -17,5 +17,10 @@ export default defineConfig([
         parser,
       },
     },
+    settings: {
+      'import/resolver': {
+        svelte: true,
+      },
+    },
   },
 ])
