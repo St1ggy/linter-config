@@ -10,7 +10,10 @@ export default defineConfig([
   sveltePlugin.configs['flat/recommended'],
   {
     files,
-    rules: {},
+    rules: {
+      'import/named': 'off',
+      'import/no-cycle': 'off',
+    },
     languageOptions: {
       parserOptions: {
         project: ['tsconfig.json'],
@@ -20,10 +23,10 @@ export default defineConfig([
       },
     },
     settings: {
-      'import/parsers': {
-        'svelte-eslint-parser': ['.svelte'],
-        espree: extensions,
-      },
+      // 'import/parsers': {
+      //   'svelte-eslint-parser': ['.svelte'],
+      //   espree: extensions,
+      // },
       'import/resolver': {
         'eslint-import-resolver-custom-alias': {
           alias: {
