@@ -19,11 +19,11 @@ export default defineConfig([
         parser,
       },
     },
-    'import/parsers': {
-      'svelte-eslint-parser': ['.svelte'],
-      espree: extensions,
-    },
     settings: {
+      'import/parsers': {
+        'svelte-eslint-parser': ['.svelte'],
+        espree: extensions,
+      },
       'import/resolver': {
         'eslint-import-resolver-custom-alias': {
           alias: {
