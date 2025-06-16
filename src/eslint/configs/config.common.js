@@ -1,15 +1,15 @@
 import eslint from '@eslint/js'
-import stylisticJs from '@stylistic/eslint-plugin-js'
+import stylistic from '@stylistic/eslint-plugin'
 import { defineConfig } from 'eslint/config'
 
 import { files } from './constants.js'
 
 export default defineConfig([
   eslint.configs.recommended,
-  stylisticJs.configs.all,
+  stylistic.configs.all,
   {
     files,
-    plugins: { '@stylistic/js': stylisticJs },
+    plugins: { '@stylistic': stylistic },
     rules: {
       'no-console': 'warn',
       'no-debugger': 'warn',
@@ -63,22 +63,22 @@ export default defineConfig([
       ],
       curly: ['error', 'all'],
       // @stylistic
-      '@stylistic/js/object-curly-newline': 'off',
-      '@stylistic/js/operator-linebreak': 'off',
-      '@stylistic/js/function-paren-newline': 'off',
-      '@stylistic/js/no-confusing-arrow': 'off',
-      '@stylistic/js/newline-per-chained-call': 'off',
-      '@stylistic/js/indent': 'off',
-      '@stylistic/js/implicit-arrow-linebreak': 'off',
-      '@stylistic/js/lines-between-class-members': [
+      '@stylistic/object-curly-newline': 'off',
+      '@stylistic/operator-linebreak': 'off',
+      '@stylistic/function-paren-newline': 'off',
+      '@stylistic/no-confusing-arrow': 'off',
+      '@stylistic/newline-per-chained-call': 'off',
+      '@stylistic/indent': 'off',
+      '@stylistic/implicit-arrow-linebreak': 'off',
+      '@stylistic/lines-between-class-members': [
         'error',
         'always',
         {
           exceptAfterSingleLine: true,
         },
       ],
-      '@stylistic/js/no-mixed-operators': 'off',
-      '@stylistic/js/max-len': [
+      '@stylistic/no-mixed-operators': 'off',
+      '@stylistic/max-len': [
         'error',
         {
           code: 120,
@@ -89,10 +89,10 @@ export default defineConfig([
           ignoreTrailingComments: true,
         },
       ],
-      '@stylistic/js/quotes': ['error', 'single', { avoidEscape: true }],
-      '@stylistic/js/spaced-comment': ['error', 'always'],
-      '@stylistic/js/object-curly-spacing': ['error', 'always', { objectsInObjects: true }],
-      '@stylistic/js/padding-line-between-statements': [
+      '@stylistic/quotes': ['error', 'single', { avoidEscape: true }],
+      '@stylistic/spaced-comment': ['error', 'always'],
+      '@stylistic/object-curly-spacing': ['error', 'always', { objectsInObjects: true }],
+      '@stylistic/padding-line-between-statements': [
         'error',
         { blankLine: 'always', prev: '*', next: 'if' },
         { blankLine: 'always', prev: 'if', next: 'if' },
@@ -102,7 +102,7 @@ export default defineConfig([
         { blankLine: 'always', prev: '*', next: 'case' },
         { blankLine: 'always', prev: 'if', next: '*' },
       ],
-      '@stylistic/js/multiline-comment-style': ['error', 'separate-lines', { checkJSDoc: true }],
+      '@stylistic/multiline-comment-style': ['error', 'separate-lines', { checkJSDoc: true }],
     },
   },
 ])

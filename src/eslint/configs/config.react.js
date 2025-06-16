@@ -1,4 +1,4 @@
-import stylisticJsx from '@stylistic/eslint-plugin-jsx'
+import stylistic from '@stylistic/eslint-plugin'
 import { defineConfig } from 'eslint/config'
 import reactPlugin from 'eslint-plugin-react'
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
@@ -8,7 +8,7 @@ import { files } from './constants.js'
 export default defineConfig([
   reactPlugin.configs.flat.recommended,
   reactPlugin.configs.flat['jsx-runtime'],
-  stylisticJsx.configs.recommended,
+  stylistic.configs.recommended,
   {
     files,
     plugins: { 'react-hooks': reactHooksPlugin },
@@ -37,11 +37,11 @@ export default defineConfig([
 
       ...reactHooksPlugin.configs.recommended.rules,
       // @stylistic
-      '@stylistic/jsx/jsx-closing-bracket-location': 'error',
-      '@stylistic/jsx/jsx-closing-tag-location': 'error',
-      '@stylistic/jsx/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
-      '@stylistic/jsx/jsx-curly-newline': ['error', { multiline: 'consistent', singleline: 'forbid' }],
-      '@stylistic/jsx/jsx-curly-spacing': [
+      '@stylistic/jsx-closing-bracket-location': 'error',
+      '@stylistic/jsx-closing-tag-location': 'error',
+      '@stylistic/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
+      '@stylistic/jsx-curly-newline': ['error', { multiline: 'consistent', singleline: 'forbid' }],
+      '@stylistic/jsx-curly-spacing': [
         'error',
         {
           when: 'never',
@@ -49,11 +49,11 @@ export default defineConfig([
           children: false,
         },
       ],
-      '@stylistic/jsx/jsx-equals-spacing': ['error', 'never'],
-      '@stylistic/jsx/jsx-first-prop-new-line': ['error', 'multiline'],
-      '@stylistic/jsx/jsx-max-props-per-line': ['error', { when: 'multiline' }],
-      '@stylistic/jsx/jsx-props-no-multi-spaces': 'error',
-      '@stylistic/jsx/jsx-tag-spacing': 'error',
+      '@stylistic/jsx-equals-spacing': ['error', 'never'],
+      '@stylistic/jsx-first-prop-new-line': ['error', 'multiline'],
+      '@stylistic/jsx-max-props-per-line': ['error', { when: 'multiline' }],
+      '@stylistic/jsx-props-no-multi-spaces': 'error',
+      '@stylistic/jsx-tag-spacing': 'error',
     },
   },
 ])
