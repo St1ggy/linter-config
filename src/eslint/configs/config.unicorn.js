@@ -15,13 +15,16 @@ export default defineConfig([
       'unicorn/prevent-abbreviations': [
         'error',
         {
-          checkShorthandImports: false,
           replacements: {
             dev: false,
             prod: false,
             props: false,
             ref: false,
             refs: false,
+            args: false,
+            params: false,
+            utils: false,
+            env: false,
           },
         },
       ],
