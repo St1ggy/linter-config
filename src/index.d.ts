@@ -1,45 +1,49 @@
-import { type ConfigArray } from 'eslint'
-import { type Config as PrettierConfig } from 'prettier'
-import { type Config as StylelintConfig } from 'stylelint'
+import type { Linter } from 'eslint'
 
 declare module '@st1ggy/linter-config/eslint-next' {
-  const config: ConfigArray
+  const config: Linter.Config[]
 
   export default config
 }
 
 declare module '@st1ggy/linter-config/eslint-react' {
-  const config: ConfigArray
+  const config: Linter.Config[]
 
   export default config
 }
 
 declare module '@st1ggy/linter-config/eslint-svelte' {
-  const config: ConfigArray
+  const config: Linter.Config[]
 
   export default config
 }
 
 declare module '@st1ggy/linter-config/eslint-common' {
-  const config: ConfigArray
+  const config: Linter.Config[]
 
   export default config
 }
 
 declare module '@st1ggy/linter-config/prettier-common' {
-  const config: PrettierConfig
+  import type { Config } from 'prettier'
+
+  const config: Config
 
   export default config
 }
 
 declare module '@st1ggy/linter-config/prettier-svelte' {
-  const config: PrettierConfig
+  import type { Config } from 'prettier'
+
+  const config: Config
 
   export default config
 }
 
 declare module '@st1ggy/linter-config/stylelint-scss' {
-  const config: StylelintConfig
+  import type { Config } from 'stylelint'
+
+  const config: Config
 
   export default config
 }
