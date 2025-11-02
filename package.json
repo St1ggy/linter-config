@@ -42,6 +42,7 @@
     "prettier-plugin-svelte": "^3.4.0",
     "stylelint": "^16.25.0",
     "stylelint-config-clean-order": "^7.0.0",
+    "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recommended": "^17.0.0",
     "stylelint-config-recommended-scss": "^16.0.2",
     "stylelint-config-sass-guidelines": "^12.1.0",
@@ -52,7 +53,7 @@
     "typescript-eslint": "^8.46.2"
   },
   "type": "module",
-  "types": "index.d.ts",
+  "types": "./src/index.d.ts",
   "exports": {
     ".": "./src/index.js",
     "./eslint-next": "./src/eslint/eslint.config.next.js",
