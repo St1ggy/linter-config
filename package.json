@@ -1,6 +1,6 @@
 {
   "name": "@st1ggy/linter-config",
-  "version": "2.35.2",
+  "version": "2.36.0",
   "description": "ESLint, Stylelint and Prettier configs for React, Vue [WIP] and Svelte [WIP]",
   "private": false,
   "repository": {
