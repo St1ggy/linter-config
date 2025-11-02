@@ -53,7 +53,7 @@
     "typescript-eslint": "^8.46.2"
   },
   "type": "module",
-  "types": "./src/index.d.ts",
+  "types": "index.d.ts",
   "exports": {
     ".": "./src/index.js",
     "./eslint-next": "./src/eslint/eslint.config.next.js",
@@ -67,7 +67,8 @@
   "files": [
     "src",
     "patches",
-    "scripts"
+    "scripts",
+    "index.d.ts"
   ],
   "scripts": {
     "lint": "eslint .",
