@@ -64,14 +64,12 @@
   },
   "files": [
     "src",
-    "patches",
     "scripts",
     "index.d.ts"
   ],
   "scripts": {
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "postinstall": "patch-package"
+    "lint:fix": "eslint . --fix"
   },
   "peerDependencies": {
     "react": "^19.0.0",
