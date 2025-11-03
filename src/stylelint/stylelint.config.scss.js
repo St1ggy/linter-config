@@ -7,14 +7,8 @@ const propertiesOrder = propertyGroups.map((properties) => ({
 }))
 
 export default {
-  extends: [
-    'stylelint-config-recommended',
-    'stylelint-config-recommended-scss',
-    'stylelint-config-sass-guidelines',
-    'stylelint-config-tailwindcss/scss',
-    'stylelint-config-prettier',
-  ],
-  plugins: ['stylelint-order', 'stylelint-prettier'],
+  extends: ['stylelint-config-recommended', 'stylelint-config-recommended-scss', 'stylelint-config-sass-guidelines'],
+  plugins: ['stylelint-order', 'stylelint-prettier', 'stylelint-no-unsupported-browser-features'],
   rules: {
     'prettier/prettier': true,
     'no-descending-specificity': null,
@@ -29,5 +23,14 @@ export default {
     'declaration-empty-line-before': null,
     'order/properties-order': [propertiesOrder, { severity: 'error', unspecified: 'bottomAlphabetical' }],
     'declaration-property-value-no-unknown': null,
+    'plugin/no-unsupported-browser-features': [
+      true,
+      {
+        severity: 'warning',
+        ignore: ['css-nesting', 'css-scrollbar'],
+        ignorePartialSupport: true,
+      },
+    ],
   },
+  ignoreFiles: ['build/**/*.css'],
 }
