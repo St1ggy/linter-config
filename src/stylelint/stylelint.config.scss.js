@@ -27,6 +27,7 @@ export default {
       true,
       {
         severity: 'warning',
+        browsers: ['> 1%', 'Last 2 versions', 'not op_mini all', 'not dead'],
         ignore: ['css-nesting', 'css-scrollbar'],
         ignorePartialSupport: true,
       },
