@@ -1,13 +1,12 @@
 {
   "name": "@st1ggy/linter-config",
-  "version": "2.36.0",
+  "version": "2.36.1",
   "description": "ESLint, Stylelint and Prettier configs for React, Vue [WIP] and Svelte [WIP]",
   "private": false,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/st1ggy/linter-config.git"
   },
-  "main": "./src/index.js",
   "keywords": [
     "eslint",
     "prettier",
@@ -53,7 +52,6 @@
     "typescript-eslint": "^8.46.2"
   },
   "type": "module",
-  "types": "index.d.ts",
   "exports": {
     ".": "./src/index.js",
     "./eslint-next": "./src/eslint/eslint.config.next.js",
