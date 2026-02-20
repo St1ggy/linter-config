@@ -1,6 +1,20 @@
-import { type ConfigArray } from 'eslint'
+import { type Linter } from 'eslint'
 import { type Config as PrettierConfig } from 'prettier'
 import { type Config as StylelintConfig } from 'stylelint'
+
+type ConfigArray = Linter.Config[]
+
+declare module '@st1ggy/linter-config' {
+  export const eslintCommon: ConfigArray
+  export const eslintReact: ConfigArray
+  export const eslintNext: ConfigArray
+  export const eslintSvelte: ConfigArray
+
+  export const prettierCommon: PrettierConfig
+  export const prettierSvelte: PrettierConfig
+
+  export const stylelintScss: StylelintConfig
+}
 
 declare module '@st1ggy/linter-config/eslint-next' {
   const config: ConfigArray

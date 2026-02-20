@@ -6,4 +6,6 @@ import { fileURLToPath } from 'node:url'
 
 const gitignorePath = findUpSync('.gitignore', { cwd: process.cwd() })
 
-export default defineConfig([includeIgnoreFile(fileURLToPath(new URL(gitignorePath, import.meta.url)))])
+export default defineConfig(
+  gitignorePath ? [includeIgnoreFile(fileURLToPath(new URL(gitignorePath, import.meta.url)))] : [],
+)

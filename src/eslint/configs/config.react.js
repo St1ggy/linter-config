@@ -1,4 +1,3 @@
-import stylistic from '@stylistic/eslint-plugin'
 import { defineConfig } from 'eslint/config'
 import reactPlugin from 'eslint-plugin-react'
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
@@ -8,7 +7,6 @@ import { files } from './constants.js'
 export default defineConfig([
   reactPlugin.configs.flat.recommended,
   reactPlugin.configs.flat['jsx-runtime'],
-  stylistic.configs.recommended,
   {
     files,
     plugins: { 'react-hooks': reactHooksPlugin },

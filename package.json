@@ -19,12 +19,12 @@
   },
   "homepage": "https://github.com/St1ggy/linter-config#readme",
   "dependencies": {
+    "@next/eslint-plugin-next": "^16.0.1",
     "@eslint/compat": "^1.4.1",
     "@eslint/js": "^9.39.0",
     "@stylistic/eslint-plugin": "^5.5.0",
     "@stylistic/eslint-plugin-migrate": "^4.4.1",
     "eslint": "^9.39.0",
-    "eslint-config-next": "^16.0.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-custom-alias": "^1.3.2",
     "eslint-import-resolver-typescript": "^4.4.4",
@@ -41,7 +41,6 @@
     "prettier-plugin-svelte": "^3.4.0",
     "stylelint": "^16.25.0",
     "stylelint-config-clean-order": "^7.0.0",
-    "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recommended": "^17.0.0",
     "stylelint-config-recommended-scss": "^16.0.2",
     "stylelint-config-sass-guidelines": "^12.1.0",
@@ -51,16 +50,50 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.2"
   },
+  "types": "./index.d.ts",
   "type": "module",
+  "sideEffects": false,
   "exports": {
-    ".": "./src/index.js",
-    "./eslint-next": "./src/eslint/eslint.config.next.js",
-    "./eslint-react": "./src/eslint/eslint.config.react.js",
-    "./eslint-svelte": "./src/eslint/eslint.config.svelte.js",
-    "./eslint-common": "./src/eslint/eslint.config.common.js",
-    "./prettier-common": "./src/prettier/prettier.config.common.js",
-    "./prettier-svelte": "./src/prettier/prettier.config.svelte.js",
-    "./stylelint-scss": "./src/stylelint/stylelint.config.scss.js"
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    },
+    "./eslint-next": {
+      "types": "./index.d.ts",
+      "import": "./src/eslint/eslint.config.next.js",
+      "default": "./src/eslint/eslint.config.next.js"
+    },
+    "./eslint-react": {
+      "types": "./index.d.ts",
+      "import": "./src/eslint/eslint.config.react.js",
+      "default": "./src/eslint/eslint.config.react.js"
+    },
+    "./eslint-svelte": {
+      "types": "./index.d.ts",
+      "import": "./src/eslint/eslint.config.svelte.js",
+      "default": "./src/eslint/eslint.config.svelte.js"
+    },
+    "./eslint-common": {
+      "types": "./index.d.ts",
+      "import": "./src/eslint/eslint.config.common.js",
+      "default": "./src/eslint/eslint.config.common.js"
+    },
+    "./prettier-common": {
+      "types": "./index.d.ts",
+      "import": "./src/prettier/prettier.config.common.js",
+      "default": "./src/prettier/prettier.config.common.js"
+    },
+    "./prettier-svelte": {
+      "types": "./index.d.ts",
+      "import": "./src/prettier/prettier.config.svelte.js",
+      "default": "./src/prettier/prettier.config.svelte.js"
+    },
+    "./stylelint-scss": {
+      "types": "./index.d.ts",
+      "import": "./src/stylelint/stylelint.config.scss.js",
+      "default": "./src/stylelint/stylelint.config.scss.js"
+    }
   },
   "files": [
     "src",
@@ -72,7 +105,31 @@
     "lint:fix": "eslint . --fix"
   },
   "peerDependencies": {
-    "react": "^19.0.0",
-    "svelte": "^5.23.0"
+    "eslint": "^9.0.0",
+    "next": "^16.0.0",
+    "prettier": "^3.0.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "stylelint": "^16.0.0",
+    "svelte": "^4.0.0 || ^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
+    },
+    "next": {
+      "optional": true
+    },
+    "prettier": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "stylelint": {
+      "optional": true
+    },
+    "svelte": {
+      "optional": true
+    }
   }
 }
