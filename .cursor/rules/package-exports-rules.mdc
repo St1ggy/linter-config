@@ -1,0 +1,19 @@
+---
+description: Package exports, types, and dependency policy for config packages
+alwaysApply: true
+---
+
+# Package and Exports Rules
+
+- Keep `exports` explicit for root and every subpath.
+- For each export, provide `import` and `types` entries.
+- Keep `types` pointing to real declaration files.
+- Use `sideEffects: false` unless a file intentionally has side effects.
+
+## Dependency Policy
+
+- Keep runtime deps only for code imported by exported configs.
+- Put consumer-executed tools in peer dependencies (`eslint`, `prettier`, `stylelint`).
+- Mark framework peers optional when presets are framework-specific.
+- Remove stale packages when no config imports them.
+

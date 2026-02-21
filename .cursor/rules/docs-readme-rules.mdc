@@ -1,0 +1,18 @@
+---
+description: README and usage examples standards for shared config repositories
+alwaysApply: true
+---
+
+# Documentation Rules
+
+- Document all supported imports and prefer subpath import examples.
+- Show tree-shaking-friendly usage first.
+- Keep install steps short and tool-focused.
+- Keep framework coverage explicit (React, Next.js, Svelte, and others if added).
+
+## Change Communication
+
+- If exports or peers change, update README in the same change.
+- If defaults become stricter, include a short migration note.
+- Keep examples copy-paste ready and consistent with actual exported paths.
+

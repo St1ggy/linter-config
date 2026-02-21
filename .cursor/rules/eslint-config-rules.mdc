@@ -1,0 +1,19 @@
+---
+description: ESLint config authoring rules for multi-framework packages
+alwaysApply: true
+---
+
+# ESLint Config Rules
+
+- Never introduce circular imports between config entrypoints.
+- Keep framework layering explicit: `common -> react -> next`, `common -> svelte`.
+- Use safe fallbacks for environment-dependent logic (for example missing `.gitignore`).
+- Add framework-specific rules in framework files, not in `common`.
+- Keep plugin imports minimal; do not import duplicate stylistic presets across layers.
+
+## Export Conventions
+
+- Provide dedicated subpath configs (`/eslint-common`, `/eslint-react`, `/eslint-next`, `/eslint-svelte`).
+- Keep root index exports stable and typed.
+- When changing rule severity defaults, document the reason in PR/commit.
+

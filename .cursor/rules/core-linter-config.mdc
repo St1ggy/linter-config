@@ -1,0 +1,19 @@
+---
+description: Core standards for shared linter-config packages
+alwaysApply: true
+---
+
+# Core Linter Config Standards
+
+- Keep package output ESM-first and deterministic.
+- Prefer small, composable config modules over one large config file.
+- Treat each exported config as a public API; avoid breaking behavior silently.
+- Avoid side effects in config modules (no IO except explicit safe fallbacks).
+- Keep examples and docs aligned with real exports.
+
+## Required Quality Checks
+
+- Run `npm run lint` after every config change.
+- Keep files with LF ending newline and no trailing spaces.
+- If dependency surface changes, update lockfile in the same change.
+

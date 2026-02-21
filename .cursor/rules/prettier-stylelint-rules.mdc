@@ -1,0 +1,17 @@
+---
+description: Prettier and Stylelint config rules for shared packages
+alwaysApply: true
+---
+
+# Prettier and Stylelint Rules
+
+- Keep Prettier config declarative and plugin list minimal.
+- Keep Stylelint extends/plugins limited to what is used by exported presets.
+- Do not keep deprecated or unused stylelint packages in dependencies.
+- Use one canonical SCSS preset export and keep its rule intent documented.
+
+## Compatibility
+
+- Preserve compatibility with current major versions of Prettier and Stylelint.
+- Put tool runtime requirements into peer dependencies when consumers execute the tool.
+- If rule sets become strict, include migration notes in README.
