@@ -12,6 +12,12 @@ npm run changelog
 
 (Uses [Conventional Commits](https://www.conventionalcommits.org/) and [`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) with the `conventionalcommits` preset.)
 
+## [6.3.2](https://github.com/st1ggy/linter-config/compare/v6.3.1...v6.3.2) - 2026-04-10
+
+### Fixed
+
+- **TypeScript:** `index.d.ts` is an ambient script again (no top-level `import`/`export`), so `declare module '@st1ggy/linter-config/…'` defines subpath types instead of augmenting them — fixes **TS2666** and duplicate `config` errors. Stylelint types use `import type * as Stylelint` for `export =` compatibility.
+
 ## [6.3.1](https://github.com/st1ggy/linter-config/compare/v6.3.0...v6.3.1) - 2026-04-10
 
 ### Fixed
