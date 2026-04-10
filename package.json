@@ -8,7 +8,13 @@
   "scripts": {
     "lint": "npm run lint --workspace=@st1ggy/linter-config",
     "lint:eslint": "npm run lint:eslint --workspace=@st1ggy/linter-config",
-    "lint:biome": "npm run lint:biome --workspace=@st1ggy/linter-config"
+    "lint:biome": "npm run lint:biome --workspace=@st1ggy/linter-config",
+    "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s",
+    "changelog:dry": "conventional-changelog -p conventionalcommits"
+  },
+  "devDependencies": {
+    "conventional-changelog-cli": "^5.0.0",
+    "conventional-changelog-conventionalcommits": "^9.0.0"
   },
   "repository": {
     "type": "git",
