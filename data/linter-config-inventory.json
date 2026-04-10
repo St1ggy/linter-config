@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-10T20:01:50.950Z",
+  "generatedAt": "2026-04-10T20:18:10.728Z",
   "source": "@st1ggy/linter-config@6.3.0 (local tree)",
   "linterConfigRoot": "/Users/dnbragin/Projects/personal/linter-config",
   "flatConfigs": {
@@ -6369,7 +6369,7 @@
     "eslint-svelte": {
       "module": "src/eslint/eslint-svelte.config.js",
       "sampleFile": "src/examples/example.svelte",
-      "ruleCount": 941,
+      "ruleCount": 940,
       "rules": {
         "@babel/object-curly-spacing": "off",
         "@babel/semi": "off",
@@ -7005,7 +7005,6 @@
         "@typescript-eslint/consistent-generic-constructors": "error",
         "@typescript-eslint/consistent-indexed-object-style": "error",
         "@typescript-eslint/consistent-type-assertions": "error",
-        "@typescript-eslint/consistent-type-definitions": "error",
         "@typescript-eslint/func-call-spacing": "off",
         "@typescript-eslint/indent": "off",
         "@typescript-eslint/key-spacing": "off",
