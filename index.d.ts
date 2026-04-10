@@ -1,59 +1,75 @@
-import { type Linter } from 'eslint'
-import { type Config as PrettierConfig } from 'prettier'
-import { type Config as StylelintConfig } from 'stylelint'
-
-type ConfigArray = Linter.Config[]
-
+// Ambient declarations for `@st1ggy/linter-config`.
+// This file must remain a script (no top-level `import` / `export`) so each
+// `declare module '…'` introduces a module, not an augmentation — otherwise
+// TypeScript reports TS2666 for `export default` in subpath entries.
 declare module '@st1ggy/linter-config' {
-  export const eslintCommon: ConfigArray
-  export const eslintReact: ConfigArray
-  export const eslintNext: ConfigArray
-  export const eslintSvelte: ConfigArray
+  import type { Linter } from 'eslint'
+  import type { Config as PrettierConfig } from 'prettier'
+  import type * as Stylelint from 'stylelint'
+
+  export const eslintCommon: Linter.Config[]
+  export const eslintReact: Linter.Config[]
+  export const eslintNext: Linter.Config[]
+  export const eslintSvelte: Linter.Config[]
 
   export const prettierCommon: PrettierConfig
   export const prettierSvelte: PrettierConfig
 
-  export const stylelintScss: StylelintConfig
+  export const stylelintScss: Stylelint.Config
 }
 
 declare module '@st1ggy/linter-config/eslint-next' {
-  const config: ConfigArray
+  import type { Linter } from 'eslint'
+
+  const config: Linter.Config[]
 
   export default config
 }
 
 declare module '@st1ggy/linter-config/eslint-react' {
-  const config: ConfigArray
+  import type { Linter } from 'eslint'
+
+  const config: Linter.Config[]
 
   export default config
 }
 
 declare module '@st1ggy/linter-config/eslint-svelte' {
-  const config: ConfigArray
+  import type { Linter } from 'eslint'
+
+  const config: Linter.Config[]
 
   export default config
 }
 
 declare module '@st1ggy/linter-config/eslint-common' {
-  const config: ConfigArray
+  import type { Linter } from 'eslint'
+
+  const config: Linter.Config[]
 
   export default config
 }
 
 declare module '@st1ggy/linter-config/prettier-common' {
+  import type { Config as PrettierConfig } from 'prettier'
+
   const config: PrettierConfig
 
   export default config
 }
 
 declare module '@st1ggy/linter-config/prettier-svelte' {
+  import type { Config as PrettierConfig } from 'prettier'
+
   const config: PrettierConfig
 
   export default config
 }
 
 declare module '@st1ggy/linter-config/stylelint-scss' {
-  const config: StylelintConfig
+  import type * as Stylelint from 'stylelint'
+
+  const config: Stylelint.Config
 
   export default config
 }
