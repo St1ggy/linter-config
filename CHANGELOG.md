@@ -4,43 +4,30 @@ Notable changes to **`@st1ggy/linter-config`** (sources under [`packages/eslint`
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-Release notes for new versions are appended with:
+Append release notes with:
 
 ```bash
 npm run changelog
 ```
 
-(Requires [Conventional Commits](https://www.conventionalcommits.org/) messages; uses [`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) with the `conventionalcommits` preset.)
-
-## [6.0.0](https://github.com/st1ggy/linter-config/compare/v5.0.0...v6.0.0) - 2026-04-10
-
-### ⚠ BREAKING CHANGES
-
-- **Single published package again:** the **`@st1ggy/biome-config`** npm package is removed. Biome JSON presets ship only as **`@st1ggy/linter-config/biome-*`** subpaths.
-- **Repository layout:** sources are split between **`packages/eslint`** and **`packages/biome`**; the **root** [`package.json`](package.json) is the only publish target.
-
-### Features
-
-- One `@st1ggy/linter-config` install provides both ESLint/Prettier/Stylelint and Biome entrypoints.
-
-## [5.0.0](https://github.com/st1ggy/linter-config/compare/v4.0.0...v5.0.0) - 2026-04-10
-
-### ⚠ BREAKING CHANGES (`@st1ggy/linter-config`)
-
-- **Biome presets removed** from this package. Use **`@st1ggy/biome-config`** (`biome-common`, `biome-react`, `biome-next`, `biome-svelte`) instead of `@st1ggy/linter-config/biome-*`.
-
-### Features
-
-- **`@st1ggy/biome-config` 1.0.0** — new npm package published from [`packages/biome`](packages/biome), sibling to [`packages/eslint`](packages/eslint).
+(Uses [Conventional Commits](https://www.conventionalcommits.org/) and [`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) with the `conventionalcommits` preset.)
 
 ## [4.0.0](https://github.com/st1ggy/linter-config/compare/v3.0.0...v4.0.0) - 2026-04-10
 
+### Summary
+
+Single npm package **`@st1ggy/linter-config`** is published from the **repository root**. Development sources live in two private workspaces:
+
+- [`packages/eslint`](packages/eslint) — ESLint, Prettier, Stylelint
+- [`packages/biome`](packages/biome) — Biome JSON presets
+
 ### ⚠ BREAKING CHANGES
 
-- **Monorepo:** sources and publishable `package.json` live under [`packages/eslint`](packages/eslint); consumers still install `npm i -D @st1ggy/linter-config`.
-- **Biome:** JSON presets are only published as **`@st1ggy/linter-config` subpaths** (`biome-common`, `biome-react`, `biome-next`, `biome-svelte`, `biome`). The separate package **`@st1ggy/linter-config-biome` is removed**—switch `extends` / resolution to e.g. `@st1ggy/linter-config/biome-common`.
-- **Internal filenames:** Svelte-related preset files were renamed (`eslint-svelte.config.js`, `prettier-svelte.config.js`, `svelte-stack.js`); documented **subpath `exports`** (`/eslint-svelte`, `/prettier-svelte`) are unchanged.
+- **One install:** `npm i -D @st1ggy/linter-config` — Biome presets are **`@st1ggy/linter-config/biome-*`** subpaths, not a separate `@st1ggy/biome-config` (or legacy `@st1ggy/linter-config-biome`) npm package.
+- **Monorepo layout:** published `package.json` and `exports` are at the repo root; `packages/eslint` and `packages/biome` are not published on their own.
+- **Svelte preset files** use names such as `eslint-svelte.config.js`, `prettier-svelte.config.js`, `svelte-stack.js`; public subpath `exports` (`/eslint-svelte`, `/prettier-svelte`, etc.) stay the same for consumers.
 
 ### Features
 
-- Monorepo layout with npm workspaces; root scripts delegate to `@st1ggy/linter-config` workspace ([199cedb](https://github.com/st1ggy/linter-config/commit/199cedb0bd8b77b221237b90ac5efdb1a4e35d3b)).
+- Subpath exports for `eslint-common`, `eslint-react`, `eslint-next`, `eslint-svelte`, `prettier-common`, `prettier-svelte`, `stylelint-scss`, `biome`, `biome-common`, `biome-react`, `biome-next`, `biome-svelte`.
+- Root and workspace scripts for linting each tree (`npm run lint`, `lint:eslint`, `lint:biome`, `lint:fix`, …).

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-10T18:49:07.174Z",
-  "source": "@st1ggy/linter-config@6.0.0 (local tree)",
+  "generatedAt": "2026-04-10T18:52:03.580Z",
+  "source": "@st1ggy/linter-config@4.0.0 (local tree)",
   "linterConfigRoot": "/Users/dnbragin/Projects/personal/linter-config/packages/eslint",
   "eslint": {
     "eslint-common": {

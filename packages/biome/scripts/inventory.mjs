@@ -13,7 +13,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const BIOME_CONFIG_ROOT = path.resolve(__dirname, '..')
 const LINTER_ROOT = process.env.LINTER_CONFIG_ROOT ?? path.resolve(BIOME_CONFIG_ROOT, '..', 'eslint')
 
-const SOURCE_LABEL = '@st1ggy/linter-config@6.0.0 (local tree)'
+const SOURCE_LABEL = '@st1ggy/linter-config@4.0.0 (local tree)'
 
 const eslintPresets = [
   {
