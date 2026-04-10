@@ -1,7 +1,7 @@
 {
   "name": "@st1ggy/linter-config",
-  "version": "5.0.0",
-  "description": "ESLint, Prettier, Stylelint, and Biome shareable configs (sources in packages/eslint and packages/biome).",
+  "version": "6.3.0",
+  "description": "ESLint, Prettier, and Stylelint shareable configs (sources under src/).",
   "private": false,
   "repository": {
     "type": "git",
@@ -10,8 +10,7 @@
   "keywords": [
     "eslint",
     "prettier",
-    "stylelint",
-    "biome"
+    "stylelint"
   ],
   "author": "Dmitrii Bragin (st1ggy)",
   "license": "Apache-2.0",
@@ -20,14 +19,16 @@
   },
   "homepage": "https://github.com/St1ggy/linter-config/tree/main#readme",
   "bin": {
-    "linter-config": "packages/eslint/scripts/linter-init.mjs"
+    "@st1ggy/linter-config": "./scripts/linter-init.mjs"
   },
   "dependencies": {
-    "@next/eslint-plugin-next": "^16.2.3",
     "@eslint/compat": "^2.0.5",
     "@eslint/js": "^10.0.1",
+    "@inquirer/core": "^10.3.2",
+    "@inquirer/prompts": "^7.10.1",
+    "@next/eslint-plugin-next": "^16.2.3",
     "@stylistic/eslint-plugin": "^5.10.0",
-    "eslint": "^10.2.0",
+    "eslint": "^9.0.0 || ^10.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-custom-alias": "^1.3.2",
     "eslint-import-resolver-typescript": "^4.4.4",
@@ -39,9 +40,11 @@
     "eslint-plugin-svelte": "^3.17.0",
     "eslint-plugin-unicorn": "^64.0.0",
     "find-up-simple": "^1.0.1",
-    "prettier": "^3.8.2",
+    "minimist": "^1.2.8",
+    "ora": "^8.2.0",
+    "prettier": "^3.0.0",
     "prettier-plugin-svelte": "^3.5.1",
-    "stylelint": "^17.6.0",
+    "stylelint": "^17.0.0",
     "stylelint-config-clean-order": "^8.0.1",
     "stylelint-config-recommended": "^18.0.0",
     "stylelint-config-recommended-scss": "^17.0.1",
@@ -58,105 +61,69 @@
   "exports": {
     ".": {
       "types": "./index.d.ts",
-      "import": "./packages/eslint/src/index.js",
-      "default": "./packages/eslint/src/index.js"
+      "import": "./src/index.js",
+      "default": "./src/index.js"
     },
     "./eslint-next": {
       "types": "./index.d.ts",
-      "import": "./packages/eslint/src/eslint/eslint.config.next.js",
-      "default": "./packages/eslint/src/eslint/eslint.config.next.js"
+      "import": "./src/eslint/eslint.config.next.js",
+      "default": "./src/eslint/eslint.config.next.js"
     },
     "./eslint-react": {
       "types": "./index.d.ts",
-      "import": "./packages/eslint/src/eslint/eslint.config.react.js",
-      "default": "./packages/eslint/src/eslint/eslint.config.react.js"
+      "import": "./src/eslint/eslint.config.react.js",
+      "default": "./src/eslint/eslint.config.react.js"
     },
     "./eslint-svelte": {
       "types": "./index.d.ts",
-      "import": "./packages/eslint/src/eslint/eslint-svelte.config.js",
-      "default": "./packages/eslint/src/eslint/eslint-svelte.config.js"
+      "import": "./src/eslint/eslint-svelte.config.js",
+      "default": "./src/eslint/eslint-svelte.config.js"
     },
     "./eslint-common": {
       "types": "./index.d.ts",
-      "import": "./packages/eslint/src/eslint/eslint.config.common.js",
-      "default": "./packages/eslint/src/eslint/eslint.config.common.js"
+      "import": "./src/eslint/eslint.config.common.js",
+      "default": "./src/eslint/eslint.config.common.js"
     },
     "./prettier-common": {
       "types": "./index.d.ts",
-      "import": "./packages/eslint/src/prettier/prettier.config.common.js",
-      "default": "./packages/eslint/src/prettier/prettier.config.common.js"
+      "import": "./src/prettier/prettier.config.common.js",
+      "default": "./src/prettier/prettier.config.common.js"
     },
     "./prettier-svelte": {
       "types": "./index.d.ts",
-      "import": "./packages/eslint/src/prettier/prettier-svelte.config.js",
-      "default": "./packages/eslint/src/prettier/prettier-svelte.config.js"
+      "import": "./src/prettier/prettier-svelte.config.js",
+      "default": "./src/prettier/prettier-svelte.config.js"
     },
     "./stylelint-scss": {
       "types": "./index.d.ts",
-      "import": "./packages/eslint/src/stylelint/stylelint.config.scss.js",
-      "default": "./packages/eslint/src/stylelint/stylelint.config.scss.js"
-    },
-    "./biome": {
-      "types": "./index.d.ts",
-      "import": "./packages/biome/biome.json",
-      "default": "./packages/biome/biome.json"
-    },
-    "./biome-common": {
-      "types": "./index.d.ts",
-      "import": "./packages/biome/configs/biome.common.json",
-      "default": "./packages/biome/configs/biome.common.json"
-    },
-    "./biome-react": {
-      "types": "./index.d.ts",
-      "import": "./packages/biome/configs/biome.react.json",
-      "default": "./packages/biome/configs/biome.react.json"
-    },
-    "./biome-next": {
-      "types": "./index.d.ts",
-      "import": "./packages/biome/configs/biome.next.json",
-      "default": "./packages/biome/configs/biome.next.json"
-    },
-    "./biome-svelte": {
-      "types": "./index.d.ts",
-      "import": "./packages/biome/configs/biome.svelte.json",
-      "default": "./packages/biome/configs/biome.svelte.json"
+      "import": "./src/stylelint/stylelint.config.scss.js",
+      "default": "./src/stylelint/stylelint.config.scss.js"
     }
   },
   "files": [
     "index.d.ts",
-    "packages/eslint/src",
-    "packages/eslint/scripts",
-    "packages/eslint/data",
-    "packages/eslint/docs",
-    "packages/biome/biome.json",
-    "packages/biome/configs",
-    "packages/biome/LICENSE",
-    "packages/biome/docs",
-    "scripts/README.md"
+    "src",
+    "scripts",
+    "data",
+    "docs"
   ],
   "scripts": {
-    "lint": "npm run lint --workspace=packages/eslint && npm run lint --workspace=packages/biome",
-    "lint:eslint": "npm run lint --workspace=packages/eslint",
-    "lint:stylelint": "npm run lint:stylelint --workspace=packages/eslint",
-    "lint:prettier": "npm run lint:prettier --workspace=packages/eslint",
-    "lint:biome": "npm run lint --workspace=packages/biome",
-    "lint:fix": "npm run lint:fix --workspace=packages/eslint && npm run lint:fix --workspace=packages/biome",
-    "lint:fix:eslint": "npm run lint:fix --workspace=packages/eslint",
-    "lint:fix:biome": "npm run lint:fix --workspace=packages/biome",
+    "lint": "eslint . && stylelint \"src/**/*.{css,scss}\" --config ./src/stylelint/stylelint.config.scss.js --allow-empty-input && prettier --check .",
+    "lint:eslint": "eslint .",
+    "lint:stylelint": "stylelint \"src/**/*.{css,scss}\" --config ./src/stylelint/stylelint.config.scss.js --allow-empty-input",
+    "lint:prettier": "prettier --check .",
+    "lint:fix": "eslint . --fix && stylelint \"src/**/*.{css,scss}\" --config ./src/stylelint/stylelint.config.scss.js --fix --allow-empty-input && prettier --write .",
+    "lint:fix:eslint": "npm run lint:fix",
     "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s",
     "changelog:dry": "conventional-changelog -p conventionalcommits",
     "publish:npm": "npm publish --access public",
-    "inventory": "npm run inventory --workspace=packages/eslint",
-    "config:init": "node ./packages/eslint/scripts/linter-init.mjs init --eslint --biome --common",
-    "config:reinit": "node ./packages/eslint/scripts/linter-init.mjs reinit --eslint --biome --common",
-    "config:create": "node ./packages/eslint/scripts/linter-init.mjs create --eslint --biome --common"
+    "inventory": "node ./scripts/inventory.mjs",
+    "config:init": "node ./scripts/linter-init.mjs init --common --dir ./examples/init-smoke",
+    "config:reinit": "node ./scripts/linter-init.mjs reinit --common --dir ./examples/init-smoke",
+    "config:create": "node ./scripts/linter-init.mjs create --common --dir ./examples/init-smoke",
+    "config:remove-current": "bash ./scripts/remove-current.sh"
   },
-  "workspaces": [
-    "packages/eslint",
-    "packages/biome"
-  ],
   "peerDependencies": {
-    "@biomejs/biome": ">=2.4.0 <3.0.0",
     "eslint": "^9.0.0 || ^10.0.0",
     "next": "^16.0.0",
     "prettier": "^3.0.0",
@@ -165,9 +132,6 @@
     "svelte": "^4.0.0 || ^5.0.0"
   },
   "peerDependenciesMeta": {
-    "@biomejs/biome": {
-      "optional": true
-    },
     "eslint": {
       "optional": true
     },
@@ -188,7 +152,6 @@
     }
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.11",
     "@stylistic/eslint-plugin-migrate": "^4.4.1",
     "conventional-changelog-cli": "^5.0.0",
     "conventional-changelog-conventionalcommits": "^9.0.0"

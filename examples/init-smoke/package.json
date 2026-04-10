@@ -1,0 +1,5 @@
+{
+  "name": "linter-config-init-smoke",
+  "private": true,
+  "description": "Sandbox for npm run config:* in this repo (not published)."
+}

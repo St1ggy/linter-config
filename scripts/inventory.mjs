@@ -1,6 +1,6 @@
-// Collects effective flat-config rule lists and Stylelint rules from this workspace.
-// Run from repo root: `node packages/eslint/scripts/inventory.mjs`
-// Or set `LINTER_CONFIG_ROOT` to override the default (`packages/eslint`).
+// Collects effective flat-config rule lists and Stylelint rules from this repo.
+// Run from repo root: `node scripts/inventory.mjs`
+// Or set `LINTER_CONFIG_ROOT` to override the default (repository root).
 
 import { spawnSync } from 'node:child_process'
 import { mkdirSync, writeFileSync } from 'node:fs'
@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const LINTER_ROOT = process.env.LINTER_CONFIG_ROOT ?? path.resolve(__dirname, '..')
 
-const SOURCE_LABEL = '@st1ggy/linter-config@5.0.0 (local tree)'
+const SOURCE_LABEL = '@st1ggy/linter-config@6.3.0 (local tree)'
 
 const flatConfigPresets = [
   {
@@ -171,7 +171,7 @@ async function main() {
   writeFileSync(outputPath, body, 'utf8')
 
   process.stdout.write(
-    `Wrote packages/eslint/data/linter-config-inventory.json (${SOURCE_LABEL}, flat presets: ${Object.keys(flatConfigs).length}, stylelint rules: ${stylelint.ruleCount})\n`,
+    `Wrote data/linter-config-inventory.json (${SOURCE_LABEL}, flat presets: ${Object.keys(flatConfigs).length}, stylelint rules: ${stylelint.ruleCount})\n`,
   )
 }
 
