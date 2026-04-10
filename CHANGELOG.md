@@ -1,8 +1,8 @@
 # Changelog
 
-All notable changes to **`@st1ggy/linter-config`** are documented in this file.
+Notable changes to **`@st1ggy/linter-config`** ([`packages/eslint`](packages/eslint)) and **`@st1ggy/biome-config`** ([`packages/biome`](packages/biome)) are documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Published versions refer to the package in [`packages/eslint`](packages/eslint).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 Release notes for new versions are appended with:
 
@@ -11,6 +11,16 @@ npm run changelog
 ```
 
 (Requires [Conventional Commits](https://www.conventionalcommits.org/) messages; uses [`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) with the `conventionalcommits` preset.)
+
+## [5.0.0](https://github.com/st1ggy/linter-config/compare/v4.0.0...v5.0.0) - 2026-04-10
+
+### ⚠ BREAKING CHANGES (`@st1ggy/linter-config`)
+
+- **Biome presets removed** from this package. Use **`@st1ggy/biome-config`** (`biome-common`, `biome-react`, `biome-next`, `biome-svelte`) instead of `@st1ggy/linter-config/biome-*`.
+
+### Features
+
+- **`@st1ggy/biome-config` 1.0.0** — new npm package published from [`packages/biome`](packages/biome), sibling to [`packages/eslint`](packages/eslint).
 
 ## [4.0.0](https://github.com/st1ggy/linter-config/compare/v3.0.0...v4.0.0) - 2026-04-10
 

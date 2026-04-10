@@ -1,7 +1,7 @@
 {
   "name": "@st1ggy/linter-config",
-  "version": "4.0.0",
-  "description": "ESLint, Stylelint, Prettier, and Biome shareable configs (published from packages/eslint).",
+  "version": "5.0.0",
+  "description": "ESLint, Stylelint, and Prettier shareable configs (published from packages/eslint).",
   "private": false,
   "repository": {
     "type": "git",
@@ -11,8 +11,7 @@
   "keywords": [
     "eslint",
     "prettier",
-    "stylelint",
-    "biome"
+    "stylelint"
   ],
   "author": "Dmitrii Bragin (st1ggy)",
   "license": "Apache-2.0",
@@ -93,51 +92,21 @@
       "types": "./index.d.ts",
       "import": "./src/stylelint/stylelint.config.scss.js",
       "default": "./src/stylelint/stylelint.config.scss.js"
-    },
-    "./biome": {
-      "types": "./index.d.ts",
-      "import": "./biome.json",
-      "default": "./biome.json"
-    },
-    "./biome-common": {
-      "types": "./index.d.ts",
-      "import": "./biome/configs/biome.common.json",
-      "default": "./biome/configs/biome.common.json"
-    },
-    "./biome-react": {
-      "types": "./index.d.ts",
-      "import": "./biome/configs/biome.react.json",
-      "default": "./biome/configs/biome.react.json"
-    },
-    "./biome-next": {
-      "types": "./index.d.ts",
-      "import": "./biome/configs/biome.next.json",
-      "default": "./biome/configs/biome.next.json"
-    },
-    "./biome-svelte": {
-      "types": "./index.d.ts",
-      "import": "./biome/configs/biome.svelte.json",
-      "default": "./biome/configs/biome.svelte.json"
     }
   },
   "files": [
     "src",
     "scripts",
-    "biome",
-    "biome.json",
     "index.d.ts"
   ],
   "scripts": {
     "lint:eslint": "eslint .",
     "lint:stylelint": "stylelint \"**/*.{css,scss}\" --config ./src/stylelint/stylelint.config.scss.js --allow-empty-input",
     "lint:prettier": "prettier --check .",
-    "lint:biome": "biome ci ./biome",
-    "lint": "npm run lint:eslint && npm run lint:stylelint && npm run lint:prettier && npm run lint:biome",
-    "lint:fix": "eslint . --fix && stylelint \"**/*.{css,scss}\" --config ./src/stylelint/stylelint.config.scss.js --fix --allow-empty-input && prettier --write .",
-    "inventory": "node ./biome/scripts/inventory.mjs"
+    "lint": "npm run lint:eslint && npm run lint:stylelint && npm run lint:prettier",
+    "lint:fix": "eslint . --fix && stylelint \"**/*.{css,scss}\" --config ./src/stylelint/stylelint.config.scss.js --fix --allow-empty-input && prettier --write ."
   },
   "peerDependencies": {
-    "@biomejs/biome": ">=2.4.0 <3.0.0",
     "eslint": "^9.0.0 || ^10.0.0",
     "next": "^16.0.0",
     "prettier": "^3.0.0",
@@ -146,13 +115,9 @@
     "svelte": "^4.0.0 || ^5.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.11",
     "@stylistic/eslint-plugin-migrate": "^4.4.1"
   },
   "peerDependenciesMeta": {
-    "@biomejs/biome": {
-      "optional": true
-    },
     "eslint": {
       "optional": true
     },

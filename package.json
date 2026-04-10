@@ -1,17 +1,18 @@
 {
   "name": "linter-config-monorepo",
   "private": true,
-  "description": "Monorepo for @st1ggy/linter-config (packages/eslint).",
+  "description": "Monorepo: @st1ggy/linter-config (packages/eslint) and @st1ggy/biome-config (packages/biome).",
   "workspaces": [
-    "packages/eslint"
+    "packages/eslint",
+    "packages/biome"
   ],
   "scripts": {
-    "lint": "npm run lint --workspace=@st1ggy/linter-config",
-    "lint:eslint": "npm run lint:eslint --workspace=@st1ggy/linter-config",
-    "lint:biome": "npm run lint:biome --workspace=@st1ggy/linter-config",
+    "lint": "npm run lint --workspace=@st1ggy/linter-config && npm run lint --workspace=@st1ggy/biome-config",
+    "lint:eslint": "npm run lint --workspace=@st1ggy/linter-config",
+    "lint:biome": "npm run lint --workspace=@st1ggy/biome-config",
     "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s",
     "changelog:dry": "conventional-changelog -p conventionalcommits",
-    "publish:npm": "npm publish -w @st1ggy/linter-config --access public"
+    "publish:npm": "npm publish -w @st1ggy/linter-config --access public && npm publish -w @st1ggy/biome-config --access public"
   },
   "devDependencies": {
     "conventional-changelog-cli": "^5.0.0",

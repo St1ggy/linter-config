@@ -1,0 +1,12 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.4.11/schema.json",
+  "root": true,
+  "extends": ["./configs/biome.common.json"],
+  "overrides": [
+    {
+      "includes": ["data/linter-config-inventory.json"],
+      "formatter": { "enabled": false },
+      "linter": { "enabled": false }
+    }
+  ]
+}

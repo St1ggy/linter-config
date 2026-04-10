@@ -1,18 +1,19 @@
 /**
- * Collects effective ESLint and Stylelint rules from a checkout of @st1ggy/linter-config.
- * Run from repo root: `node packages/eslint/biome/scripts/inventory.mjs`
- * Or set LINTER_CONFIG_ROOT to the linter-config package directory (packages/eslint).
+ * Collects effective ESLint and Stylelint rules from @st1ggy/linter-config (packages/eslint).
+ * Run from repo root: `node packages/biome/scripts/inventory.mjs`
+ * Or set LINTER_CONFIG_ROOT to packages/eslint.
  */
 import { spawnSync } from 'node:child_process'
 import { mkdirSync, writeFileSync } from 'node:fs'
+import { createRequire } from 'node:module'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const BIOME_CONFIG_ROOT = path.resolve(__dirname, '..')
-const LINTER_ROOT = process.env.LINTER_CONFIG_ROOT ?? path.resolve(BIOME_CONFIG_ROOT, '..')
+const LINTER_ROOT = process.env.LINTER_CONFIG_ROOT ?? path.resolve(BIOME_CONFIG_ROOT, '..', 'eslint')
 
-const SOURCE_LABEL = '@st1ggy/linter-config@4.0.0 (local tree)'
+const SOURCE_LABEL = '@st1ggy/biome-config@1.0.0 (local tree)'
 
 const eslintPresets = [
   {
@@ -92,23 +93,16 @@ async function inventoryEslint() {
 }
 
 function inventoryStylelint() {
+  const requireFromEslint = createRequire(path.join(LINTER_ROOT, 'package.json'))
+  const stylelintPkg = requireFromEslint.resolve('stylelint/package.json')
+  const stylelintBin = path.join(path.dirname(stylelintPkg), 'bin/stylelint.mjs')
   const scssPath = path.join(LINTER_ROOT, 'src/examples/example.scss')
   const configPath = path.join(LINTER_ROOT, 'src/stylelint/stylelint.config.scss.js')
-  const r = spawnSync(
-    process.execPath,
-    [
-      path.join(LINTER_ROOT, 'node_modules/stylelint/bin/stylelint.mjs'),
-      '--print-config',
-      scssPath,
-      '--config',
-      configPath,
-    ],
-    {
-      cwd: LINTER_ROOT,
-      encoding: 'utf8',
-      maxBuffer: 20 * 1024 * 1024,
-    },
-  )
+  const r = spawnSync(process.execPath, [stylelintBin, '--print-config', scssPath, '--config', configPath], {
+    cwd: LINTER_ROOT,
+    encoding: 'utf8',
+    maxBuffer: 20 * 1024 * 1024,
+  })
   if (r.status !== 0) {
     throw new Error(`stylelint --print-config failed: ${r.stderr || r.stdout || 'unknown error'}`)
   }
