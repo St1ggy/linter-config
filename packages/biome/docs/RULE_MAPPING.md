@@ -1,4 +1,4 @@
-# ESLint / Stylelint → Biome mapping (`@st1ggy/biome-config`)
+# ESLint / Stylelint → Biome mapping (`@st1ggy/linter-config/biome-*`)
 
 This document is the **high-level matrix**. The machine-readable inventory (every ESLint rule id and Stylelint rule name with effective severity for sample files) lives in [`../data/linter-config-inventory.json`](../data/linter-config-inventory.json). Regenerate it from a checkout of this repo with:
 
@@ -14,7 +14,7 @@ node packages/biome/scripts/inventory.mjs
 | --- | --- |
 | **yes** | Reasonable Biome coverage for the intent (names/options may still differ). |
 | **partial** | Some overlap; not a drop-in replacement—review Biome rule docs. |
-| **no** | No equivalent in Biome at preset level—**intentional gap** in `@st1ggy/biome-config/biome-*` (Biome presets do not add ESLint/Stylelint/tsc). |
+| **no** | No equivalent in Biome at preset level—**intentional gap** in `@st1ggy/linter-config/biome-*` (Biome presets do not add ESLint/Stylelint/tsc). |
 
 ## ESLint layers (flat configs)
 

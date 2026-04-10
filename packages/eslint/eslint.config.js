@@ -5,7 +5,7 @@ import common from './src/eslint/eslint.config.common.js'
 
 export default [
   {
-    ignores: ['dist/**', 'biome/scripts/**'],
+    ignores: ['dist/**'],
   },
   ...common,
   ...svelte,

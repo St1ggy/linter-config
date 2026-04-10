@@ -1,6 +1,6 @@
 # Changelog
 
-Notable changes to **`@st1ggy/linter-config`** ([`packages/eslint`](packages/eslint)) and **`@st1ggy/biome-config`** ([`packages/biome`](packages/biome)) are documented in this file.
+Notable changes to **`@st1ggy/linter-config`** (sources under [`packages/eslint`](packages/eslint) and [`packages/biome`](packages/biome)) are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
@@ -11,6 +11,17 @@ npm run changelog
 ```
 
 (Requires [Conventional Commits](https://www.conventionalcommits.org/) messages; uses [`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) with the `conventionalcommits` preset.)
+
+## [6.0.0](https://github.com/st1ggy/linter-config/compare/v5.0.0...v6.0.0) - 2026-04-10
+
+### ⚠ BREAKING CHANGES
+
+- **Single published package again:** the **`@st1ggy/biome-config`** npm package is removed. Biome JSON presets ship only as **`@st1ggy/linter-config/biome-*`** subpaths.
+- **Repository layout:** sources are split between **`packages/eslint`** and **`packages/biome`**; the **root** [`package.json`](package.json) is the only publish target.
+
+### Features
+
+- One `@st1ggy/linter-config` install provides both ESLint/Prettier/Stylelint and Biome entrypoints.
 
 ## [5.0.0](https://github.com/st1ggy/linter-config/compare/v4.0.0...v5.0.0) - 2026-04-10
 

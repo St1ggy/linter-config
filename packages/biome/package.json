@@ -1,69 +1,9 @@
 {
-  "name": "@st1ggy/biome-config",
-  "version": "1.0.0",
-  "description": "Biome-only shareable configs (sibling to @st1ggy/linter-config; see docs/RULE_MAPPING.md).",
+  "name": "@st1ggy/linter-config-dev-biome",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Workspace: Biome JSON sources for @st1ggy/linter-config (not published separately).",
   "type": "module",
-  "sideEffects": false,
-  "license": "Apache-2.0",
-  "author": "Dmitrii Bragin (st1ggy)",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/st1ggy/linter-config.git",
-    "directory": "packages/biome"
-  },
-  "bugs": {
-    "url": "https://github.com/St1ggy/linter-config/issues"
-  },
-  "homepage": "https://github.com/St1ggy/linter-config/tree/main/packages/biome#readme",
-  "keywords": [
-    "biome",
-    "linter",
-    "formatter",
-    "config"
-  ],
-  "peerDependencies": {
-    "@biomejs/biome": ">=2.4.0 <3.0.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.4.11"
-  },
-  "files": [
-    "biome.json",
-    "configs",
-    "data",
-    "docs",
-    "scripts",
-    "index.d.ts",
-    "LICENSE"
-  ],
-  "types": "./index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./index.d.ts",
-      "import": "./biome.json",
-      "default": "./biome.json"
-    },
-    "./biome-common": {
-      "types": "./index.d.ts",
-      "import": "./configs/biome.common.json",
-      "default": "./configs/biome.common.json"
-    },
-    "./biome-react": {
-      "types": "./index.d.ts",
-      "import": "./configs/biome.react.json",
-      "default": "./configs/biome.react.json"
-    },
-    "./biome-next": {
-      "types": "./index.d.ts",
-      "import": "./configs/biome.next.json",
-      "default": "./configs/biome.next.json"
-    },
-    "./biome-svelte": {
-      "types": "./index.d.ts",
-      "import": "./configs/biome.svelte.json",
-      "default": "./configs/biome.svelte.json"
-    }
-  },
   "scripts": {
     "lint": "biome ci .",
     "inventory": "node ./scripts/inventory.mjs"

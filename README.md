@@ -1,49 +1,55 @@
-# st1ggy/linter-config (monorepo)
+# st1ggy/linter-config
 
-| npm package | Path | Role |
-| --- | --- | --- |
-| **`@st1ggy/linter-config`** | [`packages/eslint`](packages/eslint) | ESLint, Prettier, Stylelint |
-| **`@st1ggy/biome-config`** | [`packages/biome`](packages/biome) | Biome JSON presets only |
+Single npm package **`@st1ggy/linter-config`** with **subpath exports**. Sources live in two workspace folders:
 
-## Install
+| Path | Contents |
+| --- | --- |
+| [`packages/eslint`](packages/eslint) | ESLint, Prettier, Stylelint configs |
+| [`packages/biome`](packages/biome) | Biome JSON presets only |
 
-**ESLint / Prettier / Stylelint**
+Install once:
 
 ```bash
 npm i -D @st1ggy/linter-config
 ```
 
-**Biome**
+Add **`@biomejs/biome`** when you use Biome presets. Add **`eslint`**, **`prettier`**, **`stylelint`**, and framework peers only for the stacks you use (see `peerDependencies` in [`package.json`](package.json)).
 
-```bash
-npm i -D @st1ggy/biome-config @biomejs/biome
+## Subpath imports
+
+**ESLint / Prettier / Stylelint**
+
+```js
+import eslintReact from '@st1ggy/linter-config/eslint-react'
+import prettierCommon from '@st1ggy/linter-config/prettier-common'
+import stylelintScss from '@st1ggy/linter-config/stylelint-scss'
 ```
 
-Install framework peers (`eslint`, `prettier`, `stylelint`, `react`, …) only for stacks you use.
+**Biome** (extend from your `biome.json`)
 
-`@st1ggy/linter-config` targets **ESLint 9–10**, **Prettier 3**, **Stylelint 17**. `@st1ggy/biome-config` targets **Biome 2.4.x** (see each package’s `peerDependencies`).
+Use package subpaths such as `@st1ggy/linter-config/biome-common`, `@st1ggy/linter-config/biome-react`, `@st1ggy/linter-config/biome-next`, `@st1ggy/linter-config/biome-svelte`, or the root Biome entry `@st1ggy/linter-config/biome`.
+
+The barrel export `@st1ggy/linter-config` re-exports ESLint/Prettier/Stylelint presets only (see [`packages/eslint/src/index.js`](packages/eslint/src/index.js)).
 
 ### Migration (Stylelint)
 
 If you previously used Stylelint 16 with this preset, upgrade the consumer to **Stylelint 17** before depending on the latest release.
 
-### Migration (Biome subpaths on `@st1ggy/linter-config`)
+### Migration (`@st1ggy/biome-config` npm package)
 
-If you used **`@st1ggy/linter-config/biome-*`** (v4.x), switch to the dedicated package:
-
-- `@st1ggy/linter-config/biome-common` → `@st1ggy/biome-config/biome-common` (same pattern for `biome-react`, `biome-next`, `biome-svelte`).
+If you depended on the separate **`@st1ggy/biome-config`** package, switch to **`@st1ggy/linter-config`** with the same subpath names (`biome-common`, etc.).
 
 ### Development of this package
 
-When working on this repository, `npm install` uses [`.npmrc`](.npmrc) `legacy-peer-deps=true` because `eslint-import-resolver-custom-alias` still declares a peer on `eslint-plugin-import@>=2`, so npm may pull the legacy import plugin for resolution even though published presets use **eslint-plugin-import-x**. Consumer projects that only install `@st1ggy/linter-config` are unaffected.
+`npm install` uses [`.npmrc`](.npmrc) `legacy-peer-deps=true` (see earlier notes on `eslint-import-resolver-custom-alias`).
 
-**Publishing to npm:** the repo root is private. Do **not** run bare `npm publish` at the root (`Cannot read properties of null (reading 'prerelease')`). Publish workspace packages:
+**Publishing:** this repo’s **root** `package.json` is the published `@st1ggy/linter-config`. From the repository root:
 
 ```bash
 npm run publish:npm
 ```
 
-This runs `npm publish` for **`@st1ggy/linter-config`** and **`@st1ggy/biome-config`** in sequence.
+(`npm publish --access public` — do not use a nested `package.json` for publishing.)
 
 ## Toolchain (this repo)
 
@@ -52,29 +58,6 @@ npm install
 npm run lint
 ```
 
-- `packages/eslint`: ESLint → Stylelint → Prettier  
-- `packages/biome`: `biome ci .`
+## Optional ESLint add-ons
 
-## Tree-shaking friendly imports
-
-Prefer **subpath** imports. Both packages use `sideEffects: false` and explicit `exports`.
-
-```js
-import eslintReact from '@st1ggy/linter-config/eslint-react'
-import prettierCommon from '@st1ggy/linter-config/prettier-common'
-import stylelintScss from '@st1ggy/linter-config/stylelint-scss'
-```
-
-```js
-// Biome — extend JSON from biome.json, e.g. "@st1ggy/biome-config/biome-common"
-```
-
-## Optional rule packs (not included by default)
-
-- **eslint-plugin-n**, **eslint-plugin-jsx-a11y**, **eslint-plugin-perfectionist**, **typescript-eslint** `recommendedTypeChecked` — add in your own `eslint.config` if needed.
-
-## Subpath exports
-
-**`@st1ggy/linter-config`** — see [`packages/eslint/package.json`](packages/eslint/package.json) (`eslint-common`, `eslint-react`, `eslint-next`, `eslint-svelte`, `prettier-common`, `prettier-svelte`, `stylelint-scss`).
-
-**`@st1ggy/biome-config`** — see [`packages/biome/package.json`](packages/biome/package.json) (`biome-common`, `biome-react`, `biome-next`, `biome-svelte`, root `biome.json` entry).
+You can add **eslint-plugin-n**, **eslint-plugin-jsx-a11y**, **eslint-plugin-perfectionist**, or stricter **typescript-eslint** in your own config if needed.
