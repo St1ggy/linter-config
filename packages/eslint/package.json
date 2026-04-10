@@ -1,14 +1,14 @@
 {
-  "name": "@st1ggy/linter-config-dev-eslint",
+  "name": "linter-config-eslint-sources",
   "private": true,
   "version": "0.0.0",
-  "description": "Workspace: ESLint/Prettier/Stylelint sources for @st1ggy/linter-config (not published separately).",
+  "description": "Workspace: ESLint / Prettier / Stylelint sources for the @st1ggy/linter-config package (not published separately).",
   "type": "module",
   "scripts": {
+    "lint": "npm run lint:eslint && npm run lint:stylelint && npm run lint:prettier",
     "lint:eslint": "eslint .",
     "lint:stylelint": "stylelint \"**/*.{css,scss}\" --config ./src/stylelint/stylelint.config.scss.js --allow-empty-input",
     "lint:prettier": "prettier --check .",
-    "lint": "npm run lint:eslint && npm run lint:stylelint && npm run lint:prettier",
     "lint:fix": "eslint . --fix && stylelint \"**/*.{css,scss}\" --config ./src/stylelint/stylelint.config.scss.js --fix --allow-empty-input && prettier --write ."
   }
 }

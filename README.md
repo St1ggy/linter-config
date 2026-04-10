@@ -53,10 +53,28 @@ npm run publish:npm
 
 ## Toolchain (this repo)
 
+There is **one** published package (`@st1ggy/linter-config` at the repo root). Folders `packages/eslint` and `packages/biome` are **npm workspaces** used only for development—they are not published on their own.
+
 ```bash
 npm install
 npm run lint
 ```
+
+### Scripts
+
+| Command | What it runs |
+| --- | --- |
+| `npm run lint` | Full check: ESLint stack in `packages/eslint`, then Biome in `packages/biome` |
+| `npm run lint:eslint` | `packages/eslint`: ESLint + Stylelint + Prettier check |
+| `npm run lint:stylelint` | `packages/eslint`: Stylelint only |
+| `npm run lint:prettier` | `packages/eslint`: Prettier `--check` only |
+| `npm run lint:biome` | `packages/biome`: `biome ci` |
+| `npm run lint:fix` | Auto-fix ESLint/Stylelint/Prettier in `packages/eslint`, then Biome `--write` in `packages/biome` |
+| `npm run lint:fix:eslint` | Fix only the ESLint workspace |
+| `npm run lint:fix:biome` | Fix only the Biome workspace |
+| `npm run inventory` | Regenerate `packages/biome/data/linter-config-inventory.json` |
+
+Inside a workspace you can also run the same scripts locally, e.g. `npm run lint --workspace=packages/eslint` or `cd packages/biome && npm run lint`.
 
 ## Optional ESLint add-ons
 

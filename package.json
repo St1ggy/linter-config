@@ -131,13 +131,18 @@
     "packages/biome/data"
   ],
   "scripts": {
-    "lint": "npm run lint --workspace=@st1ggy/linter-config-dev-eslint && npm run lint --workspace=@st1ggy/linter-config-dev-biome",
-    "lint:eslint": "npm run lint --workspace=@st1ggy/linter-config-dev-eslint",
-    "lint:biome": "npm run lint --workspace=@st1ggy/linter-config-dev-biome",
+    "lint": "npm run lint --workspace=packages/eslint && npm run lint --workspace=packages/biome",
+    "lint:eslint": "npm run lint --workspace=packages/eslint",
+    "lint:stylelint": "npm run lint:stylelint --workspace=packages/eslint",
+    "lint:prettier": "npm run lint:prettier --workspace=packages/eslint",
+    "lint:biome": "npm run lint --workspace=packages/biome",
+    "lint:fix": "npm run lint:fix --workspace=packages/eslint && npm run lint:fix --workspace=packages/biome",
+    "lint:fix:eslint": "npm run lint:fix --workspace=packages/eslint",
+    "lint:fix:biome": "npm run lint:fix --workspace=packages/biome",
     "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s",
     "changelog:dry": "conventional-changelog -p conventionalcommits",
     "publish:npm": "npm publish --access public",
-    "inventory": "npm run inventory --workspace=@st1ggy/linter-config-dev-biome"
+    "inventory": "npm run inventory --workspace=packages/biome"
   },
   "workspaces": [
     "packages/eslint",

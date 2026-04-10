@@ -1,11 +1,12 @@
 {
-  "name": "@st1ggy/linter-config-dev-biome",
+  "name": "linter-config-biome-sources",
   "private": true,
   "version": "0.0.0",
-  "description": "Workspace: Biome JSON sources for @st1ggy/linter-config (not published separately).",
+  "description": "Workspace: Biome JSON sources for the @st1ggy/linter-config package (not published separately).",
   "type": "module",
   "scripts": {
     "lint": "biome ci .",
+    "lint:fix": "biome check --write .",
     "inventory": "node ./scripts/inventory.mjs"
   }
 }
