@@ -12,6 +12,12 @@ npm run changelog
 
 (Uses [Conventional Commits](https://www.conventionalcommits.org/) and [`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) with the `conventionalcommits` preset.)
 
+## [6.3.1](https://github.com/st1ggy/linter-config/compare/v6.3.0...v6.3.1) - 2026-04-10
+
+### Fixed
+
+- **TypeScript:** `@typescript-eslint/consistent-type-definitions` now reliably en **`type`** (not `interface`). The `typescript-eslint` **stylistic** preset enabled the rule as `error` without an option, which defaults to **`interface`**; that layer is stripped and the rule is set to `['error', 'type']` in the type-aware config.
+
 ## [6.3.0](https://github.com/st1ggy/linter-config/compare/v6.2.0...v6.3.0) - 2026-04-10
 
 ### BREAKING CHANGES

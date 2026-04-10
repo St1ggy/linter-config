@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const LINTER_ROOT = process.env.LINTER_CONFIG_ROOT ?? path.resolve(__dirname, '..')
 
-const SOURCE_LABEL = '@st1ggy/linter-config@6.3.0 (local tree)'
+const SOURCE_LABEL = '@st1ggy/linter-config@6.3.1 (local tree)'
 
 const flatConfigPresets = [
   {
