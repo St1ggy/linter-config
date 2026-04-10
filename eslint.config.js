@@ -6,7 +6,7 @@ export default [
   ...common,
   {
     rules: {
-      'import/extensions': 'off',
+      'import-x/extensions': 'off',
     },
     ignores: ['dist/*'],
   },

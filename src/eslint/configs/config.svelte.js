@@ -11,8 +11,8 @@ export default defineConfig([
   {
     files,
     rules: {
-      'import/named': 'off',
-      'import/no-cycle': 'off',
+      'import-x/named': 'off',
+      'import-x/no-cycle': 'off',
     },
     languageOptions: {
       parserOptions: {
@@ -23,11 +23,11 @@ export default defineConfig([
       },
     },
     settings: {
-      // 'import/parsers': {
+      // 'import-x/parsers': {
       //   'svelte-eslint-parser': ['.svelte'],
       //   espree: extensions,
       // },
-      'import/resolver': {
+      'import-x/resolver': {
         'eslint-import-resolver-custom-alias': {
           alias: {
             $lib: 'src/lib',

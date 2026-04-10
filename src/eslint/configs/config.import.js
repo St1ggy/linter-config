@@ -1,16 +1,16 @@
 import { defineConfig } from 'eslint/config'
-import importPlugin from 'eslint-plugin-import'
+import { flatConfigs } from 'eslint-plugin-import-x'
 
 import { files } from './constants.js'
 
 export default defineConfig([
-  importPlugin.flatConfigs.recommended,
-  importPlugin.flatConfigs.typescript,
+  flatConfigs.recommended,
+  flatConfigs.typescript,
   {
     files,
     rules: {
-      'import/newline-after-import': 'error',
-      'import/order': [
+      'import-x/newline-after-import': 'error',
+      'import-x/order': [
         'error',
         {
           'newlines-between': 'always',
@@ -28,14 +28,14 @@ export default defineConfig([
           },
         },
       ],
-      'import/no-duplicates': [
+      'import-x/no-duplicates': [
         'error',
         {
           considerQueryString: true,
         },
       ],
-      'import/prefer-default-export': 'off',
-      'import/extensions': [
+      'import-x/prefer-default-export': 'off',
+      'import-x/extensions': [
         'error',
         'never',
         {
@@ -43,10 +43,10 @@ export default defineConfig([
           json: 'ignorePackages',
         },
       ],
-      'import/no-unresolved': ['error', {}],
+      'import-x/no-unresolved': ['error', {}],
     },
     settings: {
-      'import/resolver': {
+      'import-x/resolver': {
         typescript: true,
         node: true,
       },

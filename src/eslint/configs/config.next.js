@@ -1,7 +1,10 @@
+/* eslint-disable import-x/no-named-as-default-member -- @next/eslint-plugin-next is CJS; no ESM named export for configs */
 import nextPlugin from '@next/eslint-plugin-next'
 import { defineConfig } from 'eslint/config'
 
 import { files } from './constants.js'
+
+const { configs: nextConfigs } = nextPlugin
 
 export default defineConfig([
   {
@@ -10,8 +13,8 @@ export default defineConfig([
       '@next/next': nextPlugin,
     },
     rules: {
-      ...nextPlugin.configs.recommended.rules,
-      ...nextPlugin.configs['core-web-vitals'].rules,
+      ...nextConfigs.recommended.rules,
+      ...nextConfigs['core-web-vitals'].rules,
     },
   },
 ])
