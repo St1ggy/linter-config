@@ -3,9 +3,25 @@ import { configs } from 'typescript-eslint'
 
 import { filesTypeAware } from './constants.js'
 
+// `flat/stylistic` enables `@typescript-eslint/consistent-type-definitions` as `'error'` only, which
+// uses the rule default (`interface`). Strip it here so we set `type` explicitly below.
+const stylisticWithoutTypeDefinitionStyle = configs.stylistic.map((block) => {
+  const rules = block.rules
+
+  if (!rules?.['@typescript-eslint/consistent-type-definitions']) {
+    return block
+  }
+
+  const nextRules = { ...rules }
+
+  delete nextRules['@typescript-eslint/consistent-type-definitions']
+
+  return { ...block, rules: nextRules }
+})
+
 export default defineConfig([
   ...configs.recommended,
-  ...configs.stylistic,
+  ...stylisticWithoutTypeDefinitionStyle,
   {
     files: filesTypeAware,
     languageOptions: {
