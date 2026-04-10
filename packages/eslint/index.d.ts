@@ -57,3 +57,35 @@ declare module '@st1ggy/linter-config/stylelint-scss' {
 
   export default config
 }
+
+type BiomeJsonConfig = Record<string, unknown>
+
+declare module '@st1ggy/linter-config/biome' {
+  const config: BiomeJsonConfig
+
+  export default config
+}
+
+declare module '@st1ggy/linter-config/biome-common' {
+  const config: BiomeJsonConfig
+
+  export default config
+}
+
+declare module '@st1ggy/linter-config/biome-react' {
+  const config: BiomeJsonConfig
+
+  export default config
+}
+
+declare module '@st1ggy/linter-config/biome-next' {
+  const config: BiomeJsonConfig
+
+  export default config
+}
+
+declare module '@st1ggy/linter-config/biome-svelte' {
+  const config: BiomeJsonConfig
+
+  export default config
+}

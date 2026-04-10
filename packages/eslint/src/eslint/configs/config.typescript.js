@@ -1,13 +1,13 @@
 import { defineConfig } from 'eslint/config'
 import { configs } from 'typescript-eslint'
 
-import { files } from './constants.js'
+import { filesTypeAware } from './constants.js'
 
 export default defineConfig([
   ...configs.recommended,
   ...configs.stylistic,
   {
-    files,
+    files: filesTypeAware,
     languageOptions: {
       parserOptions: {
         project: ['tsconfig.json'],

@@ -1,23 +1,5 @@
-import stylisticMigrate from '@stylistic/eslint-plugin-migrate'
-
-import common from './src/eslint/eslint.config.common.js'
+import base from './packages/eslint/eslint.config.js'
 
 export default [
-  ...common,
-  {
-    rules: {
-      'import-x/extensions': 'off',
-    },
-    ignores: ['dist/*'],
-  },
-  {
-    plugins: {
-      '@stylistic/migrate': stylisticMigrate,
-    },
-    rules: {
-      '@stylistic/migrate/migrate-js': 'warn',
-      '@stylistic/migrate/migrate-jsx': 'warn',
-      '@stylistic/migrate/migrate-ts': 'warn',
-    },
-  },
+  ...base,
 ]

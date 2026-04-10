@@ -1,0 +1,175 @@
+{
+  "name": "@st1ggy/linter-config",
+  "version": "3.1.0",
+  "description": "ESLint, Stylelint, Prettier, and Biome shareable configs (published from packages/eslint).",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/st1ggy/linter-config.git",
+    "directory": "packages/eslint"
+  },
+  "keywords": [
+    "eslint",
+    "prettier",
+    "stylelint",
+    "biome"
+  ],
+  "author": "Dmitrii Bragin (st1ggy)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/St1ggy/linter-config/issues"
+  },
+  "homepage": "https://github.com/St1ggy/linter-config/tree/main/packages/eslint#readme",
+  "dependencies": {
+    "@next/eslint-plugin-next": "^16.2.3",
+    "@eslint/compat": "^2.0.5",
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint": "^10.2.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-custom-alias": "^1.3.2",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import-x": "^4.16.2",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-sonarjs": "^4.0.2",
+    "eslint-plugin-svelte": "^3.17.0",
+    "eslint-plugin-unicorn": "^64.0.0",
+    "find-up-simple": "^1.0.1",
+    "prettier": "^3.8.2",
+    "prettier-plugin-svelte": "^3.5.1",
+    "stylelint": "^17.6.0",
+    "stylelint-config-clean-order": "^8.0.1",
+    "stylelint-config-recommended": "^18.0.0",
+    "stylelint-config-recommended-scss": "^17.0.1",
+    "stylelint-config-sass-guidelines": "^13.0.0",
+    "stylelint-no-unsupported-browser-features": "^8.1.1",
+    "stylelint-order": "^8.1.1",
+    "stylelint-prettier": "^5.0.3",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.58.1"
+  },
+  "types": "./index.d.ts",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    },
+    "./eslint-next": {
+      "types": "./index.d.ts",
+      "import": "./src/eslint/eslint.config.next.js",
+      "default": "./src/eslint/eslint.config.next.js"
+    },
+    "./eslint-react": {
+      "types": "./index.d.ts",
+      "import": "./src/eslint/eslint.config.react.js",
+      "default": "./src/eslint/eslint.config.react.js"
+    },
+    "./eslint-svelte": {
+      "types": "./index.d.ts",
+      "import": "./src/eslint/eslint-svelte.config.js",
+      "default": "./src/eslint/eslint-svelte.config.js"
+    },
+    "./eslint-common": {
+      "types": "./index.d.ts",
+      "import": "./src/eslint/eslint.config.common.js",
+      "default": "./src/eslint/eslint.config.common.js"
+    },
+    "./prettier-common": {
+      "types": "./index.d.ts",
+      "import": "./src/prettier/prettier.config.common.js",
+      "default": "./src/prettier/prettier.config.common.js"
+    },
+    "./prettier-svelte": {
+      "types": "./index.d.ts",
+      "import": "./src/prettier/prettier-svelte.config.js",
+      "default": "./src/prettier/prettier-svelte.config.js"
+    },
+    "./stylelint-scss": {
+      "types": "./index.d.ts",
+      "import": "./src/stylelint/stylelint.config.scss.js",
+      "default": "./src/stylelint/stylelint.config.scss.js"
+    },
+    "./biome": {
+      "types": "./index.d.ts",
+      "import": "./biome.json",
+      "default": "./biome.json"
+    },
+    "./biome-common": {
+      "types": "./index.d.ts",
+      "import": "./biome/configs/biome.common.json",
+      "default": "./biome/configs/biome.common.json"
+    },
+    "./biome-react": {
+      "types": "./index.d.ts",
+      "import": "./biome/configs/biome.react.json",
+      "default": "./biome/configs/biome.react.json"
+    },
+    "./biome-next": {
+      "types": "./index.d.ts",
+      "import": "./biome/configs/biome.next.json",
+      "default": "./biome/configs/biome.next.json"
+    },
+    "./biome-svelte": {
+      "types": "./index.d.ts",
+      "import": "./biome/configs/biome.svelte.json",
+      "default": "./biome/configs/biome.svelte.json"
+    }
+  },
+  "files": [
+    "src",
+    "scripts",
+    "biome",
+    "biome.json",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "lint:eslint": "eslint .",
+    "lint:stylelint": "stylelint \"**/*.{css,scss}\" --config ./src/stylelint/stylelint.config.scss.js --allow-empty-input",
+    "lint:prettier": "prettier --check .",
+    "lint:biome": "biome ci ./biome",
+    "lint": "npm run lint:eslint && npm run lint:stylelint && npm run lint:prettier && npm run lint:biome",
+    "lint:fix": "eslint . --fix && stylelint \"**/*.{css,scss}\" --config ./src/stylelint/stylelint.config.scss.js --fix --allow-empty-input && prettier --write .",
+    "inventory": "node ./biome/scripts/inventory.mjs"
+  },
+  "peerDependencies": {
+    "@biomejs/biome": ">=2.4.0 <3.0.0",
+    "eslint": "^9.0.0 || ^10.0.0",
+    "next": "^16.0.0",
+    "prettier": "^3.0.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "stylelint": "^17.0.0",
+    "svelte": "^4.0.0 || ^5.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.11",
+    "@stylistic/eslint-plugin-migrate": "^4.4.1"
+  },
+  "peerDependenciesMeta": {
+    "@biomejs/biome": {
+      "optional": true
+    },
+    "eslint": {
+      "optional": true
+    },
+    "next": {
+      "optional": true
+    },
+    "prettier": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "stylelint": {
+      "optional": true
+    },
+    "svelte": {
+      "optional": true
+    }
+  }
+}
