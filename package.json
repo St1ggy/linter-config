@@ -10,7 +10,8 @@
     "lint:eslint": "npm run lint:eslint --workspace=@st1ggy/linter-config",
     "lint:biome": "npm run lint:biome --workspace=@st1ggy/linter-config",
     "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s",
-    "changelog:dry": "conventional-changelog -p conventionalcommits"
+    "changelog:dry": "conventional-changelog -p conventionalcommits",
+    "publish:npm": "npm publish -w @st1ggy/linter-config --access public"
   },
   "devDependencies": {
     "conventional-changelog-cli": "^5.0.0",

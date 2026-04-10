@@ -20,6 +20,14 @@ If you previously used Stylelint 16 with this preset, upgrade the consumer to **
 
 When working on this repository, `npm install` uses [`.npmrc`](.npmrc) `legacy-peer-deps=true` because `eslint-import-resolver-custom-alias` still declares a peer on `eslint-plugin-import@>=2`, so npm may pull the legacy import plugin for resolution even though published presets use **eslint-plugin-import-x**. Consumer projects that only install `@st1ggy/linter-config` are unaffected.
 
+**Publishing to npm:** the repo root is a private workspace. Do **not** run bare `npm publish` at the root (it can trigger an npm bug: `Cannot read properties of null (reading 'prerelease')`). Publish the workspace package instead:
+
+```bash
+npm run publish:npm
+```
+
+or `npm publish -w @st1ggy/linter-config --access public`, or `cd packages/eslint && npm publish`.
+
 ## Toolchain (this repo)
 
 From the repository root:
