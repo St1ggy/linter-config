@@ -9,6 +9,7 @@
     "lint:eslint": "eslint .",
     "lint:stylelint": "stylelint \"**/*.{css,scss}\" --config ./src/stylelint/stylelint.config.scss.js --allow-empty-input",
     "lint:prettier": "prettier --check .",
-    "lint:fix": "eslint . --fix && stylelint \"**/*.{css,scss}\" --config ./src/stylelint/stylelint.config.scss.js --fix --allow-empty-input && prettier --write ."
+    "lint:fix": "eslint . --fix && stylelint \"**/*.{css,scss}\" --config ./src/stylelint/stylelint.config.scss.js --fix --allow-empty-input && prettier --write .",
+    "inventory": "node ./scripts/inventory.mjs"
   }
 }

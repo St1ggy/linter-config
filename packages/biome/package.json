@@ -6,7 +6,6 @@
   "type": "module",
   "scripts": {
     "lint": "biome ci .",
-    "lint:fix": "biome check --write .",
-    "inventory": "node ./scripts/inventory.mjs"
+    "lint:fix": "biome check --write ."
   }
 }

@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-04-10T18:52:03.580Z",
+  "generatedAt": "2026-04-10T19:07:41.124Z",
   "source": "@st1ggy/linter-config@4.0.0 (local tree)",
   "linterConfigRoot": "/Users/dnbragin/Projects/personal/linter-config/packages/eslint",
-  "eslint": {
+  "flatConfigs": {
     "eslint-common": {
       "module": "src/eslint/eslint.config.common.js",
       "sampleFile": "src/examples/example.ts",

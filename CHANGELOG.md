@@ -31,3 +31,5 @@ Single npm package **`@st1ggy/linter-config`** is published from the **repositor
 
 - Subpath exports for `eslint-common`, `eslint-react`, `eslint-next`, `eslint-svelte`, `prettier-common`, `prettier-svelte`, `stylelint-scss`, `biome`, `biome-common`, `biome-react`, `biome-next`, `biome-svelte`.
 - Root and workspace scripts for linting each tree (`npm run lint`, `lint:eslint`, `lint:biome`, `lint:fix`, …).
+- **`linter-config` CLI** (`bin`): `init` / `reinit` / `create` with `--eslint`, `--biome`, and stack flags `--common` | `--react` | `--next` | `--svelte` (with `--eslint`, Prettier and Stylelint wrappers are written together).
+- Machine-readable rule inventory at `packages/eslint/data/linter-config-inventory.json` (regenerate with `npm run inventory`); mapping notes in `packages/eslint/docs/RULE_MAPPING.md`.
