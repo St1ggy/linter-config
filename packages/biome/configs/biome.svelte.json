@@ -2,9 +2,22 @@
   "$schema": "https://biomejs.dev/schemas/2.4.11/schema.json",
   "root": true,
   "extends": ["./biome.common.json"],
+  "html": {
+    "experimentalFullSupportEnabled": true,
+    "formatter": {
+      "enabled": true,
+      "indentScriptAndStyle": true,
+      "indentStyle": "space",
+      "indentWidth": 2,
+      "lineEnding": "lf",
+      "lineWidth": 120
+    }
+  },
   "linter": {
     "rules": {
-      "recommended": true
+      "a11y": {
+        "recommended": true
+      }
     }
   }
 }

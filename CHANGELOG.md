@@ -12,6 +12,12 @@ npm run changelog
 
 (Uses [Conventional Commits](https://www.conventionalcommits.org/) and [`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) with the `conventionalcommits` preset.)
 
+## [5.0.0](https://github.com/st1ggy/linter-config/compare/v4.0.0...v5.0.0) - 2026-04-10
+
+### BREAKING CHANGES
+
+- **`biome-svelte`:** enables `html.experimentalFullSupportEnabled`, aligns `html.formatter` with common (including `lineWidth` 120 and `indentScriptAndStyle: true`), and sets **`a11y`** recommended rules (parity with `biome-react`). Projects that extend this subpath may see **new lint failures** and **different `.svelte` formatting** than with `@st1ggy/linter-config@4.x`. Use one formatter for `.svelte` if Prettier (or another formatter) is also in play.
+
 ## [4.0.0](https://github.com/st1ggy/linter-config/compare/v3.0.0...v4.0.0) - 2026-04-10
 
 ### Summary

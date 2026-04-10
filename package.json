@@ -1,6 +1,6 @@
 {
   "name": "@st1ggy/linter-config",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "ESLint, Prettier, Stylelint, and Biome shareable configs (sources in packages/eslint and packages/biome).",
   "private": false,
   "repository": {
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/St1ggy/linter-config/tree/main#readme",
   "bin": {
-    "linter-config": "./packages/eslint/scripts/linter-init.mjs"
+    "linter-config": "packages/eslint/scripts/linter-init.mjs"
   },
   "dependencies": {
     "@next/eslint-plugin-next": "^16.2.3",
