@@ -1,6 +1,6 @@
 {
   "name": "@st1ggy/linter-config",
-  "version": "7.0.1",
+  "version": "7.1.0",
   "description": "ESLint, Prettier, and Stylelint shareable configs (sources under src/).",
   "private": false,
   "repository": {
