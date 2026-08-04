@@ -35,6 +35,11 @@ const flatConfigPresets = [
     module: 'src/eslint/eslint-svelte.config.js',
     sampleFile: 'src/examples/example.svelte',
   },
+  {
+    id: 'eslint-astro',
+    module: 'src/eslint/eslint.config.astro.js',
+    sampleFile: 'src/examples/example.astro',
+  },
 ]
 
 function compareKeysAlphabetically(left, right) {
@@ -99,6 +104,7 @@ async function inventoryFlatConfigs() {
     const engine = new ESLint({
       cwd: LINTER_ROOT,
       overrideConfig: config,
+      overrideConfigFile: true,
     })
     const filePath = path.join(LINTER_ROOT, preset.sampleFile)
     const calculated = await engine.calculateConfigForFile(filePath)

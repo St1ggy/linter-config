@@ -1,1 +1,3 @@
 data/linter-config-inventory.json
+src/examples/example.astro
+src/examples/example.svelte

@@ -21,6 +21,7 @@ node scripts/inventory.mjs
 | React | `config.react.js` | React/JSX + hooks. |
 | Next.js | `config.next.js` | `@next/eslint-plugin-next`. |
 | Svelte | `svelte-stack.js` | `eslint-plugin-svelte` flat recommended + TS parser options. |
+| Astro | `astro-stack.js` | `eslint-plugin-astro` recommended. |
 
 Inventory rule counts (sample files in this repository):
 
@@ -28,6 +29,7 @@ Inventory rule counts (sample files in this repository):
 - `eslint-react`: includes React layer on the same sample
 - `eslint-next`: Next layer on the same sample
 - `eslint-svelte`: effective rules on `src/examples/example.svelte`
+- `eslint-astro`: effective rules on `src/examples/example.astro`
 
 ## Stylelint (SCSS preset)
 

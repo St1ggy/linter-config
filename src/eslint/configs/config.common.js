@@ -102,7 +102,7 @@ export default defineConfig([
         { blankLine: 'always', prev: '*', next: 'case' },
         { blankLine: 'always', prev: 'if', next: '*' },
       ],
-      '@stylistic/multiline-comment-style': ['error', 'separate-lines', { checkJSDoc: true }],
+      '@stylistic/multiline-comment-style': 'off',
     },
   },
 ])

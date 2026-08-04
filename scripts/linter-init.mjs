@@ -10,18 +10,36 @@ import ora from 'ora'
 import {
   PACKAGE,
   STACK_CHOICES,
-  ensureDevDependency,
+  STACK_KEYS,
+  ensureDevDependencies,
+  existingWrapperFiles,
   isSelfPackageRoot,
+  legacyConfigFiles,
   printHelp,
+  removeFiles,
   resolveStackKey,
   resolveTargetDirectory,
   run,
+  stackPackages,
 } from './linter-init-core.mjs'
 
 function parseArgv(argv) {
   return minimist(argv, {
     string: ['dir', 'd'],
-    boolean: ['help', 'h', 'skip-install', 'eslint', 'biome', 'common', 'react', 'next', 'svelte', 'interactive', 'i'],
+    boolean: [
+      'help',
+      'h',
+      'skip-install',
+      'eslint',
+      'biome',
+      'common',
+      'react',
+      'next',
+      'svelte',
+      'astro',
+      'interactive',
+      'i',
+    ],
     alias: {
       h: 'help',
       d: 'dir',
@@ -43,65 +61,83 @@ function argvToValues(argv) {
     react: Boolean(argv.react),
     next: Boolean(argv.next),
     svelte: Boolean(argv.svelte),
+    astro: Boolean(argv.astro),
   }
 }
 
-async function runInteractive() {
-  const command = await select({
-    message: 'Command',
+async function selectCommand(command) {
+  if (command) {
+    return command
+  }
+
+  return select({
+    message: 'Action',
     choices: [
       {
         value: 'init',
-        name: 'init — create eslint / prettier / stylelint wrappers (skip if files exist)',
+        name: 'init — create missing ESLint, Prettier and Stylelint wrappers',
       },
       {
-        value: 'reinit',
-        name: 'reinit — overwrite the three wrapper files',
-      },
-      {
-        value: 'create',
-        name: 'create — same as init',
+        value: 'migrate',
+        name: 'migrate — remove selected legacy configs and replace wrappers',
       },
     ],
     default: 'init',
   })
+}
 
-  const stackKey = await select({
+async function selectStack(values) {
+  const stackKey = resolveStackKey(values)
+
+  if (STACK_KEYS.some((key) => values[key] === true)) {
+    return stackKey
+  }
+
+  return select({
     message: 'Stack',
     choices: STACK_CHOICES,
     default: 'common',
   })
+}
 
-  const targetDirectory = await input({
-    message: 'Target directory',
-    default: process.cwd(),
-  })
+async function selectLegacyFiles(command, directory) {
+  if (command !== 'migrate') {
+    return []
+  }
 
-  const skipInstall = await confirm({
-    message: `Skip installing ${PACKAGE} (only write config files)?`,
-    default: false,
-  })
+  const selected = []
+
+  for (const file of legacyConfigFiles(directory)) {
+    if (await confirm({ message: `Remove legacy config ${file}?`, default: false })) {
+      selected.push(file)
+    }
+  }
+
+  return selected
+}
+
+function printSummary(command, stack, directory, shouldSkipInstall, existing, filesToRemove, packages) {
+  const wrapperFiles =
+    command === 'init' && existing.length > 0
+      ? `create missing; keep ${existing.join(', ')}`
+      : 'write eslint.config.js, prettier.config.js, stylelint.config.js'
+
+  process.stdout.write('\n')
+  process.stdout.write(`  Action:  ${command}\n`)
+  process.stdout.write(`  Stack:   ${stack}\n`)
+  process.stdout.write(`  Dir:     ${directory}\n`)
+  process.stdout.write(`  Install packages: ${shouldSkipInstall ? 'no (--skip-install)' : packages.join(', ')}\n`)
+  process.stdout.write(`  Wrapper files: ${wrapperFiles}\n`)
+  process.stdout.write(`  Legacy files to remove: ${filesToRemove.length > 0 ? filesToRemove.join(', ') : 'none'}\n`)
+  process.stdout.write('\n')
+}
+
+async function runInteractive(command, values) {
+  const selectedCommand = await selectCommand(command)
+  const selectedStack = await selectStack(values)
+  const targetDirectory = await input({ message: 'Target directory', default: values.dir ?? process.cwd() })
 
   const resolved = resolveTargetDirectory(targetDirectory)
-
-  process.stdout.write('\n')
-  process.stdout.write(`  Command: ${command}\n`)
-  process.stdout.write(`  Stack:   ${stackKey}\n`)
-  process.stdout.write(`  Dir:     ${resolved}\n`)
-  process.stdout.write(`  Skip install: ${skipInstall ? 'yes' : 'no'}\n`)
-  process.stdout.write('\n')
-
-  const proceed = await confirm({
-    message: 'Proceed?',
-    default: true,
-  })
-
-  if (!proceed) {
-    process.stdout.write('Cancelled.\n')
-    process.exitCode = 0
-
-    return
-  }
 
   if (isSelfPackageRoot(resolved)) {
     throw new Error(
@@ -109,19 +145,36 @@ async function runInteractive() {
     )
   }
 
-  const cmd = command === 'create' ? 'init' : command
+  const shouldSkipInstall = values['skip-install'] === true
+  const existing = existingWrapperFiles(resolved)
+  const filesToRemove = await selectLegacyFiles(selectedCommand, resolved)
+  const packages = stackPackages(selectedStack)
 
-  if (skipInstall) {
+  printSummary(selectedCommand, selectedStack, resolved, shouldSkipInstall, existing, filesToRemove, packages)
+
+  const shouldProceed = await confirm({
+    message: 'Proceed?',
+    default: true,
+  })
+
+  if (!shouldProceed) {
+    process.stdout.write('Cancelled.\n')
+    process.exitCode = 0
+
+    return
+  }
+
+  if (shouldSkipInstall) {
     ora({ color: 'gray' }).info(`Skipped installing ${PACKAGE} (--skip-install)`)
   } else {
     const spinner = ora({
       color: 'cyan',
-      text: `Ensuring ${PACKAGE} is installed…`,
+      text: `Installing ${selectedStack} linting packages…`,
     }).start()
 
     try {
-      ensureDevDependency(resolved, false, { quiet: true })
-      spinner.succeed(`${PACKAGE} is available`)
+      ensureDevDependencies(resolved, packages, false, { quiet: true })
+      spinner.succeed(`${selectedStack} linting packages are available`)
     } catch (error) {
       spinner.fail('Dependency step failed')
       throw error
@@ -134,7 +187,8 @@ async function runInteractive() {
   }).start()
 
   try {
-    run(cmd, resolved, stackKey, { quiet: true })
+    removeFiles(resolved, filesToRemove)
+    run(selectedCommand, resolved, selectedStack, { quiet: true })
     writeSpinner.succeed('Wrapper configs written')
   } catch (error) {
     writeSpinner.fail('Failed to write configs')
@@ -142,32 +196,30 @@ async function runInteractive() {
   }
 }
 
-function runCli(command, values) {
+function normalizeCommand(command) {
+  if (command === 'create') {
+    return 'init'
+  }
+
+  if (command === 'reinit') {
+    return 'migrate'
+  }
+
+  return command
+}
+
+function warnLegacyFlags(values) {
   if (values.biome === true) {
     process.stderr.write(
       `warning: --biome is ignored; Biome presets were removed from ${PACKAGE}. Only ESLint, Prettier, and Stylelint wrappers are written.\n`,
     )
   }
-
-  const targetDirectory = resolveTargetDirectory(values.dir)
-  const stackKey = resolveStackKey(values)
-  const skipInstall = values['skip-install'] === true
-
-  if (isSelfPackageRoot(targetDirectory)) {
-    throw new Error(
-      `Refusing to write consumer wrapper configs in the ${PACKAGE} source tree (that would replace this repository’s dev configs). Run from another project, or pass --dir <path> to a folder with its own package.json.`,
-    )
-  }
-
-  const cmd = command === 'create' ? 'init' : command
-
-  ensureDevDependency(targetDirectory, skipInstall)
-  run(cmd, targetDirectory, stackKey)
 }
 
-async function runInteractiveOrHandleErrors() {
+async function runInteractiveOrHandleErrors(command, values) {
   try {
-    await runInteractive()
+    warnLegacyFlags(values)
+    await runInteractive(command, values)
   } catch (error) {
     if (error instanceof ExitPromptError || error instanceof CancelPromptError) {
       process.stdout.write('\nCancelled.\n')
@@ -183,24 +235,8 @@ async function runInteractiveOrHandleErrors() {
   }
 }
 
-function runSubcommandCli(command, argv) {
-  const values = argvToValues(argv)
-
-  try {
-    runCli(command, values)
-  } catch (error) {
-    const message = error instanceof Error ? error.message : String(error)
-
-    process.stderr.write(`${message}\n`)
-    process.exitCode = 1
-  }
-}
-
 async function main() {
-  const raw = process.argv.slice(2)
-  const argv = parseArgv(raw)
-  const positional = argv._
-  const first = positional[0]
+  const argv = parseArgv(process.argv.slice(2))
 
   if (argv.help) {
     printHelp()
@@ -209,35 +245,24 @@ async function main() {
     return
   }
 
-  const tty = Boolean(process.stdin.isTTY && process.stdout.isTTY)
-  const forceMenu = Boolean(argv.interactive || argv.i)
-  const noSubcommand = positional.length === 0
-  const useInteractiveMenu = noSubcommand && (forceMenu || tty)
-
-  if (useInteractiveMenu) {
-    await runInteractiveOrHandleErrors()
+  if (!process.stdin.isTTY || !process.stdout.isTTY) {
+    process.stderr.write('This command requires an interactive terminal.\n')
+    process.exitCode = 1
 
     return
   }
 
-  if (noSubcommand) {
+  const first = argv._[0]
+
+  if (first !== undefined && first !== 'init' && first !== 'migrate' && first !== 'reinit' && first !== 'create') {
+    process.stderr.write(`Unknown command "${String(first)}".\n\n`)
     printHelp()
     process.exitCode = 1
 
     return
   }
 
-  const command = first
-
-  if (command !== 'init' && command !== 'reinit' && command !== 'create') {
-    process.stderr.write(`Unknown command "${String(command)}".\n\n`)
-    printHelp()
-    process.exitCode = 1
-
-    return
-  }
-
-  runSubcommandCli(command, argv)
+  await runInteractiveOrHandleErrors(first === undefined ? undefined : normalizeCommand(first), argvToValues(argv))
 }
 
 await main()

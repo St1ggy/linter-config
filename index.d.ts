@@ -11,9 +11,11 @@ declare module '@st1ggy/linter-config' {
   export const eslintReact: Linter.Config[]
   export const eslintNext: Linter.Config[]
   export const eslintSvelte: Linter.Config[]
+  export const eslintAstro: Linter.Config[]
 
   export const prettierCommon: PrettierConfig
   export const prettierSvelte: PrettierConfig
+  export const prettierAstro: PrettierConfig
 
   export const stylelintScss: Stylelint.Config
 }
@@ -42,6 +44,14 @@ declare module '@st1ggy/linter-config/eslint-svelte' {
   export default config
 }
 
+declare module '@st1ggy/linter-config/eslint-astro' {
+  import type { Linter } from 'eslint'
+
+  const config: Linter.Config[]
+
+  export default config
+}
+
 declare module '@st1ggy/linter-config/eslint-common' {
   import type { Linter } from 'eslint'
 
@@ -59,6 +69,14 @@ declare module '@st1ggy/linter-config/prettier-common' {
 }
 
 declare module '@st1ggy/linter-config/prettier-svelte' {
+  import type { Config as PrettierConfig } from 'prettier'
+
+  const config: PrettierConfig
+
+  export default config
+}
+
+declare module '@st1ggy/linter-config/prettier-astro' {
   import type { Config as PrettierConfig } from 'prettier'
 
   const config: PrettierConfig

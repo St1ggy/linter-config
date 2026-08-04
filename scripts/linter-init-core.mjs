@@ -1,33 +1,43 @@
 // Shared logic for @st1ggy/linter-config CLI (no prompts).
 
 import { spawnSync } from 'node:child_process'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 
 export const PACKAGE = '@st1ggy/linter-config'
 
-export const STACK_KEYS = ['common', 'react', 'next', 'svelte']
+export const STACK_KEYS = ['common', 'react', 'next', 'svelte', 'astro']
 
 export const STACKS = {
   common: {
     eslint: 'eslint-common',
     prettier: 'prettier-common',
     stylelint: 'stylelint-scss',
+    packages: [],
   },
   react: {
     eslint: 'eslint-react',
     prettier: 'prettier-common',
     stylelint: 'stylelint-scss',
+    packages: ['eslint-plugin-react', 'eslint-plugin-react-hooks'],
   },
   next: {
     eslint: 'eslint-next',
     prettier: 'prettier-common',
     stylelint: 'stylelint-scss',
+    packages: ['@next/eslint-plugin-next', 'eslint-plugin-react', 'eslint-plugin-react-hooks'],
   },
   svelte: {
     eslint: 'eslint-svelte',
     prettier: 'prettier-svelte',
     stylelint: 'stylelint-scss',
+    packages: ['eslint-plugin-svelte', 'prettier-plugin-svelte'],
+  },
+  astro: {
+    eslint: 'eslint-astro',
+    prettier: 'prettier-astro',
+    stylelint: 'stylelint-scss',
+    packages: ['eslint-plugin-astro', 'prettier-plugin-astro'],
   },
 }
 
@@ -48,6 +58,10 @@ export const STACK_CHOICES = [
     value: 'svelte',
     name: 'svelte — Svelte + Prettier plugin for Svelte',
   },
+  {
+    value: 'astro',
+    name: 'astro — Astro + Prettier plugin for Astro',
+  },
 ]
 
 export function readPackageJson(directory) {
@@ -64,7 +78,7 @@ export function readPackageJson(directory) {
   }
 }
 
-export function mergedDeps(packageJson) {
+export function mergedDependencies(packageJson) {
   return {
     ...packageJson.optionalDependencies,
     ...packageJson.peerDependencies,
@@ -79,11 +93,12 @@ export function isSelfPackageRoot(directory) {
   return packageJson?.name === PACKAGE
 }
 
-export function hasResolvablePackage(startDirectory) {
+export function hasResolvablePackage(startDirectory, packageName = PACKAGE) {
   let currentDirectory = path.resolve(startDirectory)
+  const packageParts = packageName.split('/')
 
   while (true) {
-    const marker = path.join(currentDirectory, 'node_modules', '@st1ggy', 'linter-config', 'package.json')
+    const marker = path.join(currentDirectory, 'node_modules', ...packageParts, 'package.json')
 
     if (existsSync(marker)) {
       return true
@@ -144,10 +159,10 @@ export function runPmSync(command, args, cwd) {
 }
 
 // skipInstall: skip npm install; options.quiet: suppress stderr warnings
-export function ensureDevDependency(targetDirectory, skipInstall, options = {}) {
+export function ensureDevDependencies(targetDirectory, packages, shouldSkipInstall, options = {}) {
   const { quiet = false } = options
 
-  if (skipInstall) {
+  if (shouldSkipInstall) {
     return
   }
 
@@ -158,14 +173,10 @@ export function ensureDevDependency(targetDirectory, skipInstall, options = {}) 
   if (!existsSync(packageJsonPath)) {
     if (!quiet) {
       process.stderr.write(
-        `warning: no package.json in ${directory}; add the dependency manually: npm i -D ${PACKAGE}\n`,
+        `warning: no package.json in ${directory}; add the packages manually: npm i -D ${packages.join(' ')}\n`,
       )
     }
 
-    return
-  }
-
-  if (hasResolvablePackage(directory)) {
     return
   }
 
@@ -175,12 +186,19 @@ export function ensureDevDependency(targetDirectory, skipInstall, options = {}) 
     return
   }
 
-  const pm = detectPackageManager(directory)
-  const listed = Boolean(mergedDeps(packageJson)[PACKAGE])
+  const dependencies = mergedDependencies(packageJson)
+  const packagesToAdd = packages.filter((packageName) => !Object.hasOwn(dependencies, packageName))
+  const hasUnresolvedPackage = packages.some((packageName) => !hasResolvablePackage(directory, packageName))
 
-  if (listed) {
+  if (!hasUnresolvedPackage && packagesToAdd.length === 0) {
+    return
+  }
+
+  const pm = detectPackageManager(directory)
+
+  if (packagesToAdd.length === 0) {
     if (!quiet) {
-      process.stdout.write(`install: ${pm} install (${directory}) — dependency already listed\n`)
+      process.stdout.write(`install: ${pm} install (${directory}) — selected packages already listed\n`)
     }
 
     const sync = {
@@ -196,53 +214,69 @@ export function ensureDevDependency(targetDirectory, skipInstall, options = {}) 
   }
 
   if (!quiet) {
-    process.stdout.write(`install: ${pm} add -D ${PACKAGE} (${directory})\n`)
+    process.stdout.write(`install: ${pm} add -D ${packagesToAdd.join(' ')} (${directory})\n`)
   }
 
   const add = {
-    npm: () => runPmSync('npm', ['install', '-D', PACKAGE], directory),
-    pnpm: () => runPmSync('pnpm', ['add', '-D', PACKAGE], directory),
-    yarn: () => runPmSync('yarn', ['add', '-D', PACKAGE], directory),
-    bun: () => runPmSync('bun', ['add', '-d', PACKAGE], directory),
+    npm: () => runPmSync('npm', ['install', '-D', ...packagesToAdd], directory),
+    pnpm: () => runPmSync('pnpm', ['add', '-D', ...packagesToAdd], directory),
+    yarn: () => runPmSync('yarn', ['add', '-D', ...packagesToAdd], directory),
+    bun: () => runPmSync('bun', ['add', '-d', ...packagesToAdd], directory),
   }
 
   add[pm]()
+}
+
+export function ensureDevDependency(targetDirectory, shouldSkipInstall, options = {}) {
+  ensureDevDependencies(targetDirectory, [PACKAGE], shouldSkipInstall, options)
+}
+
+export function stackPackages(stackKey) {
+  const stack = STACKS[stackKey]
+
+  if (!stack) {
+    throw new Error(`Unknown stack "${stackKey}". Use: ${STACK_KEYS.join(', ')}`)
+  }
+
+  return [PACKAGE, ...stack.packages]
 }
 
 export function printHelp() {
   process.stdout.write(`\
 ${PACKAGE} — generate local wrapper configs in a consumer project.
 
-With no command in an interactive terminal, opens a guided menu (or pass -i / --interactive).
+Always opens a guided menu in an interactive terminal. Stack flags preselect a choice.
 
 Commands:
   init     Create missing files only (skip existing).
-  reinit   Overwrite selected files.
-  create   Same as init.
+  migrate  Optionally remove legacy configs, then overwrite wrapper files.
+  reinit   Alias for migrate.
+  create   Alias for init.
 
 Writes (each command):
   eslint.config.js, prettier.config.js, stylelint.config.js — re-exports for one stack.
 
-Unless --skip-install: if package.json exists and ${PACKAGE} is not yet resolvable from node_modules
-(walking up to the filesystem root), runs the detected package manager to add or sync the dependency.
+Unless --skip-install: if package.json exists, runs the detected package manager to add or sync
+${PACKAGE} and the selected stack's integration plugins.
 
 Stack (at most one; default: common):
-  --common | --react | --next | --svelte
+  --common | --react | --next | --svelte | --astro
 
 Options:
   --dir, -d       Target directory (default: current working directory).
   --skip-install  Do not run npm/pnpm/yarn/bun (only write wrapper files).
-  -i, --interactive  Open the menu even when a command is passed (experimental).
+  -i, --interactive  Accepted for compatibility; the menu is always interactive.
 
 Examples (after: npm i -D ${PACKAGE}):
   npx ${PACKAGE}
   npx ${PACKAGE} init
   npx ${PACKAGE} init --react
-  npx ${PACKAGE} reinit --svelte --dir ./apps/web
+  npx ${PACKAGE} migrate --svelte --dir ./apps/web
+  npx ${PACKAGE} init --astro
   npm exec ${PACKAGE} -- init --common
 
 Without prior install (downloads this package; then runs the same CLI):
-  npx --yes ${PACKAGE} init --common
+  npx --yes ${PACKAGE} init --astro
 
 Repo (paths from root):
   node scripts/linter-init.mjs init --common
@@ -279,6 +313,33 @@ export function writeFile(targetDirectory, name, content, overwrite, options = {
   return true
 }
 
+export function wrapperFileNames() {
+  return ['eslint.config.js', 'prettier.config.js', 'stylelint.config.js']
+}
+
+export function existingWrapperFiles(targetDirectory) {
+  return wrapperFileNames().filter((name) => existsSync(path.join(targetDirectory, name)))
+}
+
+export function legacyConfigFiles(targetDirectory) {
+  if (!existsSync(targetDirectory)) {
+    return []
+  }
+
+  const wrappers = new Set(wrapperFileNames())
+
+  return readdirSync(targetDirectory, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && /(?:eslint|prettier|stylelint)/i.test(entry.name) && !wrappers.has(entry.name))
+    .map((entry) => entry.name)
+    .toSorted((left, right) => left.localeCompare(right))
+}
+
+export function removeFiles(targetDirectory, names) {
+  for (const name of names) {
+    rmSync(path.join(targetDirectory, name), { force: true })
+  }
+}
+
 export function resolveStackKey(values) {
   const chosen = []
 
@@ -309,9 +370,9 @@ export function run(mode, targetDirectory, stackKey, options = {}) {
     throw new Error(`Unknown stack "${stackKey}". Use: ${STACK_KEYS.join(', ')}`)
   }
 
-  const overwrite = mode === 'reinit'
+  const shouldOverwrite = mode === 'migrate' || mode === 'reinit'
 
-  writeFile(targetDirectory, 'eslint.config.js', jsReExport(stack.eslint), overwrite, { quiet })
-  writeFile(targetDirectory, 'prettier.config.js', jsReExport(stack.prettier), overwrite, { quiet })
-  writeFile(targetDirectory, 'stylelint.config.js', jsReExport(stack.stylelint), overwrite, { quiet })
+  writeFile(targetDirectory, 'eslint.config.js', jsReExport(stack.eslint), shouldOverwrite, { quiet })
+  writeFile(targetDirectory, 'prettier.config.js', jsReExport(stack.prettier), shouldOverwrite, { quiet })
+  writeFile(targetDirectory, 'stylelint.config.js', jsReExport(stack.stylelint), shouldOverwrite, { quiet })
 }

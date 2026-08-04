@@ -1,1 +1,1 @@
-export const example = true
+export const isExample = true

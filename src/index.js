@@ -2,8 +2,10 @@ export { default as eslintCommon } from './eslint/eslint.config.common.js'
 export { default as eslintReact } from './eslint/eslint.config.react.js'
 export { default as eslintNext } from './eslint/eslint.config.next.js'
 export { default as eslintSvelte } from './eslint/eslint-svelte.config.js'
+export { default as eslintAstro } from './eslint/eslint.config.astro.js'
 
 export { default as prettierCommon } from './prettier/prettier.config.common.js'
 export { default as prettierSvelte } from './prettier/prettier-svelte.config.js'
+export { default as prettierAstro } from './prettier/prettier-astro.config.js'
 
 export { default as stylelintScss } from './stylelint/stylelint.config.scss.js'

@@ -12,7 +12,7 @@ export default defineConfig([
       'unicorn/custom-error-definition': 'error',
       'unicorn/no-unused-properties': 'error',
       'unicorn/no-null': 'off',
-      'unicorn/prevent-abbreviations': [
+      'unicorn/name-replacements': [
         'error',
         {
           replacements: {

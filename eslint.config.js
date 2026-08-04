@@ -1,14 +1,12 @@
 import stylisticMigrate from '@stylistic/eslint-plugin-migrate'
 
-import svelte from './src/eslint/configs/svelte-stack.js'
 import common from './src/eslint/eslint.config.common.js'
 
 export default [
   {
-    ignores: ['**/node_modules/**', 'dist/**', 'examples/init-smoke/**'],
+    ignores: ['**/node_modules/**', 'dist/**', 'examples/init-smoke/**', 'src/examples/example.{astro,svelte}'],
   },
   ...common,
-  ...svelte,
   {
     rules: {
       'import-x/extensions': 'off',

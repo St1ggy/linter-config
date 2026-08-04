@@ -1,11 +1,10 @@
-import { includeIgnoreFile } from '@eslint/compat'
+import { includeIgnoreFile } from '@eslint/config-helpers'
 import { defineConfig } from 'eslint/config'
 import { findUpSync } from 'find-up-simple'
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
 
 const gitignorePath = findUpSync('.gitignore', { cwd: process.cwd() })
+const ignoreFile = gitignorePath ? fileURLToPath(new URL(gitignorePath, import.meta.url)) : null
 
-export default defineConfig(
-  gitignorePath ? [includeIgnoreFile(fileURLToPath(new URL(gitignorePath, import.meta.url)))] : [],
-)
+export default defineConfig(ignoreFile ? [includeIgnoreFile(ignoreFile)] : [])
