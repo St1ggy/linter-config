@@ -12,6 +12,13 @@ npm run changelog
 
 (Uses [Conventional Commits](https://www.conventionalcommits.org/) and [`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) with the `conventionalcommits` preset.)
 
+## [7.2.2](https://github.com/St1ggy/linter-config/compare/linter-config-v7.2.1...linter-config-v7.2.2) (2026-08-04)
+
+
+### Bug Fixes
+
+* **release:** format generated changelog ([445bf47](https://github.com/St1ggy/linter-config/commit/445bf47420e9f4b86e17dd577d6723e50f089a9a))
+
 ## [7.2.1](https://github.com/St1ggy/linter-config/compare/linter-config-v7.2.0...linter-config-v7.2.1) (2026-08-04)
 
 
