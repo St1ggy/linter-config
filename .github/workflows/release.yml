@@ -2,11 +2,11 @@ name: Release
 
 on:
   workflow_dispatch:
-    inputs:
-      ref:
-        description: Existing git tag or commit to republish (leave empty for a normal release)
-        required: false
-        type: string
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
 
 permissions:
   contents: write
@@ -15,10 +15,8 @@ permissions:
 
 jobs:
   release-please:
-    if: ${{ inputs.ref == '' }}
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
-    outputs:
-      release_created: ${{ steps.release.outputs.release_created }}
     steps:
       - id: release
         uses: googleapis/release-please-action@v4
@@ -26,35 +24,35 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
-  publish-npm:
-    needs: release-please
-    if: ${{ needs.release-please.outputs.release_created == 'true' }}
+  release-cancelled:
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.merged == false && startsWith(github.event.pull_request.head.ref, 'release-please--') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          registry-url: https://registry.npmjs.org
-          cache: npm
-      - run: npm ci
-      - run: npx prettier --write CHANGELOG.md
-      - run: npm run lint
-      - run: npm publish --access public --provenance
+      - run: echo 'Release PR was closed without merging; no release or npm publication was created.'
 
-  retry-publish-npm:
-    if: ${{ inputs.ref != '' }}
+  finalize-and-publish:
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release-please--') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.ref }}
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+      - id: release
+        uses: googleapis/release-please-action@v4
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
       - uses: actions/setup-node@v4
+        if: ${{ steps.release.outputs.release_created == 'true' }}
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org
           cache: npm
-      - run: npm ci
-      - run: npx prettier --write CHANGELOG.md
-      - run: npm run lint
-      - run: npm publish --access public --provenance
+      - if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: npm ci
+      - if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: npx prettier --write CHANGELOG.md
+      - if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: npm run lint
+      - if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: npm publish --access public --provenance
