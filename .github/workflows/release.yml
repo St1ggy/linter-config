@@ -19,7 +19,7 @@ jobs:
       - id: release
         uses: googleapis/release-please-action@v4
         with:
-          release-type: node
+          command: manifest
 
   publish-npm:
     needs: release-please
