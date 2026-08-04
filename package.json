@@ -5,7 +5,7 @@
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/st1ggy/linter-config.git"
+    "url": "https://github.com/St1ggy/linter-config.git"
   },
   "keywords": [
     "eslint",

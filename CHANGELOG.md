@@ -14,10 +14,9 @@ npm run changelog
 
 ## [7.2.0](https://github.com/St1ggy/linter-config/compare/linter-config-v7.1.0...linter-config-v7.2.0) (2026-08-04)
 
-
 ### Features
 
-* **release:** allow forced manual versions ([bfb133b](https://github.com/St1ggy/linter-config/commit/bfb133b237908203c208bd6de801ec1ca336168d))
+- **release:** allow forced manual versions ([bfb133b](https://github.com/St1ggy/linter-config/commit/bfb133b237908203c208bd6de801ec1ca336168d))
 
 ## [7.1.0](https://github.com/St1ggy/linter-config/compare/linter-config-v7.0.1...linter-config-v7.1.0) (2026-08-04)
 
