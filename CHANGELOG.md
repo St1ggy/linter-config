@@ -12,6 +12,13 @@ npm run changelog
 
 (Uses [Conventional Commits](https://www.conventionalcommits.org/) and [`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) with the `conventionalcommits` preset.)
 
+## [7.0.1](https://github.com/St1ggy/linter-config/compare/linter-config-v7.0.0...linter-config-v7.0.1) (2026-08-04)
+
+
+### Bug Fixes
+
+* **release:** use npm trusted publishing ([640580b](https://github.com/St1ggy/linter-config/commit/640580bf449f3343e72738c2aa79f1d565f201af))
+
 ## [7.0.0](https://github.com/St1ggy/linter-config/compare/linter-config-v6.3.2...linter-config-v7.0.0) (2026-08-04)
 
 ### ⚠ BREAKING CHANGES
