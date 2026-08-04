@@ -88,7 +88,7 @@ npm run publish:npm
 
 (`npm publish --access public` — do not use a nested `package.json` for publishing.)
 
-Releases are started manually from `Actions` → `Release` → `Run workflow`. It opens or updates a [Release Please](https://github.com/googleapis/release-please) PR with the version bump and generated changelog. Closing that PR without merging ends the release. Merging it triggers a separate workflow run that creates the tag and GitHub Release, checks the package, and publishes it. Configure npm Trusted Publishing for GitHub Actions with repository `St1ggy/linter-config` and workflow `release.yml` before enabling publication.
+Releases are started manually from `Actions` → `Release` → `Run workflow`. It opens or updates a [Release Please](https://github.com/googleapis/release-please) PR with the version bump and generated changelog. Closing that PR without merging ends the release. Merging it triggers a separate workflow run that creates the tag and GitHub Release, checks the package, and publishes it. Release Please automatically creates a PR only for user-facing Conventional Commits (`feat`, `fix`, `perf`, or breaking changes); use the optional `release_as` input with an exact version to force a release for other changes. Configure npm Trusted Publishing for GitHub Actions with repository `St1ggy/linter-config` and workflow `release.yml` before enabling publication.
 
 ## Toolchain (this repo)
 

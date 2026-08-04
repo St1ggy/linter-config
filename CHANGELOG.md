@@ -14,15 +14,13 @@ npm run changelog
 
 ## [7.1.0](https://github.com/St1ggy/linter-config/compare/linter-config-v7.0.1...linter-config-v7.1.0) (2026-08-04)
 
-
 ### Features
 
-* **release:** publish after release PR merge ([7db4f32](https://github.com/St1ggy/linter-config/commit/7db4f32237e231247f3a201868345e5964a79a84))
-
+- **release:** publish after release PR merge ([7db4f32](https://github.com/St1ggy/linter-config/commit/7db4f32237e231247f3a201868345e5964a79a84))
 
 ### Bug Fixes
 
-* **release:** separate manual publish retry ([c9ab755](https://github.com/St1ggy/linter-config/commit/c9ab755a0a493a5af2cf0c422acd33fc2d361cbe))
+- **release:** separate manual publish retry ([c9ab755](https://github.com/St1ggy/linter-config/commit/c9ab755a0a493a5af2cf0c422acd33fc2d361cbe))
 
 ## [7.0.1](https://github.com/St1ggy/linter-config/compare/linter-config-v7.0.0...linter-config-v7.0.1) (2026-08-04)
 
