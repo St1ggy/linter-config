@@ -1,14 +1,11 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       ref:
-        description: Git tag or commit to publish
-        required: true
+        description: Existing git tag or commit to republish (leave empty for a normal release)
+        required: false
         type: string
 
 permissions:
@@ -18,7 +15,6 @@ permissions:
 
 jobs:
   release-please:
-    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
@@ -30,7 +26,7 @@ jobs:
 
   publish-npm:
     needs: release-please
-    if: ${{ always() && ((github.event_name == 'push' && needs.release-please.outputs.release_created == 'true') || github.event_name == 'workflow_dispatch') }}
+    if: ${{ always() && (needs.release-please.outputs.release_created == 'true' || inputs.ref != '') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
