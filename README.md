@@ -88,7 +88,7 @@ npm run publish:npm
 
 (`npm publish --access public` — do not use a nested `package.json` for publishing.)
 
-Pushes to `main` run [Release Please](https://github.com/googleapis/release-please), which opens a release PR with the version bump and generated changelog. Merging that PR publishes the package after lint succeeds. Configure the repository `NPM_TOKEN` secret with an npm automation token before enabling publication.
+Pushes to `main` run [Release Please](https://github.com/googleapis/release-please), which opens a release PR with the version bump and generated changelog. Merging that PR publishes the package after lint succeeds. Configure npm Trusted Publishing for GitHub Actions with repository `St1ggy/linter-config` and workflow `release.yml` before enabling publication.
 
 ## Toolchain (this repo)
 
