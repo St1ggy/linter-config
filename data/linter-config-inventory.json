@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-04T06:42:46.174Z",
-  "source": "@st1ggy/linter-config@6.3.2 (local tree)",
+  "generatedAt": "2026-08-04T14:18:35.039Z",
+  "source": "@st1ggy/linter-config@7.2.1 (local tree)",
   "linterConfigRoot": "/Users/dnbragin/Projects/personal/linter-config",
   "flatConfigs": {
     "eslint-common": {
@@ -10070,7 +10070,7 @@
     "eslint-astro": {
       "module": "src/eslint/eslint.config.astro.js",
       "sampleFile": "src/examples/example.astro",
-      "ruleCount": 1093,
+      "ruleCount": 1094,
       "rules": {
         "@babel/object-curly-spacing": "off",
         "@babel/semi": "off",
@@ -10709,8 +10709,9 @@
         "astro/no-deprecated-astro-fetchcontent": "error",
         "astro/no-deprecated-astro-resolve": "error",
         "astro/no-deprecated-getentrybyslug": "error",
+        "astro/no-exports-from-components": "error",
+        "astro/no-prerender-export-outside-pages": "error",
         "astro/no-unused-define-vars-in-style": "error",
-        "astro/valid-compile": "error",
         "babel/object-curly-spacing": "off",
         "babel/quotes": "off",
         "babel/semi": "off",

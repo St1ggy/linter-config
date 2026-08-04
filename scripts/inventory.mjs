@@ -3,7 +3,7 @@
 // Or set `LINTER_CONFIG_ROOT` to override the default (repository root).
 
 import { spawnSync } from 'node:child_process'
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import path from 'node:path'
 import process from 'node:process'
@@ -12,7 +12,8 @@ import { fileURLToPath } from 'node:url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const LINTER_ROOT = process.env.LINTER_CONFIG_ROOT ?? path.resolve(__dirname, '..')
 
-const SOURCE_LABEL = '@st1ggy/linter-config@6.3.2 (local tree)'
+const packageJson = JSON.parse(readFileSync(path.join(LINTER_ROOT, 'package.json'), 'utf8'))
+const SOURCE_LABEL = `${packageJson.name}@${packageJson.version} (local tree)`
 
 const flatConfigPresets = [
   {

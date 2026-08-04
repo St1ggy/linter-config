@@ -37,7 +37,7 @@ export const STACKS = {
     eslint: 'eslint-astro',
     prettier: 'prettier-astro',
     stylelint: 'stylelint-scss',
-    packages: ['eslint-plugin-astro', 'prettier-plugin-astro'],
+    packages: ['eslint-plugin-astro', 'eslint-plugin-jsx-a11y', 'prettier-plugin-astro'],
   },
 }
 

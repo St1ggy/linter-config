@@ -53,6 +53,9 @@
   },
   "types": "./index.d.ts",
   "type": "module",
+  "engines": {
+    "node": ">=24.16.0"
+  },
   "sideEffects": false,
   "exports": {
     ".": {
@@ -133,7 +136,8 @@
   "peerDependencies": {
     "astro": ">=4.0.0",
     "eslint": "^10.8.0",
-    "eslint-plugin-astro": "^1.7.0",
+    "eslint-plugin-astro": "^3.1.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-svelte": "^3.22.0",
@@ -150,6 +154,9 @@
       "optional": true
     },
     "eslint-plugin-astro": {
+      "optional": true
+    },
+    "eslint-plugin-jsx-a11y": {
       "optional": true
     },
     "eslint-plugin-react": {
@@ -189,9 +196,10 @@
   "devDependencies": {
     "@next/eslint-plugin-next": "^16.3.0",
     "@stylistic/eslint-plugin-migrate": "^4.4.1",
-    "conventional-changelog-cli": "^5.0.0",
+    "conventional-changelog": "^8.1.0",
     "conventional-changelog-conventionalcommits": "^10.2.1",
-    "eslint-plugin-astro": "^1.7.0",
+    "eslint-plugin-astro": "^3.1.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-svelte": "^3.22.0",
