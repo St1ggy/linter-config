@@ -14,35 +14,32 @@ npm run changelog
 
 ## [7.0.0](https://github.com/St1ggy/linter-config/compare/linter-config-v6.3.2...linter-config-v7.0.0) (2026-08-04)
 
-
 ### ⚠ BREAKING CHANGES
 
-* add Astro stack and release automation
-* consolidate package at repo root; remove Biome
-* single @st1ggy/linter-config package with packages/eslint and packages/biome
-* extract Biome into packages/biome (@st1ggy/biome-config)
-* monorepo layout and Biome presets under @st1ggy/linter-config
-* import-related ESLint rules now use the import-x/* prefix. Update any consumer overrides from import/* to import-x/*.
+- add Astro stack and release automation
+- consolidate package at repo root; remove Biome
+- single @st1ggy/linter-config package with packages/eslint and packages/biome
+- extract Biome into packages/biome (@st1ggy/biome-config)
+- monorepo layout and Biome presets under @st1ggy/linter-config
+- import-related ESLint rules now use the import-x/* prefix. Update any consumer overrides from import/* to import-x/*.
 
 ### Features
 
-* add Astro stack and release automation ([98da418](https://github.com/St1ggy/linter-config/commit/98da418c00404ce44e0ccad364a8a5545ac128a5))
-* extract Biome into packages/biome (@st1ggy/biome-config) ([0af7d50](https://github.com/St1ggy/linter-config/commit/0af7d50fea9af97d5292f2be9093fd0d09ecabda))
-* migrate to eslint-plugin-import-x and refresh toolchain ([ad4cd77](https://github.com/St1ggy/linter-config/commit/ad4cd7754afe0162b799b8119b9ed3a317376868))
-* monorepo layout and Biome presets under @st1ggy/linter-config ([199cedb](https://github.com/St1ggy/linter-config/commit/199cedb0bd8b77b221237b90ac5efdb1a4e35d3b))
-* single @st1ggy/linter-config package with packages/eslint and packages/biome ([78bba56](https://github.com/St1ggy/linter-config/commit/78bba56ccbb57a112d5f3ff2c9cb2b9287c60e0f))
-
+- add Astro stack and release automation ([98da418](https://github.com/St1ggy/linter-config/commit/98da418c00404ce44e0ccad364a8a5545ac128a5))
+- extract Biome into packages/biome (@st1ggy/biome-config) ([0af7d50](https://github.com/St1ggy/linter-config/commit/0af7d50fea9af97d5292f2be9093fd0d09ecabda))
+- migrate to eslint-plugin-import-x and refresh toolchain ([ad4cd77](https://github.com/St1ggy/linter-config/commit/ad4cd7754afe0162b799b8119b9ed3a317376868))
+- monorepo layout and Biome presets under @st1ggy/linter-config ([199cedb](https://github.com/St1ggy/linter-config/commit/199cedb0bd8b77b221237b90ac5efdb1a4e35d3b))
+- single @st1ggy/linter-config package with packages/eslint and packages/biome ([78bba56](https://github.com/St1ggy/linter-config/commit/78bba56ccbb57a112d5f3ff2c9cb2b9287c60e0f))
 
 ### Bug Fixes
 
-* **eslint:** prefer type over interface for object type aliases ([c6c6992](https://github.com/St1ggy/linter-config/commit/c6c69928646892c301f77babf06c6eebe5286bb0))
-* **release:** set published version baseline ([745cf74](https://github.com/St1ggy/linter-config/commit/745cf7473fcf2cfd642954407a08c0684d2c6032))
-* **types:** ambient declarations for package exports ([f7f74ca](https://github.com/St1ggy/linter-config/commit/f7f74caaadf7226fcecd8e716c5c65015ab7220c))
-
+- **eslint:** prefer type over interface for object type aliases ([c6c6992](https://github.com/St1ggy/linter-config/commit/c6c69928646892c301f77babf06c6eebe5286bb0))
+- **release:** set published version baseline ([745cf74](https://github.com/St1ggy/linter-config/commit/745cf7473fcf2cfd642954407a08c0684d2c6032))
+- **types:** ambient declarations for package exports ([f7f74ca](https://github.com/St1ggy/linter-config/commit/f7f74caaadf7226fcecd8e716c5c65015ab7220c))
 
 ### Code Refactoring
 
-* consolidate package at repo root; remove Biome ([1bc2c61](https://github.com/St1ggy/linter-config/commit/1bc2c6144dec517c00378989c5b28c1b42555a33))
+- consolidate package at repo root; remove Biome ([1bc2c61](https://github.com/St1ggy/linter-config/commit/1bc2c6144dec517c00378989c5b28c1b42555a33))
 
 ## [6.3.2](https://github.com/st1ggy/linter-config/compare/v6.3.1...v6.3.2) - 2026-04-10
 
