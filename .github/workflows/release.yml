@@ -29,6 +29,32 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
           release-as: ${{ inputs.release_as }}
+      - uses: actions/checkout@v4
+        if: ${{ steps.release.outputs.prs_created == 'true' }}
+        with:
+          ref: ${{ fromJSON(steps.release.outputs.pr).headBranchName }}
+      - uses: actions/setup-node@v6
+        if: ${{ steps.release.outputs.prs_created == 'true' }}
+        with:
+          node-version: latest
+          cache: npm
+      - if: ${{ steps.release.outputs.prs_created == 'true' }}
+        run: npm ci
+      - if: ${{ steps.release.outputs.prs_created == 'true' }}
+        run: npx prettier --write CHANGELOG.md
+      - if: ${{ steps.release.outputs.prs_created == 'true' }}
+        run: npm run lint
+      - if: ${{ steps.release.outputs.prs_created == 'true' }}
+        run: |
+          if git diff --quiet -- CHANGELOG.md; then
+            exit 0
+          fi
+
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add CHANGELOG.md
+          git commit -m "style: format generated changelog"
+          git push
 
   release-cancelled:
     if: ${{ github.event_name == 'pull_request' && github.event.pull_request.merged == false && startsWith(github.event.pull_request.head.ref, 'release-please--') }}
@@ -57,7 +83,7 @@ jobs:
       - if: ${{ steps.release.outputs.release_created == 'true' }}
         run: npm ci
       - if: ${{ steps.release.outputs.release_created == 'true' }}
-        run: npx prettier --write CHANGELOG.md
+        run: npx prettier --check CHANGELOG.md
       - if: ${{ steps.release.outputs.release_created == 'true' }}
         run: npm run lint
       - if: ${{ steps.release.outputs.release_created == 'true' }}
