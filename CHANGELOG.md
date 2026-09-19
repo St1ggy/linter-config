@@ -12,6 +12,13 @@ npm run changelog
 
 (Uses [Conventional Commits](https://www.conventionalcommits.org/) and [`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) with the `conventionalcommits` preset.)
 
+## [7.3.0](https://github.com/St1ggy/linter-config/compare/linter-config-v7.2.2...linter-config-v7.3.0) (2026-09-19)
+
+
+### Features
+
+* **solid:** add ESLint preset and CLI stack ([96b0e51](https://github.com/St1ggy/linter-config/commit/96b0e512b8a3c6946e041a955f0af0d73d7f8b22))
+
 ## [7.2.2](https://github.com/St1ggy/linter-config/compare/linter-config-v7.2.1...linter-config-v7.2.2) (2026-08-04)
 
 ### Bug Fixes
