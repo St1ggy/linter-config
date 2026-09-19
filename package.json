@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/St1ggy/linter-config/tree/main#readme",
   "bin": {
-    "@st1ggy/linter-config": "./scripts/linter-init.mjs"
+    "linter-config": "./scripts/linter-init.mjs"
   },
   "dependencies": {
     "@eslint/compat": "^2.1.0",

@@ -112,7 +112,7 @@ Releases are started manually from `Actions` → `Release` → `Run workflow`. I
 
 ## Toolchain (this repo)
 
-The `CI` GitHub Actions workflow runs linting, Solid integration tests, TypeScript checks, and a package dry run on pushes to `main` and pull requests. The `Release` workflow also runs the integration tests and TypeScript checks before publishing.
+The `CI` GitHub Actions workflow runs linting, Solid integration tests, TypeScript checks, and a packed-package smoke test on pushes to `main` and pull requests. The smoke test installs the tarball into a temporary project and checks the CLI and Solid preset import. The `Release` workflow runs these checks before publishing as well.
 
 There is **one** published package at the **repository root** (no `packages/` workspace layout).
 
@@ -132,6 +132,7 @@ npm run lint
 | `npm run lint:fix` | Auto-fix ESLint, Stylelint, Prettier |
 | `npm run inventory` | Regenerate [`data/linter-config-inventory.json`](data/linter-config-inventory.json) |
 | `node --test scripts/solid-config.test.mjs` | Check Solid JSX/TSX linting and wrapper generation |
+| `node scripts/package-smoke.mjs` | Install a packed tarball and check its CLI and Solid preset |
 | `npm run config:init` | `node ./scripts/linter-init.mjs init --common --dir ./examples/init-smoke` (skip existing); see [`scripts/README.md`](scripts/README.md) |
 | `npm run config:migrate` | `migrate` selected legacy configs and overwrite wrappers |
 | `npm run config:reinit` | alias for `config:migrate` |
