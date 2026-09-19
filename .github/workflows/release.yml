@@ -45,6 +45,10 @@ jobs:
       - if: ${{ steps.release.outputs.prs_created == 'true' }}
         run: npm run lint
       - if: ${{ steps.release.outputs.prs_created == 'true' }}
+        run: node --test scripts/solid-config.test.mjs
+      - if: ${{ steps.release.outputs.prs_created == 'true' }}
+        run: npx tsc --noEmit
+      - if: ${{ steps.release.outputs.prs_created == 'true' }}
         run: |
           if git diff --quiet -- CHANGELOG.md; then
             exit 0
@@ -86,5 +90,9 @@ jobs:
         run: npx prettier --check CHANGELOG.md
       - if: ${{ steps.release.outputs.release_created == 'true' }}
         run: npm run lint
+      - if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: node --test scripts/solid-config.test.mjs
+      - if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: npx tsc --noEmit
       - if: ${{ steps.release.outputs.release_created == 'true' }}
         run: npm publish --access public --provenance
