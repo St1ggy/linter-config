@@ -12,6 +12,12 @@ npm run changelog
 
 (Uses [Conventional Commits](https://www.conventionalcommits.org/) and [`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) with the `conventionalcommits` preset.)
 
+## [7.3.1](https://github.com/St1ggy/linter-config/compare/linter-config-v7.3.0...linter-config-v7.3.1) (2026-09-19)
+
+### Bug Fixes
+
+- **npm:** use an unscoped CLI executable name ([3c64a63](https://github.com/St1ggy/linter-config/commit/3c64a63850fce4525fe9a2d72d7c73d2be33ccc2))
+
 ## [7.3.0](https://github.com/St1ggy/linter-config/compare/linter-config-v7.2.2...linter-config-v7.3.0) (2026-09-19)
 
 ### Features
