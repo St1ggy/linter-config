@@ -19,6 +19,7 @@ Direct CLI (paths from repo root — same entry as published **`@st1ggy/linter-c
 
 ```bash
 node ./scripts/linter-init.mjs init --react
+node ./scripts/linter-init.mjs init --solid --dir ./my-solid-app
 node ./scripts/linter-init.mjs migrate --svelte --dir ./my-app
 node ./scripts/linter-init.mjs init --astro
 ```
@@ -30,6 +31,7 @@ The CLI is published under the name **`@st1ggy/linter-config`** (see [`package.j
 ```bash
 npx @st1ggy/linter-config init --common
 npx @st1ggy/linter-config init --next
+npx @st1ggy/linter-config init --solid
 npm exec @st1ggy/linter-config -- migrate --svelte
 ```
 
@@ -39,8 +41,10 @@ npm exec @st1ggy/linter-config -- migrate --svelte
 npx --yes @st1ggy/linter-config init --astro
 ```
 
-- **Stack (optional, default common):** `--common` | `--react` | `--next` | `--svelte` | `--astro` (at most one).
+- **Stack (optional, default common):** `--common` | `--react` | `--solid` | `--next` | `--svelte` | `--astro` (at most one).
 - **`--skip-install`:** only write wrapper files; do not run npm/pnpm/yarn/bun.
 - Every CLI command opens an interactive wizard. `init` creates missing wrappers; `migrate` can remove selected legacy configs and replaces wrappers.
 
 Shell shortcuts in this folder (`init-common.sh`, etc.) call **`node …/linter-init.mjs`** (same script as the published **`@st1ggy/linter-config`** CLI) with the matching stack; pass **`--skip-install`** through when needed.
+
+For SolidJS, `init-solid.sh` selects `eslint-solid`, `prettier-common`, and `stylelint-scss`, and installs `eslint-plugin-solid` alongside `@st1ggy/linter-config`.

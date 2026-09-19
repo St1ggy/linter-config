@@ -27,6 +27,11 @@ const flatConfigPresets = [
     sampleFile: 'src/examples/example.ts',
   },
   {
+    id: 'eslint-solid',
+    module: 'src/eslint/eslint.config.solid.js',
+    sampleFile: 'src/examples/example.solid.tsx',
+  },
+  {
     id: 'eslint-next',
     module: 'src/eslint/eslint.config.next.js',
     sampleFile: 'src/examples/example.ts',

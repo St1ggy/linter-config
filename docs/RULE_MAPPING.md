@@ -19,6 +19,7 @@ node scripts/inventory.mjs
 | Unicorn | `config.unicorn.js` | eslint-plugin-unicorn. |
 | SonarJS | `config.sonarjs.js` | eslint-plugin-sonarjs. |
 | React | `config.react.js` | React/JSX + hooks. |
+| SolidJS | `config.solid.js` | `eslint-plugin-solid` recommended for JS/JSX, TypeScript preset for TS/TSX, and JSX formatting. |
 | Next.js | `config.next.js` | `@next/eslint-plugin-next`. |
 | Svelte | `svelte-stack.js` | `eslint-plugin-svelte` flat recommended + TS parser options. |
 | Astro | `astro-stack.js` | `eslint-plugin-astro` recommended. |
@@ -27,6 +28,7 @@ Inventory rule counts (sample files in this repository):
 
 - `eslint-common`: effective rules on `src/examples/example.ts`
 - `eslint-react`: includes React layer on the same sample
+- `eslint-solid`: effective rules on `src/examples/example.solid.tsx`
 - `eslint-next`: Next layer on the same sample
 - `eslint-svelte`: effective rules on `src/examples/example.svelte`
 - `eslint-astro`: effective rules on `src/examples/example.astro`

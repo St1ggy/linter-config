@@ -16,15 +16,16 @@ The published CLI is invoked as **`@st1ggy/linter-config`** (see [`package.json`
 
 Unless **`--skip-install`** is passed: if **`package.json`** exists in the target directory, the CLI runs the detected package manager (**npm** / **pnpm** / **yarn** / **bun** from the nearest lockfile) to install **`@st1ggy/linter-config`** and only the selected stack's integration plugins. When all selected packages are already declared but missing from `node_modules`, it runs a regular install instead.
 
-Pick **at most one** stack flag (default **`--common`** if you omit all five):
+Pick **at most one** stack flag (default **`--common`** if you omit all six):
 
-**`--common` · `--react` · `--next` · `--svelte` · `--astro`**
+**`--common` · `--react` · `--solid` · `--next` · `--svelte` · `--astro`**
 
 **After** `npm i -D @st1ggy/linter-config`:
 
 ```bash
 npx @st1ggy/linter-config init
 npx @st1ggy/linter-config init --react
+npx @st1ggy/linter-config init --solid
 npx @st1ggy/linter-config migrate --svelte --dir ./apps/web
 npx @st1ggy/linter-config init --astro
 npm exec @st1ggy/linter-config -- init --common
@@ -35,6 +36,7 @@ npm exec @st1ggy/linter-config -- init --common
 ```bash
 npx --yes @st1ggy/linter-config init
 npx --yes @st1ggy/linter-config init --react
+npx --yes @st1ggy/linter-config init --solid
 npx --yes @st1ggy/linter-config migrate --svelte --dir ./apps/web
 npx --yes @st1ggy/linter-config init --astro
 ```
@@ -56,6 +58,7 @@ In this monorepo, `npm run config:init` / `config:migrate` / `config:reinit` / `
 
 ```js
 import eslintReact from '@st1ggy/linter-config/eslint-react'
+import eslintSolid from '@st1ggy/linter-config/eslint-solid'
 import eslintAstro from '@st1ggy/linter-config/eslint-astro'
 import prettierCommon from '@st1ggy/linter-config/prettier-common'
 import prettierAstro from '@st1ggy/linter-config/prettier-astro'
@@ -63,6 +66,23 @@ import stylelintScss from '@st1ggy/linter-config/stylelint-scss'
 ```
 
 The barrel export `@st1ggy/linter-config` re-exports ESLint/Prettier/Stylelint presets only (see [`src/index.js`](src/index.js)).
+
+### SolidJS
+
+The `eslint-solid` preset extends `eslint-common` with [eslint-plugin-solid](https://github.com/solidjs-community/eslint-plugin-solid): recommended rules for JavaScript/JSX, TypeScript-aware rules for TypeScript/TSX, and JSX formatting rules. It checks reactive props, reactivity tracking, and Solid-specific JSX usage.
+
+Use the wizard (`npx @st1ggy/linter-config init --solid`) or install the integration manually:
+
+```bash
+npm i -D @st1ggy/linter-config eslint-plugin-solid
+```
+
+```js
+// eslint.config.js
+export { default } from '@st1ggy/linter-config/eslint-solid'
+```
+
+The named export is `eslintSolid`. The Solid stack uses `prettier-common` and `stylelint-scss`. As with the React preset, source files must be included in the project's `tsconfig.json`; Solid projects normally use `"jsx": "preserve"` and `"jsxImportSource": "solid-js"`.
 
 ### Migration (Stylelint)
 
@@ -92,6 +112,8 @@ Releases are started manually from `Actions` → `Release` → `Run workflow`. I
 
 ## Toolchain (this repo)
 
+The `CI` GitHub Actions workflow runs linting, Solid integration tests, TypeScript checks, and a package dry run on pushes to `main` and pull requests. The `Release` workflow also runs the integration tests and TypeScript checks before publishing.
+
 There is **one** published package at the **repository root** (no `packages/` workspace layout).
 
 ```bash
@@ -109,6 +131,7 @@ npm run lint
 | `npm run lint:prettier` | Prettier `--check` only |
 | `npm run lint:fix` | Auto-fix ESLint, Stylelint, Prettier |
 | `npm run inventory` | Regenerate [`data/linter-config-inventory.json`](data/linter-config-inventory.json) |
+| `node --test scripts/solid-config.test.mjs` | Check Solid JSX/TSX linting and wrapper generation |
 | `npm run config:init` | `node ./scripts/linter-init.mjs init --common --dir ./examples/init-smoke` (skip existing); see [`scripts/README.md`](scripts/README.md) |
 | `npm run config:migrate` | `migrate` selected legacy configs and overwrite wrappers |
 | `npm run config:reinit` | alias for `config:migrate` |
