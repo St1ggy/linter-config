@@ -6,7 +6,7 @@ import path from 'node:path'
 
 export const PACKAGE = '@st1ggy/linter-config'
 
-export const STACK_KEYS = ['common', 'react', 'next', 'svelte', 'astro']
+export const STACK_KEYS = ['common', 'react', 'solid', 'next', 'svelte', 'astro']
 
 export const STACKS = {
   common: {
@@ -20,6 +20,12 @@ export const STACKS = {
     prettier: 'prettier-common',
     stylelint: 'stylelint-scss',
     packages: ['eslint-plugin-react', 'eslint-plugin-react-hooks'],
+  },
+  solid: {
+    eslint: 'eslint-solid',
+    prettier: 'prettier-common',
+    stylelint: 'stylelint-scss',
+    packages: ['eslint-plugin-solid'],
   },
   next: {
     eslint: 'eslint-next',
@@ -49,6 +55,10 @@ export const STACK_CHOICES = [
   {
     value: 'react',
     name: 'react — React + hooks on top of common',
+  },
+  {
+    value: 'solid',
+    name: 'solid — SolidJS + reactivity rules on top of common',
   },
   {
     value: 'next',
@@ -260,7 +270,7 @@ Unless --skip-install: if package.json exists, runs the detected package manager
 ${PACKAGE} and the selected stack's integration plugins.
 
 Stack (at most one; default: common):
-  --common | --react | --next | --svelte | --astro
+  --common | --react | --solid | --next | --svelte | --astro
 
 Options:
   --dir, -d       Target directory (default: current working directory).
@@ -271,6 +281,7 @@ Examples (after: npm i -D ${PACKAGE}):
   npx ${PACKAGE}
   npx ${PACKAGE} init
   npx ${PACKAGE} init --react
+  npx ${PACKAGE} init --solid
   npx ${PACKAGE} migrate --svelte --dir ./apps/web
   npx ${PACKAGE} init --astro
   npm exec ${PACKAGE} -- init --common

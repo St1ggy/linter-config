@@ -9,6 +9,7 @@ declare module '@st1ggy/linter-config' {
 
   export const eslintCommon: Linter.Config[]
   export const eslintReact: Linter.Config[]
+  export const eslintSolid: Linter.Config[]
   export const eslintNext: Linter.Config[]
   export const eslintSvelte: Linter.Config[]
   export const eslintAstro: Linter.Config[]
@@ -29,6 +30,14 @@ declare module '@st1ggy/linter-config/eslint-next' {
 }
 
 declare module '@st1ggy/linter-config/eslint-react' {
+  import type { Linter } from 'eslint'
+
+  const config: Linter.Config[]
+
+  export default config
+}
+
+declare module '@st1ggy/linter-config/eslint-solid' {
   import type { Linter } from 'eslint'
 
   const config: Linter.Config[]

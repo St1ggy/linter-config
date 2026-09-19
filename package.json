@@ -73,6 +73,11 @@
       "import": "./src/eslint/eslint.config.react.js",
       "default": "./src/eslint/eslint.config.react.js"
     },
+    "./eslint-solid": {
+      "types": "./index.d.ts",
+      "import": "./src/eslint/eslint.config.solid.js",
+      "default": "./src/eslint/eslint.config.solid.js"
+    },
     "./eslint-svelte": {
       "types": "./index.d.ts",
       "import": "./src/eslint/eslint-svelte.config.js",
@@ -140,6 +145,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-solid": "^0.18.0",
     "eslint-plugin-svelte": "^3.22.0",
     "next": "^16.3.0",
     "prettier": "^3.9.6",
@@ -163,6 +169,9 @@
       "optional": true
     },
     "eslint-plugin-react-hooks": {
+      "optional": true
+    },
+    "eslint-plugin-solid": {
       "optional": true
     },
     "eslint-plugin-svelte": {
@@ -202,9 +211,11 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-solid": "^0.18.0",
     "eslint-plugin-svelte": "^3.22.0",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-svelte": "^4.1.1",
+    "solid-js": "^1.9.15",
     "svelte": "^5.56.8"
   }
 }

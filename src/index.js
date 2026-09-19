@@ -1,5 +1,6 @@
 export { default as eslintCommon } from './eslint/eslint.config.common.js'
 export { default as eslintReact } from './eslint/eslint.config.react.js'
+export { default as eslintSolid } from './eslint/eslint.config.solid.js'
 export { default as eslintNext } from './eslint/eslint.config.next.js'
 export { default as eslintSvelte } from './eslint/eslint-svelte.config.js'
 export { default as eslintAstro } from './eslint/eslint.config.astro.js'
