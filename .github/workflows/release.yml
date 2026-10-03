@@ -45,6 +45,8 @@ jobs:
       - if: ${{ steps.release.outputs.prs_created == 'true' }}
         run: npm run lint
       - if: ${{ steps.release.outputs.prs_created == 'true' }}
+        run: npm run format:ox:check
+      - if: ${{ steps.release.outputs.prs_created == 'true' }}
         run: node --test scripts/solid-config.test.mjs
       - if: ${{ steps.release.outputs.prs_created == 'true' }}
         run: node ./node_modules/typescript/bin/tsc --noEmit
@@ -102,6 +104,8 @@ jobs:
         run: npx prettier --check CHANGELOG.md
       - if: ${{ steps.release.outputs.release_created == 'true' }}
         run: npm run lint
+      - if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: npm run format:ox:check
       - if: ${{ steps.release.outputs.release_created == 'true' }}
         run: node --test scripts/solid-config.test.mjs
       - if: ${{ steps.release.outputs.release_created == 'true' }}

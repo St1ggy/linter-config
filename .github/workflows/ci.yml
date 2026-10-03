@@ -27,6 +27,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
+      - run: npm run format:ox:check
       - run: node --test scripts/solid-config.test.mjs
       - run: node ./node_modules/typescript/bin/tsc --noEmit
       - run: npm run typecheck:ox
