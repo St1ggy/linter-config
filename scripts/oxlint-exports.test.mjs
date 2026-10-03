@@ -38,9 +38,9 @@ function consumerPackage(context, dependencies = []) {
   return directory
 }
 
-test('All Oxlint public exports load without optional engine or framework peers', (context) => {
+test('All native-tool public exports load without optional engine or framework peers', (context) => {
   const directory = consumerPackage(context)
-  const code = `import assert from 'node:assert/strict'; for (const stack of ${JSON.stringify(OX_STACKS)}) { const {default:config}=await import('@st1ggy/linter-config/'+stack+'-ox'); assert.equal(config.options.typeAware,true); assert.equal(Array.isArray(config),false); }`
+  const code = `import assert from 'node:assert/strict'; for (const stack of ${JSON.stringify(OX_STACKS)}) { const {default:config}=await import('@st1ggy/linter-config/'+stack+'-ox'); assert.equal(config.options.typeAware,true); assert.equal(Array.isArray(config),false); } const {default:fmt}=await import('@st1ggy/linter-config/oxfmt-common'); assert.equal(fmt.semi,false);`
   const result = spawnSync(process.execPath, ['--input-type=module', '-e', code], { cwd: directory, encoding: 'utf8' })
 
   assert.equal(result.status, 0, result.stderr)
@@ -67,7 +67,7 @@ test('Common consumer export works without other framework integrations and supp
 })
 
 test('Oxlint declarations are checked by TS7 and cannot become any or ESLint arrays', (context) => {
-  const directory = consumerPackage(context, ['oxlint'])
+  const directory = consumerPackage(context, ['oxlint', 'oxfmt'])
   const imports = OX_STACKS.map(
     (stack, index) => `import config${index} from '@st1ggy/linter-config/${stack}-ox'`,
   ).join('\n')
@@ -76,7 +76,10 @@ test('Oxlint declarations are checked by TS7 and cannot become any or ESLint arr
       `const value${index}: OxlintConfig = config${index}\n// @ts-expect-error A preset is an object, not an ESLint config array.\nconfig${index}.push({})`,
   ).join('\n')
 
-  writeFileSync(path.join(directory, 'probe.ts'), `import type { OxlintConfig } from 'oxlint'\n${imports}\n${checks}\n`)
+  writeFileSync(
+    path.join(directory, 'probe.ts'),
+    `import type { OxlintConfig } from 'oxlint'\nimport type { OxfmtConfig } from 'oxfmt'\nimport formatter from '@st1ggy/linter-config/oxfmt-common'\nconst formatConfig: OxfmtConfig = formatter\n// @ts-expect-error Formatter configuration is not any or an array.\nformatter.push({})\n${imports}\n${checks}\n`,
+  )
   const executable = packageExecutable('@typescript/native', 'bin/tsc')
   const result = spawnSync(process.execPath, [executable, '--noEmit'], { cwd: directory, encoding: 'utf8' })
 

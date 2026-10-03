@@ -39,7 +39,7 @@ test('All twelve stacks generate the selected engine and retain init/migrate sem
     assert.deepEqual(existingWrapperFiles(directory, stack), names)
     assert.equal(
       readFileSync(path.join(directory, names[0]), 'utf8'),
-      `export { default } from '${PACKAGE}/${STACKS[stack].linterPreset}';\n`,
+      `export { default } from '${PACKAGE}/${STACKS[stack].linterPreset}'${STACKS[stack].formatterPreset === 'oxfmt-common' ? '' : ';'}\n`,
     )
     writeFileSync(path.join(directory, names[0]), '// custom\n')
     run('create', directory, stack, { quiet: true })
@@ -65,10 +65,12 @@ test('Changing engines keeps the other wrapper and offers it as a legacy file', 
   run('init', directory, 'solid-ox', { quiet: true })
   assert.ok(existsSync(path.join(directory, 'eslint.config.js')))
   assert.ok(existsSync(path.join(directory, 'oxlint.config.ts')))
-  assert.deepEqual(legacyConfigFiles(directory, 'solid-ox'), ['eslint.config.js'])
-  assert.deepEqual(legacyConfigFiles(directory, 'solid'), ['oxlint.config.ts'])
+  assert.deepEqual(legacyConfigFiles(directory, 'solid-ox'), ['eslint.config.js', 'prettier.config.js'])
+  assert.deepEqual(legacyConfigFiles(directory, 'solid'), ['oxfmt.config.ts', 'oxlint.config.ts'])
   writeFileSync(path.join(directory, '.oxlintrc.json'), '{}\n')
   assert.ok(legacyConfigFiles(directory, 'solid-ox').includes('.oxlintrc.json'))
+  writeFileSync(path.join(directory, '.oxfmtrc.json'), '{}\n')
+  assert.ok(legacyConfigFiles(directory, 'solid-ox').includes('.oxfmtrc.json'))
 })
 
 function packageManagerProject(context, pm) {
@@ -114,7 +116,7 @@ for (const pm of ['npm', 'pnpm', 'yarn', 'bun']) {
     )
     mkdirSync(path.join(directory, 'node_modules/oxlint'), { recursive: true })
     writeFileSync(path.join(directory, 'node_modules/oxlint/package.json'), '{"name":"oxlint","version":"1.0.0"}\n')
-    ensureDevDependencies(directory, ['oxlint', 'oxlint-tsgolint'], false, {
+    ensureDevDependencies(directory, ['oxlint', 'oxlint-tsgolint', 'oxfmt'], false, {
       quiet: true,
       specs: stackPackageSpecs('common-ox'),
     })
@@ -122,6 +124,7 @@ for (const pm of ['npm', 'pnpm', 'yarn', 'bun']) {
 
     assert.ok(args.includes('oxlint@1.86.0'))
     assert.ok(args.includes('oxlint-tsgolint@7.0.2003'))
+    assert.ok(args.includes('oxfmt@0.71.0'))
     assert.ok(args.includes(pm === 'npm' || pm === 'pnpm' ? '--save-exact' : '--exact'))
   })
 

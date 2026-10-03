@@ -5,24 +5,28 @@ import test from 'node:test'
 import { pathToFileURL } from 'node:url'
 
 import { temporaryProject, toolchainFiles } from './fixtures/oxlint-cases.mjs'
-import { ROOT, runOxlint } from './oxlint-tools.mjs'
+import { ROOT, runOxfmt, runOxlint } from './oxlint-tools.mjs'
 
 function consumer(context, files = {}) {
   const config = pathToFileURL(path.join(ROOT, 'src/oxlint/oxlint.config.common.js')).href
+  const formatter = pathToFileURL(path.join(ROOT, 'src/oxfmt/oxfmt.config.common.js')).href
 
   return temporaryProject(context, {
     'oxlint.config.ts': `export { default } from ${JSON.stringify(config)}\n`,
-    '.prettierrc.json': JSON.stringify({ semi: false, singleQuote: true, printWidth: 120 }),
+    'oxfmt.config.ts': `export { default } from ${JSON.stringify(formatter)}\n`,
     ...files,
   })
 }
 
-test('Common preset auto-loads, preserves restrictions and fixes formatting', (context) => {
+test('Common stack separates lint checks from Oxfmt formatting checks', (context) => {
   const directory = consumer(context, { 'probe.ts': 'export const message="hello";\n' })
   const initial = runOxlint(['probe.ts'], { cwd: directory })
 
-  assert.match(initial.stdout, /prettier/)
-  const fixed = runOxlint(['--fix', 'probe.ts'], { cwd: directory })
+  assert.ok(!initial.stdout.includes('prettier'), initial.stdout)
+  const checked = runOxfmt(['--check', 'probe.ts'], { cwd: directory })
+
+  assert.equal(checked.status, 1, checked.stdout + checked.stderr)
+  const fixed = runOxfmt(['--write', 'probe.ts'], { cwd: directory })
 
   assert.equal(fixed.status, 0, fixed.stdout + fixed.stderr)
   assert.equal(readFileSync(path.join(directory, 'probe.ts'), 'utf8'), "export const message = 'hello'\n")

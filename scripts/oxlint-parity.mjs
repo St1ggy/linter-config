@@ -63,7 +63,9 @@ export async function prepareCorpus(directory, corpus) {
     const folder = path.join(directory, keyDirectory(index))
 
     mkdirSync(folder, { recursive: true })
-    const selected = presets[fixture.stack ?? 'common']
+    // Prettier remains a real lint implementation in the SFC stacks. Exercise
+    // its legacy corpus there; Oxfmt checks are covered separately.
+    const selected = presets[fixture.sourceId === 'prettier/prettier' ? 'astro' : (fixture.stack ?? 'common')]
     const config = {
       plugins: selected.plugins,
       jsPlugins: selected.jsPlugins,

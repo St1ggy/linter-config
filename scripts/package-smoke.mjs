@@ -9,7 +9,7 @@ import process from 'node:process'
 import { pathToFileURL } from 'node:url'
 
 import { STACKS, run } from './linter-init-core.mjs'
-import { OX_STACKS, ROOT, packageExecutable, runOxlint, selectedStacks } from './oxlint-tools.mjs'
+import { OX_STACKS, ROOT, packageExecutable, runOxfmt, runOxlint, selectedStacks } from './oxlint-tools.mjs'
 
 const manifest = JSON.parse(readFileSync(path.join(ROOT, 'package.json'), 'utf8'))
 const lock = JSON.parse(readFileSync(path.join(ROOT, 'package-lock.json'), 'utf8'))
@@ -156,6 +156,23 @@ async function checkOxStack(directory, stack) {
   const valid = runOxlint([file], { cwd: directory, toolDirectory: directory })
 
   assert.equal(valid.status, 0, valid.stdout + valid.stderr)
+
+  if (STACKS[`${stack}-ox`].formatterPreset === 'oxfmt-common') {
+    const formatFiles = [file, 'oxfmt.config.ts', 'oxlint.config.ts', 'stylelint.config.js']
+    const formatted = runOxfmt(['--check', ...formatFiles], { cwd: directory, toolDirectory: directory })
+
+    assert.equal(formatted.status, 0, formatted.stdout + formatted.stderr)
+    writeFileSync(path.join(directory, 'unformatted.ts'), 'export const value="hello";\n')
+    assert.equal(runOxfmt(['--check', 'unformatted.ts'], { cwd: directory, toolDirectory: directory }).status, 1)
+    const fixed = runOxfmt(['--write', 'unformatted.ts'], { cwd: directory, toolDirectory: directory })
+
+    assert.equal(fixed.status, 0, fixed.stdout + fixed.stderr)
+    assert.equal(readFileSync(path.join(directory, 'unformatted.ts'), 'utf8'), "export const value = 'hello'\n")
+    const fmtManifest = readFileSync(packageExecutable('oxfmt', 'package.json', directory), 'utf8')
+
+    assert.equal(JSON.parse(fmtManifest).version, '0.71.0')
+  }
+
   const marker = markers[stack]
 
   writeFileSync(path.join(directory, marker.file), marker.code)
@@ -169,7 +186,7 @@ async function checkOxStack(directory, stack) {
 
   assert.equal(JSON.parse(oxManifest).version, '1.86.0')
   assert.equal(JSON.parse(tsManifest).version, '7.0.2003')
-  process.stdout.write(`${pm}: packed ${stack}-ox CLI, marker and native typed checks passed\n`)
+  process.stdout.write(`${pm}: packed ${stack}-ox CLI, formatter, marker and native typed checks passed\n`)
 }
 
 function checkLegacy(directory) {
@@ -198,6 +215,8 @@ try {
   }
 
   assert.ok(packedPaths.has('src/oxlint/index.d.ts'))
+  assert.ok(packedPaths.has('src/oxfmt/index.d.ts'))
+  assert.ok(packedPaths.has('src/oxfmt/oxfmt.config.common.js'))
   assert.ok(
     files.every((file) => !file.path.includes('/fixtures/') && !file.path.endsWith('.test.mjs')),
     'Development fixtures must not be published',

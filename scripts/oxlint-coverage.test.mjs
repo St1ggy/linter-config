@@ -6,6 +6,7 @@ import { temporaryProject } from './fixtures/oxlint-cases.mjs'
 import { validateCoverage } from './oxlint-audit.mjs'
 import { saveModule } from './oxlint-generate.mjs'
 import { prepareCorpus, readCorpus, verifySourceCorpus, verifyTargetCorpus } from './oxlint-parity.mjs'
+import { classifyRule } from './oxlint-policy.mjs'
 import { ROOT, nativeRules } from './oxlint-tools.mjs'
 import { readInventory } from './oxlint-values.mjs'
 
@@ -22,6 +23,27 @@ test('Coverage rejects an unmapped source rule', () => {
 
   delete changed.decisions[supported[0]]
   assert.throws(() => validateCoverage(source, changed, corpus, catalog), /Unmapped source rule/)
+})
+
+test('External Oxfmt checks remain accounted for and cannot be silently disabled', () => {
+  const changed = structuredClone(mapping)
+  const formatter = Object.values(changed.decisions).find((item) => item.status === 'formatter')
+
+  assert.ok(formatter, 'The formatter must be present in the audited mapping')
+  formatter.status = 'disabled'
+  assert.throws(() => validateCoverage(source, changed, corpus, catalog), /Active rule silently disabled/)
+  assert.throws(
+    () =>
+      classifyRule(
+        'prettier/prettier',
+        [2, { semi: true }],
+        'module',
+        source.metadata['prettier/prettier'],
+        new Map(),
+        'oxfmt',
+      ),
+    /Review rule-local Prettier options/,
+  )
 })
 
 test('Coverage rejects changed options, severities and missing evidence', () => {
