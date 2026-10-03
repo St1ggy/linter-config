@@ -12,6 +12,13 @@ npm run changelog
 
 (Uses [Conventional Commits](https://www.conventionalcommits.org/) and [`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) with the `conventionalcommits` preset.)
 
+## [7.4.0](https://github.com/St1ggy/linter-config/compare/linter-config-v7.3.1...linter-config-v7.4.0) (2026-10-03)
+
+
+### Features
+
+* **oxlint:** add six TS7-powered presets and CLI stacks ([c6be04c](https://github.com/St1ggy/linter-config/commit/c6be04cc40033054814491389cbe39f4bec71c75))
+
 ## [7.3.1](https://github.com/St1ggy/linter-config/compare/linter-config-v7.3.0...linter-config-v7.3.1) (2026-09-19)
 
 ### Bug Fixes
