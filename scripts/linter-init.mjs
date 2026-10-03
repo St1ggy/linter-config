@@ -60,7 +60,7 @@ async function selectCommand(command) {
     choices: [
       {
         value: 'init',
-        name: 'init — create missing linter, Prettier and Stylelint wrappers',
+        name: 'init — create missing linter, formatter and Stylelint wrappers',
       },
       {
         value: 'migrate',

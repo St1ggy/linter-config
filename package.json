@@ -1,7 +1,7 @@
 {
   "name": "@st1ggy/linter-config",
   "version": "7.4.0",
-  "description": "ESLint, Prettier, and Stylelint shareable configs (sources under src/).",
+  "description": "Shareable ESLint, Oxlint, Oxfmt, Prettier, and Stylelint configs.",
   "private": false,
   "repository": {
     "type": "git",
@@ -128,6 +128,11 @@
       "import": "./src/prettier/prettier.config.common.js",
       "default": "./src/prettier/prettier.config.common.js"
     },
+    "./oxfmt-common": {
+      "types": "./src/oxfmt/index.d.ts",
+      "import": "./src/oxfmt/oxfmt.config.common.js",
+      "default": "./src/oxfmt/oxfmt.config.common.js"
+    },
     "./prettier-svelte": {
       "types": "./index.d.ts",
       "import": "./src/prettier/prettier-svelte.config.js",
@@ -153,6 +158,7 @@
     "!scripts/fixtures",
     "!scripts/*.test.mjs",
     "!scripts/oxlint-*.mjs",
+    "!scripts/oxfmt-*.mjs",
     "!scripts/package-smoke.mjs"
   ],
   "scripts": {
@@ -172,6 +178,8 @@
     "inventory:ox": "node scripts/oxlint-inventory.mjs --write",
     "inventory:ox:check": "node scripts/oxlint-inventory.mjs --source-only --check && node scripts/oxlint-inventory.mjs --check",
     "test:ox": "node --test --test-concurrency=2 scripts/oxlint-*.test.mjs",
+    "format:ox:compare": "node scripts/oxfmt-compare.mjs",
+    "format:ox:check": "oxfmt --config ./src/oxfmt/oxfmt.config.common.js --check .",
     "config:init": "node ./scripts/linter-init.mjs init --common --dir ./examples/init-smoke",
     "config:migrate": "node ./scripts/linter-init.mjs migrate --common --dir ./examples/init-smoke",
     "config:reinit": "node ./scripts/linter-init.mjs reinit --common --dir ./examples/init-smoke",
@@ -189,6 +197,7 @@
     "eslint-plugin-svelte": "^3.22.0",
     "next": "^16.3.0",
     "oxlint": "1.86.0",
+    "oxfmt": "0.71.0",
     "oxlint-tsgolint": "7.0.2003",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
@@ -223,6 +232,9 @@
       "optional": true
     },
     "oxlint": {
+      "optional": true
+    },
+    "oxfmt": {
       "optional": true
     },
     "oxlint-tsgolint": {
@@ -264,6 +276,7 @@
     "eslint-plugin-solid": "^0.18.0",
     "eslint-plugin-svelte": "^3.22.0",
     "oxlint": "1.86.0",
+    "oxfmt": "0.71.0",
     "oxlint-tsgolint": "7.0.2003",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-svelte": "^4.1.1",

@@ -16,9 +16,9 @@ export function packageExecutable(packageName, executable, directory = ROOT) {
   return path.join(path.dirname(manifest), executable)
 }
 
-export function runOxlint(args, options = {}) {
+function runTool(packageName, args, options = {}) {
   const { cwd = ROOT, toolDirectory = ROOT } = options
-  const executable = packageExecutable('oxlint', 'bin/oxlint', toolDirectory)
+  const executable = packageExecutable(packageName, `bin/${packageName}`, toolDirectory)
 
   return spawnSync(process.execPath, [executable, ...args], {
     cwd,
@@ -27,6 +27,14 @@ export function runOxlint(args, options = {}) {
     timeout: 60_000,
     env: process.env,
   })
+}
+
+export function runOxlint(args, options = {}) {
+  return runTool('oxlint', args, options)
+}
+
+export function runOxfmt(args, options = {}) {
+  return runTool('oxfmt', args, options)
 }
 
 export function nativeRules() {
@@ -41,7 +49,7 @@ export function nativeRules() {
 
 export function engineVersions() {
   return Object.fromEntries(
-    ['oxlint', 'oxlint-tsgolint', '@typescript/native'].map((name) => [
+    ['oxlint', 'oxlint-tsgolint', 'oxfmt', '@typescript/native'].map((name) => [
       name,
       JSON.parse(readFileSync(packageExecutable(name, 'package.json'), 'utf8')).version,
     ]),

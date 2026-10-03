@@ -3,6 +3,7 @@
   "engines": {
     "oxlint": "1.86.0",
     "oxlint-tsgolint": "7.0.2003",
+    "oxfmt": "0.71.0",
     "@typescript/native": "7.0.2"
   },
   "sourceVersions": {
@@ -34,6 +35,7 @@
   },
   "presets": {
     "common-ox": {
+      "formatter": "oxfmt",
       "scopes": {
         "src/probe.astro": {
           "domain": "astro",
@@ -41,6 +43,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 0,
             "unsupported": 0,
             "disabled": 0
@@ -52,6 +55,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 0,
             "unsupported": 0,
             "disabled": 0
@@ -63,7 +67,8 @@
           "sourceProfile": "1cad6e0f85bc19c1",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
+            "js-plugin": 363,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 461
@@ -75,7 +80,8 @@
           "sourceProfile": "1cad6e0f85bc19c1",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
+            "js-plugin": 363,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 461
@@ -87,7 +93,8 @@
           "sourceProfile": "681cc9c1b9aeac07",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
+            "js-plugin": 362,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 479
@@ -99,7 +106,8 @@
           "sourceProfile": "681cc9c1b9aeac07",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
+            "js-plugin": 362,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 479
@@ -111,7 +119,8 @@
           "sourceProfile": "681cc9c1b9aeac07",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
+            "js-plugin": 362,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 479
@@ -123,7 +132,8 @@
           "sourceProfile": "681cc9c1b9aeac07",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
+            "js-plugin": 362,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 479
@@ -135,7 +145,8 @@
           "sourceProfile": "1cad6e0f85bc19c1",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
+            "js-plugin": 363,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 461
@@ -147,7 +158,8 @@
           "sourceProfile": "1cad6e0f85bc19c1",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
+            "js-plugin": 363,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 461
@@ -159,7 +171,8 @@
           "sourceProfile": "1cad6e0f85bc19c1",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
+            "js-plugin": 363,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 461
@@ -171,7 +184,8 @@
           "sourceProfile": "1cad6e0f85bc19c1",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
+            "js-plugin": 363,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 461
@@ -183,7 +197,8 @@
           "sourceProfile": "1cad6e0f85bc19c1",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
+            "js-plugin": 363,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 461
@@ -195,7 +210,8 @@
           "sourceProfile": "1cad6e0f85bc19c1",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
+            "js-plugin": 363,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 461
@@ -207,7 +223,8 @@
           "sourceProfile": "681cc9c1b9aeac07",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
+            "js-plugin": 362,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 479
@@ -219,7 +236,8 @@
           "sourceProfile": "681cc9c1b9aeac07",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
+            "js-plugin": 362,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 479
@@ -232,6 +250,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 579,
             "unsupported": 63,
             "disabled": 461
@@ -244,6 +263,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 579,
             "unsupported": 63,
             "disabled": 461
@@ -255,7 +275,8 @@
           "sourceProfile": "1cad6e0f85bc19c1",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
+            "js-plugin": 363,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 461
@@ -267,7 +288,8 @@
           "sourceProfile": "1cad6e0f85bc19c1",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
+            "js-plugin": 363,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 461
@@ -279,7 +301,8 @@
           "sourceProfile": "681cc9c1b9aeac07",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
+            "js-plugin": 362,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 479
@@ -291,7 +314,8 @@
           "sourceProfile": "681cc9c1b9aeac07",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
+            "js-plugin": 362,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 479
@@ -303,7 +327,8 @@
           "sourceProfile": "681cc9c1b9aeac07",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
+            "js-plugin": 362,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 479
@@ -315,7 +340,8 @@
           "sourceProfile": "681cc9c1b9aeac07",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
+            "js-plugin": 362,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 479
@@ -327,7 +353,8 @@
           "sourceProfile": "681cc9c1b9aeac07",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
+            "js-plugin": 362,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 479
@@ -339,7 +366,8 @@
           "sourceProfile": "681cc9c1b9aeac07",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
+            "js-plugin": 362,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 479
@@ -352,7 +380,8 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
-            "partial": 582,
+            "formatter": 1,
+            "partial": 581,
             "unsupported": 65,
             "disabled": 461
           }
@@ -364,7 +393,8 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
-            "partial": 582,
+            "formatter": 1,
+            "partial": 581,
             "unsupported": 65,
             "disabled": 461
           }
@@ -372,6 +402,7 @@
       }
     },
     "react-ox": {
+      "formatter": "oxfmt",
       "scopes": {
         "src/probe.astro": {
           "domain": "astro",
@@ -379,6 +410,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 0,
             "unsupported": 0,
             "disabled": 0
@@ -390,6 +422,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 0,
             "unsupported": 0,
             "disabled": 0
@@ -401,7 +434,8 @@
           "sourceProfile": "b01c4f1d2f8a9efd",
           "counts": {
             "native": 259,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -413,7 +447,8 @@
           "sourceProfile": "b01c4f1d2f8a9efd",
           "counts": {
             "native": 259,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -425,7 +460,8 @@
           "sourceProfile": "c9763cfdc37de5ff",
           "counts": {
             "native": 246,
-            "js-plugin": 378,
+            "js-plugin": 377,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -437,7 +473,8 @@
           "sourceProfile": "c9763cfdc37de5ff",
           "counts": {
             "native": 246,
-            "js-plugin": 378,
+            "js-plugin": 377,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -449,7 +486,8 @@
           "sourceProfile": "c9763cfdc37de5ff",
           "counts": {
             "native": 246,
-            "js-plugin": 378,
+            "js-plugin": 377,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -461,7 +499,8 @@
           "sourceProfile": "c9763cfdc37de5ff",
           "counts": {
             "native": 246,
-            "js-plugin": 378,
+            "js-plugin": 377,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -473,7 +512,8 @@
           "sourceProfile": "b01c4f1d2f8a9efd",
           "counts": {
             "native": 259,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -485,7 +525,8 @@
           "sourceProfile": "b01c4f1d2f8a9efd",
           "counts": {
             "native": 259,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -497,7 +538,8 @@
           "sourceProfile": "b01c4f1d2f8a9efd",
           "counts": {
             "native": 259,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -509,7 +551,8 @@
           "sourceProfile": "b01c4f1d2f8a9efd",
           "counts": {
             "native": 259,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -521,7 +564,8 @@
           "sourceProfile": "b01c4f1d2f8a9efd",
           "counts": {
             "native": 259,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -533,7 +577,8 @@
           "sourceProfile": "b01c4f1d2f8a9efd",
           "counts": {
             "native": 259,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -545,7 +590,8 @@
           "sourceProfile": "c9763cfdc37de5ff",
           "counts": {
             "native": 246,
-            "js-plugin": 378,
+            "js-plugin": 377,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -557,7 +603,8 @@
           "sourceProfile": "c9763cfdc37de5ff",
           "counts": {
             "native": 246,
-            "js-plugin": 378,
+            "js-plugin": 377,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -570,6 +617,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 638,
             "unsupported": 64,
             "disabled": 455
@@ -582,6 +630,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 638,
             "unsupported": 64,
             "disabled": 455
@@ -593,7 +642,8 @@
           "sourceProfile": "b01c4f1d2f8a9efd",
           "counts": {
             "native": 259,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -605,7 +655,8 @@
           "sourceProfile": "b01c4f1d2f8a9efd",
           "counts": {
             "native": 259,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -617,7 +668,8 @@
           "sourceProfile": "c9763cfdc37de5ff",
           "counts": {
             "native": 246,
-            "js-plugin": 378,
+            "js-plugin": 377,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -629,7 +681,8 @@
           "sourceProfile": "c9763cfdc37de5ff",
           "counts": {
             "native": 246,
-            "js-plugin": 378,
+            "js-plugin": 377,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -641,7 +694,8 @@
           "sourceProfile": "c9763cfdc37de5ff",
           "counts": {
             "native": 246,
-            "js-plugin": 378,
+            "js-plugin": 377,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -653,7 +707,8 @@
           "sourceProfile": "c9763cfdc37de5ff",
           "counts": {
             "native": 246,
-            "js-plugin": 378,
+            "js-plugin": 377,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -665,7 +720,8 @@
           "sourceProfile": "c9763cfdc37de5ff",
           "counts": {
             "native": 246,
-            "js-plugin": 378,
+            "js-plugin": 377,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -677,7 +733,8 @@
           "sourceProfile": "c9763cfdc37de5ff",
           "counts": {
             "native": 246,
-            "js-plugin": 378,
+            "js-plugin": 377,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -690,7 +747,8 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
-            "partial": 641,
+            "formatter": 1,
+            "partial": 640,
             "unsupported": 66,
             "disabled": 455
           }
@@ -702,7 +760,8 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
-            "partial": 641,
+            "formatter": 1,
+            "partial": 640,
             "unsupported": 66,
             "disabled": 455
           }
@@ -710,6 +769,7 @@
       }
     },
     "solid-ox": {
+      "formatter": "oxfmt",
       "scopes": {
         "src/probe.astro": {
           "domain": "astro",
@@ -717,6 +777,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 0,
             "unsupported": 0,
             "disabled": 0
@@ -728,6 +789,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 0,
             "unsupported": 0,
             "disabled": 0
@@ -739,7 +801,8 @@
           "sourceProfile": "11580fcf10f0f7bd",
           "counts": {
             "native": 219,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 465
@@ -751,7 +814,8 @@
           "sourceProfile": "11580fcf10f0f7bd",
           "counts": {
             "native": 219,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 465
@@ -763,7 +827,8 @@
           "sourceProfile": "877d37841e072ea6",
           "counts": {
             "native": 206,
-            "js-plugin": 377,
+            "js-plugin": 376,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 484
@@ -775,7 +840,8 @@
           "sourceProfile": "877d37841e072ea6",
           "counts": {
             "native": 206,
-            "js-plugin": 377,
+            "js-plugin": 376,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 484
@@ -787,7 +853,8 @@
           "sourceProfile": "877d37841e072ea6",
           "counts": {
             "native": 206,
-            "js-plugin": 377,
+            "js-plugin": 376,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 484
@@ -799,7 +866,8 @@
           "sourceProfile": "877d37841e072ea6",
           "counts": {
             "native": 206,
-            "js-plugin": 377,
+            "js-plugin": 376,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 484
@@ -811,7 +879,8 @@
           "sourceProfile": "11580fcf10f0f7bd",
           "counts": {
             "native": 219,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 465
@@ -823,7 +892,8 @@
           "sourceProfile": "11580fcf10f0f7bd",
           "counts": {
             "native": 219,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 465
@@ -835,7 +905,8 @@
           "sourceProfile": "813e4c31c5ee1fef",
           "counts": {
             "native": 219,
-            "js-plugin": 389,
+            "js-plugin": 388,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 456
@@ -847,7 +918,8 @@
           "sourceProfile": "813e4c31c5ee1fef",
           "counts": {
             "native": 219,
-            "js-plugin": 389,
+            "js-plugin": 388,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 456
@@ -859,7 +931,8 @@
           "sourceProfile": "11580fcf10f0f7bd",
           "counts": {
             "native": 219,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 465
@@ -871,7 +944,8 @@
           "sourceProfile": "11580fcf10f0f7bd",
           "counts": {
             "native": 219,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 465
@@ -883,7 +957,8 @@
           "sourceProfile": "877d37841e072ea6",
           "counts": {
             "native": 206,
-            "js-plugin": 377,
+            "js-plugin": 376,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 484
@@ -895,7 +970,8 @@
           "sourceProfile": "877d37841e072ea6",
           "counts": {
             "native": 206,
-            "js-plugin": 377,
+            "js-plugin": 376,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 484
@@ -908,6 +984,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 579,
             "unsupported": 63,
             "disabled": 461
@@ -920,6 +997,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 579,
             "unsupported": 63,
             "disabled": 461
@@ -931,7 +1009,8 @@
           "sourceProfile": "11580fcf10f0f7bd",
           "counts": {
             "native": 219,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 465
@@ -943,7 +1022,8 @@
           "sourceProfile": "11580fcf10f0f7bd",
           "counts": {
             "native": 219,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 465
@@ -955,7 +1035,8 @@
           "sourceProfile": "877d37841e072ea6",
           "counts": {
             "native": 206,
-            "js-plugin": 377,
+            "js-plugin": 376,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 484
@@ -967,7 +1048,8 @@
           "sourceProfile": "877d37841e072ea6",
           "counts": {
             "native": 206,
-            "js-plugin": 377,
+            "js-plugin": 376,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 484
@@ -979,7 +1061,8 @@
           "sourceProfile": "877d37841e072ea6",
           "counts": {
             "native": 206,
-            "js-plugin": 377,
+            "js-plugin": 376,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 484
@@ -991,7 +1074,8 @@
           "sourceProfile": "877d37841e072ea6",
           "counts": {
             "native": 206,
-            "js-plugin": 377,
+            "js-plugin": 376,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 484
@@ -1003,7 +1087,8 @@
           "sourceProfile": "b66f8508e1a9166c",
           "counts": {
             "native": 206,
-            "js-plugin": 387,
+            "js-plugin": 386,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 475
@@ -1015,7 +1100,8 @@
           "sourceProfile": "b66f8508e1a9166c",
           "counts": {
             "native": 206,
-            "js-plugin": 387,
+            "js-plugin": 386,
+            "formatter": 1,
             "partial": 8,
             "unsupported": 57,
             "disabled": 475
@@ -1028,7 +1114,8 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
-            "partial": 582,
+            "formatter": 1,
+            "partial": 581,
             "unsupported": 65,
             "disabled": 461
           }
@@ -1040,7 +1127,8 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
-            "partial": 582,
+            "formatter": 1,
+            "partial": 581,
             "unsupported": 65,
             "disabled": 461
           }
@@ -1048,6 +1136,7 @@
       }
     },
     "next-ox": {
+      "formatter": "oxfmt",
       "scopes": {
         "src/probe.astro": {
           "domain": "astro",
@@ -1055,6 +1144,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 0,
             "unsupported": 0,
             "disabled": 0
@@ -1066,6 +1156,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 0,
             "unsupported": 0,
             "disabled": 0
@@ -1077,7 +1168,8 @@
           "sourceProfile": "b03ff2fe52a365a9",
           "counts": {
             "native": 280,
-            "js-plugin": 380,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -1089,7 +1181,8 @@
           "sourceProfile": "b03ff2fe52a365a9",
           "counts": {
             "native": 280,
-            "js-plugin": 380,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -1101,7 +1194,8 @@
           "sourceProfile": "6c0a1b3ef9f37d43",
           "counts": {
             "native": 267,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -1113,7 +1207,8 @@
           "sourceProfile": "6c0a1b3ef9f37d43",
           "counts": {
             "native": 267,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -1125,7 +1220,8 @@
           "sourceProfile": "6c0a1b3ef9f37d43",
           "counts": {
             "native": 267,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -1137,7 +1233,8 @@
           "sourceProfile": "6c0a1b3ef9f37d43",
           "counts": {
             "native": 267,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -1149,7 +1246,8 @@
           "sourceProfile": "b03ff2fe52a365a9",
           "counts": {
             "native": 280,
-            "js-plugin": 380,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -1161,7 +1259,8 @@
           "sourceProfile": "b03ff2fe52a365a9",
           "counts": {
             "native": 280,
-            "js-plugin": 380,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -1173,7 +1272,8 @@
           "sourceProfile": "b03ff2fe52a365a9",
           "counts": {
             "native": 280,
-            "js-plugin": 380,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -1185,7 +1285,8 @@
           "sourceProfile": "b03ff2fe52a365a9",
           "counts": {
             "native": 280,
-            "js-plugin": 380,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -1197,7 +1298,8 @@
           "sourceProfile": "b03ff2fe52a365a9",
           "counts": {
             "native": 280,
-            "js-plugin": 380,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -1209,7 +1311,8 @@
           "sourceProfile": "b03ff2fe52a365a9",
           "counts": {
             "native": 280,
-            "js-plugin": 380,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -1221,7 +1324,8 @@
           "sourceProfile": "6c0a1b3ef9f37d43",
           "counts": {
             "native": 267,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -1233,7 +1337,8 @@
           "sourceProfile": "6c0a1b3ef9f37d43",
           "counts": {
             "native": 267,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -1246,6 +1351,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 660,
             "unsupported": 64,
             "disabled": 455
@@ -1258,6 +1364,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 660,
             "unsupported": 64,
             "disabled": 455
@@ -1269,7 +1376,8 @@
           "sourceProfile": "b03ff2fe52a365a9",
           "counts": {
             "native": 280,
-            "js-plugin": 380,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -1281,7 +1389,8 @@
           "sourceProfile": "b03ff2fe52a365a9",
           "counts": {
             "native": 280,
-            "js-plugin": 380,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 455
@@ -1293,7 +1402,8 @@
           "sourceProfile": "6c0a1b3ef9f37d43",
           "counts": {
             "native": 267,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -1305,7 +1415,8 @@
           "sourceProfile": "6c0a1b3ef9f37d43",
           "counts": {
             "native": 267,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -1317,7 +1428,8 @@
           "sourceProfile": "6c0a1b3ef9f37d43",
           "counts": {
             "native": 267,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -1329,7 +1441,8 @@
           "sourceProfile": "6c0a1b3ef9f37d43",
           "counts": {
             "native": 267,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -1341,7 +1454,8 @@
           "sourceProfile": "6c0a1b3ef9f37d43",
           "counts": {
             "native": 267,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -1353,7 +1467,8 @@
           "sourceProfile": "6c0a1b3ef9f37d43",
           "counts": {
             "native": 267,
-            "js-plugin": 379,
+            "js-plugin": 378,
+            "formatter": 1,
             "partial": 12,
             "unsupported": 57,
             "disabled": 473
@@ -1366,7 +1481,8 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
-            "partial": 663,
+            "formatter": 1,
+            "partial": 662,
             "unsupported": 66,
             "disabled": 455
           }
@@ -1378,7 +1494,8 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
-            "partial": 663,
+            "formatter": 1,
+            "partial": 662,
             "unsupported": 66,
             "disabled": 455
           }
@@ -1386,6 +1503,7 @@
       }
     },
     "svelte-ox": {
+      "formatter": "prettier",
       "scopes": {
         "src/probe.astro": {
           "domain": "astro",
@@ -1393,6 +1511,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 0,
             "unsupported": 0,
             "disabled": 0
@@ -1404,6 +1523,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 0,
             "unsupported": 0,
             "disabled": 0
@@ -1416,6 +1536,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 369,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 461
@@ -1428,6 +1549,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 369,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 461
@@ -1440,6 +1562,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 368,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 479
@@ -1452,6 +1575,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 368,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 479
@@ -1464,6 +1588,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 368,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 479
@@ -1476,6 +1601,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 368,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 479
@@ -1488,6 +1614,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 369,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 461
@@ -1500,6 +1627,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 369,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 461
@@ -1512,6 +1640,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 369,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 461
@@ -1524,6 +1653,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 369,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 461
@@ -1536,6 +1666,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 369,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 461
@@ -1548,6 +1679,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 369,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 461
@@ -1560,6 +1692,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 368,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 479
@@ -1572,6 +1705,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 368,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 479
@@ -1584,6 +1718,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 586,
             "unsupported": 92,
             "disabled": 464
@@ -1596,6 +1731,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 586,
             "unsupported": 92,
             "disabled": 464
@@ -1608,6 +1744,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 369,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 461
@@ -1620,6 +1757,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 369,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 461
@@ -1632,6 +1770,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 368,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 480
@@ -1644,6 +1783,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 368,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 480
@@ -1656,6 +1796,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 368,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 479
@@ -1668,6 +1809,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 368,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 479
@@ -1680,6 +1822,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 368,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 479
@@ -1692,6 +1835,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 368,
+            "formatter": 0,
             "partial": 11,
             "unsupported": 86,
             "disabled": 479
@@ -1704,6 +1848,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 590,
             "unsupported": 94,
             "disabled": 461
@@ -1716,6 +1861,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 590,
             "unsupported": 94,
             "disabled": 461
@@ -1724,6 +1870,7 @@
       }
     },
     "astro-ox": {
+      "formatter": "prettier",
       "scopes": {
         "src/probe.astro": {
           "domain": "astro",
@@ -1732,6 +1879,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 572,
             "unsupported": 67,
             "disabled": 455
@@ -1744,6 +1892,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 572,
             "unsupported": 67,
             "disabled": 455
@@ -1756,6 +1905,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 364,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 461
@@ -1768,6 +1918,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 364,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 461
@@ -1780,6 +1931,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 363,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 479
@@ -1792,6 +1944,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 363,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 479
@@ -1804,6 +1957,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 363,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 479
@@ -1816,6 +1970,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 363,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 479
@@ -1828,6 +1983,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 364,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 461
@@ -1840,6 +1996,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 364,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 461
@@ -1852,6 +2009,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 364,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 461
@@ -1864,6 +2022,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 364,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 461
@@ -1876,6 +2035,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 364,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 461
@@ -1888,6 +2048,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 364,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 461
@@ -1900,6 +2061,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 363,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 479
@@ -1912,6 +2074,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 363,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 479
@@ -1924,6 +2087,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 579,
             "unsupported": 72,
             "disabled": 461
@@ -1936,6 +2100,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 579,
             "unsupported": 72,
             "disabled": 461
@@ -1948,6 +2113,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 364,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 461
@@ -1960,6 +2126,7 @@
           "counts": {
             "native": 218,
             "js-plugin": 364,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 461
@@ -1972,6 +2139,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 363,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 479
@@ -1984,6 +2152,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 363,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 479
@@ -1996,6 +2165,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 363,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 479
@@ -2008,6 +2178,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 363,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 479
@@ -2020,6 +2191,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 363,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 479
@@ -2032,6 +2204,7 @@
           "counts": {
             "native": 205,
             "js-plugin": 363,
+            "formatter": 0,
             "partial": 8,
             "unsupported": 66,
             "disabled": 479
@@ -2044,6 +2217,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 582,
             "unsupported": 74,
             "disabled": 461
@@ -2056,6 +2230,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 582,
             "unsupported": 74,
             "disabled": 461
@@ -2068,6 +2243,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 539,
             "unsupported": 102,
             "disabled": 480
@@ -2080,6 +2256,7 @@
           "counts": {
             "native": 0,
             "js-plugin": 0,
+            "formatter": 0,
             "partial": 539,
             "unsupported": 102,
             "disabled": 480

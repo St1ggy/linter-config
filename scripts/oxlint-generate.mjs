@@ -5,6 +5,7 @@ import process from 'node:process'
 import { pathToFileURL } from 'node:url'
 import { format } from 'prettier'
 
+import { OXFMT_STACKS } from '../src/oxlint/stacks.js'
 import prettierConfig from '../src/prettier/prettier.config.common.js'
 
 import { writeOrCheck } from './oxlint-inventory.mjs'
@@ -107,6 +108,7 @@ function globalValue(value) {
 
 export function generateBundle(source, stack, decisions, catalog) {
   const variants = profileVariants(source, stack)
+  const formatter = OXFMT_STACKS.includes(stack) ? 'oxfmt' : 'prettier'
   const compiled = []
   const allTargets = new Set()
   const plugins = new Set()
@@ -118,8 +120,8 @@ export function generateBundle(source, stack, decisions, catalog) {
     const domain = fileDomain(variant.file)
 
     for (const [sourceId, value] of Object.entries(variant.profile.rules)) {
-      const key = ruleIdentity(sourceId, value, domain)
-      const decision = classifyRule(sourceId, value, domain, source.metadata[sourceId], catalog)
+      const key = ruleIdentity(sourceId, value, domain, formatter)
+      const decision = classifyRule(sourceId, value, domain, source.metadata[sourceId], catalog, formatter)
 
       decisions[key] = decision
 
@@ -156,6 +158,7 @@ export function generateBundle(source, stack, decisions, catalog) {
     .map((variant) => ({ extension: variant.extension, settings: variant.profile.settings }))
 
   return {
+    formatter,
     plugins: [...plugins].toSorted(compare),
     jsPlugins: [...jsPlugins].toSorted(compare),
     settings:

@@ -1,0 +1,16 @@
+export default {
+  useTabs: false,
+  printWidth: 120,
+  tabWidth: 2,
+  semi: false,
+  singleQuote: true,
+  trailingComma: 'all',
+  bracketSpacing: true,
+  arrowParens: 'always',
+  proseWrap: 'never',
+  endOfLine: 'lf',
+  insertFinalNewline: true,
+  sortImports: false,
+  sortPackageJson: false,
+  ignorePatterns: ['**/node_modules/**', '**/.git/**'],
+}

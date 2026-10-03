@@ -4,7 +4,7 @@ import { spawnSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 
-import { OX_FRAMEWORK_PACKAGES, OX_VERSIONS } from '../src/oxlint/stacks.js'
+import { OXFMT_STACKS, OX_FRAMEWORK_PACKAGES, oxStackToolVersions } from '../src/oxlint/stacks.js'
 
 export const PACKAGE = '@st1ggy/linter-config'
 
@@ -83,14 +83,23 @@ for (const key of BASE_STACK_KEYS) {
 
   base.linterFile = 'eslint.config.js'
   base.linterPreset = base.eslint
+  base.formatterFile = 'prettier.config.js'
+  base.formatterPreset = base.prettier
+  const hasOxfmt = OXFMT_STACKS.includes(key)
+
   STACKS[`${key}-ox`] = {
     linterFile: 'oxlint.config.ts',
     linterPreset: `${key}-ox`,
     prettier: base.prettier,
+    formatterFile: hasOxfmt ? 'oxfmt.config.ts' : 'prettier.config.js',
+    formatterPreset: hasOxfmt ? 'oxfmt-common' : base.prettier,
     stylelint: base.stylelint,
-    packages: [...Object.keys(OX_VERSIONS), ...OX_FRAMEWORK_PACKAGES[key]],
+    packages: [...Object.keys(oxStackToolVersions(key)), ...OX_FRAMEWORK_PACKAGES[key]],
   }
-  STACK_CHOICES.push({ value: `${key}-ox`, name: `${key}-ox — Oxlint + native TypeScript 7` })
+  STACK_CHOICES.push({
+    value: `${key}-ox`,
+    name: `${key}-ox — Oxlint + native TypeScript 7 + ${hasOxfmt ? 'Oxfmt' : 'Prettier'}`,
+  })
 }
 
 export function readPackageJson(directory) {
@@ -298,9 +307,13 @@ export function stackPackages(stackKey) {
 export function stackPackageSpecs(stackKey) {
   stackPackages(stackKey)
 
-  return stackKey.endsWith('-ox')
-    ? Object.fromEntries(Object.entries(OX_VERSIONS).map(([name, version]) => [name, `${name}@${version}`]))
-    : {}
+  if (!stackKey.endsWith('-ox')) {
+    return {}
+  }
+
+  const versions = oxStackToolVersions(stackKey.slice(0, -3))
+
+  return Object.fromEntries(Object.entries(versions).map(([name, version]) => [name, `${name}@${version}`]))
 }
 
 export function printHelp() {
@@ -317,7 +330,8 @@ Commands:
 
 Writes (each command):
   ESLint stacks: eslint.config.js, prettier.config.js, stylelint.config.js.
-  Oxlint stacks: oxlint.config.ts, prettier.config.js, stylelint.config.js.
+  common/react/solid/next-ox: oxlint.config.ts, oxfmt.config.ts, stylelint.config.js.
+  svelte/astro-ox: oxlint.config.ts, prettier.config.js, stylelint.config.js.
 
 Unless --skip-install: if package.json exists, runs the detected package manager to add or sync
 ${PACKAGE} and the selected stack's integration plugins.
@@ -349,8 +363,8 @@ Repo (paths from root):
 `)
 }
 
-export function jsReExport(subpath) {
-  return `export { default } from '${PACKAGE}/${subpath}';\n`
+export function jsReExport(subpath, hasSemicolon = true) {
+  return `export { default } from '${PACKAGE}/${subpath}'${hasSemicolon ? ';' : ''}\n`
 }
 
 export function resolveTargetDirectory(raw) {
@@ -382,7 +396,7 @@ export function writeFile(targetDirectory, name, content, overwrite, options = {
 export function wrapperFileNames(stackKey = 'common') {
   stackPackages(stackKey)
 
-  return [STACKS[stackKey].linterFile, 'prettier.config.js', 'stylelint.config.js']
+  return [STACKS[stackKey].linterFile, STACKS[stackKey].formatterFile, 'stylelint.config.js']
 }
 
 export function existingWrapperFiles(targetDirectory, stackKey = 'common') {
@@ -399,7 +413,7 @@ export function legacyConfigFiles(targetDirectory, stackKey = 'common') {
   return readdirSync(targetDirectory, { withFileTypes: true })
     .filter(
       (entry) =>
-        entry.isFile() && /(?:eslint|oxlint|prettier|stylelint)/i.test(entry.name) && !wrappers.has(entry.name),
+        entry.isFile() && /(?:eslint|oxlint|oxfmt|prettier|stylelint)/i.test(entry.name) && !wrappers.has(entry.name),
     )
     .map((entry) => entry.name)
     .toSorted((left, right) => left.localeCompare(right))
@@ -443,7 +457,13 @@ export function run(mode, targetDirectory, stackKey, options = {}) {
 
   const shouldOverwrite = mode === 'migrate' || mode === 'reinit'
 
-  writeFile(targetDirectory, stack.linterFile, jsReExport(stack.linterPreset), shouldOverwrite, { quiet })
-  writeFile(targetDirectory, 'prettier.config.js', jsReExport(stack.prettier), shouldOverwrite, { quiet })
-  writeFile(targetDirectory, 'stylelint.config.js', jsReExport(stack.stylelint), shouldOverwrite, { quiet })
+  const hasSemicolon = stack.formatterPreset !== 'oxfmt-common'
+
+  writeFile(targetDirectory, stack.linterFile, jsReExport(stack.linterPreset, hasSemicolon), shouldOverwrite, { quiet })
+  writeFile(targetDirectory, stack.formatterFile, jsReExport(stack.formatterPreset, hasSemicolon), shouldOverwrite, {
+    quiet,
+  })
+  writeFile(targetDirectory, 'stylelint.config.js', jsReExport(stack.stylelint, hasSemicolon), shouldOverwrite, {
+    quiet,
+  })
 }

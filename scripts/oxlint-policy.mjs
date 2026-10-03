@@ -180,10 +180,12 @@ for (const sourceId of [
   }
 }
 
-export function ruleIdentity(sourceId, value, domain) {
+export function ruleIdentity(sourceId, value, domain, formatter = 'prettier') {
   const hash = createHash('sha256').update(serializeInventory(value)).digest('hex').slice(0, 12)
 
-  return `${domain}:${sourceId}:${hash}`
+  const suffix = sourceId === 'prettier/prettier' && formatter === 'oxfmt' ? ':oxfmt' : ''
+
+  return `${domain}:${sourceId}:${hash}${suffix}`
 }
 
 export function fileDomain(file) {
@@ -326,7 +328,29 @@ function initialDecision(sourceId, value, domain, metadata, catalog) {
   }
 }
 
-export function classifyRule(sourceId, value, domain, metadata, catalog) {
+export function classifyRule(sourceId, value, domain, metadata, catalog, formatter = 'prettier') {
+  if (sourceId === 'prettier/prettier' && formatter === 'oxfmt' && value[0] !== 0) {
+    if (value.length > 1) {
+      throw new Error('Review rule-local Prettier options before migrating them to Oxfmt')
+    }
+
+    return {
+      sourceId,
+      sourceValue: value,
+      domain,
+      documentation: metadata.documentation,
+      status: 'formatter',
+      implementation: 'formatter',
+      formatter: 'oxfmt',
+      skipConfiguration: true,
+      targetId: 'oxfmt/check',
+      targetValue: value,
+      evidence: 'capability:oxfmt-check',
+      reason:
+        'Formatting is checked separately by Oxfmt using the migrated common formatter options. No Prettier rule is executed inside Oxlint for this stack.',
+    }
+  }
+
   const decision = initialDecision(sourceId, value, domain, metadata, catalog)
 
   if (decision.skipConfiguration || decision.limitation === 'astro-frontmatter') {

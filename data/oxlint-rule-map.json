@@ -34,6 +34,7 @@
   "engines": {
     "oxlint": "1.86.0",
     "oxlint-tsgolint": "7.0.2003",
+    "oxfmt": "0.71.0",
     "@typescript/native": "7.0.2"
   },
   "decisions": {
@@ -5476,22 +5477,23 @@
       "implementation": "js-plugin",
       "evidence": "module:preserve-caught-error:f29315f7e300"
     },
-    "module:prettier/prettier:038966de9f6b": {
+    "module:prettier/prettier:038966de9f6b:oxfmt": {
       "sourceId": "prettier/prettier",
       "sourceValue": [
         2
       ],
       "domain": "module",
       "documentation": "https://github.com/prettier/eslint-plugin-prettier#options",
-      "status": "js-plugin",
-      "targetId": "prettier/prettier",
+      "status": "formatter",
+      "implementation": "formatter",
+      "formatter": "oxfmt",
+      "skipConfiguration": true,
+      "targetId": "oxfmt/check",
       "targetValue": [
         2
       ],
-      "typeAware": false,
-      "reason": "No native equivalent is registered; use the original JS rule.",
-      "implementation": "js-plugin",
-      "evidence": "module:prettier/prettier:038966de9f6b"
+      "evidence": "capability:oxfmt-check",
+      "reason": "Formatting is checked separately by Oxfmt using the migrated common formatter options. No Prettier rule is executed inside Oxlint for this stack."
     },
     "module:quote-props:d0bca111f862": {
       "sourceId": "quote-props",
@@ -22430,23 +22432,23 @@
       "evidence": "module:preserve-caught-error:f29315f7e300",
       "limitation": "script-extraction"
     },
-    "vue:prettier/prettier:038966de9f6b": {
+    "vue:prettier/prettier:038966de9f6b:oxfmt": {
       "sourceId": "prettier/prettier",
       "sourceValue": [
         2
       ],
       "domain": "vue",
       "documentation": "https://github.com/prettier/eslint-plugin-prettier#options",
-      "status": "partial",
-      "targetId": "prettier/prettier",
+      "status": "formatter",
+      "implementation": "formatter",
+      "formatter": "oxfmt",
+      "skipConfiguration": true,
+      "targetId": "oxfmt/check",
       "targetValue": [
         2
       ],
-      "typeAware": false,
-      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint.",
-      "implementation": "js-plugin",
-      "evidence": "module:prettier/prettier:038966de9f6b",
-      "limitation": "script-extraction"
+      "evidence": "capability:oxfmt-check",
+      "reason": "Formatting is checked separately by Oxfmt using the migrated common formatter options. No Prettier rule is executed inside Oxlint for this stack."
     },
     "vue:quote-props:d0bca111f862": {
       "sourceId": "quote-props",
@@ -56265,6 +56267,23 @@
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
     },
+    "module:prettier/prettier:038966de9f6b": {
+      "sourceId": "prettier/prettier",
+      "sourceValue": [
+        2
+      ],
+      "domain": "module",
+      "documentation": "https://github.com/prettier/eslint-plugin-prettier#options",
+      "status": "js-plugin",
+      "targetId": "prettier/prettier",
+      "targetValue": [
+        2
+      ],
+      "typeAware": false,
+      "reason": "No native equivalent is registered; use the original JS rule.",
+      "implementation": "js-plugin",
+      "evidence": "module:prettier/prettier:038966de9f6b"
+    },
     "module:svelte/comment-directive:038966de9f6b": {
       "sourceId": "svelte/comment-directive",
       "sourceValue": [
@@ -56759,6 +56778,24 @@
       "reason": "Requires framework parser/processor AST; Oxlint exposes extracted scripts, not template nodes.",
       "limitation": "framework-template",
       "evidence": "capability:framework-template"
+    },
+    "vue:prettier/prettier:038966de9f6b": {
+      "sourceId": "prettier/prettier",
+      "sourceValue": [
+        2
+      ],
+      "domain": "vue",
+      "documentation": "https://github.com/prettier/eslint-plugin-prettier#options",
+      "status": "partial",
+      "targetId": "prettier/prettier",
+      "targetValue": [
+        2
+      ],
+      "typeAware": false,
+      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint.",
+      "implementation": "js-plugin",
+      "evidence": "module:prettier/prettier:038966de9f6b",
+      "limitation": "script-extraction"
     },
     "vue:svelte/comment-directive:038966de9f6b": {
       "sourceId": "svelte/comment-directive",
