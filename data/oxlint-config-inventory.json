@@ -1,0 +1,2091 @@
+{
+  "schemaVersion": 1,
+  "engines": {
+    "oxlint": "1.86.0",
+    "oxlint-tsgolint": "7.0.2003",
+    "@typescript/native": "7.0.2"
+  },
+  "sourceVersions": {
+    "@next/eslint-plugin-next": "16.3.0",
+    "@stylistic/eslint-plugin": "5.10.0",
+    "eslint": "10.8.0",
+    "eslint-plugin-@babel": "unknown",
+    "eslint-plugin-@stylistic/js": "unknown",
+    "eslint-plugin-@stylistic/jsx": "unknown",
+    "eslint-plugin-@stylistic/ts": "unknown",
+    "eslint-plugin-astro": "3.1.0",
+    "eslint-plugin-babel": "unknown",
+    "eslint-plugin-flowtype": "unknown",
+    "eslint-plugin-import-x": "4.17.1",
+    "eslint-plugin-prettier": "5.5.6",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-solid": "0.18.0",
+    "eslint-plugin-sonarjs": "4.2.0",
+    "eslint-plugin-standard": "unknown",
+    "eslint-plugin-svelte": "3.22.0",
+    "eslint-plugin-unicorn": "73.0.0",
+    "eslint-plugin-vue": "unknown",
+    "typescript-eslint": "8.66.0"
+  },
+  "evidence": {
+    "cases": 708,
+    "conditional": 6
+  },
+  "presets": {
+    "common-ox": {
+      "scopes": {
+        "src/probe.astro": {
+          "domain": "astro",
+          "baselineStatus": "ignored",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 0,
+            "unsupported": 0,
+            "disabled": 0
+          }
+        },
+        "probe.astro": {
+          "domain": "astro",
+          "baselineStatus": "ignored",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 0,
+            "unsupported": 0,
+            "disabled": 0
+          }
+        },
+        "src/probe.cjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "1cad6e0f85bc19c1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 461
+          }
+        },
+        "probe.cjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "1cad6e0f85bc19c1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 461
+          }
+        },
+        "src/probe.cts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "681cc9c1b9aeac07",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 479
+          }
+        },
+        "probe.cts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "681cc9c1b9aeac07",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 479
+          }
+        },
+        "src/probe.d.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "681cc9c1b9aeac07",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 479
+          }
+        },
+        "probe.d.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "681cc9c1b9aeac07",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 479
+          }
+        },
+        "src/probe.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "1cad6e0f85bc19c1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 461
+          }
+        },
+        "probe.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "1cad6e0f85bc19c1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 461
+          }
+        },
+        "src/probe.jsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "1cad6e0f85bc19c1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 461
+          }
+        },
+        "probe.jsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "1cad6e0f85bc19c1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 461
+          }
+        },
+        "src/probe.mjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "1cad6e0f85bc19c1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 461
+          }
+        },
+        "probe.mjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "1cad6e0f85bc19c1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 461
+          }
+        },
+        "src/probe.mts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "681cc9c1b9aeac07",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 479
+          }
+        },
+        "probe.mts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "681cc9c1b9aeac07",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 479
+          }
+        },
+        "src/probe.svelte": {
+          "domain": "svelte",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "134e335107f07bef",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 579,
+            "unsupported": 63,
+            "disabled": 461
+          }
+        },
+        "probe.svelte": {
+          "domain": "svelte",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "134e335107f07bef",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 579,
+            "unsupported": 63,
+            "disabled": 461
+          }
+        },
+        "src/probe.svelte.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "1cad6e0f85bc19c1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 461
+          }
+        },
+        "probe.svelte.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "1cad6e0f85bc19c1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 461
+          }
+        },
+        "src/probe.svelte.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "681cc9c1b9aeac07",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 479
+          }
+        },
+        "probe.svelte.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "681cc9c1b9aeac07",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 479
+          }
+        },
+        "src/probe.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "681cc9c1b9aeac07",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 479
+          }
+        },
+        "probe.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "681cc9c1b9aeac07",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 479
+          }
+        },
+        "src/probe.tsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "681cc9c1b9aeac07",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 479
+          }
+        },
+        "probe.tsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "681cc9c1b9aeac07",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 479
+          }
+        },
+        "src/probe.vue": {
+          "domain": "vue",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "1cad6e0f85bc19c1",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 582,
+            "unsupported": 65,
+            "disabled": 461
+          }
+        },
+        "probe.vue": {
+          "domain": "vue",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "1cad6e0f85bc19c1",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 582,
+            "unsupported": 65,
+            "disabled": 461
+          }
+        }
+      }
+    },
+    "react-ox": {
+      "scopes": {
+        "src/probe.astro": {
+          "domain": "astro",
+          "baselineStatus": "ignored",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 0,
+            "unsupported": 0,
+            "disabled": 0
+          }
+        },
+        "probe.astro": {
+          "domain": "astro",
+          "baselineStatus": "ignored",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 0,
+            "unsupported": 0,
+            "disabled": 0
+          }
+        },
+        "src/probe.cjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b01c4f1d2f8a9efd",
+          "counts": {
+            "native": 259,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "probe.cjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b01c4f1d2f8a9efd",
+          "counts": {
+            "native": 259,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "src/probe.cts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "c9763cfdc37de5ff",
+          "counts": {
+            "native": 246,
+            "js-plugin": 378,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "probe.cts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "c9763cfdc37de5ff",
+          "counts": {
+            "native": 246,
+            "js-plugin": 378,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "src/probe.d.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "c9763cfdc37de5ff",
+          "counts": {
+            "native": 246,
+            "js-plugin": 378,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "probe.d.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "c9763cfdc37de5ff",
+          "counts": {
+            "native": 246,
+            "js-plugin": 378,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "src/probe.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b01c4f1d2f8a9efd",
+          "counts": {
+            "native": 259,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "probe.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b01c4f1d2f8a9efd",
+          "counts": {
+            "native": 259,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "src/probe.jsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b01c4f1d2f8a9efd",
+          "counts": {
+            "native": 259,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "probe.jsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b01c4f1d2f8a9efd",
+          "counts": {
+            "native": 259,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "src/probe.mjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b01c4f1d2f8a9efd",
+          "counts": {
+            "native": 259,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "probe.mjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b01c4f1d2f8a9efd",
+          "counts": {
+            "native": 259,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "src/probe.mts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "c9763cfdc37de5ff",
+          "counts": {
+            "native": 246,
+            "js-plugin": 378,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "probe.mts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "c9763cfdc37de5ff",
+          "counts": {
+            "native": 246,
+            "js-plugin": 378,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "src/probe.svelte": {
+          "domain": "svelte",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "052c11825ad49d4d",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 638,
+            "unsupported": 64,
+            "disabled": 455
+          }
+        },
+        "probe.svelte": {
+          "domain": "svelte",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "052c11825ad49d4d",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 638,
+            "unsupported": 64,
+            "disabled": 455
+          }
+        },
+        "src/probe.svelte.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b01c4f1d2f8a9efd",
+          "counts": {
+            "native": 259,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "probe.svelte.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b01c4f1d2f8a9efd",
+          "counts": {
+            "native": 259,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "src/probe.svelte.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "c9763cfdc37de5ff",
+          "counts": {
+            "native": 246,
+            "js-plugin": 378,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "probe.svelte.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "c9763cfdc37de5ff",
+          "counts": {
+            "native": 246,
+            "js-plugin": 378,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "src/probe.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "c9763cfdc37de5ff",
+          "counts": {
+            "native": 246,
+            "js-plugin": 378,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "probe.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "c9763cfdc37de5ff",
+          "counts": {
+            "native": 246,
+            "js-plugin": 378,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "src/probe.tsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "c9763cfdc37de5ff",
+          "counts": {
+            "native": 246,
+            "js-plugin": 378,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "probe.tsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "c9763cfdc37de5ff",
+          "counts": {
+            "native": 246,
+            "js-plugin": 378,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "src/probe.vue": {
+          "domain": "vue",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "b01c4f1d2f8a9efd",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 641,
+            "unsupported": 66,
+            "disabled": 455
+          }
+        },
+        "probe.vue": {
+          "domain": "vue",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "b01c4f1d2f8a9efd",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 641,
+            "unsupported": 66,
+            "disabled": 455
+          }
+        }
+      }
+    },
+    "solid-ox": {
+      "scopes": {
+        "src/probe.astro": {
+          "domain": "astro",
+          "baselineStatus": "ignored",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 0,
+            "unsupported": 0,
+            "disabled": 0
+          }
+        },
+        "probe.astro": {
+          "domain": "astro",
+          "baselineStatus": "ignored",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 0,
+            "unsupported": 0,
+            "disabled": 0
+          }
+        },
+        "src/probe.cjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "11580fcf10f0f7bd",
+          "counts": {
+            "native": 219,
+            "js-plugin": 379,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 465
+          }
+        },
+        "probe.cjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "11580fcf10f0f7bd",
+          "counts": {
+            "native": 219,
+            "js-plugin": 379,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 465
+          }
+        },
+        "src/probe.cts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "877d37841e072ea6",
+          "counts": {
+            "native": 206,
+            "js-plugin": 377,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 484
+          }
+        },
+        "probe.cts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "877d37841e072ea6",
+          "counts": {
+            "native": 206,
+            "js-plugin": 377,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 484
+          }
+        },
+        "src/probe.d.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "877d37841e072ea6",
+          "counts": {
+            "native": 206,
+            "js-plugin": 377,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 484
+          }
+        },
+        "probe.d.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "877d37841e072ea6",
+          "counts": {
+            "native": 206,
+            "js-plugin": 377,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 484
+          }
+        },
+        "src/probe.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "11580fcf10f0f7bd",
+          "counts": {
+            "native": 219,
+            "js-plugin": 379,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 465
+          }
+        },
+        "probe.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "11580fcf10f0f7bd",
+          "counts": {
+            "native": 219,
+            "js-plugin": 379,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 465
+          }
+        },
+        "src/probe.jsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "813e4c31c5ee1fef",
+          "counts": {
+            "native": 219,
+            "js-plugin": 389,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 456
+          }
+        },
+        "probe.jsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "813e4c31c5ee1fef",
+          "counts": {
+            "native": 219,
+            "js-plugin": 389,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 456
+          }
+        },
+        "src/probe.mjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "11580fcf10f0f7bd",
+          "counts": {
+            "native": 219,
+            "js-plugin": 379,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 465
+          }
+        },
+        "probe.mjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "11580fcf10f0f7bd",
+          "counts": {
+            "native": 219,
+            "js-plugin": 379,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 465
+          }
+        },
+        "src/probe.mts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "877d37841e072ea6",
+          "counts": {
+            "native": 206,
+            "js-plugin": 377,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 484
+          }
+        },
+        "probe.mts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "877d37841e072ea6",
+          "counts": {
+            "native": 206,
+            "js-plugin": 377,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 484
+          }
+        },
+        "src/probe.svelte": {
+          "domain": "svelte",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "134e335107f07bef",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 579,
+            "unsupported": 63,
+            "disabled": 461
+          }
+        },
+        "probe.svelte": {
+          "domain": "svelte",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "134e335107f07bef",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 579,
+            "unsupported": 63,
+            "disabled": 461
+          }
+        },
+        "src/probe.svelte.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "11580fcf10f0f7bd",
+          "counts": {
+            "native": 219,
+            "js-plugin": 379,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 465
+          }
+        },
+        "probe.svelte.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "11580fcf10f0f7bd",
+          "counts": {
+            "native": 219,
+            "js-plugin": 379,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 465
+          }
+        },
+        "src/probe.svelte.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "877d37841e072ea6",
+          "counts": {
+            "native": 206,
+            "js-plugin": 377,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 484
+          }
+        },
+        "probe.svelte.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "877d37841e072ea6",
+          "counts": {
+            "native": 206,
+            "js-plugin": 377,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 484
+          }
+        },
+        "src/probe.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "877d37841e072ea6",
+          "counts": {
+            "native": 206,
+            "js-plugin": 377,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 484
+          }
+        },
+        "probe.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "877d37841e072ea6",
+          "counts": {
+            "native": 206,
+            "js-plugin": 377,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 484
+          }
+        },
+        "src/probe.tsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b66f8508e1a9166c",
+          "counts": {
+            "native": 206,
+            "js-plugin": 387,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 475
+          }
+        },
+        "probe.tsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b66f8508e1a9166c",
+          "counts": {
+            "native": 206,
+            "js-plugin": 387,
+            "partial": 8,
+            "unsupported": 57,
+            "disabled": 475
+          }
+        },
+        "src/probe.vue": {
+          "domain": "vue",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "1cad6e0f85bc19c1",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 582,
+            "unsupported": 65,
+            "disabled": 461
+          }
+        },
+        "probe.vue": {
+          "domain": "vue",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "1cad6e0f85bc19c1",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 582,
+            "unsupported": 65,
+            "disabled": 461
+          }
+        }
+      }
+    },
+    "next-ox": {
+      "scopes": {
+        "src/probe.astro": {
+          "domain": "astro",
+          "baselineStatus": "ignored",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 0,
+            "unsupported": 0,
+            "disabled": 0
+          }
+        },
+        "probe.astro": {
+          "domain": "astro",
+          "baselineStatus": "ignored",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 0,
+            "unsupported": 0,
+            "disabled": 0
+          }
+        },
+        "src/probe.cjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b03ff2fe52a365a9",
+          "counts": {
+            "native": 280,
+            "js-plugin": 380,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "probe.cjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b03ff2fe52a365a9",
+          "counts": {
+            "native": 280,
+            "js-plugin": 380,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "src/probe.cts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "6c0a1b3ef9f37d43",
+          "counts": {
+            "native": 267,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "probe.cts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "6c0a1b3ef9f37d43",
+          "counts": {
+            "native": 267,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "src/probe.d.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "6c0a1b3ef9f37d43",
+          "counts": {
+            "native": 267,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "probe.d.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "6c0a1b3ef9f37d43",
+          "counts": {
+            "native": 267,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "src/probe.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b03ff2fe52a365a9",
+          "counts": {
+            "native": 280,
+            "js-plugin": 380,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "probe.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b03ff2fe52a365a9",
+          "counts": {
+            "native": 280,
+            "js-plugin": 380,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "src/probe.jsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b03ff2fe52a365a9",
+          "counts": {
+            "native": 280,
+            "js-plugin": 380,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "probe.jsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b03ff2fe52a365a9",
+          "counts": {
+            "native": 280,
+            "js-plugin": 380,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "src/probe.mjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b03ff2fe52a365a9",
+          "counts": {
+            "native": 280,
+            "js-plugin": 380,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "probe.mjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b03ff2fe52a365a9",
+          "counts": {
+            "native": 280,
+            "js-plugin": 380,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "src/probe.mts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "6c0a1b3ef9f37d43",
+          "counts": {
+            "native": 267,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "probe.mts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "6c0a1b3ef9f37d43",
+          "counts": {
+            "native": 267,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "src/probe.svelte": {
+          "domain": "svelte",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "9e2f4acf9f6a046d",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 660,
+            "unsupported": 64,
+            "disabled": 455
+          }
+        },
+        "probe.svelte": {
+          "domain": "svelte",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "9e2f4acf9f6a046d",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 660,
+            "unsupported": 64,
+            "disabled": 455
+          }
+        },
+        "src/probe.svelte.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b03ff2fe52a365a9",
+          "counts": {
+            "native": 280,
+            "js-plugin": 380,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "probe.svelte.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b03ff2fe52a365a9",
+          "counts": {
+            "native": 280,
+            "js-plugin": 380,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 455
+          }
+        },
+        "src/probe.svelte.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "6c0a1b3ef9f37d43",
+          "counts": {
+            "native": 267,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "probe.svelte.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "6c0a1b3ef9f37d43",
+          "counts": {
+            "native": 267,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "src/probe.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "6c0a1b3ef9f37d43",
+          "counts": {
+            "native": 267,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "probe.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "6c0a1b3ef9f37d43",
+          "counts": {
+            "native": 267,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "src/probe.tsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "6c0a1b3ef9f37d43",
+          "counts": {
+            "native": 267,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "probe.tsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "6c0a1b3ef9f37d43",
+          "counts": {
+            "native": 267,
+            "js-plugin": 379,
+            "partial": 12,
+            "unsupported": 57,
+            "disabled": 473
+          }
+        },
+        "src/probe.vue": {
+          "domain": "vue",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "b03ff2fe52a365a9",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 663,
+            "unsupported": 66,
+            "disabled": 455
+          }
+        },
+        "probe.vue": {
+          "domain": "vue",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "b03ff2fe52a365a9",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 663,
+            "unsupported": 66,
+            "disabled": 455
+          }
+        }
+      }
+    },
+    "svelte-ox": {
+      "scopes": {
+        "src/probe.astro": {
+          "domain": "astro",
+          "baselineStatus": "ignored",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 0,
+            "unsupported": 0,
+            "disabled": 0
+          }
+        },
+        "probe.astro": {
+          "domain": "astro",
+          "baselineStatus": "ignored",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 0,
+            "unsupported": 0,
+            "disabled": 0
+          }
+        },
+        "src/probe.cjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "20acea0b64fa784c",
+          "counts": {
+            "native": 218,
+            "js-plugin": 369,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 461
+          }
+        },
+        "probe.cjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "20acea0b64fa784c",
+          "counts": {
+            "native": 218,
+            "js-plugin": 369,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 461
+          }
+        },
+        "src/probe.cts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "bcbcf3c49866da57",
+          "counts": {
+            "native": 205,
+            "js-plugin": 368,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 479
+          }
+        },
+        "probe.cts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "bcbcf3c49866da57",
+          "counts": {
+            "native": 205,
+            "js-plugin": 368,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 479
+          }
+        },
+        "src/probe.d.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "bcbcf3c49866da57",
+          "counts": {
+            "native": 205,
+            "js-plugin": 368,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 479
+          }
+        },
+        "probe.d.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "bcbcf3c49866da57",
+          "counts": {
+            "native": 205,
+            "js-plugin": 368,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 479
+          }
+        },
+        "src/probe.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "20acea0b64fa784c",
+          "counts": {
+            "native": 218,
+            "js-plugin": 369,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 461
+          }
+        },
+        "probe.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "20acea0b64fa784c",
+          "counts": {
+            "native": 218,
+            "js-plugin": 369,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 461
+          }
+        },
+        "src/probe.jsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "20acea0b64fa784c",
+          "counts": {
+            "native": 218,
+            "js-plugin": 369,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 461
+          }
+        },
+        "probe.jsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "20acea0b64fa784c",
+          "counts": {
+            "native": 218,
+            "js-plugin": 369,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 461
+          }
+        },
+        "src/probe.mjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "20acea0b64fa784c",
+          "counts": {
+            "native": 218,
+            "js-plugin": 369,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 461
+          }
+        },
+        "probe.mjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "20acea0b64fa784c",
+          "counts": {
+            "native": 218,
+            "js-plugin": 369,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 461
+          }
+        },
+        "src/probe.mts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "bcbcf3c49866da57",
+          "counts": {
+            "native": 205,
+            "js-plugin": 368,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 479
+          }
+        },
+        "probe.mts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "bcbcf3c49866da57",
+          "counts": {
+            "native": 205,
+            "js-plugin": 368,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 479
+          }
+        },
+        "src/probe.svelte": {
+          "domain": "svelte",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b20e5bd6f80dc567",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 586,
+            "unsupported": 92,
+            "disabled": 464
+          }
+        },
+        "probe.svelte": {
+          "domain": "svelte",
+          "baselineStatus": "lintable",
+          "sourceProfile": "b20e5bd6f80dc567",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 586,
+            "unsupported": 92,
+            "disabled": 464
+          }
+        },
+        "src/probe.svelte.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "20acea0b64fa784c",
+          "counts": {
+            "native": 218,
+            "js-plugin": 369,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 461
+          }
+        },
+        "probe.svelte.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "20acea0b64fa784c",
+          "counts": {
+            "native": 218,
+            "js-plugin": 369,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 461
+          }
+        },
+        "src/probe.svelte.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "8e92004732b25749",
+          "counts": {
+            "native": 205,
+            "js-plugin": 368,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 480
+          }
+        },
+        "probe.svelte.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "8e92004732b25749",
+          "counts": {
+            "native": 205,
+            "js-plugin": 368,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 480
+          }
+        },
+        "src/probe.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "bcbcf3c49866da57",
+          "counts": {
+            "native": 205,
+            "js-plugin": 368,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 479
+          }
+        },
+        "probe.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "bcbcf3c49866da57",
+          "counts": {
+            "native": 205,
+            "js-plugin": 368,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 479
+          }
+        },
+        "src/probe.tsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "bcbcf3c49866da57",
+          "counts": {
+            "native": 205,
+            "js-plugin": 368,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 479
+          }
+        },
+        "probe.tsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "bcbcf3c49866da57",
+          "counts": {
+            "native": 205,
+            "js-plugin": 368,
+            "partial": 11,
+            "unsupported": 86,
+            "disabled": 479
+          }
+        },
+        "src/probe.vue": {
+          "domain": "vue",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "20acea0b64fa784c",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 590,
+            "unsupported": 94,
+            "disabled": 461
+          }
+        },
+        "probe.vue": {
+          "domain": "vue",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "20acea0b64fa784c",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 590,
+            "unsupported": 94,
+            "disabled": 461
+          }
+        }
+      }
+    },
+    "astro-ox": {
+      "scopes": {
+        "src/probe.astro": {
+          "domain": "astro",
+          "baselineStatus": "lintable",
+          "sourceProfile": "96412d31b63d0a32",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 572,
+            "unsupported": 67,
+            "disabled": 455
+          }
+        },
+        "probe.astro": {
+          "domain": "astro",
+          "baselineStatus": "lintable",
+          "sourceProfile": "96412d31b63d0a32",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 572,
+            "unsupported": 67,
+            "disabled": 455
+          }
+        },
+        "src/probe.cjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "38f96e5b998a57a1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 461
+          }
+        },
+        "probe.cjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "38f96e5b998a57a1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 461
+          }
+        },
+        "src/probe.cts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "4b7d165ca07bf30e",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 479
+          }
+        },
+        "probe.cts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "4b7d165ca07bf30e",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 479
+          }
+        },
+        "src/probe.d.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "4b7d165ca07bf30e",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 479
+          }
+        },
+        "probe.d.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "4b7d165ca07bf30e",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 479
+          }
+        },
+        "src/probe.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "38f96e5b998a57a1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 461
+          }
+        },
+        "probe.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "38f96e5b998a57a1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 461
+          }
+        },
+        "src/probe.jsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "38f96e5b998a57a1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 461
+          }
+        },
+        "probe.jsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "38f96e5b998a57a1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 461
+          }
+        },
+        "src/probe.mjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "38f96e5b998a57a1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 461
+          }
+        },
+        "probe.mjs": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "38f96e5b998a57a1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 461
+          }
+        },
+        "src/probe.mts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "4b7d165ca07bf30e",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 479
+          }
+        },
+        "probe.mts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "4b7d165ca07bf30e",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 479
+          }
+        },
+        "src/probe.svelte": {
+          "domain": "svelte",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "60e8920cb4a91209",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 579,
+            "unsupported": 72,
+            "disabled": 461
+          }
+        },
+        "probe.svelte": {
+          "domain": "svelte",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "60e8920cb4a91209",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 579,
+            "unsupported": 72,
+            "disabled": 461
+          }
+        },
+        "src/probe.svelte.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "38f96e5b998a57a1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 461
+          }
+        },
+        "probe.svelte.js": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "38f96e5b998a57a1",
+          "counts": {
+            "native": 218,
+            "js-plugin": 364,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 461
+          }
+        },
+        "src/probe.svelte.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "4b7d165ca07bf30e",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 479
+          }
+        },
+        "probe.svelte.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "4b7d165ca07bf30e",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 479
+          }
+        },
+        "src/probe.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "4b7d165ca07bf30e",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 479
+          }
+        },
+        "probe.ts": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "4b7d165ca07bf30e",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 479
+          }
+        },
+        "src/probe.tsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "4b7d165ca07bf30e",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 479
+          }
+        },
+        "probe.tsx": {
+          "domain": "module",
+          "baselineStatus": "lintable",
+          "sourceProfile": "4b7d165ca07bf30e",
+          "counts": {
+            "native": 205,
+            "js-plugin": 363,
+            "partial": 8,
+            "unsupported": 66,
+            "disabled": 479
+          }
+        },
+        "src/probe.vue": {
+          "domain": "vue",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "38f96e5b998a57a1",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 582,
+            "unsupported": 74,
+            "disabled": 461
+          }
+        },
+        "probe.vue": {
+          "domain": "vue",
+          "baselineStatus": "parse-error",
+          "sourceProfile": "38f96e5b998a57a1",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 582,
+            "unsupported": 74,
+            "disabled": 461
+          }
+        },
+        "src/probe.astro/1_1.ts": {
+          "domain": "astro-client",
+          "baselineStatus": "lintable",
+          "sourceProfile": "a4025cbdbd7f2325",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 539,
+            "unsupported": 102,
+            "disabled": 480
+          }
+        },
+        "probe.astro/1_2.ts": {
+          "domain": "astro-client",
+          "baselineStatus": "lintable",
+          "sourceProfile": "a4025cbdbd7f2325",
+          "counts": {
+            "native": 0,
+            "js-plugin": 0,
+            "partial": 539,
+            "unsupported": 102,
+            "disabled": 480
+          }
+        }
+      }
+    }
+  }
+}
