@@ -12,6 +12,17 @@ npm run changelog
 
 (Uses [Conventional Commits](https://www.conventionalcommits.org/) and [`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) with the `conventionalcommits` preset.)
 
+## [8.0.0](https://github.com/St1ggy/linter-config/compare/linter-config-v7.4.0...linter-config-v8.0.0) (2026-10-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **oxfmt:** common-ox, react-ox, solid-ox and next-ox now generate oxfmt.config.ts instead of prettier.config.js and require a separate oxfmt --check command alongside oxlint in consumer CI.
+
+### Features
+
+* **oxfmt:** use native formatting for four Oxlint stacks ([9f6fa77](https://github.com/St1ggy/linter-config/commit/9f6fa774c6af555ce93ff2996f94c5c9546052b2))
+
 ## [7.4.0](https://github.com/St1ggy/linter-config/compare/linter-config-v7.3.1...linter-config-v7.4.0) (2026-10-03)
 
 ### Features
