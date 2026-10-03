@@ -53,7 +53,7 @@ For SolidJS, `init-solid.sh` selects `eslint-solid`, `prettier-common`, and `sty
 
 ## Oxlint wrappers
 
-The six `init-*-ox.sh` shortcuts select the corresponding `*-ox` stack. They write `oxlint.config.ts`, `prettier.config.js` and `stylelint.config.js`. The wizard pins `oxlint@1.86.0` and `oxlint-tsgolint@7.0.2003` and installs only the framework integrations used by that preset. Svelte projects provide their Svelte runtime; their formatter and ESLint-compatible script rules use it.
+The six `init-*-ox.sh` shortcuts select the corresponding `*-ox` stack. All write `oxlint.config.ts` and `stylelint.config.js`. Common/React/Solid/Next write `oxfmt.config.ts`; Svelte/Astro write `prettier.config.js`. The wizard pins `oxlint@1.86.0` and `oxlint-tsgolint@7.0.2003`, adds `oxfmt@0.71.0` to the four Oxfmt stacks, and installs only the selected framework integrations. Svelte projects provide their Svelte runtime; their formatter and ESLint-compatible script rules use it.
 
 ```bash
 npx @st1ggy/linter-config init --react-ox
@@ -61,7 +61,9 @@ npx @st1ggy/linter-config migrate --astro-ox
 node ./scripts/linter-init.mjs init --solid-ox --dir ./my-app --skip-install
 ```
 
-`init` preserves existing wrappers, including the other engine's config. `migrate` offers the opposite engine config and old `.oxlintrc.*` files for removal before generating the selected wrappers. It never deletes them without confirmation.
+`init` preserves existing wrappers, including the other linter/formatter config. `migrate` offers the opposite configs and old `.oxlintrc.*`/`.oxfmtrc.*` files for removal before generating the selected wrappers. It never deletes them without confirmation.
+
+For the four Oxfmt stacks, run `oxlint .` and `oxfmt --check .` separately. Their lint presets do not run Prettier's JS rule. `oxfmt --write .` formats after lint fixes; import and package.json sorting are disabled. The shared formatter options are available through `@st1ggy/linter-config/oxfmt-common`.
 
 Oxlint uses native TS7 for typed linting. The consumer tsconfig must be TS7-compatible; the generator does not modify it. Read the [usage guide](../README.md#oxlint-variants) and [coverage report](../docs/OXLINT_RULE_MAPPING.md) before switching a project with Svelte/Astro templates or TS parser-service-dependent JS rules.
 
@@ -74,6 +76,8 @@ npm run inventory:ox
 npm run generate:ox:check
 npm run inventory:ox:check
 npm run test:ox
+npm run format:ox:check
+npm run format:ox:compare
 npm run typecheck:ox
 node scripts/package-smoke.mjs
 node scripts/package-smoke.mjs --pm pnpm

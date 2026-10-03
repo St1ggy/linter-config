@@ -37,7 +37,7 @@ Inventory rule counts (sample files in this repository):
 
 The package also exports `common-ox`, `react-ox`, `solid-ox`, `next-ox`, `svelte-ox` and `astro-ox`. Each is one `OxlintConfig` object, used through `oxlint.config.ts`, with `options.typeAware: true` and the native TS7 tsgolint engine. The original ESLint presets remain available.
 
-The new variants use explicit migrated rules plus compatible JS adapters, and keep each stack's existing Prettier and Stylelint selections. See [OXLINT_RULE_MAPPING.md](OXLINT_RULE_MAPPING.md) for source/target correspondence, per-scope counts, partial mappings and unsupported rules. Native script extraction does not provide Svelte/Astro template linting.
+The new variants use explicit migrated rules plus compatible JS adapters. Common/React/Solid/Next pair with `oxfmt-common` and a separate `oxfmt --check`; their source `prettier/prettier` check is recorded as `formatter` in the audit instead of running a Prettier JS plugin. Svelte/Astro keep their existing Prettier selections. Every stack retains Stylelint. See [OXLINT_RULE_MAPPING.md](OXLINT_RULE_MAPPING.md) for source/target correspondence, per-scope counts, partial mappings and unsupported rules. Native script extraction does not provide Svelte/Astro template linting.
 
 Regenerate and verify the Oxlint inventory with:
 
