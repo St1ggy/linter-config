@@ -1,6 +1,6 @@
 # st1ggy/linter-config
 
-Single npm package **`@st1ggy/linter-config`** with **subpath exports**. Config sources live under [`src/`](src/) (ESLint, Prettier, Stylelint).
+Single npm package **`@st1ggy/linter-config`** with **subpath exports**. Config sources live under [`src/`](src/) (ESLint, Oxlint, Prettier, Stylelint).
 
 Install once:
 
@@ -8,17 +8,19 @@ Install once:
 npm i -D @st1ggy/linter-config
 ```
 
-Framework-specific ESLint and Prettier plugins are optional peers, so installing this package does not install integrations for unused frameworks. The wizard installs only the selected stack's plugins as dev dependencies.
+Oxlint engines and framework-specific plugins are optional peers. The wizard installs the selected stack's engines and integration plugins as dev dependencies.
 
 ### Generate local wrapper configs
 
-The published CLI is invoked as **`@st1ggy/linter-config`** (see [`package.json`](package.json) `bin`). Each run writes **`eslint.config.js`**, **`prettier.config.js`**, and **`stylelint.config.js`** as ESM re-exports for one stack.
+The published CLI is invoked as **`@st1ggy/linter-config`** (see [`package.json`](package.json) `bin`). Each run writes **`eslint.config.js`** for an ESLint stack or **`oxlint.config.ts`** for an Oxlint stack, plus **`prettier.config.js`** and **`stylelint.config.js`** as re-exports for the selected stack.
 
 Unless **`--skip-install`** is passed: if **`package.json`** exists in the target directory, the CLI runs the detected package manager (**npm** / **pnpm** / **yarn** / **bun** from the nearest lockfile) to install **`@st1ggy/linter-config`** and only the selected stack's integration plugins. When all selected packages are already declared but missing from `node_modules`, it runs a regular install instead.
 
-Pick **at most one** stack flag (default **`--common`** if you omit all six):
+Pick **at most one** stack flag (default **`--common`** if omitted):
 
 **`--common` · `--react` · `--solid` · `--next` · `--svelte` · `--astro`**
+
+**`--common-ox` · `--react-ox` · `--solid-ox` · `--next-ox` · `--svelte-ox` · `--astro-ox`**
 
 **After** `npm i -D @st1ggy/linter-config`:
 
@@ -26,6 +28,7 @@ Pick **at most one** stack flag (default **`--common`** if you omit all six):
 npx @st1ggy/linter-config init
 npx @st1ggy/linter-config init --react
 npx @st1ggy/linter-config init --solid
+npx @st1ggy/linter-config init --solid-ox
 npx @st1ggy/linter-config migrate --svelte --dir ./apps/web
 npx @st1ggy/linter-config init --astro
 npm exec @st1ggy/linter-config -- init --common
@@ -46,9 +49,9 @@ The CLI is interactive in a terminal. Command and stack flags preselect their va
 Older **`--eslint`** on the command line is still accepted for compatibility; **`--eslint`** is optional.
 
 - **`init` / `create`** — create only missing files (skip existing).
-- **`migrate` / `reinit`** — optionally remove selected legacy configs, then overwrite the three wrapper configs.
+- **`migrate` / `reinit`** — optionally remove selected legacy configs, then overwrite the selected stack's three wrapper configs.
 
-**Legacy filenames** (`.eslintrc.*`, `prettier.config.cjs`, extra copies, …) are presented one by one by `migrate`; no file is deleted without confirmation. [`scripts/remove-current.sh`](scripts/remove-current.sh) remains available as a standalone cleanup helper.
+**Legacy filenames** (`.eslintrc.*`, `.oxlintrc.*`, `prettier.config.cjs`, extra copies, …) are presented one by one by `migrate`; no file is deleted without confirmation. Changing engines offers the other engine's config for removal during migration. [`scripts/remove-current.sh`](scripts/remove-current.sh) remains available as a standalone cleanup helper.
 
 Your project should use **`"type": "module"`** (or `.mjs` config filenames) so the generated ESM re-exports load.
 
@@ -88,6 +91,78 @@ The named export is `eslintSolid`. The Solid stack uses `prettier-common` and `s
 
 If you previously used Stylelint 16 with this preset, upgrade the consumer to **Stylelint 17** before depending on the latest release.
 
+## Oxlint variants
+
+Each existing stack has an Oxlint counterpart. The new configs are objects typed as `OxlintConfig`; the existing ESLint configs remain flat-config arrays.
+
+| Stack flag    | Config import                     | Prettier          | Stylelint        |
+| ------------- | --------------------------------- | ----------------- | ---------------- |
+| `--common-ox` | `@st1ggy/linter-config/common-ox` | `prettier-common` | `stylelint-scss` |
+| `--react-ox`  | `@st1ggy/linter-config/react-ox`  | `prettier-common` | `stylelint-scss` |
+| `--solid-ox`  | `@st1ggy/linter-config/solid-ox`  | `prettier-common` | `stylelint-scss` |
+| `--next-ox`   | `@st1ggy/linter-config/next-ox`   | `prettier-common` | `stylelint-scss` |
+| `--svelte-ox` | `@st1ggy/linter-config/svelte-ox` | `prettier-svelte` | `stylelint-scss` |
+| `--astro-ox`  | `@st1ggy/linter-config/astro-ox`  | `prettier-astro`  | `stylelint-scss` |
+
+### Install and run
+
+The checked engine versions are **Oxlint 1.86.0** and **oxlint-tsgolint 7.0.2003**, with native TypeScript 7 typed analysis. Use **Node.js 24.16.0+**. JS-plugin compatibility and the rule inventory are checked against these versions; the CLI installs the engines with exact versions.
+
+```bash
+npx @st1ggy/linter-config init --solid-ox
+```
+
+For manual Solid installation:
+
+```bash
+npm i -D @st1ggy/linter-config eslint-plugin-solid
+npm i -D --save-exact oxlint@1.86.0 oxlint-tsgolint@7.0.2003
+```
+
+```ts
+// oxlint.config.ts
+export { default } from '@st1ggy/linter-config/solid-ox'
+```
+
+```bash
+npx oxlint .
+# Also report TypeScript errors:
+npx oxlint --type-aware --type-check .
+# Fix supported lint violations:
+npx oxlint --fix .
+```
+
+Oxlint auto-discovers `oxlint.config.ts` and the applicable `tsconfig.json`. Remove options deleted in TypeScript 7, including `baseUrl`; make `paths` relative to the config instead. For Solid JSX, use `"jsx": "preserve"` and `"jsxImportSource": "solid-js"`. The wizard writes wrappers and installs integrations; it does not edit your tsconfig or package scripts.
+
+When composing configs, specify `typeAware` at the **consumer root**; root-only options are not inherited through `extends`:
+
+```ts
+import config from '@st1ggy/linter-config/solid-ox'
+import { defineConfig } from 'oxlint'
+
+export default defineConfig({
+  extends: [config],
+  options: { typeAware: true },
+  ignorePatterns: ['dist/**'],
+})
+```
+
+Prettier and Stylelint remain the format/style tools, with the existing framework plugins for Svelte and Astro. Oxlint also executes the compatible Prettier JS rule for ordinary JS/TS files. Re-run formatting if overlapping lint fixes leave formatting diagnostics.
+
+### Rule coverage
+
+The presets carry over native rule equivalents and compatible JS plugins, including custom severity, options, JSX style, import ordering and syntax restrictions. All default Oxlint categories are disabled; only migrated rules are enabled. Type-aware checks run through **tsgolint/TS7**. TS6 remains a library dependency for existing ESLint presets and some JS plugins; the new consumer command does not launch ESLint or create a TS6 type-checking Program.
+
+These are **maximum-feasible migrations, with documented gaps**, rather than fully equivalent replacements:
+
+- **Svelte/Astro:** Oxlint checks extracted scripts, not templates. Template-only checks and TS parser-service-dependent JS rules are unavailable. Checks that would misreport template-used variables are omitted for those scopes. Svelte script/module rules and aliases are retained where supported.
+- **Astro:** six frontmatter-only script checks are preserved via an adapter (deprecated Astro APIs, deprecated `getEntryBySlug`, component exports and prerender location). Template directives are not checked. The plugin API cannot distinguish frontmatter from a browser script containing identical text; that ambiguity is recorded as partial coverage.
+- Some native implementations have narrower behavior or lack source options. The original JS rule is used where compatible; remaining differences are recorded individually.
+- Compiler configuration-dependent guards are kept, but default-configuration control fixtures do not count as positive violation evidence.
+- Existing `eslint-disable` directives do not automatically retain their meaning after rule namespaces change. Use Oxlint directives with the migrated IDs and check `--report-unused-disable-directives` when migrating.
+
+See [the generated rule mapping](docs/OXLINT_RULE_MAPPING.md) for counts and every partial/unsupported mapping. The full source scopes, rule options and evidence references are in `data/oxlint-*.json`; development tests keep paired source/target fixtures outside the published tarball.
+
 ### Migration (v7)
 
 **v7** requires **ESLint 10.8+**. Framework integration plugins are optional peers and are installed by the interactive CLI only for the selected stack.
@@ -112,7 +187,7 @@ Releases are started manually from `Actions` → `Release` → `Run workflow`. I
 
 ## Toolchain (this repo)
 
-The `CI` GitHub Actions workflow runs linting, Solid integration tests, TypeScript checks, and a packed-package smoke test on pushes to `main` and pull requests. The smoke test installs the tarball into a temporary project and checks the CLI and Solid preset import. The `Release` workflow runs these checks before publishing as well.
+The `CI` GitHub Actions workflow runs linting, the original Solid tests, Oxlint tests, explicit TS6 and native TS7 checks, inventory/generated-config checks, and packed-package smoke tests on pushes to `main` and pull requests. It checks Node.js `24.16.0` and `latest`, and installs tarballs with npm and isolated pnpm. The `Release` workflow runs these checks before publishing as well.
 
 There is **one** published package at the **repository root** (no `packages/` workspace layout).
 
@@ -132,7 +207,12 @@ npm run lint
 | `npm run lint:fix` | Auto-fix ESLint, Stylelint, Prettier |
 | `npm run inventory` | Regenerate [`data/linter-config-inventory.json`](data/linter-config-inventory.json) |
 | `node --test scripts/solid-config.test.mjs` | Check Solid JSX/TSX linting and wrapper generation |
-| `node scripts/package-smoke.mjs` | Install a packed tarball and check its CLI and Solid preset |
+| `node scripts/package-smoke.mjs` | Check all six packed Oxlint stacks, their CLI/TS7 checks and legacy imports |
+| `node scripts/package-smoke.mjs --pm pnpm` | Check the tarball using isolated pnpm dependencies |
+| `npm run typecheck:ox` | Explicit native TypeScript 7 compiler check |
+| `npm run test:ox` | Oxlint integration, rule parity and coverage guardrail tests |
+| `npm run generate:ox` / `generate:ox:check` | Generate/verify the six Oxlint configurations and rule map |
+| `npm run inventory:ox` / `inventory:ox:check` | Generate/verify source scopes, evidence and coverage reports |
 | `npm run config:init` | `node ./scripts/linter-init.mjs init --common --dir ./examples/init-smoke` (skip existing); see [`scripts/README.md`](scripts/README.md) |
 | `npm run config:migrate` | `migrate` selected legacy configs and overwrite wrappers |
 | `npm run config:reinit` | alias for `config:migrate` |

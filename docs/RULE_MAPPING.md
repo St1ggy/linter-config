@@ -33,6 +33,21 @@ Inventory rule counts (sample files in this repository):
 - `eslint-svelte`: effective rules on `src/examples/example.svelte`
 - `eslint-astro`: effective rules on `src/examples/example.astro`
 
+## Oxlint counterparts
+
+The package also exports `common-ox`, `react-ox`, `solid-ox`, `next-ox`, `svelte-ox` and `astro-ox`. Each is one `OxlintConfig` object, used through `oxlint.config.ts`, with `options.typeAware: true` and the native TS7 tsgolint engine. The original ESLint presets remain available.
+
+The new variants use explicit migrated rules plus compatible JS adapters, and keep each stack's existing Prettier and Stylelint selections. See [OXLINT_RULE_MAPPING.md](OXLINT_RULE_MAPPING.md) for source/target correspondence, per-scope counts, partial mappings and unsupported rules. Native script extraction does not provide Svelte/Astro template linting.
+
+Regenerate and verify the Oxlint inventory with:
+
+```bash
+npm run generate:ox
+npm run inventory:ox
+npm run generate:ox:check
+npm run inventory:ox:check
+```
+
 ## Stylelint (SCSS preset)
 
 | Layer | `@st1ggy/linter-config` | Notes |
