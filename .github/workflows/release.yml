@@ -47,9 +47,19 @@ jobs:
       - if: ${{ steps.release.outputs.prs_created == 'true' }}
         run: node --test scripts/solid-config.test.mjs
       - if: ${{ steps.release.outputs.prs_created == 'true' }}
-        run: npx tsc --noEmit
+        run: node ./node_modules/typescript/bin/tsc --noEmit
+      - if: ${{ steps.release.outputs.prs_created == 'true' }}
+        run: npm run typecheck:ox
+      - if: ${{ steps.release.outputs.prs_created == 'true' }}
+        run: npm run generate:ox:check
+      - if: ${{ steps.release.outputs.prs_created == 'true' }}
+        run: npm run inventory:ox:check
+      - if: ${{ steps.release.outputs.prs_created == 'true' }}
+        run: npm run test:ox
       - if: ${{ steps.release.outputs.prs_created == 'true' }}
         run: node scripts/package-smoke.mjs
+      - if: ${{ steps.release.outputs.prs_created == 'true' }}
+        run: node scripts/package-smoke.mjs --pm pnpm
       - if: ${{ steps.release.outputs.prs_created == 'true' }}
         run: |
           if git diff --quiet -- CHANGELOG.md; then
@@ -95,8 +105,18 @@ jobs:
       - if: ${{ steps.release.outputs.release_created == 'true' }}
         run: node --test scripts/solid-config.test.mjs
       - if: ${{ steps.release.outputs.release_created == 'true' }}
-        run: npx tsc --noEmit
+        run: node ./node_modules/typescript/bin/tsc --noEmit
+      - if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: npm run typecheck:ox
+      - if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: npm run generate:ox:check
+      - if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: npm run inventory:ox:check
+      - if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: npm run test:ox
       - if: ${{ steps.release.outputs.release_created == 'true' }}
         run: node scripts/package-smoke.mjs
+      - if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: node scripts/package-smoke.mjs --pm pnpm
       - if: ${{ steps.release.outputs.release_created == 'true' }}
         run: npm publish --access public --provenance

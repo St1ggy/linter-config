@@ -15,14 +15,24 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['24.16.0', 'latest']
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v6
         with:
-          node-version: latest
+          node-version: ${{ matrix.node }}
           cache: npm
       - run: npm ci
       - run: npm run lint
       - run: node --test scripts/solid-config.test.mjs
-      - run: npx tsc --noEmit
+      - run: node ./node_modules/typescript/bin/tsc --noEmit
+      - run: npm run typecheck:ox
+      - run: npm run generate:ox:check
+      - run: npm run inventory:ox:check
+      - run: npm run test:ox
       - run: node scripts/package-smoke.mjs
+      - if: ${{ matrix.node == 'latest' }}
+        run: node scripts/package-smoke.mjs --pm pnpm
