@@ -4,9 +4,13 @@ import { spawnSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 
+import { OX_FRAMEWORK_PACKAGES, OX_VERSIONS } from '../src/oxlint/stacks.js'
+
 export const PACKAGE = '@st1ggy/linter-config'
 
-export const STACK_KEYS = ['common', 'react', 'solid', 'next', 'svelte', 'astro']
+const BASE_STACK_KEYS = ['common', 'react', 'solid', 'next', 'svelte', 'astro']
+
+export const STACK_KEYS = [...BASE_STACK_KEYS, ...BASE_STACK_KEYS.map((key) => `${key}-ox`)]
 
 export const STACKS = {
   common: {
@@ -74,6 +78,21 @@ export const STACK_CHOICES = [
   },
 ]
 
+for (const key of BASE_STACK_KEYS) {
+  const base = STACKS[key]
+
+  base.linterFile = 'eslint.config.js'
+  base.linterPreset = base.eslint
+  STACKS[`${key}-ox`] = {
+    linterFile: 'oxlint.config.ts',
+    linterPreset: `${key}-ox`,
+    prettier: base.prettier,
+    stylelint: base.stylelint,
+    packages: [...Object.keys(OX_VERSIONS), ...OX_FRAMEWORK_PACKAGES[key]],
+  }
+  STACK_CHOICES.push({ value: `${key}-ox`, name: `${key}-ox — Oxlint + native TypeScript 7` })
+}
+
 export function readPackageJson(directory) {
   const filePath = path.join(directory, 'package.json')
 
@@ -103,7 +122,7 @@ export function isSelfPackageRoot(directory) {
   return packageJson?.name === PACKAGE
 }
 
-export function hasResolvablePackage(startDirectory, packageName = PACKAGE) {
+function packageManifestPath(startDirectory, packageName) {
   let currentDirectory = path.resolve(startDirectory)
   const packageParts = packageName.split('/')
 
@@ -111,7 +130,7 @@ export function hasResolvablePackage(startDirectory, packageName = PACKAGE) {
     const marker = path.join(currentDirectory, 'node_modules', ...packageParts, 'package.json')
 
     if (existsSync(marker)) {
-      return true
+      return marker
     }
 
     const parentDirectory = path.dirname(currentDirectory)
@@ -123,7 +142,25 @@ export function hasResolvablePackage(startDirectory, packageName = PACKAGE) {
     currentDirectory = parentDirectory
   }
 
-  return false
+  return null
+}
+
+export function hasResolvablePackage(startDirectory, packageName = PACKAGE) {
+  return packageManifestPath(startDirectory, packageName) !== null
+}
+
+function hasRequestedVersion(directory, packageName, spec) {
+  const marker = packageManifestPath(directory, packageName)
+
+  if (!marker) {
+    return false
+  }
+
+  try {
+    return JSON.parse(readFileSync(marker, 'utf8')).version === spec.split('@').at(-1)
+  } catch {
+    return false
+  }
 }
 
 export function detectPackageManager(startDirectory) {
@@ -170,7 +207,7 @@ export function runPmSync(command, args, cwd) {
 
 // skipInstall: skip npm install; options.quiet: suppress stderr warnings
 export function ensureDevDependencies(targetDirectory, packages, shouldSkipInstall, options = {}) {
-  const { quiet = false } = options
+  const { quiet = false, specs = {} } = options
 
   if (shouldSkipInstall) {
     return
@@ -197,7 +234,11 @@ export function ensureDevDependencies(targetDirectory, packages, shouldSkipInsta
   }
 
   const dependencies = mergedDependencies(packageJson)
-  const packagesToAdd = packages.filter((packageName) => !Object.hasOwn(dependencies, packageName))
+  const packagesToAdd = packages.filter(
+    (packageName) =>
+      !Object.hasOwn(dependencies, packageName) ||
+      (specs[packageName] && !hasRequestedVersion(directory, packageName, specs[packageName])),
+  )
   const hasUnresolvedPackage = packages.some((packageName) => !hasResolvablePackage(directory, packageName))
 
   if (!hasUnresolvedPackage && packagesToAdd.length === 0) {
@@ -223,15 +264,18 @@ export function ensureDevDependencies(targetDirectory, packages, shouldSkipInsta
     return
   }
 
+  const requested = packagesToAdd.map((name) => specs[name] ?? name)
+  const shouldPin = requested.some((name, index) => name !== packagesToAdd[index])
+
   if (!quiet) {
-    process.stdout.write(`install: ${pm} add -D ${packagesToAdd.join(' ')} (${directory})\n`)
+    process.stdout.write(`install: ${pm} add -D ${requested.join(' ')} (${directory})\n`)
   }
 
   const add = {
-    npm: () => runPmSync('npm', ['install', '-D', ...packagesToAdd], directory),
-    pnpm: () => runPmSync('pnpm', ['add', '-D', ...packagesToAdd], directory),
-    yarn: () => runPmSync('yarn', ['add', '-D', ...packagesToAdd], directory),
-    bun: () => runPmSync('bun', ['add', '-d', ...packagesToAdd], directory),
+    npm: () => runPmSync('npm', ['install', '-D', ...(shouldPin ? ['--save-exact'] : []), ...requested], directory),
+    pnpm: () => runPmSync('pnpm', ['add', '-D', ...(shouldPin ? ['--save-exact'] : []), ...requested], directory),
+    yarn: () => runPmSync('yarn', ['add', '-D', ...(shouldPin ? ['--exact'] : []), ...requested], directory),
+    bun: () => runPmSync('bun', ['add', '-d', ...(shouldPin ? ['--exact'] : []), ...requested], directory),
   }
 
   add[pm]()
@@ -251,6 +295,14 @@ export function stackPackages(stackKey) {
   return [PACKAGE, ...stack.packages]
 }
 
+export function stackPackageSpecs(stackKey) {
+  stackPackages(stackKey)
+
+  return stackKey.endsWith('-ox')
+    ? Object.fromEntries(Object.entries(OX_VERSIONS).map(([name, version]) => [name, `${name}@${version}`]))
+    : {}
+}
+
 export function printHelp() {
   process.stdout.write(`\
 ${PACKAGE} — generate local wrapper configs in a consumer project.
@@ -264,13 +316,15 @@ Commands:
   create   Alias for init.
 
 Writes (each command):
-  eslint.config.js, prettier.config.js, stylelint.config.js — re-exports for one stack.
+  ESLint stacks: eslint.config.js, prettier.config.js, stylelint.config.js.
+  Oxlint stacks: oxlint.config.ts, prettier.config.js, stylelint.config.js.
 
 Unless --skip-install: if package.json exists, runs the detected package manager to add or sync
 ${PACKAGE} and the selected stack's integration plugins.
 
 Stack (at most one; default: common):
   --common | --react | --solid | --next | --svelte | --astro
+  --common-ox | --react-ox | --solid-ox | --next-ox | --svelte-ox | --astro-ox
 
 Options:
   --dir, -d       Target directory (default: current working directory).
@@ -282,6 +336,7 @@ Examples (after: npm i -D ${PACKAGE}):
   npx ${PACKAGE} init
   npx ${PACKAGE} init --react
   npx ${PACKAGE} init --solid
+  npx ${PACKAGE} init --solid-ox
   npx ${PACKAGE} migrate --svelte --dir ./apps/web
   npx ${PACKAGE} init --astro
   npm exec ${PACKAGE} -- init --common
@@ -324,23 +379,28 @@ export function writeFile(targetDirectory, name, content, overwrite, options = {
   return true
 }
 
-export function wrapperFileNames() {
-  return ['eslint.config.js', 'prettier.config.js', 'stylelint.config.js']
+export function wrapperFileNames(stackKey = 'common') {
+  stackPackages(stackKey)
+
+  return [STACKS[stackKey].linterFile, 'prettier.config.js', 'stylelint.config.js']
 }
 
-export function existingWrapperFiles(targetDirectory) {
-  return wrapperFileNames().filter((name) => existsSync(path.join(targetDirectory, name)))
+export function existingWrapperFiles(targetDirectory, stackKey = 'common') {
+  return wrapperFileNames(stackKey).filter((name) => existsSync(path.join(targetDirectory, name)))
 }
 
-export function legacyConfigFiles(targetDirectory) {
+export function legacyConfigFiles(targetDirectory, stackKey = 'common') {
   if (!existsSync(targetDirectory)) {
     return []
   }
 
-  const wrappers = new Set(wrapperFileNames())
+  const wrappers = new Set(wrapperFileNames(stackKey))
 
   return readdirSync(targetDirectory, { withFileTypes: true })
-    .filter((entry) => entry.isFile() && /(?:eslint|prettier|stylelint)/i.test(entry.name) && !wrappers.has(entry.name))
+    .filter(
+      (entry) =>
+        entry.isFile() && /(?:eslint|oxlint|prettier|stylelint)/i.test(entry.name) && !wrappers.has(entry.name),
+    )
     .map((entry) => entry.name)
     .toSorted((left, right) => left.localeCompare(right))
 }
@@ -383,7 +443,7 @@ export function run(mode, targetDirectory, stackKey, options = {}) {
 
   const shouldOverwrite = mode === 'migrate' || mode === 'reinit'
 
-  writeFile(targetDirectory, 'eslint.config.js', jsReExport(stack.eslint), shouldOverwrite, { quiet })
+  writeFile(targetDirectory, stack.linterFile, jsReExport(stack.linterPreset), shouldOverwrite, { quiet })
   writeFile(targetDirectory, 'prettier.config.js', jsReExport(stack.prettier), shouldOverwrite, { quiet })
   writeFile(targetDirectory, 'stylelint.config.js', jsReExport(stack.stylelint), shouldOverwrite, { quiet })
 }

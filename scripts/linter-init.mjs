@@ -20,27 +20,15 @@ import {
   resolveStackKey,
   resolveTargetDirectory,
   run,
+  stackPackageSpecs,
   stackPackages,
+  wrapperFileNames,
 } from './linter-init-core.mjs'
 
 function parseArgv(argv) {
   return minimist(argv, {
     string: ['dir', 'd'],
-    boolean: [
-      'help',
-      'h',
-      'skip-install',
-      'eslint',
-      'biome',
-      'common',
-      'react',
-      'solid',
-      'next',
-      'svelte',
-      'astro',
-      'interactive',
-      'i',
-    ],
+    boolean: ['help', 'h', 'skip-install', 'eslint', 'biome', ...STACK_KEYS, 'interactive', 'i'],
     alias: {
       h: 'help',
       d: 'dir',
@@ -58,12 +46,7 @@ function argvToValues(argv) {
     'skip-install': Boolean(argv['skip-install']),
     eslint: Boolean(argv.eslint),
     biome: Boolean(argv.biome),
-    common: Boolean(argv.common),
-    react: Boolean(argv.react),
-    solid: Boolean(argv.solid),
-    next: Boolean(argv.next),
-    svelte: Boolean(argv.svelte),
-    astro: Boolean(argv.astro),
+    ...Object.fromEntries(STACK_KEYS.map((key) => [key, argv[key] === true])),
   }
 }
 
@@ -77,7 +60,7 @@ async function selectCommand(command) {
     choices: [
       {
         value: 'init',
-        name: 'init — create missing ESLint, Prettier and Stylelint wrappers',
+        name: 'init — create missing linter, Prettier and Stylelint wrappers',
       },
       {
         value: 'migrate',
@@ -102,14 +85,14 @@ async function selectStack(values) {
   })
 }
 
-async function selectLegacyFiles(command, directory) {
+async function selectLegacyFiles(command, directory, stack) {
   if (command !== 'migrate') {
     return []
   }
 
   const selected = []
 
-  for (const file of legacyConfigFiles(directory)) {
+  for (const file of legacyConfigFiles(directory, stack)) {
     if (await confirm({ message: `Remove legacy config ${file}?`, default: false })) {
       selected.push(file)
     }
@@ -122,7 +105,7 @@ function printSummary(command, stack, directory, shouldSkipInstall, existing, fi
   const wrapperFiles =
     command === 'init' && existing.length > 0
       ? `create missing; keep ${existing.join(', ')}`
-      : 'write eslint.config.js, prettier.config.js, stylelint.config.js'
+      : `write ${wrapperFileNames(stack).join(', ')}`
 
   process.stdout.write('\n')
   process.stdout.write(`  Action:  ${command}\n`)
@@ -148,11 +131,20 @@ async function runInteractive(command, values) {
   }
 
   const shouldSkipInstall = values['skip-install'] === true
-  const existing = existingWrapperFiles(resolved)
-  const filesToRemove = await selectLegacyFiles(selectedCommand, resolved)
+  const existing = existingWrapperFiles(resolved, selectedStack)
+  const filesToRemove = await selectLegacyFiles(selectedCommand, resolved, selectedStack)
   const packages = stackPackages(selectedStack)
+  const specs = stackPackageSpecs(selectedStack)
 
-  printSummary(selectedCommand, selectedStack, resolved, shouldSkipInstall, existing, filesToRemove, packages)
+  printSummary(
+    selectedCommand,
+    selectedStack,
+    resolved,
+    shouldSkipInstall,
+    existing,
+    filesToRemove,
+    packages.map((name) => specs[name] ?? name),
+  )
 
   const shouldProceed = await confirm({
     message: 'Proceed?',
@@ -175,7 +167,7 @@ async function runInteractive(command, values) {
     }).start()
 
     try {
-      ensureDevDependencies(resolved, packages, false, { quiet: true })
+      ensureDevDependencies(resolved, packages, false, { quiet: true, specs })
       spinner.succeed(`${selectedStack} linting packages are available`)
     } catch (error) {
       spinner.fail('Dependency step failed')
@@ -185,7 +177,7 @@ async function runInteractive(command, values) {
 
   const writeSpinner = ora({
     color: 'green',
-    text: 'Writing eslint.config.js, prettier.config.js, stylelint.config.js…',
+    text: `Writing ${wrapperFileNames(selectedStack).join(', ')}…`,
   }).start()
 
   try {
@@ -213,7 +205,7 @@ function normalizeCommand(command) {
 function warnLegacyFlags(values) {
   if (values.biome === true) {
     process.stderr.write(
-      `warning: --biome is ignored; Biome presets were removed from ${PACKAGE}. Only ESLint, Prettier, and Stylelint wrappers are written.\n`,
+      `warning: --biome is ignored; Biome presets were removed from ${PACKAGE}. Select an ESLint or Oxlint stack.\n`,
     )
   }
 }

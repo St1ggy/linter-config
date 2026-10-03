@@ -93,6 +93,36 @@
       "import": "./src/eslint/eslint.config.common.js",
       "default": "./src/eslint/eslint.config.common.js"
     },
+    "./common-ox": {
+      "types": "./src/oxlint/index.d.ts",
+      "import": "./src/oxlint/oxlint.config.common.js",
+      "default": "./src/oxlint/oxlint.config.common.js"
+    },
+    "./react-ox": {
+      "types": "./src/oxlint/index.d.ts",
+      "import": "./src/oxlint/oxlint.config.react.js",
+      "default": "./src/oxlint/oxlint.config.react.js"
+    },
+    "./solid-ox": {
+      "types": "./src/oxlint/index.d.ts",
+      "import": "./src/oxlint/oxlint.config.solid.js",
+      "default": "./src/oxlint/oxlint.config.solid.js"
+    },
+    "./next-ox": {
+      "types": "./src/oxlint/index.d.ts",
+      "import": "./src/oxlint/oxlint.config.next.js",
+      "default": "./src/oxlint/oxlint.config.next.js"
+    },
+    "./svelte-ox": {
+      "types": "./src/oxlint/index.d.ts",
+      "import": "./src/oxlint/oxlint.config.svelte.js",
+      "default": "./src/oxlint/oxlint.config.svelte.js"
+    },
+    "./astro-ox": {
+      "types": "./src/oxlint/index.d.ts",
+      "import": "./src/oxlint/oxlint.config.astro.js",
+      "default": "./src/oxlint/oxlint.config.astro.js"
+    },
     "./prettier-common": {
       "types": "./index.d.ts",
       "import": "./src/prettier/prettier.config.common.js",
@@ -119,7 +149,11 @@
     "src",
     "scripts",
     "data",
-    "docs"
+    "docs",
+    "!scripts/fixtures",
+    "!scripts/*.test.mjs",
+    "!scripts/oxlint-*.mjs",
+    "!scripts/package-smoke.mjs"
   ],
   "scripts": {
     "lint": "eslint . && stylelint \"src/**/*.{css,scss}\" --config ./src/stylelint/stylelint.config.scss.js --allow-empty-input && prettier --check .",
@@ -132,6 +166,12 @@
     "changelog:dry": "conventional-changelog -p conventionalcommits",
     "publish:npm": "npm publish --access public",
     "inventory": "node ./scripts/inventory.mjs",
+    "typecheck:ox": "node ./node_modules/@typescript/native/bin/tsc --noEmit",
+    "generate:ox": "node scripts/oxlint-generate.mjs",
+    "generate:ox:check": "node scripts/oxlint-generate.mjs --check",
+    "inventory:ox": "node scripts/oxlint-inventory.mjs --write",
+    "inventory:ox:check": "node scripts/oxlint-inventory.mjs --source-only --check && node scripts/oxlint-inventory.mjs --check",
+    "test:ox": "node --test --test-concurrency=2 scripts/oxlint-*.test.mjs",
     "config:init": "node ./scripts/linter-init.mjs init --common --dir ./examples/init-smoke",
     "config:migrate": "node ./scripts/linter-init.mjs migrate --common --dir ./examples/init-smoke",
     "config:reinit": "node ./scripts/linter-init.mjs reinit --common --dir ./examples/init-smoke",
@@ -148,6 +188,8 @@
     "eslint-plugin-solid": "^0.18.0",
     "eslint-plugin-svelte": "^3.22.0",
     "next": "^16.3.0",
+    "oxlint": "1.86.0",
+    "oxlint-tsgolint": "7.0.2003",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-svelte": "^4.1.1",
@@ -180,6 +222,12 @@
     "next": {
       "optional": true
     },
+    "oxlint": {
+      "optional": true
+    },
+    "oxlint-tsgolint": {
+      "optional": true
+    },
     "astro": {
       "optional": true
     },
@@ -203,6 +251,8 @@
     }
   },
   "devDependencies": {
+    "@typescript/native": "npm:typescript@7.0.2",
+    "pnpm": "10.32.1",
     "@next/eslint-plugin-next": "^16.3.0",
     "@stylistic/eslint-plugin-migrate": "^4.4.1",
     "conventional-changelog": "^8.1.0",
@@ -213,6 +263,8 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-solid": "^0.18.0",
     "eslint-plugin-svelte": "^3.22.0",
+    "oxlint": "1.86.0",
+    "oxlint-tsgolint": "7.0.2003",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-svelte": "^4.1.1",
     "solid-js": "^1.9.15",
