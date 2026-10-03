@@ -1,6 +1,6 @@
 {
   "name": "@st1ggy/linter-config",
-  "version": "7.4.0",
+  "version": "8.0.0",
   "description": "Shareable ESLint, Oxlint, Oxfmt, Prettier, and Stylelint configs.",
   "private": false,
   "repository": {
