@@ -1,5 +1,5 @@
-import { defineConfig } from 'eslint/config'
 import { configs } from 'eslint-plugin-sonarjs'
+import { defineConfig } from 'eslint/config'
 
 import { files } from './constants.js'
 

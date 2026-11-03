@@ -2,13 +2,13 @@
 
 import assert from 'node:assert/strict'
 import { execFileSync, spawnSync } from 'node:child_process'
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import process from 'node:process'
 import { pathToFileURL } from 'node:url'
 
-import { OXFMT_STACKS, OXFMT_VERSION, OX_ESLINT_VERSION, OX_VERSIONS, SUPPLEMENT_STACKS } from '../src/oxlint/stacks.js'
+import { OXFMT_STACKS, OXFMT_VERSION, OX_VERSIONS } from '../src/oxlint/stacks.js'
 
 import { STACKS, run } from './linter-init-core.mjs'
 import { OX_STACKS, ROOT, packageExecutable, runOxfmt, runOxlint, selectedStacks } from './oxlint-tools.mjs'
@@ -135,68 +135,9 @@ const markers = {
   },
 }
 
-function checkSupplement(directory, stack) {
-  const templates = {
-    svelte: {
-      file: 'template.svelte',
-      valid: '<p>Hello</p>\n',
-      invalid: '<p>{@html content}</p>\n',
-      rule: 'svelte/no-at-html-tags',
-    },
-    astro: {
-      file: 'template.astro',
-      valid: '<p>Hello</p>\n',
-      invalid: '<div set:html={content}>Hello</div>\n',
-      rule: 'astro/no-conflict-set-directives',
-    },
-    vue: {
-      file: 'TemplateView.vue',
-      valid: '<template><p>Hello</p></template>\n',
-      invalid: '<template><p v-for="item in items">{{ item }}</p></template>\n',
-      rule: 'vue/require-v-for-key',
-    },
-    nuxt: {
-      file: 'TemplateView.vue',
-      valid: '<template><p>Hello</p></template>\n',
-      invalid: '<template><p v-for="item in items">{{ item }}</p></template>\n',
-      rule: 'vue/require-v-for-key',
-    },
-    angular: {
-      file: 'template.component.html',
-      valid: '<p>Hello</p>\n',
-      invalid: '<img src="image.png">\n',
-      rule: '@angular-eslint/template/alt-text',
-    },
-  }
-  const specimen = templates[stack]
-  const executable = packageExecutable('eslint', 'bin/eslint.js', directory)
-  const versionArgs =
-    pm === 'npm' ? ['exec', '--offline', '--', 'eslint', '--version'] : ['exec', 'eslint', '--version']
-
-  assert.equal(pmCommand(versionArgs, directory).trim(), `v${OX_ESLINT_VERSION}`)
-
-  for (const kind of ['valid', 'invalid']) {
-    writeFileSync(path.join(directory, specimen.file), specimen[kind])
-    const checked = spawnSync(process.execPath, [executable, specimen.file, '--format', 'json'], {
-      cwd: directory,
-      encoding: 'utf8',
-      timeout: 60_000,
-    })
-
-    assert.ok(checked.status === 0 || checked.status === 1, checked.stderr + checked.stdout)
-    const [result] = JSON.parse(checked.stdout)
-
-    assert.equal(result.fatalErrorCount, 0, JSON.stringify(result.messages))
-
-    if (kind === 'valid') {
-      assert.equal(result.errorCount, 0, JSON.stringify(result.messages))
-    } else {
-      assert.ok(
-        result.messages.some(({ ruleId }) => ruleId === specimen.rule),
-        JSON.stringify(result.messages),
-      )
-    }
-  }
+function checkOxOnly(directory, stack) {
+  assert.equal(existsSync(path.join(directory, 'eslint.config.js')), false, `${stack}: no implicit ESLint wrapper`)
+  assert.ok(!STACKS[`${stack}-ox`].packages.includes('eslint'), `${stack}: no direct ESLint install`)
 }
 
 async function checkOxStack(directory, stack) {
@@ -209,6 +150,7 @@ async function checkOxStack(directory, stack) {
     JSON.stringify({
       compilerOptions: {
         allowJs: true,
+        strict: true,
         jsx: 'preserve',
         target: 'esnext',
         module: 'esnext',
@@ -259,9 +201,7 @@ async function checkOxStack(directory, stack) {
   assert.equal(JSON.parse(oxManifest).version, OX_VERSIONS.oxlint)
   assert.equal(JSON.parse(tsManifest).version, OX_VERSIONS['oxlint-tsgolint'])
 
-  if (SUPPLEMENT_STACKS.includes(stack)) {
-    checkSupplement(directory, stack)
-  }
+  checkOxOnly(directory, stack)
 
   process.stdout.write(`${pm}: packed ${stack}-ox CLI, formatter, marker and native typed checks passed\n`)
 }
@@ -296,7 +236,7 @@ function checkLegacy(directory) {
   writeFileSync(
     path.join(directory, 'tsconfig.json'),
     JSON.stringify({
-      compilerOptions: { allowJs: true, jsx: 'preserve', noEmit: true },
+      compilerOptions: { allowJs: true, strict: true, jsx: 'preserve', noEmit: true },
       include: ['*.ts', '*.tsx', '*.svelte', '*.astro'],
     }),
   )

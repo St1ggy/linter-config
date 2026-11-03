@@ -2,12 +2,12 @@ import angular from '@angular-eslint/eslint-plugin'
 import { ESLint } from 'eslint'
 import vue from 'eslint-plugin-vue'
 import assert from 'node:assert/strict'
-import { mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import test from 'node:test'
 
 import { angularRules, recommendedAngularRules, vueRules } from '../src/oxlint/framework-rules.js'
-import { OXFMT_STACKS, OX_ESLINT_VERSION, SUPPLEMENT_STACKS } from '../src/oxlint/stacks.js'
+import { OXFMT_STACKS } from '../src/oxlint/stacks.js'
 
 import { temporaryProject } from './fixtures/oxlint-cases.mjs'
 import {
@@ -15,7 +15,6 @@ import {
   assertStackRuntime,
   legacyConfigFiles,
   run,
-  stackPackageSpecs,
   stackPackages,
   wrapperFileNames,
 } from './linter-init-core.mjs'
@@ -47,7 +46,7 @@ test('Vue native rules and Angular JS rules track the reviewed upstream recommen
 })
 
 for (const stack of OXFMT_STACKS) {
-  test(`${stack}-ox writes Oxfmt and retains companion configs on init/migrate`, (context) => {
+  test(`${stack}-ox never generates or installs ESLint and preserves existing ESLint files`, (context) => {
     const directory = temporaryProject(context, { 'prettier.config.js': '// keep until migration is confirmed\n' })
 
     run('init', directory, `${stack}-ox`, { quiet: true })
@@ -56,14 +55,13 @@ for (const stack of OXFMT_STACKS) {
       readFileSync(path.join(directory, 'prettier.config.js'), 'utf8'),
       '// keep until migration is confirmed\n',
     )
-    assert.equal(wrapperFileNames(`${stack}-ox`).includes('eslint.config.js'), SUPPLEMENT_STACKS.includes(stack))
-
-    if (SUPPLEMENT_STACKS.includes(stack)) {
-      assert.ok(stackPackages(`${stack}-ox`).includes('eslint'))
-      assert.equal(stackPackageSpecs(`${stack}-ox`).eslint, `eslint@${OX_ESLINT_VERSION}`)
-      assert.ok(readFileSync(path.join(directory, 'eslint.config.js'), 'utf8').includes(`eslint-${stack}-ox`))
-      writeFileSync(path.join(directory, 'eslint.config.js'), '// custom companion\n')
-    }
+    assert.ok(!wrapperFileNames(`${stack}-ox`).includes('eslint.config.js'))
+    assert.ok(!stackPackages(`${stack}-ox`).includes('eslint'))
+    assert.ok(!stackPackages(`${stack}-ox`).includes('@angular-eslint/eslint-plugin-template'))
+    assert.ok(!stackPackages(`${stack}-ox`).includes('@angular-eslint/template-parser'))
+    assert.ok(!stackPackages(`${stack}-ox`).includes('vue-eslint-parser'))
+    assert.equal(existsSync(path.join(directory, 'eslint.config.js')), false)
+    writeFileSync(path.join(directory, 'eslint.config.js'), '// user ESLint config\n')
 
     writeFileSync(path.join(directory, 'oxfmt.config.ts'), '// custom formatter\n')
     run('init', directory, `${stack}-ox`, { quiet: true })
@@ -73,9 +71,7 @@ for (const stack of OXFMT_STACKS) {
       readFileSync(path.join(directory, 'oxfmt.config.ts'), 'utf8').includes(STACKS[`${stack}-ox`].formatterPreset),
     )
 
-    if (SUPPLEMENT_STACKS.includes(stack)) {
-      assert.ok(readFileSync(path.join(directory, 'eslint.config.js'), 'utf8').includes(`eslint-${stack}-ox`))
-    }
+    assert.equal(readFileSync(path.join(directory, 'eslint.config.js'), 'utf8'), '// user ESLint config\n')
   })
 }
 
@@ -253,7 +249,7 @@ const templateCases = [
 ]
 
 for (const { stack, file, valid, invalid, rule } of templateCases) {
-  test(`${stack}: ESLint companion checks templates without a Prettier lint rule`, async (context) => {
+  test(`${stack}: explicitly opted-in compatibility ESLint preset checks templates`, async (context) => {
     const directory = temporaryProject(context, {
       'tsconfig.json': JSON.stringify({ compilerOptions: { allowJs: true }, include: ['*.svelte', '*.ts'] }),
       [file]: valid,

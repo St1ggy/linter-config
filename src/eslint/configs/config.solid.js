@@ -1,5 +1,5 @@
-import { defineConfig } from 'eslint/config'
 import solidPlugin from 'eslint-plugin-solid'
+import { defineConfig } from 'eslint/config'
 
 export default defineConfig([
   {

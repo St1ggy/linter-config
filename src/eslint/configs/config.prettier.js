@@ -1,6 +1,6 @@
-import { defineConfig } from 'eslint/config'
 import prettierConfig from 'eslint-config-prettier'
 import prettierPlugin from 'eslint-plugin-prettier'
+import { defineConfig } from 'eslint/config'
 
 import { filesPrettier } from './constants.js'
 

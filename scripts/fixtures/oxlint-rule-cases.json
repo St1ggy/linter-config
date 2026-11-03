@@ -2735,45 +2735,6 @@
         "code": "import value from \"./dep.js\";\nimport path from \"node:path\";\nconsole.log(value,path)"
       }
     },
-    "module:newline-before-return:038966de9f6b": {
-      "sourceId": "newline-before-return",
-      "stack": "common",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "eslint-js/newline-before-return",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/eslint/eslint/v10.8.0/docs/src/rules/newline-before-return.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.js",
-        "code": "\n\n  if (!bar) {\n    bar = baz;\n    return bar;\n  }"
-      }
-    },
     "module:no-async-promise-executor:038966de9f6b": {
       "sourceId": "no-async-promise-executor",
       "stack": "common",
@@ -24869,45 +24830,6 @@
         "code": "\n\n\n<Hello foo={{\n  bar\n}} baz />;"
       }
     },
-    "module:@stylistic/jsx-props-no-multi-spaces:038966de9f6b": {
-      "sourceId": "@stylistic/jsx-props-no-multi-spaces",
-      "stack": "common",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "stylistic-js/jsx-props-no-multi-spaces",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/eslint-stylistic/eslint-stylistic/v5.10.0/packages/eslint-plugin/rules/jsx-props-no-multi-spaces/README.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "\n<App  spacy />;"
-      }
-    },
     "module:@stylistic/jsx-tag-spacing:eb0307e440ac": {
       "sourceId": "@stylistic/jsx-tag-spacing",
       "stack": "common",
@@ -29460,6 +29382,226 @@
       "invalid": {
         "file": "invalid.tsx",
         "code": "import { useEffect } from 'react'\nexport function View() { useEffect(() => { setTimeout(handler, 1000) }, []); return <p>Hello</p> }\n"
+      }
+    },
+    "module:@typescript-eslint/await-thenable:038966de9f6b": {
+      "sourceId": "@typescript-eslint/await-thenable",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "typescript/await-thenable",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "origin": "https://typescript-eslint.io/rules/await-thenable",
+      "valid": {
+        "file": "valid.ts",
+        "code": "export async function run() { return await Promise.resolve(1) }\n"
+      },
+      "invalid": {
+        "file": "invalid.ts",
+        "code": "export async function run() { return await 1 }\n"
+      }
+    },
+    "module:@typescript-eslint/no-floating-promises:038966de9f6b": {
+      "sourceId": "@typescript-eslint/no-floating-promises",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "typescript/no-floating-promises",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "origin": "https://typescript-eslint.io/rules/no-floating-promises",
+      "valid": {
+        "file": "valid.ts",
+        "code": "export async function run() { await Promise.resolve(1) }\n"
+      },
+      "invalid": {
+        "file": "invalid.ts",
+        "code": "export function run() { Promise.resolve(1) }\n"
+      }
+    },
+    "module:@typescript-eslint/no-misused-promises:038966de9f6b": {
+      "sourceId": "@typescript-eslint/no-misused-promises",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "typescript/no-misused-promises",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "origin": "https://typescript-eslint.io/rules/no-misused-promises",
+      "valid": {
+        "file": "valid.ts",
+        "code": "export async function run() { const ready = Promise.resolve(true); if (await ready) { return 1 } return 0 }\n"
+      },
+      "invalid": {
+        "file": "invalid.ts",
+        "code": "export function run() { const ready = Promise.resolve(true); if (ready) { return 1 } return 0 }\n"
+      }
+    },
+    "module:@typescript-eslint/no-unnecessary-type-assertion:080a9ed42855": {
+      "sourceId": "@typescript-eslint/no-unnecessary-type-assertion",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "typescript/no-unnecessary-type-assertion",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "origin": "https://typescript-eslint.io/rules/no-unnecessary-type-assertion",
+      "valid": {
+        "file": "valid.ts",
+        "code": "export function label(value: string) { return value }\n"
+      },
+      "invalid": {
+        "file": "invalid.ts",
+        "code": "export function label(value: string) { return value as string }\n"
+      }
+    },
+    "module:@typescript-eslint/no-unnecessary-type-parameters:080a9ed42855": {
+      "sourceId": "@typescript-eslint/no-unnecessary-type-parameters",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "typescript/no-unnecessary-type-parameters",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "origin": "https://typescript-eslint.io/rules/no-unnecessary-type-parameters",
+      "valid": {
+        "file": "valid.ts",
+        "code": "export function identity<T>(value: T): T { return value }\n"
+      },
+      "invalid": {
+        "file": "invalid.ts",
+        "code": "export function log<T extends string>(value: T): void { console.log(value) }\n"
+      }
+    },
+    "module:@typescript-eslint/prefer-nullish-coalescing:5645f94d267d": {
+      "sourceId": "@typescript-eslint/prefer-nullish-coalescing",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        1,
+        {
+          "ignorePrimitives": true
+        }
+      ],
+      "targetId": "typescript/prefer-nullish-coalescing",
+      "targetValue": [
+        1,
+        {
+          "ignorePrimitives": true
+        }
+      ],
+      "sourceType": "module",
+      "origin": "https://typescript-eslint.io/rules/prefer-nullish-coalescing",
+      "valid": {
+        "file": "valid.ts",
+        "code": "export const settings = (value: { label: string } | null) => value ?? { label: \"default\" }\nexport const label = (value: string | null) => value || \"default\"\n"
+      },
+      "invalid": {
+        "file": "invalid.ts",
+        "code": "export const settings = (value: { label: string } | null) => value || { label: \"default\" }\n"
+      }
+    },
+    "module:eqeqeq:8d0cbeeba4a5": {
+      "sourceId": "eqeqeq",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2,
+        "always",
+        {
+          "null": "ignore"
+        }
+      ],
+      "targetId": "eslint/eqeqeq",
+      "targetValue": [
+        2,
+        "always",
+        {
+          "null": "ignore"
+        }
+      ],
+      "sourceType": "module",
+      "origin": "https://eslint.org/docs/latest/rules/eqeqeq",
+      "valid": {
+        "file": "valid.ts",
+        "code": "export const equal = (value: unknown) => value === 1\nexport const isNullish = (value: unknown) => value == null\n"
+      },
+      "invalid": {
+        "file": "invalid.ts",
+        "code": "export const equal = (value: unknown) => value == 1\n"
+      }
+    },
+    "module:max-depth:aa5507f9e57e": {
+      "sourceId": "max-depth",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        1,
+        4
+      ],
+      "targetId": "eslint/max-depth",
+      "targetValue": [
+        1,
+        4
+      ],
+      "sourceType": "module",
+      "origin": "https://eslint.org/docs/latest/rules/max-depth",
+      "valid": {
+        "file": "valid.ts",
+        "code": "export function visit(a: boolean) { if (a) { return 1 } return 0 }\n"
+      },
+      "invalid": {
+        "file": "invalid.ts",
+        "code": "export function visit(a: boolean) { if (a) { if (a) { if (a) { if (a) { if (a) { return 1 } } } } } return 0 }\n"
+      }
+    },
+    "module:no-else-return:6655d9cda307": {
+      "sourceId": "no-else-return",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        1,
+        {
+          "allowElseIf": false
+        }
+      ],
+      "targetId": "eslint/no-else-return",
+      "targetValue": [
+        1,
+        {
+          "allowElseIf": false
+        }
+      ],
+      "sourceType": "module",
+      "origin": "https://eslint.org/docs/latest/rules/no-else-return",
+      "valid": {
+        "file": "valid.ts",
+        "code": "export function label(ready: boolean) { if (ready) { return 1 } return 0 }\n"
+      },
+      "invalid": {
+        "file": "invalid.ts",
+        "code": "export function label(ready: boolean) { if (ready) { return 1 } else { return 0 } }\n"
       }
     }
   }

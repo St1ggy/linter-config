@@ -35,6 +35,7 @@ export async function prepareCorpus(directory, corpus) {
         moduleResolution: 'bundler',
         moduleDetection: 'force',
         allowJs: true,
+        strict: true,
         jsx: 'preserve',
         noEmit: true,
         skipLibCheck: true,

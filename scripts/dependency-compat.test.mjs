@@ -1,10 +1,9 @@
+import stylelintScss from '@st1ggy/linter-config/stylelint-scss'
 import assert from 'node:assert/strict'
 import path from 'node:path'
 import test from 'node:test'
 import { format, resolveConfig } from 'prettier'
 import stylelint from 'stylelint'
-
-import stylelintScss from '@st1ggy/linter-config/stylelint-scss'
 
 import { temporaryProject } from './fixtures/oxlint-cases.mjs'
 import { ROOT } from './oxlint-tools.mjs'

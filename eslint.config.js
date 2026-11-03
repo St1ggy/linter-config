@@ -10,6 +10,8 @@ export default [
   {
     rules: {
       'import-x/extensions': 'off',
+      // Oxfmt owns declaration order in this repository as well as Ox consumers.
+      'import-x/order': 'off',
     },
   },
   {

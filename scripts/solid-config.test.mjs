@@ -1,13 +1,12 @@
 /* eslint-disable unicorn/no-incorrect-template-string-interpolation -- Fixtures contain literal JSX expressions. */
 
+import solidConfig from '@st1ggy/linter-config/eslint-solid'
 import { ESLint } from 'eslint'
 import assert from 'node:assert/strict'
 import { mkdtempSync, readFileSync, realpathSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import test from 'node:test'
-
-import solidConfig from '@st1ggy/linter-config/eslint-solid'
 
 import prettierConfig from '../src/prettier/prettier.config.common.js'
 

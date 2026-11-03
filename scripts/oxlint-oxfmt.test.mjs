@@ -1,11 +1,10 @@
+import formatter from '@st1ggy/linter-config/oxfmt-common'
 import assert from 'node:assert/strict'
 import { readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import test from 'node:test'
 import { pathToFileURL } from 'node:url'
 import { format } from 'oxfmt'
-
-import formatter from '@st1ggy/linter-config/oxfmt-common'
 
 import { OXFMT_STACKS, OXFMT_VERSION } from '../src/oxlint/stacks.js'
 
@@ -32,15 +31,15 @@ test('Oxfmt checks and fixes style using the automatically discovered shared con
   assert.equal(runOxfmt(['--check', 'probe.ts'], { cwd: directory }).status, 0)
 })
 
-test('Native formatter retains import and package-property order', async () => {
+test('Native formatter sorts import declarations but retains package-property and named-specifier order', async () => {
   const input = '{"zeta":true,"name":"example","alpha":1}'
   const json = await format('package.json', input, formatter)
 
   assert.deepEqual(Object.keys(JSON.parse(json.code)), ['zeta', 'name', 'alpha'])
-  const code = "import z from './z'\nimport a from './a'\nexport { z, a }\n"
+  const code = "import z from './z'\nimport { zoo, alpha } from './a'\nexport { z, alpha }\n"
   const js = await format('probe.js', code, formatter)
 
-  assert.equal(js.code, code)
+  assert.equal(js.code, "import { zoo, alpha } from './a'\nimport z from './z'\nexport { z, alpha }\n")
 })
 
 test('Oxfmt honors gitignore, prettierignore and caller overrides', (context) => {
@@ -102,10 +101,11 @@ test('Original ESLint stacks retain their Prettier wrappers', () => {
   }
 })
 
-test('Oxfmt and source Prettier options agree on sources and the reviewed corpus', async () => {
+test('Oxfmt and source Prettier layout agree, with import sorting explicitly excluded', async () => {
   const comparison = await compareFormatters()
 
   assert.equal(comparison.counts.sources.skipped, 0)
   assert.ok(comparison.counts.corpus.equal >= 1400)
   assert.deepEqual(comparison.differences, [], JSON.stringify(comparison))
+  assert.deepEqual(comparison.excludedFeatures, ['sortImports'])
 })

@@ -72,6 +72,19 @@ test('Coverage rejects changed options, severities and missing evidence', () => 
   assert.throws(() => validateCoverage(source, mapping, missingFixture, catalog), /Missing fixture/)
 })
 
+test('Import sorting is audited as an intentional external formatter policy, not lint parity', () => {
+  const changed = structuredClone(mapping)
+  const imports = Object.values(changed.decisions).find(
+    (item) => item.sourceId === 'import-x/order' && item.status === 'formatter',
+  )
+
+  assert.ok(imports)
+  assert.equal(imports.targetId, 'oxfmt/sort-imports')
+  assert.equal(imports.skipConfiguration, true)
+  imports.formatterOptions = false
+  assert.throws(() => validateCoverage(source, changed, corpus, catalog), /Import formatter options drift/)
+})
+
 test('Coverage detects new upstream rules and false claims of SFC equivalence', () => {
   const updated = structuredClone(source)
   const profile = updated.presets.common.scopes['src/probe.ts'].profile

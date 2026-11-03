@@ -1,6 +1,11 @@
 import { createHash } from 'node:crypto'
 
+import oxfmtConfig from '../src/oxfmt/oxfmt.config.common.js'
+
 import { serializeInventory } from './oxlint-values.mjs'
+
+// Oxfmt 0.75 sorts declarations, not named specifiers or the gap after imports.
+export const importFormatterRules = new Set(['import-x/order'])
 
 export const jsNamespaces = {
   eslint: 'eslint-js',
@@ -330,6 +335,25 @@ function initialDecision(sourceId, value, domain, metadata, catalog) {
 }
 
 export function classifyRule(sourceId, value, domain, metadata, catalog, formatter = 'prettier') {
+  if (formatter === 'oxfmt' && value[0] !== 0 && importFormatterRules.has(sourceId)) {
+    return {
+      sourceId,
+      sourceValue: value,
+      domain,
+      documentation: metadata.documentation,
+      status: 'formatter',
+      implementation: 'formatter',
+      formatter: 'oxfmt',
+      formatterOptions: oxfmtConfig.sortImports,
+      skipConfiguration: true,
+      targetId: 'oxfmt/sort-imports',
+      targetValue: value,
+      evidence: 'capability:oxfmt-imports',
+      reason:
+        'Import grouping, sorting and whitespace are owned by the reviewed Oxfmt sortImports policy. This deliberately replaces the legacy import-order style, not a claim of identical diagnostics or fixes. Side-effect import order is preserved.',
+    }
+  }
+
   if (sourceId === 'prettier/prettier' && formatter === 'oxfmt' && value[0] !== 0) {
     if (value.length > 1) {
       throw new Error('Review rule-local Prettier options before migrating them to Oxfmt')

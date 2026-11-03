@@ -4,13 +4,7 @@ import { spawnSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 
-import {
-  OXFMT_PRESETS,
-  OXFMT_STACKS,
-  OX_FRAMEWORK_PACKAGES,
-  SUPPLEMENT_STACKS,
-  oxStackToolVersions,
-} from '../src/oxlint/stacks.js'
+import { OXFMT_PRESETS, OXFMT_STACKS, OX_FRAMEWORK_PACKAGES, oxStackToolVersions } from '../src/oxlint/stacks.js'
 
 export const PACKAGE = '@st1ggy/linter-config'
 
@@ -99,13 +93,12 @@ for (const key of OXFMT_STACKS) {
     linterPreset: `${key}-ox`,
     formatterFile: 'oxfmt.config.ts',
     formatterPreset: OXFMT_PRESETS[key] ?? 'oxfmt-common',
-    supplementPreset: SUPPLEMENT_STACKS.includes(key) ? `eslint-${key}-ox` : undefined,
     stylelint: 'stylelint-scss',
     packages: [...Object.keys(oxStackToolVersions(key)), ...OX_FRAMEWORK_PACKAGES[key]],
   }
   STACK_CHOICES.push({
     value: `${key}-ox`,
-    name: `${key}-ox — Oxlint + Oxfmt${SUPPLEMENT_STACKS.includes(key) ? ' + ESLint framework/template checks' : ''}`,
+    name: `${key}-ox — Oxlint + Oxfmt`,
   })
 }
 
@@ -350,7 +343,7 @@ Commands:
 Writes (each command):
   ESLint stacks: eslint.config.js, prettier.config.js, stylelint.config.js.
    All Ox stacks: oxlint.config.ts, oxfmt.config.ts, stylelint.config.js.
-   svelte/astro/angular/vue/nuxt-ox also write eslint.config.js for framework/template checks.
+   Ox stacks do not generate or run ESLint companions. Framework templates are not linted.
 
 Unless --skip-install: if package.json exists, runs the detected package manager to add or sync
 ${PACKAGE} and the selected stack's integration plugins.
@@ -418,12 +411,7 @@ export function wrapperFileNames(stackKey = 'common') {
 
   const stack = STACKS[stackKey]
 
-  return [
-    stack.linterFile,
-    stack.formatterFile,
-    'stylelint.config.js',
-    ...(stack.supplementPreset ? ['eslint.config.js'] : []),
-  ]
+  return [stack.linterFile, stack.formatterFile, 'stylelint.config.js']
 }
 
 export function existingWrapperFiles(targetDirectory, stackKey = 'common') {
@@ -495,10 +483,4 @@ export function run(mode, targetDirectory, stackKey, options = {}) {
   writeFile(targetDirectory, 'stylelint.config.js', jsReExport(stack.stylelint, hasSemicolon), shouldOverwrite, {
     quiet,
   })
-
-  if (stack.supplementPreset) {
-    writeFile(targetDirectory, 'eslint.config.js', jsReExport(stack.supplementPreset, false), shouldOverwrite, {
-      quiet,
-    })
-  }
 }

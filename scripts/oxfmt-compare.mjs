@@ -54,7 +54,9 @@ export async function compareFormatters() {
       continue
     }
 
-    const result = await formatOx(record.file, record.code, oxfmtConfig)
+    // Compare the shared layout only. Import sorting is an intentional new
+    // Oxfmt-only behavior with separate grouping/side-effect/idempotence tests.
+    const result = await formatOx(record.file, record.code, { ...oxfmtConfig, sortImports: false })
 
     if (result.errors.length > 0) {
       counts[record.group].skipped++
@@ -73,7 +75,7 @@ export async function compareFormatters() {
     ]),
   )
 
-  return { versions, counts, differences }
+  return { versions, counts, differences, excludedFeatures: ['sortImports'] }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

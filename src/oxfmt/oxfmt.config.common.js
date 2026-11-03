@@ -10,7 +10,15 @@ export default {
   proseWrap: 'never',
   endOfLine: 'lf',
   insertFinalNewline: true,
-  sortImports: false,
+  sortImports: {
+    groups: [['builtin', 'external'], 'internal', 'parent', ['sibling', 'index'], 'type', 'unknown'],
+    internalPattern: ['@/', '~/'],
+    sortSideEffects: false,
+    partitionByComment: true,
+    order: 'asc',
+    ignoreCase: false,
+    newlinesBetween: true,
+  },
   sortPackageJson: false,
   ignorePatterns: ['**/node_modules/**', '**/.git/**'],
 }

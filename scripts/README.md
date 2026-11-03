@@ -53,7 +53,7 @@ For SolidJS, `init-solid.sh` selects `eslint-solid`, `prettier-common`, and `sty
 
 ## Oxlint wrappers
 
-The nine `init-*-ox.sh` shortcuts select the corresponding `*-ox` stack. All write `oxlint.config.ts`, `oxfmt.config.ts` and `stylelint.config.js`. Svelte/Astro/Angular/Vue/Nuxt also write `eslint.config.js` for framework/template checks and install `eslint@10.14.0` directly. The wizard pins `oxlint@1.90.0`, `oxlint-tsgolint@7.0.2005` and `oxfmt@0.75.0` and installs only the selected framework integrations. Svelte Ox requires Svelte 5; Astro formatting requires `@astrojs/compiler-rs`. The Angular runtime and generated Nuxt project types remain the application's responsibility.
+The nine `init-*-ox.sh` shortcuts select the corresponding `*-ox` stack. All write only `oxlint.config.ts`, `oxfmt.config.ts` and `stylelint.config.js`. No Ox stack generates or installs an ESLint companion or template parser. Existing ESLint configs are preserved unless explicitly selected for removal. The wizard pins `oxlint@1.90.0`, `oxlint-tsgolint@7.0.2005` and `oxfmt@0.75.0` and installs only the selected script/formatter integrations. Svelte Ox requires Svelte 5; Astro formatting requires `@astrojs/compiler-rs`. The Angular runtime and generated Nuxt project types remain the application's responsibility.
 
 ```bash
 npx @st1ggy/linter-config init --react-ox
@@ -66,9 +66,9 @@ npx @st1ggy/linter-config init --nuxt-ox
 
 `init` preserves existing wrappers, including the other linter/formatter config. `migrate` offers the opposite configs and old `.oxlintrc.*`/`.oxfmtrc.*` files for removal before generating the selected wrappers. It never deletes them without confirmation.
 
-For every Ox stack, run `oxlint .` and `oxfmt --check .` separately. Also run `eslint .` for Svelte/Astro/Angular/Vue/Nuxt; otherwise template checks are lost. These configs do not run Prettier's JS rule. `oxfmt --write .` formats after lint fixes; import and package.json sorting are disabled. The shared formatter options are available through `@st1ggy/linter-config/oxfmt-common`; Svelte/Astro/Angular use `oxfmt-svelte`, `oxfmt-astro` and `oxfmt-angular` respectively.
+For every Ox stack, run `oxlint .` and `oxfmt --check .` separately, with no ESLint command. This intentionally omits template/accessibility linting for Svelte/Astro/Angular/Vue/Nuxt. These configs do not run Prettier's JS rule. `oxfmt --write .` formats after lint fixes and sorts import declarations within comment partitions, adding empty lines between groups. Empty lines alone are not partitions. Bare side-effect imports retain their relative order but are not barriers themselves. Named-specifier sorting and the gap after imports remain lint rules; package.json sorting stays disabled. The shared formatter options are available through `@st1ggy/linter-config/oxfmt-common`; Svelte/Astro/Angular use `oxfmt-svelte`, `oxfmt-astro` and `oxfmt-angular` respectively.
 
-The project compiler stays on TypeScript 6. Oxlint uses its own tsgolint engine for typed linting; it does not install or replace the project compiler. That engine has independent tsconfig constraints (such as no `baseUrl` support); the generator does not modify consumer configs. Read the [usage guide](../README.md#oxlint-variants) and [coverage report](../docs/OXLINT_RULE_MAPPING.md) before switching. The generated inventory covers the six source-derived presets; Angular/Vue/Nuxt compose the common preset and have separate integration tests. ESLint companions restore framework/template checks, not every unsupported general-purpose typed rule.
+The project compiler stays on TypeScript 6. Oxlint uses its own tsgolint engine for typed linting; it does not install or replace the project compiler. That engine has independent tsconfig constraints (such as no `baseUrl` support); the generator does not modify consumer configs. Typed rules require an included tsconfig; nullish-coalescing analysis needs `strictNullChecks`. Read the [usage guide](../README.md#oxlint-variants) and [coverage report](../docs/OXLINT_RULE_MAPPING.md) before switching. The generated inventory covers the six source-derived presets; Angular/Vue/Nuxt compose the common preset and have separate integration tests. The retained ESLint compatibility exports are optional and require explicit installation/setup, not part of the Ox workflow.
 
 ## Oxlint development checks
 
@@ -86,4 +86,4 @@ node scripts/package-smoke.mjs
 node scripts/package-smoke.mjs --pm pnpm
 ```
 
-The parity corpus asserts source and target diagnostics; guardrails reject missing mappings, option/severity drift, absent fixtures and unverified claims of complete SFC coverage. Inventory regeneration is deterministic and does not silently adopt new upstream rules: generated artifacts and fixtures must be reviewed together after dependency updates.
+The parity corpus asserts source and target diagnostics; guardrails reject missing mappings, option/severity drift, absent fixtures and unverified claims of complete SFC coverage. Import ordering is separately tested as an intentional Oxfmt policy, not source-linter parity; formatter comparisons exclude this feature explicitly. Inventory regeneration is deterministic and does not silently adopt new upstream rules: generated artifacts and fixtures must be reviewed together after dependency updates.

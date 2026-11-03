@@ -1,33 +1,22 @@
-import { defineConfig } from 'eslint/config'
 import unicornPlugin from 'eslint-plugin-unicorn'
+import { defineConfig } from 'eslint/config'
 
 import { files } from './constants.js'
 
 export default defineConfig([
   unicornPlugin.configs.recommended,
   {
+    rules: {
+      'unicorn/consistent-destructuring': 'off',
+      'unicorn/no-unused-properties': 'off',
+      'unicorn/name-replacements': 'off',
+    },
+  },
+  {
     files,
     rules: {
-      'unicorn/consistent-destructuring': 'error',
       'unicorn/custom-error-definition': 'error',
-      'unicorn/no-unused-properties': 'error',
       'unicorn/no-null': 'off',
-      'unicorn/name-replacements': [
-        'error',
-        {
-          replacements: {
-            dev: false,
-            prod: false,
-            props: false,
-            ref: false,
-            refs: false,
-            args: false,
-            params: false,
-            utils: false,
-            env: false,
-          },
-        },
-      ],
     },
   },
 ])

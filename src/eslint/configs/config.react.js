@@ -1,6 +1,6 @@
 import reactPlugin from '@eslint-react/eslint-plugin'
-import { defineConfig } from 'eslint/config'
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
+import { defineConfig } from 'eslint/config'
 
 import { files } from './constants.js'
 
@@ -43,7 +43,7 @@ export default defineConfig([
       '@stylistic/jsx-equals-spacing': ['error', 'never'],
       '@stylistic/jsx-first-prop-new-line': ['error', 'multiline'],
       '@stylistic/jsx-max-props-per-line': ['error', { when: 'multiline' }],
-      '@stylistic/jsx-props-no-multi-spaces': 'error',
+      '@stylistic/jsx-props-no-multi-spaces': 'off',
       '@stylistic/jsx-tag-spacing': 'error',
     },
   },

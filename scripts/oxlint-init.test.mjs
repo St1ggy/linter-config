@@ -56,7 +56,6 @@ test('All fifteen stacks generate the selected engine and retain init/migrate se
     'oxlint',
     'oxlint-tsgolint',
     'oxfmt',
-    'eslint',
     'eslint-plugin-astro',
     '@astrojs/compiler-rs',
   ])

@@ -17,7 +17,10 @@ export default defineConfig([
       'prefer-template': 'error',
       'arrow-body-style': ['error', 'as-needed'],
       'no-return-assign': 'off',
-      'newline-before-return': ['error'],
+      'newline-before-return': 'off',
+      eqeqeq: ['error', 'always', { null: 'ignore' }],
+      'no-else-return': ['warn', { allowElseIf: false }],
+      'max-depth': ['warn', 4],
       radix: 'off',
       camelcase: [
         'error',

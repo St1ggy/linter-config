@@ -12,7 +12,7 @@ Oxlint/Oxfmt engines and framework-specific plugins are optional peers. The wiza
 
 ### Generate local wrapper configs
 
-The published CLI is invoked as **`@st1ggy/linter-config`** (see [`package.json`](package.json) `bin`). ESLint stacks write **`eslint.config.js`**, **`prettier.config.js`** and **`stylelint.config.js`**. All nine Ox stacks write **`oxlint.config.ts`**, **`oxfmt.config.ts`** and **`stylelint.config.js`**. Svelte, Astro, Angular, Vue and Nuxt additionally write **`eslint.config.js`** for framework/template checks that Oxlint cannot replace.
+The published CLI is invoked as **`@st1ggy/linter-config`** (see [`package.json`](package.json) `bin`). ESLint stacks write **`eslint.config.js`**, **`prettier.config.js`** and **`stylelint.config.js`**. All nine Ox stacks write only **`oxlint.config.ts`**, **`oxfmt.config.ts`** and **`stylelint.config.js`**. They never generate or require an ESLint companion. Framework templates are not linted by Oxlint.
 
 Unless **`--skip-install`** is passed: if **`package.json`** exists in the target directory, the CLI runs the detected package manager (**npm** / **pnpm** / **yarn** / **bun** from the nearest lockfile) to install **`@st1ggy/linter-config`** and only the selected stack's integration plugins. When all selected packages are already declared but missing from `node_modules`, it runs a regular install instead.
 
@@ -62,11 +62,11 @@ In this monorepo, `npm run config:init` / `config:migrate` / `config:reinit` / `
 ## Subpath imports
 
 ```js
+import eslintAstro from '@st1ggy/linter-config/eslint-astro'
 import eslintReact from '@st1ggy/linter-config/eslint-react'
 import eslintSolid from '@st1ggy/linter-config/eslint-solid'
-import eslintAstro from '@st1ggy/linter-config/eslint-astro'
-import prettierCommon from '@st1ggy/linter-config/prettier-common'
 import prettierAstro from '@st1ggy/linter-config/prettier-astro'
+import prettierCommon from '@st1ggy/linter-config/prettier-common'
 import stylelintScss from '@st1ggy/linter-config/stylelint-scss'
 ```
 
@@ -95,25 +95,25 @@ If you previously used Stylelint 16 with this preset, upgrade the consumer to **
 
 ## Oxlint variants
 
-Each existing stack has an Oxlint counterpart. Angular, Vue and Nuxt have additional Ox presets. Oxlint configs are objects typed as `OxlintConfig`; ESLint companions are flat-config arrays. Stylelint remains the style-rule tool for every stack.
+Each existing stack has an Oxlint counterpart. Angular, Vue and Nuxt have additional Ox presets. Oxlint configs are objects typed as `OxlintConfig`. All nine run with Oxlint + Oxfmt; Stylelint remains the CSS/SCSS rule tool. The old `eslint-*-ox` flat-config arrays remain optional compatibility exports, not part of the generated workflow.
 
 All imports below are subpaths of `@st1ggy/linter-config`.
 
-| Stack flag     | Oxlint preset | Formatter       | ESLint companion    |
-| -------------- | ------------- | --------------- | ------------------- |
-| `--common-ox`  | `common-ox`   | `oxfmt-common`  | —                   |
-| `--react-ox`   | `react-ox`    | `oxfmt-common`  | —                   |
-| `--solid-ox`   | `solid-ox`    | `oxfmt-common`  | —                   |
-| `--next-ox`    | `next-ox`     | `oxfmt-common`  | —                   |
-| `--svelte-ox`  | `svelte-ox`   | `oxfmt-svelte`  | `eslint-svelte-ox`  |
-| `--astro-ox`   | `astro-ox`    | `oxfmt-astro`   | `eslint-astro-ox`   |
-| `--angular-ox` | `angular-ox`  | `oxfmt-angular` | `eslint-angular-ox` |
-| `--vue-ox`     | `vue-ox`      | `oxfmt-common`  | `eslint-vue-ox`     |
-| `--nuxt-ox`    | `nuxt-ox`     | `oxfmt-common`  | `eslint-nuxt-ox`    |
+| Stack flag     | Oxlint preset | Formatter       | Optional compatibility export |
+| -------------- | ------------- | --------------- | ----------------------------- |
+| `--common-ox`  | `common-ox`   | `oxfmt-common`  | —                             |
+| `--react-ox`   | `react-ox`    | `oxfmt-common`  | —                             |
+| `--solid-ox`   | `solid-ox`    | `oxfmt-common`  | —                             |
+| `--next-ox`    | `next-ox`     | `oxfmt-common`  | —                             |
+| `--svelte-ox`  | `svelte-ox`   | `oxfmt-svelte`  | `eslint-svelte-ox`            |
+| `--astro-ox`   | `astro-ox`    | `oxfmt-astro`   | `eslint-astro-ox`             |
+| `--angular-ox` | `angular-ox`  | `oxfmt-angular` | `eslint-angular-ox`           |
+| `--vue-ox`     | `vue-ox`      | `oxfmt-common`  | `eslint-vue-ox`               |
+| `--nuxt-ox`    | `nuxt-ox`     | `oxfmt-common`  | `eslint-nuxt-ox`              |
 
 ### Install and run
 
-The checked engine versions are **Oxlint 1.90.0**, **oxlint-tsgolint 7.0.2005**, and **Oxfmt 0.75.0**. The project compiler remains **TypeScript 6.0.3** (the latest stable 6.x); no TypeScript 7 compiler is installed. Use a supported **Node.js LTS** release, minimum **24.16.0**. The CLI installs engines with exact versions and only the selected framework integrations. Companion stacks also install **ESLint 10.14.0** directly so `pnpm exec eslint` works without relying on hoisting. Svelte Ox formatting requires **Svelte 5**; Svelte 4 projects need an explicitly compatible older lint/format toolchain or an intentional runtime upgrade. This Ox stack does not upgrade an installed Svelte 4 runtime for you. Astro formatting additionally needs **`@astrojs/compiler-rs@^0.5.2`**, installed by the wizard.
+The checked engine versions are **Oxlint 1.90.0**, **oxlint-tsgolint 7.0.2005**, and **Oxfmt 0.75.0**. The project compiler remains **TypeScript 6.0.3** (the latest stable 6.x); no TypeScript 7 compiler is installed. Use a supported **Node.js LTS** release, minimum **24.16.0**. The CLI installs engines with exact versions and only the selected script/formatter integrations, never ESLint or template parsers for Ox stacks. Svelte Ox formatting requires **Svelte 5**; Svelte 4 projects need an explicitly compatible older lint/format toolchain or an intentional runtime upgrade. This Ox stack does not upgrade an installed Svelte 4 runtime for you. Astro formatting additionally needs **`@astrojs/compiler-rs@^0.5.2`**, installed by the wizard.
 
 ```bash
 npx @st1ggy/linter-config init --solid-ox
@@ -163,9 +163,9 @@ export default defineConfig({
 
 ### Oxfmt formatting
 
-Every Ox stack uses Oxfmt for formatting. Oxlint and companion ESLint configs do not run `prettier/prettier`; run the formatter check alongside linting in CI. The generated `oxfmt.config.ts` imports the stack's formatter preset and is discovered automatically. Svelte/Astro explicitly enable their formatter integrations; Angular associates all `*.html` files with `angular-html`, including templates without a `.component.html` suffix. Vue/Nuxt files are recognized automatically.
+Every Ox stack uses Oxfmt for formatting. Oxlint does not run `prettier/prettier`; run the formatter check alongside linting in CI. The generated `oxfmt.config.ts` imports the stack's formatter preset and is discovered automatically. Svelte/Astro explicitly enable their formatter integrations; Angular associates all `*.html` files with `angular-html`, including templates without a `.component.html` suffix. Vue/Nuxt files are recognized automatically.
 
-The shared config preserves the common style: 120-column width, two-space indentation, single quotes, no semicolons, trailing commas, LF and a final newline. **Import sorting and package.json sorting are explicitly disabled**; the current import lint rules retain control of import order. `.gitignore` and `.prettierignore` are respected during directory traversal. Oxfmt can format an explicitly named gitignored file; for deliberate exclusions, use `.prettierignore` or `ignorePatterns`.
+The shared config preserves the common style: 120-column width, two-space indentation, single quotes, no semicolons, trailing commas, LF and a final newline. **Oxfmt owns import declaration sorting**: external/builtin imports, internal aliases (`@/`, `~/`), parent imports, sibling/index imports, then type imports, with empty lines between groups. Comments preserve explicit sorting partitions; empty lines alone do not. `sortSideEffects: false` preserves the relative order of bare side-effect imports, but they are not barriers by themselves: value imports can move across them. Separate order-sensitive sections with comments, or disable `sortImports` for those files. Oxfmt 0.75 cannot combine empty-line partitions with automatic empty lines between groups. Native `sort-imports` still sorts named specifiers, which Oxfmt 0.75 does not sort; `import-x/newline-after-import` retains the gap after imports. The competing `import-x/order` lint fixer is not executed in Ox stacks. Package.json property sorting stays disabled. `.gitignore` and `.prettierignore` are respected during directory traversal. Oxfmt can format an explicitly named gitignored file; for deliberate exclusions, use `.prettierignore` or `ignorePatterns`.
 
 Override options by spreading the shared object:
 
@@ -181,32 +181,31 @@ export default defineConfig({
 
 `init` preserves existing configs, including custom ESLint companions and old Prettier wrappers. Use `migrate` to overwrite wrappers and offer the old formatter config for removal. The wizard does not update consumer package scripts.
 
-For common/React/Solid/Next, use `"lint": "oxlint ."` and `"format:check": "oxfmt --check ."`. For Svelte/Astro/Angular/Vue/Nuxt, **run all three commands**:
+For every Ox stack, use `"lint": "oxlint ."` and `"format:check": "oxfmt --check ."`:
 
 ```bash
 npx oxlint .
-npx eslint .
 npx oxfmt --check .
 ```
 
-For example, `"lint": "oxlint . && eslint ."` and `"format:check": "oxfmt --check ."`. Run both linters' fixes before `oxfmt --write .`. Omitting the ESLint command loses template checks. Oxfmt delegates framework formatting to bundled Prettier integrations; it is not an entirely Rust-native template formatter. The original ESLint stacks retain their Prettier configs and plugins. Prettier also remains a package dependency for Stylelint and legacy/development checks.
+Run `oxlint --fix .` before `oxfmt --write .`. This workflow intentionally has no template linting. Oxfmt delegates framework formatting to bundled Prettier integrations; formatting is not template validation. This is also not a claim that every rule is Rust-native: compatible JS plugins run inside Oxlint. ESLint remains a dependency for the legacy exports and some plugin APIs, but is not a second required command. The original ESLint stacks retain their Prettier workflow.
 
 ### Framework coverage
 
-- **Svelte:** Oxlint checks extracted scripts and supported rune/module rules; the ESLint companion retains framework/template rules with the Svelte parser. Include `.svelte` files in the consumer tsconfig. SvelteKit aliases from the existing Svelte preset are retained.
-- **Astro:** Oxlint checks frontmatter and browser scripts, including the existing six frontmatter adapters. The ESLint companion uses the actual Astro parser/processor for template directives. Some script checks intentionally overlap because extracted scripts cannot distinguish every frontmatter/browser context.
-- **Vue 3:** the common Ox preset supplies JS/TS checks and 36 native Vue rules from the upstream recommended intersection. The ESLint companion supplies the remaining Vue recommended/template checks using `vue-eslint-parser` and the TS parser. Rules already enabled natively are disabled in the companion. Bindings used only in templates are not treated as unused by script-only checks.
+- **Svelte:** Oxlint checks extracted scripts and supported rune/module rules, not template directives or accessibility. Include `.svelte` files in the consumer tsconfig. SvelteKit aliases from the existing Svelte preset are retained.
+- **Astro:** Oxlint checks frontmatter and browser scripts, including the existing six frontmatter adapters, not template directives or accessibility. Extracted scripts cannot distinguish every frontmatter/browser context.
+- **Vue 3:** the common Ox preset supplies JS/TS checks and 36 native Vue rules from the upstream recommended intersection. Templates, including `v-for` key checks, are not linted. Bindings used only in templates are not treated as unused by script-only checks.
 - **Nuxt:** builds on Vue and adds the four `@nuxt/eslint-plugin` rules through Oxlint's JS-plugin API. `.nuxt` and `.output` are ignored. This is a standalone preset, not the project-aware `@nuxt/eslint` module: generate Nuxt's types/config (`nuxt prepare`) before typed linting and use the application's tsconfig. It does not discover arbitrary auto-import globals from a Nuxt build.
-- **Angular:** the common Ox preset supplies JS/TS checks; 12 `angular-eslint` 22 recommended script rules run as a JS plugin. ESLint handles HTML templates and inline `@Component` templates, including recommended and accessibility rules. The wizard does not install or upgrade the application's Angular runtime. New framework integrations are tested independently of the six source-derived migration inventories.
+- **Angular:** the common Ox preset supplies JS/TS checks; 12 `angular-eslint` 22 recommended script rules run as a JS plugin. Neither external HTML nor inline `@Component` templates receive template/accessibility lint checks. The wizard does not install or upgrade the application's Angular runtime. New framework integrations are tested independently of the six source-derived migration inventories.
 
 ### Rule coverage
 
-The source-derived presets carry over native rule equivalents and compatible JS plugins, including custom severity, options, JSX style, import ordering and syntax restrictions. All default Oxlint categories are disabled; presets explicitly select rules. Type-aware Oxlint checks run through **tsgolint**, which embeds a native TypeScript-derived engine independently of the project's **TypeScript 6** compiler. Its 7.x package version does not upgrade the project compiler. The separate ESLint companions use their framework parsers and may use TS6 parser services; Oxlint itself does not provide these services to JS plugins.
+The source-derived presets carry over native rule equivalents and compatible JS plugins, including custom severity, options, JSX style and syntax restrictions; import ordering is intentionally delegated to Oxfmt. All default Oxlint categories are disabled; presets explicitly select rules. Type-aware Oxlint checks run through **tsgolint**, which embeds a native TypeScript-derived engine independently of the project's **TypeScript 6** compiler. Its 7.x package version does not upgrade the project compiler. Oxlint does not provide a TypeScript Program to JS plugins.
 
 These are **maximum-feasible migrations, with documented gaps**, rather than fully equivalent replacements:
 
-- **Svelte/Astro/Vue/Nuxt:** Oxlint checks extracted scripts, not templates. The ESLint companions retain framework/template checks, but do not restore every unsupported general-purpose TS-aware rule from the original common ESLint preset. Checks that would misreport template-used variables are omitted from script-only analysis.
-- **Astro:** the Oxlint plugin API cannot distinguish frontmatter from a browser script containing identical text; that ambiguity remains recorded as partial coverage even with a precise ESLint companion.
+- **Svelte/Astro/Vue/Nuxt/Angular:** templates are not linted by this workflow. The retained `eslint-*-ox` exports require explicit setup and their optional framework/template parser packages if you choose to restore such checks. Checks that would misreport template-used variables are omitted from script-only analysis.
+- **Astro:** the Oxlint plugin API cannot distinguish frontmatter from a browser script containing identical text; that ambiguity remains recorded as partial coverage.
 - Some native implementations have narrower behavior or lack source options. The original JS rule is used where compatible; remaining differences are recorded individually.
 - Compiler configuration-dependent guards are kept, but default-configuration control fixtures do not count as positive violation evidence.
 - Existing `eslint-disable` directives do not automatically retain their meaning after rule namespaces change. Use Oxlint directives with the migrated IDs and check `--report-unused-disable-directives` when migrating.
@@ -219,10 +218,37 @@ All Ox stacks use Oxfmt instead of a separate Prettier command. To upgrade an ex
 
 1. Run the wizard with `migrate --<stack>-ox`; review config replacements and select the old formatter config for removal. It installs the checked engine pins and selected integrations. Use the stack-specific formatter import from the table above when configuring manually.
 2. Add `oxfmt --check .` alongside `oxlint .` in CI; replace the old `prettier --check .` command for that stack.
-3. For Svelte/Astro/Angular/Vue/Nuxt, keep the generated `eslint.config.js` and run `eslint .` alongside Oxlint for framework/template checks.
-4. Run `oxlint --fix .`, the companion `eslint --fix .` where applicable, then `oxfmt --write .`; review consumer-specific formatter overrides.
+3. Remove `eslint .` from the Ox stack's package scripts. Existing ESLint files are preserved by both `init` and `migrate`; explicitly select old configs for removal if no longer needed. This intentionally drops template lint checks.
+4. Run `oxlint --fix .`, then `oxfmt --write .`; review consumer-specific formatter overrides.
 
-The original non-Ox ESLint stacks retain their Prettier workflow. An old custom ESLint wrapper is preserved by `init`; migrate explicitly if you want the new companion instead of the full legacy preset.
+The original non-Ox ESLint stacks retain their Prettier workflow. No companion ESLint file is generated by an Ox stack, including on `migrate`.
+
+### Curated quality checks
+
+The base rules now reject unhandled/misused Promises, awaiting non-thenables, and loose equality (except intentional `== null`). Unnecessary assertions/type parameters, nullish coalescing for nullable objects, early returns and nesting beyond four levels start as warnings. Typed checks require an included tsconfig; `prefer-nullish-coalescing` requires `strictNullChecks`. Primitive fallbacks (`""`, `0`, `false`) are deliberately ignored by that rule so intentional `||` behavior is retained. Review fixes before applying them.
+
+Deprecated `newline-before-return` and `jsx-props-no-multi-spaces` are disabled; existing statement-padding rules and Oxfmt retain their relevant layout responsibilities. `unicorn/name-replacements`, `unicorn/consistent-destructuring` and `unicorn/no-unused-properties` are off by default. They can be explicitly enabled in a consumer override as `unicorn-js/name-replacements`, `unicorn-js/consistent-destructuring` and `unicorn-js/no-unused-properties` for a stricter style. The experimental `prefer-optional-chain` and `no-unnecessary-condition` checks remain off.
+
+Append strict overrides after the generated ones; a root-level rule can otherwise be overridden by a file profile:
+
+```ts
+import config from '@st1ggy/linter-config/common-ox'
+
+export default {
+  ...config,
+  overrides: [
+    ...config.overrides,
+    {
+      files: ['**/*.{js,jsx,ts,tsx,mts,cts,mjs,cjs}'],
+      rules: {
+        'unicorn-js/name-replacements': 'warn',
+        'unicorn-js/consistent-destructuring': 'warn',
+        'unicorn-js/no-unused-properties': 'warn',
+      },
+    },
+  ],
+}
+```
 
 ### React and Next rule migration (v8)
 

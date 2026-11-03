@@ -24,6 +24,7 @@ export function temporaryProject(context, files = {}) {
         module: 'esnext',
         moduleResolution: 'bundler',
         allowJs: true,
+        strict: true,
         jsx: 'preserve',
         noEmit: true,
         skipLibCheck: true,

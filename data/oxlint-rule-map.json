@@ -2281,6 +2281,22 @@
       "implementation": "js-plugin",
       "evidence": "module:@typescript-eslint/array-type:038966de9f6b"
     },
+    "module:@typescript-eslint/await-thenable:038966de9f6b": {
+      "sourceId": "@typescript-eslint/await-thenable",
+      "sourceValue": [
+        2
+      ],
+      "domain": "module",
+      "documentation": "https://typescript-eslint.io/rules/await-thenable",
+      "status": "native",
+      "targetId": "typescript/await-thenable",
+      "targetValue": [
+        2
+      ],
+      "typeAware": true,
+      "implementation": "native",
+      "evidence": "module:@typescript-eslint/await-thenable:038966de9f6b"
+    },
     "module:@typescript-eslint/ban-ts-comment:0858cde03b10": {
       "sourceId": "@typescript-eslint/ban-ts-comment",
       "sourceValue": [
@@ -2663,6 +2679,22 @@
       "status": "disabled",
       "reason": "Disabled in the effective source configuration."
     },
+    "module:@typescript-eslint/no-floating-promises:038966de9f6b": {
+      "sourceId": "@typescript-eslint/no-floating-promises",
+      "sourceValue": [
+        2
+      ],
+      "domain": "module",
+      "documentation": "https://typescript-eslint.io/rules/no-floating-promises",
+      "status": "native",
+      "targetId": "typescript/no-floating-promises",
+      "targetValue": [
+        2
+      ],
+      "typeAware": true,
+      "implementation": "native",
+      "evidence": "module:@typescript-eslint/no-floating-promises:038966de9f6b"
+    },
     "module:@typescript-eslint/no-inferrable-types:038966de9f6b": {
       "sourceId": "@typescript-eslint/no-inferrable-types",
       "sourceValue": [
@@ -2694,6 +2726,22 @@
       "typeAware": false,
       "implementation": "native",
       "evidence": "module:@typescript-eslint/no-misused-new:038966de9f6b"
+    },
+    "module:@typescript-eslint/no-misused-promises:038966de9f6b": {
+      "sourceId": "@typescript-eslint/no-misused-promises",
+      "sourceValue": [
+        2
+      ],
+      "domain": "module",
+      "documentation": "https://typescript-eslint.io/rules/no-misused-promises",
+      "status": "native",
+      "targetId": "typescript/no-misused-promises",
+      "targetValue": [
+        2
+      ],
+      "typeAware": true,
+      "implementation": "native",
+      "evidence": "module:@typescript-eslint/no-misused-promises:038966de9f6b"
     },
     "module:@typescript-eslint/no-namespace:038966de9f6b": {
       "sourceId": "@typescript-eslint/no-namespace",
@@ -2781,6 +2829,22 @@
       "implementation": "native",
       "evidence": "module:@typescript-eslint/no-this-alias:038966de9f6b"
     },
+    "module:@typescript-eslint/no-unnecessary-type-assertion:080a9ed42855": {
+      "sourceId": "@typescript-eslint/no-unnecessary-type-assertion",
+      "sourceValue": [
+        1
+      ],
+      "domain": "module",
+      "documentation": "https://typescript-eslint.io/rules/no-unnecessary-type-assertion",
+      "status": "native",
+      "targetId": "typescript/no-unnecessary-type-assertion",
+      "targetValue": [
+        1
+      ],
+      "typeAware": true,
+      "implementation": "native",
+      "evidence": "module:@typescript-eslint/no-unnecessary-type-assertion:080a9ed42855"
+    },
     "module:@typescript-eslint/no-unnecessary-type-constraint:038966de9f6b": {
       "sourceId": "@typescript-eslint/no-unnecessary-type-constraint",
       "sourceValue": [
@@ -2796,6 +2860,22 @@
       "typeAware": false,
       "implementation": "native",
       "evidence": "module:@typescript-eslint/no-unnecessary-type-constraint:038966de9f6b"
+    },
+    "module:@typescript-eslint/no-unnecessary-type-parameters:080a9ed42855": {
+      "sourceId": "@typescript-eslint/no-unnecessary-type-parameters",
+      "sourceValue": [
+        1
+      ],
+      "domain": "module",
+      "documentation": "https://typescript-eslint.io/rules/no-unnecessary-type-parameters",
+      "status": "native",
+      "targetId": "typescript/no-unnecessary-type-parameters",
+      "targetValue": [
+        1
+      ],
+      "typeAware": true,
+      "implementation": "native",
+      "evidence": "module:@typescript-eslint/no-unnecessary-type-parameters:080a9ed42855"
     },
     "module:@typescript-eslint/no-unsafe-declaration-merging:038966de9f6b": {
       "sourceId": "@typescript-eslint/no-unsafe-declaration-merging",
@@ -2967,6 +3047,28 @@
       "typeAware": false,
       "implementation": "native",
       "evidence": "module:@typescript-eslint/prefer-namespace-keyword:038966de9f6b"
+    },
+    "module:@typescript-eslint/prefer-nullish-coalescing:5645f94d267d": {
+      "sourceId": "@typescript-eslint/prefer-nullish-coalescing",
+      "sourceValue": [
+        1,
+        {
+          "ignorePrimitives": true
+        }
+      ],
+      "domain": "module",
+      "documentation": "https://typescript-eslint.io/rules/prefer-nullish-coalescing",
+      "status": "native",
+      "targetId": "typescript/prefer-nullish-coalescing",
+      "targetValue": [
+        1,
+        {
+          "ignorePrimitives": true
+        }
+      ],
+      "typeAware": true,
+      "implementation": "native",
+      "evidence": "module:@typescript-eslint/prefer-nullish-coalescing:5645f94d267d"
     },
     "module:@typescript-eslint/quotes:d0bca111f862": {
       "sourceId": "@typescript-eslint/quotes",
@@ -3310,6 +3412,30 @@
       "documentation": "https://eslint.org/docs/latest/rules/eol-last",
       "status": "disabled",
       "reason": "Disabled in the effective source configuration."
+    },
+    "module:eqeqeq:8d0cbeeba4a5": {
+      "sourceId": "eqeqeq",
+      "sourceValue": [
+        2,
+        "always",
+        {
+          "null": "ignore"
+        }
+      ],
+      "domain": "module",
+      "documentation": "https://eslint.org/docs/latest/rules/eqeqeq",
+      "status": "native",
+      "targetId": "eslint/eqeqeq",
+      "targetValue": [
+        2,
+        "always",
+        {
+          "null": "ignore"
+        }
+      ],
+      "typeAware": false,
+      "implementation": "native",
+      "evidence": "module:eqeqeq:8d0cbeeba4a5"
     },
     "module:flowtype/boolean-style:d0bca111f862": {
       "sourceId": "flowtype/boolean-style",
@@ -3744,8 +3870,36 @@
       ],
       "domain": "module",
       "documentation": "https://github.com/un-ts/eslint-plugin-import-x/blob/v4.17.1/docs/rules/order.md",
-      "status": "js-plugin",
-      "targetId": "import-x-js/order",
+      "status": "formatter",
+      "implementation": "formatter",
+      "formatter": "oxfmt",
+      "formatterOptions": {
+        "groups": [
+          [
+            "builtin",
+            "external"
+          ],
+          "internal",
+          "parent",
+          [
+            "sibling",
+            "index"
+          ],
+          "type",
+          "unknown"
+        ],
+        "internalPattern": [
+          "@/",
+          "~/"
+        ],
+        "sortSideEffects": false,
+        "partitionByComment": true,
+        "order": "asc",
+        "ignoreCase": false,
+        "newlinesBetween": true
+      },
+      "skipConfiguration": true,
+      "targetId": "oxfmt/sort-imports",
       "targetValue": [
         2,
         {
@@ -3788,10 +3942,8 @@
           "warnOnUnassignedImports": false
         }
       ],
-      "typeAware": false,
-      "reason": "No native equivalent is registered; use the original JS rule.",
-      "implementation": "js-plugin",
-      "evidence": "module:import-x/order:bf0103574686"
+      "evidence": "capability:oxfmt-imports",
+      "reason": "Import grouping, sorting and whitespace are owned by the reviewed Oxfmt sortImports policy. This deliberately replaces the legacy import-order style, not a claim of identical diagnostics or fixes. Side-effect import order is preserved."
     },
     "module:import-x/prefer-default-export:d0bca111f862": {
       "sourceId": "import-x/prefer-default-export",
@@ -3884,6 +4036,24 @@
       "status": "disabled",
       "reason": "Disabled in the effective source configuration."
     },
+    "module:max-depth:aa5507f9e57e": {
+      "sourceId": "max-depth",
+      "sourceValue": [
+        1,
+        4
+      ],
+      "domain": "module",
+      "documentation": "https://eslint.org/docs/latest/rules/max-depth",
+      "status": "native",
+      "targetId": "eslint/max-depth",
+      "targetValue": [
+        1,
+        4
+      ],
+      "typeAware": false,
+      "implementation": "native",
+      "evidence": "module:max-depth:aa5507f9e57e"
+    },
     "module:max-len:d0bca111f862": {
       "sourceId": "max-len",
       "sourceValue": [
@@ -3924,22 +4094,15 @@
       "status": "disabled",
       "reason": "Disabled in the effective source configuration."
     },
-    "module:newline-before-return:038966de9f6b": {
+    "module:newline-before-return:d0bca111f862": {
       "sourceId": "newline-before-return",
       "sourceValue": [
-        2
+        0
       ],
       "domain": "module",
       "documentation": "https://eslint.org/docs/latest/rules/newline-before-return",
-      "status": "js-plugin",
-      "targetId": "eslint-js/newline-before-return",
-      "targetValue": [
-        2
-      ],
-      "typeAware": false,
-      "reason": "No native equivalent is registered; use the original JS rule.",
-      "implementation": "js-plugin",
-      "evidence": "module:newline-before-return:038966de9f6b"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "module:newline-per-chained-call:d0bca111f862": {
       "sourceId": "newline-per-chained-call",
@@ -4279,6 +4442,28 @@
       "typeAware": false,
       "implementation": "native",
       "evidence": "module:no-duplicate-case:038966de9f6b"
+    },
+    "module:no-else-return:6655d9cda307": {
+      "sourceId": "no-else-return",
+      "sourceValue": [
+        1,
+        {
+          "allowElseIf": false
+        }
+      ],
+      "domain": "module",
+      "documentation": "https://eslint.org/docs/latest/rules/no-else-return",
+      "status": "native",
+      "targetId": "eslint/no-else-return",
+      "targetValue": [
+        1,
+        {
+          "allowElseIf": false
+        }
+      ],
+      "typeAware": false,
+      "implementation": "native",
+      "evidence": "module:no-else-return:6655d9cda307"
     },
     "module:no-empty:929ca4ab4ccc": {
       "sourceId": "no-empty",
@@ -10598,22 +10783,15 @@
       "implementation": "native",
       "evidence": "module:unicorn/consistent-date-clone:038966de9f6b"
     },
-    "module:unicorn/consistent-destructuring:038966de9f6b": {
+    "module:unicorn/consistent-destructuring:d0bca111f862": {
       "sourceId": "unicorn/consistent-destructuring",
       "sourceValue": [
-        2
+        0
       ],
       "domain": "module",
       "documentation": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/rules/consistent-destructuring.md",
-      "status": "js-plugin",
-      "targetId": "unicorn-js/consistent-destructuring",
-      "targetValue": [
-        2
-      ],
-      "typeAware": false,
-      "reason": "No native equivalent is registered; use the original JS rule.",
-      "implementation": "js-plugin",
-      "evidence": "module:unicorn/consistent-destructuring:038966de9f6b"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "module:unicorn/consistent-empty-array-spread:038966de9f6b": {
       "sourceId": "unicorn/consistent-empty-array-spread",
@@ -11115,48 +11293,16 @@
       "implementation": "native",
       "evidence": "module:unicorn/max-nested-calls:ed04869b504e"
     },
-    "module:unicorn/name-replacements:1f926c3e2cde": {
+    "module:unicorn/name-replacements:cb5ec12ef0bb": {
       "sourceId": "unicorn/name-replacements",
       "sourceValue": [
-        2,
-        {
-          "replacements": {
-            "dev": false,
-            "prod": false,
-            "props": false,
-            "ref": false,
-            "refs": false,
-            "args": false,
-            "params": false,
-            "utils": false,
-            "env": false
-          }
-        }
+        0,
+        {}
       ],
       "domain": "module",
       "documentation": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/rules/name-replacements.md",
-      "status": "js-plugin",
-      "targetId": "unicorn-js/name-replacements",
-      "targetValue": [
-        2,
-        {
-          "replacements": {
-            "dev": false,
-            "prod": false,
-            "props": false,
-            "ref": false,
-            "refs": false,
-            "args": false,
-            "params": false,
-            "utils": false,
-            "env": false
-          }
-        }
-      ],
-      "typeAware": false,
-      "reason": "No native equivalent is registered; use the original JS rule.",
-      "implementation": "js-plugin",
-      "evidence": "module:unicorn/name-replacements:1f926c3e2cde"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "module:unicorn/new-for-builtins:038966de9f6b": {
       "sourceId": "unicorn/new-for-builtins",
@@ -13199,23 +13345,15 @@
       "implementation": "js-plugin",
       "evidence": "module:unicorn/no-unused-array-method-return:038966de9f6b"
     },
-    "module:unicorn/no-unused-properties:038966de9f6b": {
+    "module:unicorn/no-unused-properties:d0bca111f862": {
       "sourceId": "unicorn/no-unused-properties",
       "sourceValue": [
-        2
+        0
       ],
       "domain": "module",
       "documentation": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/rules/no-unused-properties.md",
-      "status": "partial",
-      "targetId": "unicorn-js/no-unused-properties",
-      "targetValue": [
-        2
-      ],
-      "typeAware": false,
-      "reason": "Oxlint treats import/export-free JavaScript as script scope; the source preset forces module scope. Local module checks work in explicit ES modules but can skip script-global variables.",
-      "implementation": "js-plugin",
-      "limitation": "module-inference",
-      "evidence": "module:unicorn/no-unused-properties:038966de9f6b"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "module:unicorn/no-useless-boolean-cast:038966de9f6b": {
       "sourceId": "unicorn/no-useless-boolean-cast",
@@ -19300,6 +19438,18 @@
       "evidence": "module:@typescript-eslint/array-type:038966de9f6b",
       "limitation": "script-extraction"
     },
+    "vue:@typescript-eslint/await-thenable:038966de9f6b": {
+      "sourceId": "@typescript-eslint/await-thenable",
+      "sourceValue": [
+        2
+      ],
+      "domain": "vue",
+      "documentation": "https://typescript-eslint.io/rules/await-thenable",
+      "status": "unsupported",
+      "reason": "Native typed linting cannot build a TS program from extracted framework templates.",
+      "limitation": "sfc-type-services",
+      "evidence": "capability:sfc-type-services"
+    },
     "vue:@typescript-eslint/ban-ts-comment:0858cde03b10": {
       "sourceId": "@typescript-eslint/ban-ts-comment",
       "sourceValue": [
@@ -19703,6 +19853,18 @@
       "status": "disabled",
       "reason": "Disabled in the effective source configuration."
     },
+    "vue:@typescript-eslint/no-floating-promises:038966de9f6b": {
+      "sourceId": "@typescript-eslint/no-floating-promises",
+      "sourceValue": [
+        2
+      ],
+      "domain": "vue",
+      "documentation": "https://typescript-eslint.io/rules/no-floating-promises",
+      "status": "unsupported",
+      "reason": "Native typed linting cannot build a TS program from extracted framework templates.",
+      "limitation": "sfc-type-services",
+      "evidence": "capability:sfc-type-services"
+    },
     "vue:@typescript-eslint/no-inferrable-types:038966de9f6b": {
       "sourceId": "@typescript-eslint/no-inferrable-types",
       "sourceValue": [
@@ -19738,6 +19900,18 @@
       "evidence": "module:@typescript-eslint/no-misused-new:038966de9f6b",
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
+    },
+    "vue:@typescript-eslint/no-misused-promises:038966de9f6b": {
+      "sourceId": "@typescript-eslint/no-misused-promises",
+      "sourceValue": [
+        2
+      ],
+      "domain": "vue",
+      "documentation": "https://typescript-eslint.io/rules/no-misused-promises",
+      "status": "unsupported",
+      "reason": "Native typed linting cannot build a TS program from extracted framework templates.",
+      "limitation": "sfc-type-services",
+      "evidence": "capability:sfc-type-services"
     },
     "vue:@typescript-eslint/no-namespace:038966de9f6b": {
       "sourceId": "@typescript-eslint/no-namespace",
@@ -19835,6 +20009,18 @@
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
     },
+    "vue:@typescript-eslint/no-unnecessary-type-assertion:080a9ed42855": {
+      "sourceId": "@typescript-eslint/no-unnecessary-type-assertion",
+      "sourceValue": [
+        1
+      ],
+      "domain": "vue",
+      "documentation": "https://typescript-eslint.io/rules/no-unnecessary-type-assertion",
+      "status": "unsupported",
+      "reason": "Native typed linting cannot build a TS program from extracted framework templates.",
+      "limitation": "sfc-type-services",
+      "evidence": "capability:sfc-type-services"
+    },
     "vue:@typescript-eslint/no-unnecessary-type-constraint:038966de9f6b": {
       "sourceId": "@typescript-eslint/no-unnecessary-type-constraint",
       "sourceValue": [
@@ -19852,6 +20038,18 @@
       "evidence": "module:@typescript-eslint/no-unnecessary-type-constraint:038966de9f6b",
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
+    },
+    "vue:@typescript-eslint/no-unnecessary-type-parameters:080a9ed42855": {
+      "sourceId": "@typescript-eslint/no-unnecessary-type-parameters",
+      "sourceValue": [
+        1
+      ],
+      "domain": "vue",
+      "documentation": "https://typescript-eslint.io/rules/no-unnecessary-type-parameters",
+      "status": "unsupported",
+      "reason": "Native typed linting cannot build a TS program from extracted framework templates.",
+      "limitation": "sfc-type-services",
+      "evidence": "capability:sfc-type-services"
     },
     "vue:@typescript-eslint/no-unsafe-declaration-merging:038966de9f6b": {
       "sourceId": "@typescript-eslint/no-unsafe-declaration-merging",
@@ -20031,6 +20229,21 @@
       "evidence": "module:@typescript-eslint/prefer-namespace-keyword:038966de9f6b",
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
+    },
+    "vue:@typescript-eslint/prefer-nullish-coalescing:5645f94d267d": {
+      "sourceId": "@typescript-eslint/prefer-nullish-coalescing",
+      "sourceValue": [
+        1,
+        {
+          "ignorePrimitives": true
+        }
+      ],
+      "domain": "vue",
+      "documentation": "https://typescript-eslint.io/rules/prefer-nullish-coalescing",
+      "status": "unsupported",
+      "reason": "Native typed linting cannot build a TS program from extracted framework templates.",
+      "limitation": "sfc-type-services",
+      "evidence": "capability:sfc-type-services"
     },
     "vue:@typescript-eslint/quotes:d0bca111f862": {
       "sourceId": "@typescript-eslint/quotes",
@@ -20377,6 +20590,32 @@
       "documentation": "https://eslint.org/docs/latest/rules/eol-last",
       "status": "disabled",
       "reason": "Disabled in the effective source configuration."
+    },
+    "vue:eqeqeq:8d0cbeeba4a5": {
+      "sourceId": "eqeqeq",
+      "sourceValue": [
+        2,
+        "always",
+        {
+          "null": "ignore"
+        }
+      ],
+      "domain": "vue",
+      "documentation": "https://eslint.org/docs/latest/rules/eqeqeq",
+      "status": "partial",
+      "targetId": "eslint/eqeqeq",
+      "targetValue": [
+        2,
+        "always",
+        {
+          "null": "ignore"
+        }
+      ],
+      "typeAware": false,
+      "implementation": "native",
+      "evidence": "module:eqeqeq:8d0cbeeba4a5",
+      "limitation": "script-extraction",
+      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
     },
     "vue:flowtype/boolean-style:d0bca111f862": {
       "sourceId": "flowtype/boolean-style",
@@ -20830,8 +21069,36 @@
       ],
       "domain": "vue",
       "documentation": "https://github.com/un-ts/eslint-plugin-import-x/blob/v4.17.1/docs/rules/order.md",
-      "status": "partial",
-      "targetId": "import-x-js/order",
+      "status": "formatter",
+      "implementation": "formatter",
+      "formatter": "oxfmt",
+      "formatterOptions": {
+        "groups": [
+          [
+            "builtin",
+            "external"
+          ],
+          "internal",
+          "parent",
+          [
+            "sibling",
+            "index"
+          ],
+          "type",
+          "unknown"
+        ],
+        "internalPattern": [
+          "@/",
+          "~/"
+        ],
+        "sortSideEffects": false,
+        "partitionByComment": true,
+        "order": "asc",
+        "ignoreCase": false,
+        "newlinesBetween": true
+      },
+      "skipConfiguration": true,
+      "targetId": "oxfmt/sort-imports",
       "targetValue": [
         2,
         {
@@ -20874,11 +21141,8 @@
           "warnOnUnassignedImports": false
         }
       ],
-      "typeAware": false,
-      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint.",
-      "implementation": "js-plugin",
-      "evidence": "module:import-x/order:bf0103574686",
-      "limitation": "script-extraction"
+      "evidence": "capability:oxfmt-imports",
+      "reason": "Import grouping, sorting and whitespace are owned by the reviewed Oxfmt sortImports policy. This deliberately replaces the legacy import-order style, not a claim of identical diagnostics or fixes. Side-effect import order is preserved."
     },
     "vue:import-x/prefer-default-export:d0bca111f862": {
       "sourceId": "import-x/prefer-default-export",
@@ -20971,6 +21235,26 @@
       "status": "disabled",
       "reason": "Disabled in the effective source configuration."
     },
+    "vue:max-depth:aa5507f9e57e": {
+      "sourceId": "max-depth",
+      "sourceValue": [
+        1,
+        4
+      ],
+      "domain": "vue",
+      "documentation": "https://eslint.org/docs/latest/rules/max-depth",
+      "status": "partial",
+      "targetId": "eslint/max-depth",
+      "targetValue": [
+        1,
+        4
+      ],
+      "typeAware": false,
+      "implementation": "native",
+      "evidence": "module:max-depth:aa5507f9e57e",
+      "limitation": "script-extraction",
+      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
+    },
     "vue:max-len:d0bca111f862": {
       "sourceId": "max-len",
       "sourceValue": [
@@ -21011,23 +21295,15 @@
       "status": "disabled",
       "reason": "Disabled in the effective source configuration."
     },
-    "vue:newline-before-return:038966de9f6b": {
+    "vue:newline-before-return:d0bca111f862": {
       "sourceId": "newline-before-return",
       "sourceValue": [
-        2
+        0
       ],
       "domain": "vue",
       "documentation": "https://eslint.org/docs/latest/rules/newline-before-return",
-      "status": "partial",
-      "targetId": "eslint-js/newline-before-return",
-      "targetValue": [
-        2
-      ],
-      "typeAware": false,
-      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint.",
-      "implementation": "js-plugin",
-      "evidence": "module:newline-before-return:038966de9f6b",
-      "limitation": "script-extraction"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "vue:newline-per-chained-call:d0bca111f862": {
       "sourceId": "newline-per-chained-call",
@@ -21398,6 +21674,30 @@
       "typeAware": false,
       "implementation": "native",
       "evidence": "module:no-duplicate-case:038966de9f6b",
+      "limitation": "script-extraction",
+      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
+    },
+    "vue:no-else-return:6655d9cda307": {
+      "sourceId": "no-else-return",
+      "sourceValue": [
+        1,
+        {
+          "allowElseIf": false
+        }
+      ],
+      "domain": "vue",
+      "documentation": "https://eslint.org/docs/latest/rules/no-else-return",
+      "status": "partial",
+      "targetId": "eslint/no-else-return",
+      "targetValue": [
+        1,
+        {
+          "allowElseIf": false
+        }
+      ],
+      "typeAware": false,
+      "implementation": "native",
+      "evidence": "module:no-else-return:6655d9cda307",
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
     },
@@ -27963,23 +28263,15 @@
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
     },
-    "vue:unicorn/consistent-destructuring:038966de9f6b": {
+    "vue:unicorn/consistent-destructuring:d0bca111f862": {
       "sourceId": "unicorn/consistent-destructuring",
       "sourceValue": [
-        2
+        0
       ],
       "domain": "vue",
       "documentation": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/rules/consistent-destructuring.md",
-      "status": "partial",
-      "targetId": "unicorn-js/consistent-destructuring",
-      "targetValue": [
-        2
-      ],
-      "typeAware": false,
-      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint.",
-      "implementation": "js-plugin",
-      "evidence": "module:unicorn/consistent-destructuring:038966de9f6b",
-      "limitation": "script-extraction"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "vue:unicorn/consistent-empty-array-spread:038966de9f6b": {
       "sourceId": "unicorn/consistent-empty-array-spread",
@@ -28513,49 +28805,16 @@
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
     },
-    "vue:unicorn/name-replacements:1f926c3e2cde": {
+    "vue:unicorn/name-replacements:cb5ec12ef0bb": {
       "sourceId": "unicorn/name-replacements",
       "sourceValue": [
-        2,
-        {
-          "replacements": {
-            "dev": false,
-            "prod": false,
-            "props": false,
-            "ref": false,
-            "refs": false,
-            "args": false,
-            "params": false,
-            "utils": false,
-            "env": false
-          }
-        }
+        0,
+        {}
       ],
       "domain": "vue",
       "documentation": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/rules/name-replacements.md",
-      "status": "partial",
-      "targetId": "unicorn-js/name-replacements",
-      "targetValue": [
-        2,
-        {
-          "replacements": {
-            "dev": false,
-            "prod": false,
-            "props": false,
-            "ref": false,
-            "refs": false,
-            "args": false,
-            "params": false,
-            "utils": false,
-            "env": false
-          }
-        }
-      ],
-      "typeAware": false,
-      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint.",
-      "implementation": "js-plugin",
-      "evidence": "module:unicorn/name-replacements:1f926c3e2cde",
-      "limitation": "script-extraction"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "vue:unicorn/new-for-builtins:038966de9f6b": {
       "sourceId": "unicorn/new-for-builtins",
@@ -30740,23 +30999,15 @@
       "evidence": "module:unicorn/no-unused-array-method-return:038966de9f6b",
       "limitation": "script-extraction"
     },
-    "vue:unicorn/no-unused-properties:038966de9f6b": {
+    "vue:unicorn/no-unused-properties:d0bca111f862": {
       "sourceId": "unicorn/no-unused-properties",
       "sourceValue": [
-        2
+        0
       ],
       "domain": "vue",
       "documentation": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/rules/no-unused-properties.md",
-      "status": "partial",
-      "targetId": "unicorn-js/no-unused-properties",
-      "targetValue": [
-        2
-      ],
-      "typeAware": false,
-      "reason": "Oxlint treats import/export-free JavaScript as script scope; the source preset forces module scope. Local module checks work in explicit ES modules but can skip script-global variables.",
-      "implementation": "js-plugin",
-      "limitation": "module-inference",
-      "evidence": "module:unicorn/no-unused-properties:038966de9f6b"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "vue:unicorn/no-useless-boolean-cast:038966de9f6b": {
       "sourceId": "unicorn/no-useless-boolean-cast",
@@ -37829,6 +38080,32 @@
       "status": "disabled",
       "reason": "Disabled in the effective source configuration."
     },
+    "svelte:eqeqeq:8d0cbeeba4a5": {
+      "sourceId": "eqeqeq",
+      "sourceValue": [
+        2,
+        "always",
+        {
+          "null": "ignore"
+        }
+      ],
+      "domain": "svelte",
+      "documentation": "https://eslint.org/docs/latest/rules/eqeqeq",
+      "status": "partial",
+      "targetId": "eslint/eqeqeq",
+      "targetValue": [
+        2,
+        "always",
+        {
+          "null": "ignore"
+        }
+      ],
+      "typeAware": false,
+      "implementation": "native",
+      "evidence": "module:eqeqeq:8d0cbeeba4a5",
+      "limitation": "script-extraction",
+      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
+    },
     "svelte:flowtype/boolean-style:d0bca111f862": {
       "sourceId": "flowtype/boolean-style",
       "sourceValue": [
@@ -38281,8 +38558,36 @@
       ],
       "domain": "svelte",
       "documentation": "https://github.com/un-ts/eslint-plugin-import-x/blob/v4.17.1/docs/rules/order.md",
-      "status": "partial",
-      "targetId": "import-x-js/order",
+      "status": "formatter",
+      "implementation": "formatter",
+      "formatter": "oxfmt",
+      "formatterOptions": {
+        "groups": [
+          [
+            "builtin",
+            "external"
+          ],
+          "internal",
+          "parent",
+          [
+            "sibling",
+            "index"
+          ],
+          "type",
+          "unknown"
+        ],
+        "internalPattern": [
+          "@/",
+          "~/"
+        ],
+        "sortSideEffects": false,
+        "partitionByComment": true,
+        "order": "asc",
+        "ignoreCase": false,
+        "newlinesBetween": true
+      },
+      "skipConfiguration": true,
+      "targetId": "oxfmt/sort-imports",
       "targetValue": [
         2,
         {
@@ -38325,11 +38630,8 @@
           "warnOnUnassignedImports": false
         }
       ],
-      "typeAware": false,
-      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint.",
-      "implementation": "js-plugin",
-      "evidence": "module:import-x/order:bf0103574686",
-      "limitation": "script-extraction"
+      "evidence": "capability:oxfmt-imports",
+      "reason": "Import grouping, sorting and whitespace are owned by the reviewed Oxfmt sortImports policy. This deliberately replaces the legacy import-order style, not a claim of identical diagnostics or fixes. Side-effect import order is preserved."
     },
     "svelte:import-x/prefer-default-export:d0bca111f862": {
       "sourceId": "import-x/prefer-default-export",
@@ -38422,6 +38724,26 @@
       "status": "disabled",
       "reason": "Disabled in the effective source configuration."
     },
+    "svelte:max-depth:aa5507f9e57e": {
+      "sourceId": "max-depth",
+      "sourceValue": [
+        1,
+        4
+      ],
+      "domain": "svelte",
+      "documentation": "https://eslint.org/docs/latest/rules/max-depth",
+      "status": "partial",
+      "targetId": "eslint/max-depth",
+      "targetValue": [
+        1,
+        4
+      ],
+      "typeAware": false,
+      "implementation": "native",
+      "evidence": "module:max-depth:aa5507f9e57e",
+      "limitation": "script-extraction",
+      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
+    },
     "svelte:max-len:d0bca111f862": {
       "sourceId": "max-len",
       "sourceValue": [
@@ -38462,23 +38784,15 @@
       "status": "disabled",
       "reason": "Disabled in the effective source configuration."
     },
-    "svelte:newline-before-return:038966de9f6b": {
+    "svelte:newline-before-return:d0bca111f862": {
       "sourceId": "newline-before-return",
       "sourceValue": [
-        2
+        0
       ],
       "domain": "svelte",
       "documentation": "https://eslint.org/docs/latest/rules/newline-before-return",
-      "status": "partial",
-      "targetId": "eslint-js/newline-before-return",
-      "targetValue": [
-        2
-      ],
-      "typeAware": false,
-      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint.",
-      "implementation": "js-plugin",
-      "evidence": "module:newline-before-return:038966de9f6b",
-      "limitation": "script-extraction"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "svelte:newline-per-chained-call:d0bca111f862": {
       "sourceId": "newline-per-chained-call",
@@ -38849,6 +39163,30 @@
       "typeAware": false,
       "implementation": "native",
       "evidence": "module:no-duplicate-case:038966de9f6b",
+      "limitation": "script-extraction",
+      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
+    },
+    "svelte:no-else-return:6655d9cda307": {
+      "sourceId": "no-else-return",
+      "sourceValue": [
+        1,
+        {
+          "allowElseIf": false
+        }
+      ],
+      "domain": "svelte",
+      "documentation": "https://eslint.org/docs/latest/rules/no-else-return",
+      "status": "partial",
+      "targetId": "eslint/no-else-return",
+      "targetValue": [
+        1,
+        {
+          "allowElseIf": false
+        }
+      ],
+      "typeAware": false,
+      "implementation": "native",
+      "evidence": "module:no-else-return:6655d9cda307",
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
     },
@@ -45396,23 +45734,15 @@
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
     },
-    "svelte:unicorn/consistent-destructuring:038966de9f6b": {
+    "svelte:unicorn/consistent-destructuring:d0bca111f862": {
       "sourceId": "unicorn/consistent-destructuring",
       "sourceValue": [
-        2
+        0
       ],
       "domain": "svelte",
       "documentation": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/rules/consistent-destructuring.md",
-      "status": "partial",
-      "targetId": "unicorn-js/consistent-destructuring",
-      "targetValue": [
-        2
-      ],
-      "typeAware": false,
-      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint.",
-      "implementation": "js-plugin",
-      "evidence": "module:unicorn/consistent-destructuring:038966de9f6b",
-      "limitation": "script-extraction"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "svelte:unicorn/consistent-empty-array-spread:038966de9f6b": {
       "sourceId": "unicorn/consistent-empty-array-spread",
@@ -45946,49 +46276,16 @@
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
     },
-    "svelte:unicorn/name-replacements:1f926c3e2cde": {
+    "svelte:unicorn/name-replacements:cb5ec12ef0bb": {
       "sourceId": "unicorn/name-replacements",
       "sourceValue": [
-        2,
-        {
-          "replacements": {
-            "dev": false,
-            "prod": false,
-            "props": false,
-            "ref": false,
-            "refs": false,
-            "args": false,
-            "params": false,
-            "utils": false,
-            "env": false
-          }
-        }
+        0,
+        {}
       ],
       "domain": "svelte",
       "documentation": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/rules/name-replacements.md",
-      "status": "partial",
-      "targetId": "unicorn-js/name-replacements",
-      "targetValue": [
-        2,
-        {
-          "replacements": {
-            "dev": false,
-            "prod": false,
-            "props": false,
-            "ref": false,
-            "refs": false,
-            "args": false,
-            "params": false,
-            "utils": false,
-            "env": false
-          }
-        }
-      ],
-      "typeAware": false,
-      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint.",
-      "implementation": "js-plugin",
-      "evidence": "module:unicorn/name-replacements:1f926c3e2cde",
-      "limitation": "script-extraction"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "svelte:unicorn/new-for-builtins:038966de9f6b": {
       "sourceId": "unicorn/new-for-builtins",
@@ -48173,23 +48470,15 @@
       "evidence": "module:unicorn/no-unused-array-method-return:038966de9f6b",
       "limitation": "script-extraction"
     },
-    "svelte:unicorn/no-unused-properties:038966de9f6b": {
+    "svelte:unicorn/no-unused-properties:d0bca111f862": {
       "sourceId": "unicorn/no-unused-properties",
       "sourceValue": [
-        2
+        0
       ],
       "domain": "svelte",
       "documentation": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/rules/no-unused-properties.md",
-      "status": "partial",
-      "targetId": "unicorn-js/no-unused-properties",
-      "targetValue": [
-        2
-      ],
-      "typeAware": false,
-      "reason": "Oxlint treats import/export-free JavaScript as script scope; the source preset forces module scope. Local module checks work in explicit ES modules but can skip script-global variables.",
-      "implementation": "js-plugin",
-      "limitation": "module-inference",
-      "evidence": "module:unicorn/no-unused-properties:038966de9f6b"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "svelte:unicorn/no-useless-boolean-cast:038966de9f6b": {
       "sourceId": "unicorn/no-useless-boolean-cast",
@@ -53328,23 +53617,6 @@
       "implementation": "js-plugin",
       "evidence": "module:@stylistic/jsx-max-props-per-line:efe5912e6b5f"
     },
-    "module:@stylistic/jsx-props-no-multi-spaces:038966de9f6b": {
-      "sourceId": "@stylistic/jsx-props-no-multi-spaces",
-      "sourceValue": [
-        2
-      ],
-      "domain": "module",
-      "documentation": "https://eslint.style/rules/jsx-props-no-multi-spaces",
-      "status": "js-plugin",
-      "targetId": "stylistic-js/jsx-props-no-multi-spaces",
-      "targetValue": [
-        2
-      ],
-      "typeAware": false,
-      "reason": "No native equivalent is registered; use the original JS rule.",
-      "implementation": "js-plugin",
-      "evidence": "module:@stylistic/jsx-props-no-multi-spaces:038966de9f6b"
-    },
     "module:@stylistic/jsx-self-closing-comp:e71b31a82aea": {
       "sourceId": "@stylistic/jsx-self-closing-comp",
       "sourceValue": [
@@ -55041,24 +55313,6 @@
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint.",
       "implementation": "js-plugin",
       "evidence": "module:@stylistic/jsx-max-props-per-line:efe5912e6b5f",
-      "limitation": "script-extraction"
-    },
-    "vue:@stylistic/jsx-props-no-multi-spaces:038966de9f6b": {
-      "sourceId": "@stylistic/jsx-props-no-multi-spaces",
-      "sourceValue": [
-        2
-      ],
-      "domain": "vue",
-      "documentation": "https://eslint.style/rules/jsx-props-no-multi-spaces",
-      "status": "partial",
-      "targetId": "stylistic-js/jsx-props-no-multi-spaces",
-      "targetValue": [
-        2
-      ],
-      "typeAware": false,
-      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint.",
-      "implementation": "js-plugin",
-      "evidence": "module:@stylistic/jsx-props-no-multi-spaces:038966de9f6b",
       "limitation": "script-extraction"
     },
     "vue:@stylistic/jsx-self-closing-comp:e71b31a82aea": {
@@ -56785,24 +57039,6 @@
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint.",
       "implementation": "js-plugin",
       "evidence": "module:@stylistic/jsx-max-props-per-line:efe5912e6b5f",
-      "limitation": "script-extraction"
-    },
-    "svelte:@stylistic/jsx-props-no-multi-spaces:038966de9f6b": {
-      "sourceId": "@stylistic/jsx-props-no-multi-spaces",
-      "sourceValue": [
-        2
-      ],
-      "domain": "svelte",
-      "documentation": "https://eslint.style/rules/jsx-props-no-multi-spaces",
-      "status": "partial",
-      "targetId": "stylistic-js/jsx-props-no-multi-spaces",
-      "targetValue": [
-        2
-      ],
-      "typeAware": false,
-      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint.",
-      "implementation": "js-plugin",
-      "evidence": "module:@stylistic/jsx-props-no-multi-spaces:038966de9f6b",
       "limitation": "script-extraction"
     },
     "svelte:@stylistic/jsx-self-closing-comp:e71b31a82aea": {
@@ -71362,25 +71598,16 @@
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
     },
-    "astro:unicorn/name-replacements:ef1424cb5c9d": {
+    "astro:unicorn/name-replacements:cb5ec12ef0bb": {
       "sourceId": "unicorn/name-replacements",
       "sourceValue": [
-        2,
+        0,
         {}
       ],
       "domain": "astro",
       "documentation": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/rules/name-replacements.md",
-      "status": "partial",
-      "targetId": "unicorn-js/name-replacements",
-      "targetValue": [
-        2,
-        {}
-      ],
-      "typeAware": false,
-      "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint.",
-      "implementation": "js-plugin",
-      "evidence": "module:unicorn/name-replacements:ef1424cb5c9d",
-      "limitation": "script-extraction"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "astro:unicorn/new-for-builtins:038966de9f6b": {
       "sourceId": "unicorn/new-for-builtins",
@@ -79713,6 +79940,18 @@
       "evidence": "module:@typescript-eslint/array-type:038966de9f6b",
       "limitation": "script-extraction"
     },
+    "astro-client:@typescript-eslint/await-thenable:038966de9f6b": {
+      "sourceId": "@typescript-eslint/await-thenable",
+      "sourceValue": [
+        2
+      ],
+      "domain": "astro-client",
+      "documentation": "https://typescript-eslint.io/rules/await-thenable",
+      "status": "unsupported",
+      "reason": "The source processor uses different rules/options for this client fragment. Oxlint exposes one physical filename for frontmatter and browser scripts, so the override cannot be applied independently.",
+      "limitation": "fragment-scope",
+      "evidence": "capability:fragment-scope"
+    },
     "astro-client:@typescript-eslint/ban-ts-comment:0858cde03b10": {
       "sourceId": "@typescript-eslint/ban-ts-comment",
       "sourceValue": [
@@ -80103,6 +80342,18 @@
       "status": "disabled",
       "reason": "Disabled in the effective source configuration."
     },
+    "astro-client:@typescript-eslint/no-floating-promises:038966de9f6b": {
+      "sourceId": "@typescript-eslint/no-floating-promises",
+      "sourceValue": [
+        2
+      ],
+      "domain": "astro-client",
+      "documentation": "https://typescript-eslint.io/rules/no-floating-promises",
+      "status": "unsupported",
+      "reason": "The source processor uses different rules/options for this client fragment. Oxlint exposes one physical filename for frontmatter and browser scripts, so the override cannot be applied independently.",
+      "limitation": "fragment-scope",
+      "evidence": "capability:fragment-scope"
+    },
     "astro-client:@typescript-eslint/no-inferrable-types:038966de9f6b": {
       "sourceId": "@typescript-eslint/no-inferrable-types",
       "sourceValue": [
@@ -80138,6 +80389,18 @@
       "evidence": "module:@typescript-eslint/no-misused-new:038966de9f6b",
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
+    },
+    "astro-client:@typescript-eslint/no-misused-promises:038966de9f6b": {
+      "sourceId": "@typescript-eslint/no-misused-promises",
+      "sourceValue": [
+        2
+      ],
+      "domain": "astro-client",
+      "documentation": "https://typescript-eslint.io/rules/no-misused-promises",
+      "status": "unsupported",
+      "reason": "The source processor uses different rules/options for this client fragment. Oxlint exposes one physical filename for frontmatter and browser scripts, so the override cannot be applied independently.",
+      "limitation": "fragment-scope",
+      "evidence": "capability:fragment-scope"
     },
     "astro-client:@typescript-eslint/no-namespace:038966de9f6b": {
       "sourceId": "@typescript-eslint/no-namespace",
@@ -80228,6 +80491,18 @@
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
     },
+    "astro-client:@typescript-eslint/no-unnecessary-type-assertion:080a9ed42855": {
+      "sourceId": "@typescript-eslint/no-unnecessary-type-assertion",
+      "sourceValue": [
+        1
+      ],
+      "domain": "astro-client",
+      "documentation": "https://typescript-eslint.io/rules/no-unnecessary-type-assertion",
+      "status": "unsupported",
+      "reason": "The source processor uses different rules/options for this client fragment. Oxlint exposes one physical filename for frontmatter and browser scripts, so the override cannot be applied independently.",
+      "limitation": "fragment-scope",
+      "evidence": "capability:fragment-scope"
+    },
     "astro-client:@typescript-eslint/no-unnecessary-type-constraint:038966de9f6b": {
       "sourceId": "@typescript-eslint/no-unnecessary-type-constraint",
       "sourceValue": [
@@ -80245,6 +80520,18 @@
       "evidence": "module:@typescript-eslint/no-unnecessary-type-constraint:038966de9f6b",
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
+    },
+    "astro-client:@typescript-eslint/no-unnecessary-type-parameters:080a9ed42855": {
+      "sourceId": "@typescript-eslint/no-unnecessary-type-parameters",
+      "sourceValue": [
+        1
+      ],
+      "domain": "astro-client",
+      "documentation": "https://typescript-eslint.io/rules/no-unnecessary-type-parameters",
+      "status": "unsupported",
+      "reason": "The source processor uses different rules/options for this client fragment. Oxlint exposes one physical filename for frontmatter and browser scripts, so the override cannot be applied independently.",
+      "limitation": "fragment-scope",
+      "evidence": "capability:fragment-scope"
     },
     "astro-client:@typescript-eslint/no-unsafe-declaration-merging:038966de9f6b": {
       "sourceId": "@typescript-eslint/no-unsafe-declaration-merging",
@@ -80424,6 +80711,21 @@
       "evidence": "module:@typescript-eslint/prefer-namespace-keyword:038966de9f6b",
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
+    },
+    "astro-client:@typescript-eslint/prefer-nullish-coalescing:5645f94d267d": {
+      "sourceId": "@typescript-eslint/prefer-nullish-coalescing",
+      "sourceValue": [
+        1,
+        {
+          "ignorePrimitives": true
+        }
+      ],
+      "domain": "astro-client",
+      "documentation": "https://typescript-eslint.io/rules/prefer-nullish-coalescing",
+      "status": "unsupported",
+      "reason": "The source processor uses different rules/options for this client fragment. Oxlint exposes one physical filename for frontmatter and browser scripts, so the override cannot be applied independently.",
+      "limitation": "fragment-scope",
+      "evidence": "capability:fragment-scope"
     },
     "astro-client:@typescript-eslint/quotes:d0bca111f862": {
       "sourceId": "@typescript-eslint/quotes",
@@ -80855,6 +81157,24 @@
       "status": "disabled",
       "reason": "Disabled in the effective source configuration."
     },
+    "astro-client:eqeqeq:8d0cbeeba4a5": {
+      "sourceId": "eqeqeq",
+      "sourceValue": [
+        2,
+        "always",
+        {
+          "null": "ignore"
+        }
+      ],
+      "domain": "astro-client",
+      "documentation": "https://eslint.org/docs/latest/rules/eqeqeq",
+      "status": "unsupported",
+      "typeAware": false,
+      "implementation": "native",
+      "evidence": "capability:fragment-scope",
+      "limitation": "fragment-scope",
+      "reason": "The source processor uses different rules/options for this client fragment. Oxlint exposes one physical filename for frontmatter and browser scripts, so the override cannot be applied independently."
+    },
     "astro-client:flowtype/boolean-style:d0bca111f862": {
       "sourceId": "flowtype/boolean-style",
       "sourceValue": [
@@ -81270,10 +81590,36 @@
       "domain": "astro-client",
       "documentation": "https://github.com/un-ts/eslint-plugin-import-x/blob/v4.17.1/docs/rules/order.md",
       "status": "unsupported",
-      "typeAware": false,
-      "reason": "The source processor uses different rules/options for this client fragment. Oxlint exposes one physical filename for frontmatter and browser scripts, so the override cannot be applied independently.",
-      "implementation": "js-plugin",
+      "implementation": "formatter",
+      "formatter": "oxfmt",
+      "formatterOptions": {
+        "groups": [
+          [
+            "builtin",
+            "external"
+          ],
+          "internal",
+          "parent",
+          [
+            "sibling",
+            "index"
+          ],
+          "type",
+          "unknown"
+        ],
+        "internalPattern": [
+          "@/",
+          "~/"
+        ],
+        "sortSideEffects": false,
+        "partitionByComment": true,
+        "order": "asc",
+        "ignoreCase": false,
+        "newlinesBetween": true
+      },
+      "skipConfiguration": true,
       "evidence": "capability:fragment-scope",
+      "reason": "The source processor uses different rules/options for this client fragment. Oxlint exposes one physical filename for frontmatter and browser scripts, so the override cannot be applied independently.",
       "limitation": "fragment-scope"
     },
     "astro-client:import-x/prefer-default-export:d0bca111f862": {
@@ -81367,6 +81713,21 @@
       "status": "disabled",
       "reason": "Disabled in the effective source configuration."
     },
+    "astro-client:max-depth:aa5507f9e57e": {
+      "sourceId": "max-depth",
+      "sourceValue": [
+        1,
+        4
+      ],
+      "domain": "astro-client",
+      "documentation": "https://eslint.org/docs/latest/rules/max-depth",
+      "status": "unsupported",
+      "typeAware": false,
+      "implementation": "native",
+      "evidence": "capability:fragment-scope",
+      "limitation": "fragment-scope",
+      "reason": "The source processor uses different rules/options for this client fragment. Oxlint exposes one physical filename for frontmatter and browser scripts, so the override cannot be applied independently."
+    },
     "astro-client:max-len:d0bca111f862": {
       "sourceId": "max-len",
       "sourceValue": [
@@ -81407,19 +81768,15 @@
       "status": "disabled",
       "reason": "Disabled in the effective source configuration."
     },
-    "astro-client:newline-before-return:038966de9f6b": {
+    "astro-client:newline-before-return:d0bca111f862": {
       "sourceId": "newline-before-return",
       "sourceValue": [
-        2
+        0
       ],
       "domain": "astro-client",
       "documentation": "https://eslint.org/docs/latest/rules/newline-before-return",
-      "status": "unsupported",
-      "typeAware": false,
-      "reason": "The source processor uses different rules/options for this client fragment. Oxlint exposes one physical filename for frontmatter and browser scripts, so the override cannot be applied independently.",
-      "implementation": "js-plugin",
-      "evidence": "capability:fragment-scope",
-      "limitation": "fragment-scope"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "astro-client:newline-per-chained-call:d0bca111f862": {
       "sourceId": "newline-per-chained-call",
@@ -81743,6 +82100,23 @@
       "evidence": "module:no-duplicate-case:038966de9f6b",
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
+    },
+    "astro-client:no-else-return:6655d9cda307": {
+      "sourceId": "no-else-return",
+      "sourceValue": [
+        1,
+        {
+          "allowElseIf": false
+        }
+      ],
+      "domain": "astro-client",
+      "documentation": "https://eslint.org/docs/latest/rules/no-else-return",
+      "status": "unsupported",
+      "typeAware": false,
+      "implementation": "native",
+      "evidence": "capability:fragment-scope",
+      "limitation": "fragment-scope",
+      "reason": "The source processor uses different rules/options for this client fragment. Oxlint exposes one physical filename for frontmatter and browser scripts, so the override cannot be applied independently."
     },
     "astro-client:no-empty:929ca4ab4ccc": {
       "sourceId": "no-empty",
@@ -88203,19 +88577,15 @@
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
     },
-    "astro-client:unicorn/consistent-destructuring:038966de9f6b": {
+    "astro-client:unicorn/consistent-destructuring:d0bca111f862": {
       "sourceId": "unicorn/consistent-destructuring",
       "sourceValue": [
-        2
+        0
       ],
       "domain": "astro-client",
       "documentation": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/rules/consistent-destructuring.md",
-      "status": "unsupported",
-      "typeAware": false,
-      "reason": "The source processor uses different rules/options for this client fragment. Oxlint exposes one physical filename for frontmatter and browser scripts, so the override cannot be applied independently.",
-      "implementation": "js-plugin",
-      "evidence": "capability:fragment-scope",
-      "limitation": "fragment-scope"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "astro-client:unicorn/consistent-empty-array-spread:038966de9f6b": {
       "sourceId": "unicorn/consistent-empty-array-spread",
@@ -88745,32 +89115,16 @@
       "limitation": "script-extraction",
       "reason": "The implementation is exercised on JS/TS fixtures and runs on extracted scripts here; template AST, bindings and whole-component equivalence are not provided by Oxlint."
     },
-    "astro-client:unicorn/name-replacements:1f926c3e2cde": {
+    "astro-client:unicorn/name-replacements:cb5ec12ef0bb": {
       "sourceId": "unicorn/name-replacements",
       "sourceValue": [
-        2,
-        {
-          "replacements": {
-            "dev": false,
-            "prod": false,
-            "props": false,
-            "ref": false,
-            "refs": false,
-            "args": false,
-            "params": false,
-            "utils": false,
-            "env": false
-          }
-        }
+        0,
+        {}
       ],
       "domain": "astro-client",
       "documentation": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/rules/name-replacements.md",
-      "status": "unsupported",
-      "typeAware": false,
-      "reason": "The source processor uses different rules/options for this client fragment. Oxlint exposes one physical filename for frontmatter and browser scripts, so the override cannot be applied independently.",
-      "implementation": "js-plugin",
-      "evidence": "capability:fragment-scope",
-      "limitation": "fragment-scope"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "astro-client:unicorn/new-for-builtins:038966de9f6b": {
       "sourceId": "unicorn/new-for-builtins",
@@ -90955,19 +91309,15 @@
       "evidence": "module:unicorn/no-unused-array-method-return:038966de9f6b",
       "limitation": "script-extraction"
     },
-    "astro-client:unicorn/no-unused-properties:038966de9f6b": {
+    "astro-client:unicorn/no-unused-properties:d0bca111f862": {
       "sourceId": "unicorn/no-unused-properties",
       "sourceValue": [
-        2
+        0
       ],
       "domain": "astro-client",
       "documentation": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/rules/no-unused-properties.md",
-      "status": "unsupported",
-      "typeAware": false,
-      "reason": "The source processor uses different rules/options for this client fragment. Oxlint exposes one physical filename for frontmatter and browser scripts, so the override cannot be applied independently.",
-      "implementation": "js-plugin",
-      "limitation": "fragment-scope",
-      "evidence": "capability:fragment-scope"
+      "status": "disabled",
+      "reason": "Disabled in the effective source configuration."
     },
     "astro-client:unicorn/no-useless-boolean-cast:038966de9f6b": {
       "sourceId": "unicorn/no-useless-boolean-cast",

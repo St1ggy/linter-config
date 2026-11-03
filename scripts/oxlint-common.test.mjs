@@ -59,7 +59,7 @@ test('Common preset honors consumer gitignore without enabling default categorie
   assert.equal(clean.status, 0, clean.stdout + clean.stderr)
 })
 
-test('Common preset preserves custom selectors, rest siblings and allowed abbreviations', (context) => {
+test('Common preset preserves custom selectors and rest siblings without enforcing abbreviation expansion', (context) => {
   const directory = consumer(context, {
     'selectors.ts': "for (const key in object) { use(key) }\nReact.useState()\n'abc'.replaceAll(/a/, '')\n",
     'rest.ts': 'const { ignored, ...rest } = { ignored: 1, kept: 2 }\nexport { rest }\n',
@@ -79,8 +79,7 @@ test('Common preset preserves custom selectors, rest siblings and allowed abbrev
     item.code?.includes('name-replacements'),
   )
 
-  assert.equal(nameDiagnostics.length, 1)
-  assert.match(nameDiagnostics[0].message, /str/)
+  assert.deepEqual(nameDiagnostics, [])
 })
 
 test('Common preset fixes type-only imports inline and prefers type aliases', (context) => {

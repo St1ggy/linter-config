@@ -1,5 +1,5 @@
-import { defineConfig } from 'eslint/config'
 import sveltePlugin from 'eslint-plugin-svelte'
+import { defineConfig } from 'eslint/config'
 import { parser } from 'typescript-eslint'
 
 const svelteFiles = ['**/*.svelte', '**/*.svelte.ts']
