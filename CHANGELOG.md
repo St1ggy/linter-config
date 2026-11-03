@@ -12,6 +12,17 @@ npm run changelog
 
 (Uses [Conventional Commits](https://www.conventionalcommits.org/) and [`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) with the `conventionalcommits` preset.)
 
+## [10.0.0](https://github.com/St1ggy/linter-config/compare/linter-config-v9.0.0...linter-config-v10.0.0) (2026-11-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **oxlint:** Ox stacks no longer generate or install ESLint template companions. Template linting is opt-in through retained compatibility exports. New error rules enforce Promise handling and strict equality, and Oxfmt now sorts import declarations. Node LTS and TypeScript 6 remain supported.
+
+### Features
+
+* **oxlint:** curate quality rules and remove required ESLint companions ([da38dc0](https://github.com/St1ggy/linter-config/commit/da38dc0b46f89829f61b49d3d806362dd38ed03e))
+
 ## [9.0.0](https://github.com/St1ggy/linter-config/compare/linter-config-v8.0.0...linter-config-v9.0.0) (2026-11-03)
 
 ### ⚠ BREAKING CHANGES
