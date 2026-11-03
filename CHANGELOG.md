@@ -12,6 +12,17 @@ npm run changelog
 
 (Uses [Conventional Commits](https://www.conventionalcommits.org/) and [`conventional-changelog-cli`](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) with the `conventionalcommits` preset.)
 
+## [9.0.0](https://github.com/St1ggy/linter-config/compare/linter-config-v8.0.0...linter-config-v9.0.0) (2026-11-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **config:** React and Next use @eslint-react/eslint-plugin instead of eslint-plugin-react, with the rule changes documented in README. All Ox stacks use Oxfmt; Svelte Ox requires Svelte 5. Pinned Oxlint engines are updated and the standalone TS7 compiler is removed.
+
+### Features
+
+* **config:** unify nine Ox stacks and adopt modern React rules ([a81b2f7](https://github.com/St1ggy/linter-config/commit/a81b2f7318ae58b196465782c12526d0352ddcb1))
+
 ## [8.0.0](https://github.com/St1ggy/linter-config/compare/linter-config-v7.4.0...linter-config-v8.0.0) (2026-10-03)
 
 ### ⚠ BREAKING CHANGES
