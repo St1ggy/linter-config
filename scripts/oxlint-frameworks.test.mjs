@@ -59,11 +59,11 @@ for (const stack of ['react', 'solid']) {
   })
 }
 
-test('React rules keep their configured component style and hooks checks', (context) => {
+test('Modern React checks buttons without requiring the removed arrow-component style', (context) => {
   const diagnostics = lintComponent(context, 'react', 'export function View() { return <button>Hello</button> }\n')
 
-  assert.ok(diagnostics.some((item) => item.code?.includes('function-component-definition')))
-  assert.ok(diagnostics.some((item) => item.code?.includes('button-has-type')))
+  assert.ok(diagnostics.every((item) => !item.code?.includes('function-component-definition')))
+  assert.ok(diagnostics.some((item) => item.code?.includes('dom-no-missing-button-type')))
 })
 
 test('Next rules are added to the React layer', (context) => {

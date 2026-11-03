@@ -10,7 +10,7 @@ import formatter from '@st1ggy/linter-config/oxfmt-common'
 import { OXFMT_STACKS, OXFMT_VERSION } from '../src/oxlint/stacks.js'
 
 import { temporaryProject } from './fixtures/oxlint-cases.mjs'
-import { run, stackPackageSpecs, stackPackages, wrapperFileNames } from './linter-init-core.mjs'
+import { STACKS, run, stackPackageSpecs, stackPackages, wrapperFileNames } from './linter-init-core.mjs'
 import { compareFormatters } from './oxfmt-compare.mjs'
 import { ROOT, runOxfmt, runOxlint } from './oxlint-tools.mjs'
 
@@ -71,7 +71,7 @@ test('Oxfmt honors gitignore, prettierignore and caller overrides', (context) =>
   assert.equal(readFileSync(path.join(directory, 'probe.ts'), 'utf8'), 'export const value = "hello"\n')
 })
 
-test('The four native stacks use Oxfmt and never execute the Prettier lint rule', async (context) => {
+test('All nine Ox stacks use Oxfmt and never execute the Prettier lint rule', async (context) => {
   for (const stack of OXFMT_STACKS) {
     const { default: config } = await import(
       pathToFileURL(path.join(ROOT, `src/oxlint/oxlint.config.${stack}.js`)).href
@@ -84,8 +84,10 @@ test('The four native stacks use Oxfmt and never execute the Prettier lint rule'
     const directory = temporaryProject(context)
 
     run('init', directory, `${stack}-ox`, { quiet: true })
-    assert.deepEqual(wrapperFileNames(`${stack}-ox`), ['oxlint.config.ts', 'oxfmt.config.ts', 'stylelint.config.js'])
-    assert.ok(readFileSync(path.join(directory, 'oxfmt.config.ts'), 'utf8').includes('oxfmt-common'))
+    assert.ok(wrapperFileNames(`${stack}-ox`).includes('oxfmt.config.ts'))
+    assert.ok(
+      readFileSync(path.join(directory, 'oxfmt.config.ts'), 'utf8').includes(STACKS[`${stack}-ox`].formatterPreset),
+    )
     writeFileSync(path.join(directory, 'probe.ts'), 'export const value="hello";\n')
     const linted = runOxlint(['probe.ts'], { cwd: directory })
 
@@ -93,8 +95,8 @@ test('The four native stacks use Oxfmt and never execute the Prettier lint rule'
   }
 })
 
-test('Svelte, Astro and original ESLint stacks retain their Prettier wrappers', () => {
-  for (const stack of ['svelte-ox', 'astro-ox', 'common', 'react', 'solid', 'next', 'svelte', 'astro']) {
+test('Original ESLint stacks retain their Prettier wrappers', () => {
+  for (const stack of ['common', 'react', 'solid', 'next', 'svelte', 'astro']) {
     assert.ok(wrapperFileNames(stack).includes('prettier.config.js'))
     assert.ok(!stackPackages(stack).includes('oxfmt'))
   }

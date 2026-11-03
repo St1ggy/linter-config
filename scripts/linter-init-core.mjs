@@ -4,13 +4,19 @@ import { spawnSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 
-import { OXFMT_STACKS, OX_FRAMEWORK_PACKAGES, oxStackToolVersions } from '../src/oxlint/stacks.js'
+import {
+  OXFMT_PRESETS,
+  OXFMT_STACKS,
+  OX_FRAMEWORK_PACKAGES,
+  SUPPLEMENT_STACKS,
+  oxStackToolVersions,
+} from '../src/oxlint/stacks.js'
 
 export const PACKAGE = '@st1ggy/linter-config'
 
 const BASE_STACK_KEYS = ['common', 'react', 'solid', 'next', 'svelte', 'astro']
 
-export const STACK_KEYS = [...BASE_STACK_KEYS, ...BASE_STACK_KEYS.map((key) => `${key}-ox`)]
+export const STACK_KEYS = [...BASE_STACK_KEYS, ...OXFMT_STACKS.map((key) => `${key}-ox`)]
 
 export const STACKS = {
   common: {
@@ -23,7 +29,7 @@ export const STACKS = {
     eslint: 'eslint-react',
     prettier: 'prettier-common',
     stylelint: 'stylelint-scss',
-    packages: ['eslint-plugin-react', 'eslint-plugin-react-hooks'],
+    packages: ['@eslint-react/eslint-plugin', 'eslint-plugin-react-hooks'],
   },
   solid: {
     eslint: 'eslint-solid',
@@ -35,7 +41,7 @@ export const STACKS = {
     eslint: 'eslint-next',
     prettier: 'prettier-common',
     stylelint: 'stylelint-scss',
-    packages: ['@next/eslint-plugin-next', 'eslint-plugin-react', 'eslint-plugin-react-hooks'],
+    packages: ['@next/eslint-plugin-next', '@eslint-react/eslint-plugin', 'eslint-plugin-react-hooks'],
   },
   svelte: {
     eslint: 'eslint-svelte',
@@ -47,7 +53,7 @@ export const STACKS = {
     eslint: 'eslint-astro',
     prettier: 'prettier-astro',
     stylelint: 'stylelint-scss',
-    packages: ['eslint-plugin-astro', 'eslint-plugin-jsx-a11y', 'prettier-plugin-astro'],
+    packages: ['eslint-plugin-astro', 'eslint-plugin-jsx-a11y-x', 'prettier-plugin-astro'],
   },
 }
 
@@ -85,20 +91,21 @@ for (const key of BASE_STACK_KEYS) {
   base.linterPreset = base.eslint
   base.formatterFile = 'prettier.config.js'
   base.formatterPreset = base.prettier
-  const hasOxfmt = OXFMT_STACKS.includes(key)
+}
 
+for (const key of OXFMT_STACKS) {
   STACKS[`${key}-ox`] = {
     linterFile: 'oxlint.config.ts',
     linterPreset: `${key}-ox`,
-    prettier: base.prettier,
-    formatterFile: hasOxfmt ? 'oxfmt.config.ts' : 'prettier.config.js',
-    formatterPreset: hasOxfmt ? 'oxfmt-common' : base.prettier,
-    stylelint: base.stylelint,
+    formatterFile: 'oxfmt.config.ts',
+    formatterPreset: OXFMT_PRESETS[key] ?? 'oxfmt-common',
+    supplementPreset: SUPPLEMENT_STACKS.includes(key) ? `eslint-${key}-ox` : undefined,
+    stylelint: 'stylelint-scss',
     packages: [...Object.keys(oxStackToolVersions(key)), ...OX_FRAMEWORK_PACKAGES[key]],
   }
   STACK_CHOICES.push({
     value: `${key}-ox`,
-    name: `${key}-ox — Oxlint + native TypeScript 7 + ${hasOxfmt ? 'Oxfmt' : 'Prettier'}`,
+    name: `${key}-ox — Oxlint + Oxfmt${SUPPLEMENT_STACKS.includes(key) ? ' + ESLint framework/template checks' : ''}`,
   })
 }
 
@@ -316,6 +323,18 @@ export function stackPackageSpecs(stackKey) {
   return Object.fromEntries(Object.entries(versions).map(([name, version]) => [name, `${name}@${version}`]))
 }
 
+export function assertStackRuntime(directory, stackKey) {
+  if (stackKey !== 'svelte-ox') {
+    return
+  }
+
+  const file = packageManifestPath(directory, 'svelte')
+
+  if (file && !JSON.parse(readFileSync(file, 'utf8')).version.startsWith('5.')) {
+    throw new Error('svelte-ox requires Svelte 5 for Oxfmt. Upgrade Svelte explicitly before selecting this stack.')
+  }
+}
+
 export function printHelp() {
   process.stdout.write(`\
 ${PACKAGE} — generate local wrapper configs in a consumer project.
@@ -330,8 +349,8 @@ Commands:
 
 Writes (each command):
   ESLint stacks: eslint.config.js, prettier.config.js, stylelint.config.js.
-  common/react/solid/next-ox: oxlint.config.ts, oxfmt.config.ts, stylelint.config.js.
-  svelte/astro-ox: oxlint.config.ts, prettier.config.js, stylelint.config.js.
+   All Ox stacks: oxlint.config.ts, oxfmt.config.ts, stylelint.config.js.
+   svelte/astro/angular/vue/nuxt-ox also write eslint.config.js for framework/template checks.
 
 Unless --skip-install: if package.json exists, runs the detected package manager to add or sync
 ${PACKAGE} and the selected stack's integration plugins.
@@ -339,6 +358,7 @@ ${PACKAGE} and the selected stack's integration plugins.
 Stack (at most one; default: common):
   --common | --react | --solid | --next | --svelte | --astro
   --common-ox | --react-ox | --solid-ox | --next-ox | --svelte-ox | --astro-ox
+  --angular-ox | --vue-ox | --nuxt-ox
 
 Options:
   --dir, -d       Target directory (default: current working directory).
@@ -396,7 +416,14 @@ export function writeFile(targetDirectory, name, content, overwrite, options = {
 export function wrapperFileNames(stackKey = 'common') {
   stackPackages(stackKey)
 
-  return [STACKS[stackKey].linterFile, STACKS[stackKey].formatterFile, 'stylelint.config.js']
+  const stack = STACKS[stackKey]
+
+  return [
+    stack.linterFile,
+    stack.formatterFile,
+    'stylelint.config.js',
+    ...(stack.supplementPreset ? ['eslint.config.js'] : []),
+  ]
 }
 
 export function existingWrapperFiles(targetDirectory, stackKey = 'common') {
@@ -455,9 +482,11 @@ export function run(mode, targetDirectory, stackKey, options = {}) {
     throw new Error(`Unknown stack "${stackKey}". Use: ${STACK_KEYS.join(', ')}`)
   }
 
+  assertStackRuntime(targetDirectory, stackKey)
+
   const shouldOverwrite = mode === 'migrate' || mode === 'reinit'
 
-  const hasSemicolon = stack.formatterPreset !== 'oxfmt-common'
+  const hasSemicolon = !stackKey.endsWith('-ox')
 
   writeFile(targetDirectory, stack.linterFile, jsReExport(stack.linterPreset, hasSemicolon), shouldOverwrite, { quiet })
   writeFile(targetDirectory, stack.formatterFile, jsReExport(stack.formatterPreset, hasSemicolon), shouldOverwrite, {
@@ -466,4 +495,10 @@ export function run(mode, targetDirectory, stackKey, options = {}) {
   writeFile(targetDirectory, 'stylelint.config.js', jsReExport(stack.stylelint, hasSemicolon), shouldOverwrite, {
     quiet,
   })
+
+  if (stack.supplementPreset) {
+    writeFile(targetDirectory, 'eslint.config.js', jsReExport(stack.supplementPreset, false), shouldOverwrite, {
+      quiet,
+    })
+  }
 }

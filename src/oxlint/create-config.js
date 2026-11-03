@@ -8,7 +8,7 @@ const pluginFiles = {
   'unicorn-js': 'unicorn',
   sonarjs: 'sonarjs',
   'typescript-js': 'typescript',
-  'react-js': 'react',
+  'react-modern': 'react',
   'react-hooks-js': 'react-hooks',
   'next-js': 'next',
   solid: 'solid',

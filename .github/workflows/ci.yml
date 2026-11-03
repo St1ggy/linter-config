@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: ['24.16.0', 'latest']
+        node: ['24.16.0', 'lts/*']
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v6
@@ -29,11 +29,12 @@ jobs:
       - run: npm run lint
       - run: npm run format:ox:check
       - run: node --test scripts/solid-config.test.mjs
-      - run: node ./node_modules/typescript/bin/tsc --noEmit
-      - run: npm run typecheck:ox
+      - run: node --test scripts/linter-init-cancellation.test.mjs
+      - run: node --test scripts/dependency-compat.test.mjs
+      - run: npm run typecheck
       - run: npm run generate:ox:check
       - run: npm run inventory:ox:check
       - run: npm run test:ox
       - run: node scripts/package-smoke.mjs
-      - if: ${{ matrix.node == 'latest' }}
+      - if: ${{ matrix.node == 'lts/*' }}
         run: node scripts/package-smoke.mjs --pm pnpm

@@ -6,12 +6,12 @@ import test from 'node:test'
 import { temporaryProject, toolchainFiles } from './fixtures/oxlint-cases.mjs'
 import { packageExecutable, runOxlint } from './oxlint-tools.mjs'
 
-test('Native TypeScript is 7.0.2 and checks correct and incorrect code', (context) => {
-  const executable = packageExecutable('@typescript/native', 'bin/tsc')
+test('TypeScript stays on the latest supported 6.x compiler and checks correct and incorrect code', (context) => {
+  const executable = packageExecutable('typescript', 'bin/tsc')
   const version = spawnSync(process.execPath, [executable, '--version'], { encoding: 'utf8' })
 
   assert.equal(version.status, 0)
-  assert.match(version.stdout, /Version 7\.0\.2/)
+  assert.match(version.stdout, /Version 6\.0\.3/)
   const valid = temporaryProject(context, { 'probe.ts': 'export const value: string = "ok"\n' })
   const invalid = temporaryProject(context, { 'probe.ts': 'export const value: string = 42\n' })
   const success = spawnSync(process.execPath, [executable, '--noEmit'], { cwd: valid, encoding: 'utf8' })

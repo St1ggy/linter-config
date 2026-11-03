@@ -68,7 +68,10 @@ export async function prepareCorpus(directory, corpus) {
     const selected = presets[fixture.sourceId === 'prettier/prettier' ? 'astro' : (fixture.stack ?? 'common')]
     const config = {
       plugins: selected.plugins,
-      jsPlugins: selected.jsPlugins,
+      jsPlugins:
+        fixture.sourceId === 'prettier/prettier'
+          ? [...selected.jsPlugins, { name: 'prettier', specifier: path.join(ROOT, 'src/oxlint/plugins/prettier.js') }]
+          : selected.jsPlugins,
       categories: selected.categories,
       settings: selected.settings,
       globals: fixture.globals,
@@ -205,6 +208,7 @@ export function verifyTargetCorpus(directory, corpus, entries) {
   const result = runOxlint(['--format', 'json', ...paths], { cwd: directory })
 
   assert.ok(result.status === 0 || result.status === 1, result.stderr || result.stdout)
+  assert.match(result.stdout, /^\s*\{/, result.stdout + result.stderr)
   const parsed = JSON.parse(result.stdout)
   const crashed = parsed.diagnostics.filter((diagnostic) => diagnostic.message.includes('Error running JS plugin'))
 

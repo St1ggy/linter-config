@@ -1,5 +1,29 @@
 // Keep Oxlint types in a separate ambient declaration file so existing ESLint
 // consumers do not need to install the optional Oxlint peer.
+declare module '@st1ggy/linter-config/angular-ox' {
+  import type { OxlintConfig } from 'oxlint'
+
+  const config: OxlintConfig
+
+  export default config
+}
+
+declare module '@st1ggy/linter-config/vue-ox' {
+  import type { OxlintConfig } from 'oxlint'
+
+  const config: OxlintConfig
+
+  export default config
+}
+
+declare module '@st1ggy/linter-config/nuxt-ox' {
+  import type { OxlintConfig } from 'oxlint'
+
+  const config: OxlintConfig
+
+  export default config
+}
+
 declare module '@st1ggy/linter-config/common-ox' {
   import type { OxlintConfig } from 'oxlint'
 

@@ -1,4 +1,4 @@
-import importPlugin, { rules as importRules } from 'eslint-plugin-import-x'
+import importPlugin, { rules as importRules } from '../../eslint/configs/import-plugin.js'
 
 function scopedContext(context) {
   const scopes = context.settings['st1ggy/import-scopes'] ?? []

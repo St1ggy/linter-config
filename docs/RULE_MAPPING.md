@@ -35,9 +35,9 @@ Inventory rule counts (sample files in this repository):
 
 ## Oxlint counterparts
 
-The package also exports `common-ox`, `react-ox`, `solid-ox`, `next-ox`, `svelte-ox` and `astro-ox`. Each is one `OxlintConfig` object, used through `oxlint.config.ts`, with `options.typeAware: true` and the native TS7 tsgolint engine. The original ESLint presets remain available.
+The package also exports `common-ox`, `react-ox`, `solid-ox`, `next-ox`, `svelte-ox`, `astro-ox`, `angular-ox`, `vue-ox` and `nuxt-ox`. Each is one `OxlintConfig` object, used through `oxlint.config.ts`, with `options.typeAware: true` and Oxlint's own native tsgolint engine. The project compiler and declaration checks stay on TypeScript 6; the original ESLint presets remain available.
 
-The new variants use explicit migrated rules plus compatible JS adapters. Common/React/Solid/Next pair with `oxfmt-common` and a separate `oxfmt --check`; their source `prettier/prettier` check is recorded as `formatter` in the audit instead of running a Prettier JS plugin. Svelte/Astro keep their existing Prettier selections. Every stack retains Stylelint. See [OXLINT_RULE_MAPPING.md](OXLINT_RULE_MAPPING.md) for source/target correspondence, per-scope counts, partial mappings and unsupported rules. Native script extraction does not provide Svelte/Astro template linting.
+All nine Ox variants use Oxlint and a separate `oxfmt --check`; source `prettier/prettier` checks in the six migrated presets are recorded as `formatter` instead of running a Prettier JS plugin. Svelte/Astro use `oxfmt-svelte`/`oxfmt-astro`, Angular uses `oxfmt-angular`, and other stacks use `oxfmt-common`. Every stack retains Stylelint. Svelte/Astro/Angular/Vue/Nuxt additionally generate an ESLint companion for framework/template checks; running Oxlint alone does not cover templates. See [OXLINT_RULE_MAPPING.md](OXLINT_RULE_MAPPING.md) for the six source-derived presets' correspondence and gaps. Angular/Vue/Nuxt compose the common preset and have separately tested framework integrations, not a claim of complete source/target parity.
 
 Regenerate and verify the Oxlint inventory with:
 

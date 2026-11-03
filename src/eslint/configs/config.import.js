@@ -1,7 +1,7 @@
 import { defineConfig } from 'eslint/config'
-import { flatConfigs } from 'eslint-plugin-import-x'
 
 import { files } from './constants.js'
+import { flatConfigs } from './import-plugin.js'
 
 export default defineConfig([
   flatConfigs.recommended,

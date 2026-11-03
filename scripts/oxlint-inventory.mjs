@@ -10,6 +10,7 @@ import { serializeInventory } from './oxlint-values.mjs'
 
 const lock = JSON.parse(readFileSync(path.join(ROOT, 'package-lock.json'), 'utf8'))
 const packageNames = {
+  '@eslint-react': '@eslint-react/eslint-plugin',
   '@typescript-eslint': 'typescript-eslint',
   '@stylistic': '@stylistic/eslint-plugin',
   '@next/next': '@next/eslint-plugin-next',

@@ -42,7 +42,7 @@ npx --yes @st1ggy/linter-config init --astro
 ```
 
 - **ESLint stacks:** `--common` | `--react` | `--solid` | `--next` | `--svelte` | `--astro`.
-- **Oxlint stacks:** `--common-ox` | `--react-ox` | `--solid-ox` | `--next-ox` | `--svelte-ox` | `--astro-ox`.
+- **Oxlint stacks:** `--common-ox` | `--react-ox` | `--solid-ox` | `--next-ox` | `--svelte-ox` | `--astro-ox` | `--angular-ox` | `--vue-ox` | `--nuxt-ox`.
 - Select at most one stack; the default is `common`.
 - **`--skip-install`:** only write wrapper files; do not run npm/pnpm/yarn/bun.
 - Every CLI command opens an interactive wizard. `init` creates missing wrappers; `migrate` can remove selected legacy configs and replaces wrappers.
@@ -53,19 +53,22 @@ For SolidJS, `init-solid.sh` selects `eslint-solid`, `prettier-common`, and `sty
 
 ## Oxlint wrappers
 
-The six `init-*-ox.sh` shortcuts select the corresponding `*-ox` stack. All write `oxlint.config.ts` and `stylelint.config.js`. Common/React/Solid/Next write `oxfmt.config.ts`; Svelte/Astro write `prettier.config.js`. The wizard pins `oxlint@1.86.0` and `oxlint-tsgolint@7.0.2003`, adds `oxfmt@0.71.0` to the four Oxfmt stacks, and installs only the selected framework integrations. Svelte projects provide their Svelte runtime; their formatter and ESLint-compatible script rules use it.
+The nine `init-*-ox.sh` shortcuts select the corresponding `*-ox` stack. All write `oxlint.config.ts`, `oxfmt.config.ts` and `stylelint.config.js`. Svelte/Astro/Angular/Vue/Nuxt also write `eslint.config.js` for framework/template checks and install `eslint@10.14.0` directly. The wizard pins `oxlint@1.90.0`, `oxlint-tsgolint@7.0.2005` and `oxfmt@0.75.0` and installs only the selected framework integrations. Svelte Ox requires Svelte 5; Astro formatting requires `@astrojs/compiler-rs`. The Angular runtime and generated Nuxt project types remain the application's responsibility.
 
 ```bash
 npx @st1ggy/linter-config init --react-ox
 npx @st1ggy/linter-config migrate --astro-ox
 node ./scripts/linter-init.mjs init --solid-ox --dir ./my-app --skip-install
+npx @st1ggy/linter-config init --angular-ox
+npx @st1ggy/linter-config init --vue-ox
+npx @st1ggy/linter-config init --nuxt-ox
 ```
 
 `init` preserves existing wrappers, including the other linter/formatter config. `migrate` offers the opposite configs and old `.oxlintrc.*`/`.oxfmtrc.*` files for removal before generating the selected wrappers. It never deletes them without confirmation.
 
-For the four Oxfmt stacks, run `oxlint .` and `oxfmt --check .` separately. Their lint presets do not run Prettier's JS rule. `oxfmt --write .` formats after lint fixes; import and package.json sorting are disabled. The shared formatter options are available through `@st1ggy/linter-config/oxfmt-common`.
+For every Ox stack, run `oxlint .` and `oxfmt --check .` separately. Also run `eslint .` for Svelte/Astro/Angular/Vue/Nuxt; otherwise template checks are lost. These configs do not run Prettier's JS rule. `oxfmt --write .` formats after lint fixes; import and package.json sorting are disabled. The shared formatter options are available through `@st1ggy/linter-config/oxfmt-common`; Svelte/Astro/Angular use `oxfmt-svelte`, `oxfmt-astro` and `oxfmt-angular` respectively.
 
-Oxlint uses native TS7 for typed linting. The consumer tsconfig must be TS7-compatible; the generator does not modify it. Read the [usage guide](../README.md#oxlint-variants) and [coverage report](../docs/OXLINT_RULE_MAPPING.md) before switching a project with Svelte/Astro templates or TS parser-service-dependent JS rules.
+The project compiler stays on TypeScript 6. Oxlint uses its own tsgolint engine for typed linting; it does not install or replace the project compiler. That engine has independent tsconfig constraints (such as no `baseUrl` support); the generator does not modify consumer configs. Read the [usage guide](../README.md#oxlint-variants) and [coverage report](../docs/OXLINT_RULE_MAPPING.md) before switching. The generated inventory covers the six source-derived presets; Angular/Vue/Nuxt compose the common preset and have separate integration tests. ESLint companions restore framework/template checks, not every unsupported general-purpose typed rule.
 
 ## Oxlint development checks
 
@@ -78,7 +81,7 @@ npm run inventory:ox:check
 npm run test:ox
 npm run format:ox:check
 npm run format:ox:compare
-npm run typecheck:ox
+npm run typecheck
 node scripts/package-smoke.mjs
 node scripts/package-smoke.mjs --pm pnpm
 ```

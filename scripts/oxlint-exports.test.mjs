@@ -5,8 +5,10 @@ import path from 'node:path'
 import process from 'node:process'
 import test from 'node:test'
 
+import { OXFMT_STACKS, SUPPLEMENT_STACKS } from '../src/oxlint/stacks.js'
+
 import { temporaryProject, toolchainFiles } from './fixtures/oxlint-cases.mjs'
-import { OX_STACKS, ROOT, packageExecutable, runOxlint } from './oxlint-tools.mjs'
+import { ROOT, packageExecutable, runOxlint } from './oxlint-tools.mjs'
 
 const manifest = JSON.parse(readFileSync(path.join(ROOT, 'package.json'), 'utf8'))
 
@@ -40,7 +42,7 @@ function consumerPackage(context, dependencies = []) {
 
 test('All native-tool public exports load without optional engine or framework peers', (context) => {
   const directory = consumerPackage(context)
-  const code = `import assert from 'node:assert/strict'; for (const stack of ${JSON.stringify(OX_STACKS)}) { const {default:config}=await import('@st1ggy/linter-config/'+stack+'-ox'); assert.equal(config.options.typeAware,true); assert.equal(Array.isArray(config),false); } const {default:fmt}=await import('@st1ggy/linter-config/oxfmt-common'); assert.equal(fmt.semi,false);`
+  const code = `import assert from 'node:assert/strict'; for (const stack of ${JSON.stringify(OXFMT_STACKS)}) { const {default:config}=await import('@st1ggy/linter-config/'+stack+'-ox'); assert.equal(config.options.typeAware,true); assert.equal(Array.isArray(config),false); } for (const name of ['common','svelte','astro','angular']) { const {default:fmt}=await import('@st1ggy/linter-config/oxfmt-'+name); assert.equal(fmt.semi,false); }`
   const result = spawnSync(process.execPath, ['--input-type=module', '-e', code], { cwd: directory, encoding: 'utf8' })
 
   assert.equal(result.status, 0, result.stderr)
@@ -66,21 +68,31 @@ test('Common consumer export works without other framework integrations and supp
   }
 })
 
-test('Oxlint declarations are checked by TS7 and cannot become any or ESLint arrays', (context) => {
-  const directory = consumerPackage(context, ['oxlint', 'oxfmt'])
-  const imports = OX_STACKS.map(
+test('Oxlint declarations are checked by TypeScript 6 and cannot become any or ESLint arrays', (context) => {
+  const directory = consumerPackage(context, ['oxlint', 'oxfmt', 'eslint'])
+  const imports = OXFMT_STACKS.map(
     (stack, index) => `import config${index} from '@st1ggy/linter-config/${stack}-ox'`,
   ).join('\n')
-  const checks = OX_STACKS.map(
+  const checks = OXFMT_STACKS.map(
     (stack, index) =>
       `const value${index}: OxlintConfig = config${index}\n// @ts-expect-error A preset is an object, not an ESLint config array.\nconfig${index}.push({})`,
+  ).join('\n')
+  const formatters = ['svelte', 'astro', 'angular']
+    .map(
+      (stack, index) =>
+        `import formatter${index} from '@st1ggy/linter-config/oxfmt-${stack}'\nconst format${index}: OxfmtConfig = formatter${index}\n// @ts-expect-error Formatter configuration is an object, not any or an array.\nformatter${index}.push({})`,
+    )
+    .join('\n')
+  const companions = SUPPLEMENT_STACKS.map(
+    (stack, index) =>
+      `import companion${index} from '@st1ggy/linter-config/eslint-${stack}-ox'\nconst companionConfig${index}: Linter.Config[] = companion${index}\n// @ts-expect-error Companion configuration is an array, not any or an Oxlint object.\ncompanion${index}.options`,
   ).join('\n')
 
   writeFileSync(
     path.join(directory, 'probe.ts'),
-    `import type { OxlintConfig } from 'oxlint'\nimport type { OxfmtConfig } from 'oxfmt'\nimport formatter from '@st1ggy/linter-config/oxfmt-common'\nconst formatConfig: OxfmtConfig = formatter\n// @ts-expect-error Formatter configuration is not any or an array.\nformatter.push({})\n${imports}\n${checks}\n`,
+    `import type { OxlintConfig } from 'oxlint'\nimport type { OxfmtConfig } from 'oxfmt'\nimport type { Linter } from 'eslint'\nimport formatter from '@st1ggy/linter-config/oxfmt-common'\nconst formatConfig: OxfmtConfig = formatter\n// @ts-expect-error Formatter configuration is not any or an array.\nformatter.push({})\n${imports}\n${checks}\n${formatters}\n${companions}\n`,
   )
-  const executable = packageExecutable('@typescript/native', 'bin/tsc')
+  const executable = packageExecutable('typescript', 'bin/tsc')
   const result = spawnSync(process.execPath, [executable, '--noEmit'], { cwd: directory, encoding: 'utf8' })
 
   assert.equal(result.status, 0, result.stdout + result.stderr)

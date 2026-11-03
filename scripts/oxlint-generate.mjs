@@ -60,7 +60,7 @@ function profileVariants(source, stack) {
     )
 }
 
-function virtualMappings(source, stack, decisions, catalog) {
+function virtualMappings(source, stack, decisions, catalog, formatter) {
   const scopes = Object.entries(source.presets[stack].scopes).filter(
     ([file, scope]) => file.slice(4).includes('/') && file.startsWith('src/') && scope.profile,
   )
@@ -73,7 +73,7 @@ function virtualMappings(source, stack, decisions, catalog) {
     const domain = `${fileDomain(physical)}-client`
 
     for (const [sourceId, value] of Object.entries(rules)) {
-      const decision = classifyRule(sourceId, value, domain, source.metadata[sourceId], catalog)
+      const decision = classifyRule(sourceId, value, domain, source.metadata[sourceId], catalog, formatter)
 
       if (value[0] !== 0 && JSON.stringify(value) !== JSON.stringify(physicalRules[sourceId])) {
         decision.status = 'unsupported'
@@ -85,7 +85,7 @@ function virtualMappings(source, stack, decisions, catalog) {
         delete decision.targetValue
       }
 
-      decisions[ruleIdentity(sourceId, value, domain)] = decision
+      decisions[ruleIdentity(sourceId, value, domain, formatter)] = decision
     }
   }
 }
@@ -150,7 +150,7 @@ export function generateBundle(source, stack, decisions, catalog) {
 
   const { profiles, overrides } = groupOverrides(compiled, allTargets)
 
-  virtualMappings(source, stack, decisions, catalog)
+  virtualMappings(source, stack, decisions, catalog, formatter)
 
   const settings = variants[0].profile.settings
   const scopedSettings = variants

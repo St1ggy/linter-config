@@ -1,40 +1,33 @@
+import reactPlugin from '@eslint-react/eslint-plugin'
 import { defineConfig } from 'eslint/config'
-import reactPlugin from 'eslint-plugin-react'
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
 
 import { files } from './constants.js'
 
+// Keep the official hooks integration (and its existing Oxlint mappings) once.
+const duplicateHooks = Object.fromEntries(
+  Object.keys(reactHooksPlugin.configs.recommended.rules)
+    .map((id) => id.replace('react-hooks/', '@eslint-react/'))
+    .filter((id) => Object.hasOwn(reactPlugin.configs.recommended.rules, id))
+    .map((id) => [id, 'off']),
+)
+
 export default defineConfig([
-  reactPlugin.configs.flat.recommended,
-  reactPlugin.configs.flat['jsx-runtime'],
+  { ...reactPlugin.configs.recommended, files },
   {
     files,
     plugins: { 'react-hooks': reactHooksPlugin },
     rules: {
-      'react/boolean-prop-naming': 'error',
-      'react/button-has-type': 'error',
-      'react/checked-requires-onchange-or-readonly': 'error',
-      'react/default-props-match-prop-types': ['error', { allowRequiredDefaults: true }],
-      'react/destructuring-assignment': 'error',
-      'react/function-component-definition': [
-        'error',
-        {
-          namedComponents: 'arrow-function',
-          unnamedComponents: 'arrow-function',
-        },
-      ],
-      'react/hook-use-state': 'error',
-      'react/jsx-boolean-value': 'error',
-      'react/jsx-fragments': 'error',
-      'react/jsx-handler-names': 'error',
-      'react/jsx-no-constructed-context-values': 'error',
-      'react/jsx-no-leaked-render': 'error',
-      'react/jsx-no-useless-fragment': 'error',
-      'react/no-multi-comp': 'error',
-      'react/self-closing-comp': ['error', { component: true, html: true }],
+      ...duplicateHooks,
+      '@eslint-react/dom-no-missing-button-type': 'error',
+      '@eslint-react/use-state': 'error',
+      '@eslint-react/no-unstable-context-value': 'error',
+      '@eslint-react/jsx-no-useless-fragment': 'error',
+      '@eslint-react/no-missing-component-display-name': 'error',
 
       ...reactHooksPlugin.configs.recommended.rules,
       // @stylistic
+      '@stylistic/jsx-self-closing-comp': ['error', { component: true, html: true }],
       '@stylistic/jsx-closing-bracket-location': 'error',
       '@stylistic/jsx-closing-tag-location': 'error',
       '@stylistic/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],

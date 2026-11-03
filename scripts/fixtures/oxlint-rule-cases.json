@@ -1,27 +1,28 @@
 {
   "schemaVersion": 1,
   "sourceVersions": {
-    "@next/eslint-plugin-next": "16.3.0",
+    "@eslint-react/eslint-plugin": "5.28.8",
+    "@next/eslint-plugin-next": "16.4.4",
     "@stylistic/eslint-plugin": "5.10.0",
-    "eslint": "10.8.0",
+    "eslint": "10.14.0",
     "eslint-plugin-@babel": "unknown",
     "eslint-plugin-@stylistic/js": "unknown",
     "eslint-plugin-@stylistic/jsx": "unknown",
     "eslint-plugin-@stylistic/ts": "unknown",
-    "eslint-plugin-astro": "3.1.0",
+    "eslint-plugin-astro": "3.2.1",
     "eslint-plugin-babel": "unknown",
     "eslint-plugin-flowtype": "unknown",
     "eslint-plugin-import-x": "4.17.1",
-    "eslint-plugin-prettier": "5.5.6",
-    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-prettier": "5.5.7",
+    "eslint-plugin-react": "unknown",
     "eslint-plugin-react-hooks": "7.1.1",
-    "eslint-plugin-solid": "0.18.0",
-    "eslint-plugin-sonarjs": "4.2.0",
+    "eslint-plugin-solid": "0.18.1",
+    "eslint-plugin-sonarjs": "4.2.2",
     "eslint-plugin-standard": "unknown",
-    "eslint-plugin-svelte": "3.22.0",
+    "eslint-plugin-svelte": "3.23.1",
     "eslint-plugin-unicorn": "73.0.0",
-    "eslint-plugin-vue": "unknown",
-    "typescript-eslint": "8.66.0"
+    "eslint-plugin-vue": "10.12.0",
+    "typescript-eslint": "8.72.1"
   },
   "packageJson": {
     "type": "module",
@@ -34,6 +35,7 @@
     "devDependencies": {
       "jest": "^30.0.0",
       "vitest": "^4.0.0",
+      "vue": "^3.0.0",
       "mocha": "^11.0.0",
       "react": "^19.0.0",
       "lodash": "^4.17.21",
@@ -46,6 +48,320 @@
     "pages/about.js": "export default function Page() {return null}\n"
   },
   "cases": {
+    "module:sonarjs/avoid-mutating-nested-properties-of-shallow-clones:038966de9f6b": {
+      "sourceId": "sonarjs/avoid-mutating-nested-properties-of-shallow-clones",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "sonarjs/avoid-mutating-nested-properties-of-shallow-clones",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "origin": "https://sonarsource.github.io/rspec/#/rspec/S9135/javascript",
+      "valid": {
+        "file": "valid.js",
+        "code": "import { cloneDeep } from 'lodash';\nconst copy = cloneDeep(original);\ncopy.nested.value = 1;\n"
+      },
+      "invalid": {
+        "file": "invalid.js",
+        "code": "import { clone } from 'lodash';\nconst copy = clone(original);\ncopy.nested.value = 1;\n"
+      }
+    },
+    "module:sonarjs/no-debounce-throttle-in-render:038966de9f6b": {
+      "sourceId": "sonarjs/no-debounce-throttle-in-render",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "sonarjs/no-debounce-throttle-in-render",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "origin": "https://sonarsource.github.io/rspec/#/rspec/S9114/javascript",
+      "valid": {
+        "file": "valid.js",
+        "code": "import { debounce } from 'lodash';\nconst handler = debounce(() => {}, 100);\nexport function View() { return handler; }\n"
+      },
+      "invalid": {
+        "file": "invalid.js",
+        "code": "import { debounce } from 'lodash';\nexport function View() { return debounce(() => {}, 100); }\n"
+      }
+    },
+    "module:sonarjs/no-duplicate-parameterized-test-case:038966de9f6b": {
+      "sourceId": "sonarjs/no-duplicate-parameterized-test-case",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "sonarjs/no-duplicate-parameterized-test-case",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "origin": "https://sonarsource.github.io/rspec/#/rspec/S9078/javascript",
+      "valid": {
+        "file": "valid.test.js",
+        "code": "import { test, expect } from 'vitest';\ntest.each([[1], [2]])('value', (value) => { expect(value).toBeGreaterThan(0); });\n"
+      },
+      "invalid": {
+        "file": "invalid.test.js",
+        "code": "import { test, expect } from 'vitest';\ntest.each([[1], [1]])('value', (value) => { expect(value).toBeGreaterThan(0); });\n"
+      }
+    },
+    "module:sonarjs/no-empty-parameterized-test-dataset:038966de9f6b": {
+      "sourceId": "sonarjs/no-empty-parameterized-test-dataset",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "sonarjs/no-empty-parameterized-test-dataset",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "origin": "https://sonarsource.github.io/rspec/#/rspec/S8998/javascript",
+      "valid": {
+        "file": "valid.test.js",
+        "code": "import { test, expect } from 'vitest';\ntest.each([[1]])('value', (value) => { expect(value).toBe(1); });\n"
+      },
+      "invalid": {
+        "file": "invalid.test.js",
+        "code": "import { test, expect } from 'vitest';\ntest.each([])('value', (value) => { expect(value).toBe(1); });\n"
+      }
+    },
+    "module:sonarjs/no-mutate-reactive-state-in-updated-hook:038966de9f6b": {
+      "sourceId": "sonarjs/no-mutate-reactive-state-in-updated-hook",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "sonarjs/no-mutate-reactive-state-in-updated-hook",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "origin": "https://sonarsource.github.io/rspec/#/rspec/S9163/javascript",
+      "valid": {
+        "file": "valid.js",
+        "code": "import { ref, onUpdated } from 'vue';\nconst count = ref(0);\nonUpdated(() => { if (count.value < 1) count.value++; });\n"
+      },
+      "invalid": {
+        "file": "invalid.js",
+        "code": "import { ref, onUpdated } from 'vue';\nconst count = ref(0);\nonUpdated(() => { count.value++; });\n"
+      }
+    },
+    "module:sonarjs/no-nested-functions:cfba17b90a61": {
+      "sourceId": "sonarjs/no-nested-functions",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2,
+        {
+          "threshold": 5
+        }
+      ],
+      "targetId": "sonarjs/no-nested-functions",
+      "targetValue": [
+        2,
+        {
+          "threshold": 5
+        }
+      ],
+      "sourceType": "module",
+      "origin": "https://sonarsource.github.io/rspec/#/rspec/S2004/javascript",
+      "valid": {
+        "file": "valid.js",
+        "code": "export function a() { return () => () => () => () => 1; }\n"
+      },
+      "invalid": {
+        "file": "invalid.js",
+        "code": "export function a() { return () => () => () => () => () => 1; }\n"
+      }
+    },
+    "module:sonarjs/no-vue-class-component:038966de9f6b": {
+      "sourceId": "sonarjs/no-vue-class-component",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "sonarjs/no-vue-class-component",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "origin": "https://sonarsource.github.io/rspec/#/rspec/S9145/javascript",
+      "valid": {
+        "file": "valid.js",
+        "code": "export class View {}\n"
+      },
+      "invalid": {
+        "file": "invalid.js",
+        "code": "import { Vue } from 'vue-class-component';\nexport class View extends Vue {}\n"
+      }
+    },
+    "module:sonarjs/no-vue-mixins:038966de9f6b": {
+      "sourceId": "sonarjs/no-vue-mixins",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "sonarjs/no-vue-mixins",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "origin": "https://sonarsource.github.io/rspec/#/rspec/S9150/javascript",
+      "valid": {
+        "file": "valid.js",
+        "code": "export default { setup() { return {}; } };\n"
+      },
+      "invalid": {
+        "file": "invalid.js",
+        "code": "const shared = {};\nexport default { mixins: [shared] };\n"
+      }
+    },
+    "module:sonarjs/prefer-cypress-should:038966de9f6b": {
+      "sourceId": "sonarjs/prefer-cypress-should",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "sonarjs/prefer-cypress-should",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "origin": "https://sonarsource.github.io/rspec/#/rspec/S9162/javascript",
+      "valid": {
+        "file": "valid.test.js",
+        "code": "cy.get('button').should(($button) => { expect($button.text()).to.equal('Save'); });\n"
+      },
+      "invalid": {
+        "file": "invalid.test.js",
+        "code": "cy.get('button').then(($button) => { expect($button.text()).to.equal('Save'); });\n"
+      }
+    },
+    "module:sonarjs/prefer-native-axios-alternative:038966de9f6b": {
+      "sourceId": "sonarjs/prefer-native-axios-alternative",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "sonarjs/prefer-native-axios-alternative",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "origin": "https://sonarsource.github.io/rspec/#/rspec/S9339/javascript",
+      "valid": {
+        "file": "valid.js",
+        "code": "export const result = Promise.all([]);\n"
+      },
+      "invalid": {
+        "file": "invalid.js",
+        "code": "import axios from 'axios';\nexport const result = axios.all([]);\n"
+      }
+    },
+    "module:sonarjs/prefer-native-jquery-alternative:038966de9f6b": {
+      "sourceId": "sonarjs/prefer-native-jquery-alternative",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "sonarjs/prefer-native-jquery-alternative",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "origin": "https://sonarsource.github.io/rspec/#/rspec/S9144/javascript",
+      "valid": {
+        "file": "valid.js",
+        "code": "export const value = JSON.parse('{}');\n"
+      },
+      "invalid": {
+        "file": "invalid.js",
+        "code": "import $ from 'jquery';\nexport const value = $.parseJSON('{}');\n"
+      }
+    },
+    "module:sonarjs/testing-library-prefer-query-by-disappearance:038966de9f6b": {
+      "sourceId": "sonarjs/testing-library-prefer-query-by-disappearance",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "sonarjs/testing-library-prefer-query-by-disappearance",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "origin": "https://sonarsource.github.io/rspec/#/rspec/S9153/javascript",
+      "valid": {
+        "file": "valid.test.js",
+        "code": "import { screen, waitForElementToBeRemoved } from '@testing-library/react';\nwaitForElementToBeRemoved(() => screen.queryByText('Loading'));\n"
+      },
+      "invalid": {
+        "file": "invalid.test.js",
+        "code": "import { screen, waitForElementToBeRemoved } from '@testing-library/react';\nwaitForElementToBeRemoved(() => screen.getByText('Loading'));\n"
+      }
+    },
+    "module:sonarjs/testing-library-query-assertion:038966de9f6b": {
+      "sourceId": "sonarjs/testing-library-query-assertion",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "sonarjs/testing-library-query-assertion",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "origin": "https://sonarsource.github.io/rspec/#/rspec/S9027/javascript",
+      "valid": {
+        "file": "valid.test.js",
+        "code": "import { screen } from '@testing-library/react';\nexpect(screen.getByText('Hello')).toBeInTheDocument();\n"
+      },
+      "invalid": {
+        "file": "invalid.test.js",
+        "code": "import { screen } from '@testing-library/react';\nexpect(screen.queryByText('Hello')).toBeInTheDocument();\n"
+      }
+    },
+    "module:sonarjs/vitest-mock-at-module-scope:038966de9f6b": {
+      "sourceId": "sonarjs/vitest-mock-at-module-scope",
+      "stack": "common",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "sonarjs/vitest-mock-at-module-scope",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "origin": "https://sonarsource.github.io/rspec/#/rspec/S9169/javascript",
+      "valid": {
+        "file": "valid.test.js",
+        "code": "import { vi } from 'vitest';\nvi.mock('./service');\n"
+      },
+      "invalid": {
+        "file": "invalid.test.js",
+        "code": "import { vi, test } from 'vitest';\ntest('example', () => { vi.mock('./service'); });\n"
+      }
+    },
     "module:@stylistic/lines-between-class-members:4e406bb8f574": {
       "sourceId": "@stylistic/lines-between-class-members",
       "stack": "common",
@@ -11132,7 +11448,7 @@
       },
       "invalid": {
         "file": "invalid.js",
-        "code": "// Todo el mundo"
+        "code": "// TODO: implement the missing behavior\n"
       }
     },
     "module:sonarjs/unverified-certificate:038966de9f6b": {
@@ -25267,1315 +25583,6 @@
         "code": "import {useMemo} from \"react\"; export function Component({value}) {const result=useMemo(async()=>value,[value]); return <p>{result}</p>}"
       }
     },
-    "module:react/boolean-prop-naming:038966de9f6b": {
-      "sourceId": "react/boolean-prop-naming",
-      "stack": "react",
-      "conditional": true,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react-js/boolean-prop-naming",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/boolean-prop-naming.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "control.tsx",
-        "code": "export function Component() { return <p>Hello</p> }\n"
-      }
-    },
-    "module:react/button-has-type:038966de9f6b": {
-      "sourceId": "react/button-has-type",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/button-has-type",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/button-has-type.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "\nvar Hello = <button>Hello</button>"
-      }
-    },
-    "module:react/checked-requires-onchange-or-readonly:038966de9f6b": {
-      "sourceId": "react/checked-requires-onchange-or-readonly",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/checked-requires-onchange-or-readonly",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/checked-requires-onchange-or-readonly.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.js",
-        "code": "\n\n\nReact.createElement('input', { checked: false });"
-      }
-    },
-    "module:react/default-props-match-prop-types:57589e4724a9": {
-      "sourceId": "react/default-props-match-prop-types",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2,
-        {
-          "allowRequiredDefaults": true
-        }
-      ],
-      "targetId": "react-js/default-props-match-prop-types",
-      "targetValue": [
-        2,
-        {
-          "allowRequiredDefaults": true
-        }
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/default-props-match-prop-types.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.tsx",
-        "code": "class Greeting extends React.Component {\n  render() {\n    return (\n      <h1>Hello, {this.props.foo} {this.props.bar}</h1>\n    );\n  }\n\n  static propTypes = {\n    foo: React.PropTypes.string,\n    bar: React.PropTypes.string.isRequired\n  };\n\n  static defaultProps = {\n    baz: \"baz\"\n  };\n}"
-      }
-    },
-    "module:react/destructuring-assignment:038966de9f6b": {
-      "sourceId": "react/destructuring-assignment",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react-js/destructuring-assignment",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/destructuring-assignment.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "const MyComponent = (props) => {\n  return (<div id={props.id} />)\n};"
-      }
-    },
-    "module:react/display-name:038966de9f6b": {
-      "sourceId": "react/display-name",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/display-name",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/display-name.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "\n\n\nconst Hello = React.memo(({ a }) => {\n  return <>{a}</>\n})"
-      }
-    },
-    "module:react/function-component-definition:33bb87c1b12c": {
-      "sourceId": "react/function-component-definition",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2,
-        {
-          "namedComponents": "arrow-function",
-          "unnamedComponents": "arrow-function"
-        }
-      ],
-      "targetId": "react/function-component-definition",
-      "targetValue": [
-        2,
-        {
-          "namedComponents": "arrow-function",
-          "unnamedComponents": "arrow-function"
-        }
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/function-component-definition.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "\n// function expression for named component\nconst Component = function (props) {\n  return <div>{props.content}</div>;\n};"
-      }
-    },
-    "module:react/hook-use-state:038966de9f6b": {
-      "sourceId": "react/hook-use-state",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/hook-use-state",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/hook-use-state.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.js",
-        "code": "import React from 'react';\n\nexport default function useColor() {\n  // useState call is not destructured into value + setter pair\n  const useStateResult = React.useState();\n  return useStateResult;\n}"
-      }
-    },
-    "module:react/jsx-boolean-value:038966de9f6b": {
-      "sourceId": "react/jsx-boolean-value",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/jsx-boolean-value",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/jsx-boolean-value.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "var Hello = <Hello personal={true} />;"
-      }
-    },
-    "module:react/jsx-fragments:038966de9f6b": {
-      "sourceId": "react/jsx-fragments",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/jsx-fragments",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/jsx-fragments.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "<React.Fragment><Foo /></React.Fragment>"
-      }
-    },
-    "module:react/jsx-handler-names:038966de9f6b": {
-      "sourceId": "react/jsx-handler-names",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/jsx-handler-names",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/jsx-handler-names.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "<MyComponent handleChange={this.handleChange} />"
-      }
-    },
-    "module:react/jsx-key:038966de9f6b": {
-      "sourceId": "react/jsx-key",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/jsx-key",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/jsx-key.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "[<Hello />, <Hello />, <Hello />];"
-      }
-    },
-    "module:react/jsx-no-comment-textnodes:038966de9f6b": {
-      "sourceId": "react/jsx-no-comment-textnodes",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/jsx-no-comment-textnodes",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/jsx-no-comment-textnodes.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "\nvar Hello = createReactClass({\n  render: function() {\n    return (\n      <div>// empty div</div>\n    );\n  }\n});"
-      }
-    },
-    "module:react/jsx-no-constructed-context-values:038966de9f6b": {
-      "sourceId": "react/jsx-no-constructed-context-values",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/jsx-no-constructed-context-values",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/jsx-no-constructed-context-values.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "const MyContext = React.createContext();\nfunction Component() {\n    function foo() {}\n    return (<MyContext value={foo}></MyContext>);\n}"
-      }
-    },
-    "module:react/jsx-no-duplicate-props:038966de9f6b": {
-      "sourceId": "react/jsx-no-duplicate-props",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/jsx-no-duplicate-props",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/jsx-no-duplicate-props.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "<Hello name=\"John\" name=\"John\" />;"
-      }
-    },
-    "module:react/jsx-no-leaked-render:038966de9f6b": {
-      "sourceId": "react/jsx-no-leaked-render",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react-js/jsx-no-leaked-render",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/jsx-no-leaked-render.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "\n\n  return (\n    <>\n      {0 && <Something />}\n      {/* React: renders undesired 0 */}\n      {/* React Native: crashes 💥 */}\n\n      {NaN && <Something />}\n      {/* React: renders undesired NaN */}\n      {/* React Native: crashes 💥 */}\n\n      {'' && <Something />}\n      {/* React: renders nothing */}\n      {/* React Native, with React < 18: crashes 💥 */}\n    </>\n  )"
-      }
-    },
-    "module:react/jsx-no-target-blank:038966de9f6b": {
-      "sourceId": "react/jsx-no-target-blank",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/jsx-no-target-blank",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/jsx-no-target-blank.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "\nvar Hello = <a target='_blank' href=\"https://example.com/\"></a>"
-      }
-    },
-    "module:react/jsx-no-undef:038966de9f6b": {
-      "sourceId": "react/jsx-no-undef",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/jsx-no-undef",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/jsx-no-undef.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "\n// will ignore Text in the global scope and warn\nvar Hello = React.createClass({\n  render: function() {\n    return <Text>Hello</Text>;\n  }\n});"
-      }
-    },
-    "module:react/jsx-no-useless-fragment:038966de9f6b": {
-      "sourceId": "react/jsx-no-useless-fragment",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/jsx-no-useless-fragment",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/jsx-no-useless-fragment.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "\n\n\n{showFullName ? <>{fullName}</> : <>{firstName}</>}"
-      }
-    },
-    "module:react/no-children-prop:038966de9f6b": {
-      "sourceId": "react/no-children-prop",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/no-children-prop",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/no-children-prop.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.js",
-        "code": "\n\n\nReact.createElement(\"div\", { children: 'Children' })"
-      }
-    },
-    "module:react/no-danger-with-children:038966de9f6b": {
-      "sourceId": "react/no-danger-with-children",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/no-danger-with-children",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/no-danger-with-children.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.js",
-        "code": "\nReact.createElement(\"div\", { dangerouslySetInnerHTML: { __html: \"HTML\" } }, \"Children\");"
-      }
-    },
-    "module:react/no-deprecated:038966de9f6b": {
-      "sourceId": "react/no-deprecated",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react-js/no-deprecated",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/no-deprecated.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "\n\nimport React, { PropTypes } from 'react';\n\n\n// React 18 deprecations\nimport { render } from 'react-dom';\n\n\nimport { hydrate } from 'react-dom';\n\n\nimport {unmountComponentAtNode} from 'react-dom';\n\n\nimport { renderToNodeStream } from 'react-dom/server';\nReact.render(<MyComponent />, root);"
-      }
-    },
-    "module:react/no-direct-mutation-state:038966de9f6b": {
-      "sourceId": "react/no-direct-mutation-state",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/no-direct-mutation-state",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/no-direct-mutation-state.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "\nvar Hello = createReactClass({\n  componentDidMount: function() {\n    this.state.name = this.props.name.toUpperCase();\n  },\n  render: function() {\n    return <div>Hello {this.state.name}</div>;\n  }\n});"
-      }
-    },
-    "module:react/no-find-dom-node:038966de9f6b": {
-      "sourceId": "react/no-find-dom-node",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/no-find-dom-node",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/no-find-dom-node.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.js",
-        "code": "\n\n    findDOMNode(this).scrollIntoView();"
-      }
-    },
-    "module:react/no-is-mounted:038966de9f6b": {
-      "sourceId": "react/no-is-mounted",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/no-is-mounted",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/no-is-mounted.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "var Hello = createReactClass({\n  handleClick: function() {\n    setTimeout(function() {\n      if (this.isMounted()) {\n        return;\n      }\n    });\n  },\n  render: function() {\n    return <div onClick={this.handleClick.bind(this)}>Hello</div>;\n  }\n});"
-      }
-    },
-    "module:react/no-multi-comp:038966de9f6b": {
-      "sourceId": "react/no-multi-comp",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/no-multi-comp",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/no-multi-comp.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "function Hello(props) {\n  return <div>Hello {props.name}</div>;\n}\nfunction HelloAgain(props) {\n  return <div>Hello again {props.name}</div>;\n}"
-      }
-    },
-    "module:react/no-render-return-value:038966de9f6b": {
-      "sourceId": "react/no-render-return-value",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/no-render-return-value",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/no-render-return-value.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "\nconst inst = ReactDOM.render(<App />, document.body);"
-      }
-    },
-    "module:react/no-string-refs:038966de9f6b": {
-      "sourceId": "react/no-string-refs",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/no-string-refs",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/no-string-refs.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "\n\n  return <div ref=\"hello\">Hello, world.</div>;"
-      }
-    },
-    "module:react/no-unescaped-entities:038966de9f6b": {
-      "sourceId": "react/no-unescaped-entities",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/no-unescaped-entities",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/no-unescaped-entities.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "<MyComponent\n  a=\"b\">  {/* oops! */}\n  c=\"d\"\n  Intended body text\n</MyComponent>"
-      }
-    },
-    "module:react/no-unknown-property:038966de9f6b": {
-      "sourceId": "react/no-unknown-property",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/no-unknown-property",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/no-unknown-property.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "var React = require('react');\n\n\nvar Hello = <div class=\"hello\">Hello World</div>;"
-      }
-    },
-    "module:react/prop-types:038966de9f6b": {
-      "sourceId": "react/prop-types",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react-js/prop-types",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/prop-types.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "\nfunction Hello({ name }) {\n  return <div>Hello {name}</div>;\n  // 'name' is missing in props validation\n}"
-      }
-    },
-    "module:react/require-render-return:038966de9f6b": {
-      "sourceId": "react/require-render-return",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2
-      ],
-      "targetId": "react/require-render-return",
-      "targetValue": [
-        2
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/require-render-return.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "\nvar Hello = createReactClass({\n  render() {\n    <div>Hello</div>;\n  }\n});"
-      }
-    },
-    "module:react/self-closing-comp:e71b31a82aea": {
-      "sourceId": "react/self-closing-comp",
-      "stack": "react",
-      "conditional": false,
-      "sourceValue": [
-        2,
-        {
-          "component": true,
-          "html": true
-        }
-      ],
-      "targetId": "react/self-closing-comp",
-      "targetValue": [
-        2,
-        {
-          "component": true,
-          "html": true
-        }
-      ],
-      "sourceType": "module",
-      "globals": {
-        "document": "readonly",
-        "window": "readonly",
-        "Blob": "readonly",
-        "File": "readonly",
-        "FormData": "readonly",
-        "URL": "readonly",
-        "it": "readonly",
-        "describe": "readonly",
-        "expect": "readonly",
-        "test": "readonly",
-        "beforeEach": "readonly"
-      },
-      "supportFiles": {
-        "dep.js": "export const foo = 1; export const named = 2; export default {}\n",
-        "no-default.js": "export const named = 1\n"
-      },
-      "origin": "https://raw.githubusercontent.com/jsx-eslint/eslint-plugin-react/v7.37.5/docs/rules/self-closing-comp.md",
-      "valid": {
-        "file": "valid.js",
-        "code": "export const isExample = true\n"
-      },
-      "invalid": {
-        "file": "invalid.jsx",
-        "code": "\nvar HelloJohn = <Hello name=\"John\"></Hello>;"
-      }
-    },
     "module:solid/components-return-once:080a9ed42855": {
       "sourceId": "solid/components-return-once",
       "stack": "solid",
@@ -28780,6 +27787,1679 @@
       "invalid": {
         "file": "invalid.ts",
         "code": "export const value = null\n"
+      }
+    },
+    "module:@stylistic/jsx-self-closing-comp:e71b31a82aea": {
+      "sourceId": "@stylistic/jsx-self-closing-comp",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2,
+        {
+          "component": true,
+          "html": true
+        }
+      ],
+      "targetId": "stylistic-js/jsx-self-closing-comp",
+      "targetValue": [
+        2,
+        {
+          "component": true,
+          "html": true
+        }
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint.style/rules/jsx-self-closing-comp",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <Item />\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <Item></Item>\n"
+      }
+    },
+    "module:@eslint-react/dom-no-dangerously-set-innerhtml:080a9ed42855": {
+      "sourceId": "@eslint-react/dom-no-dangerously-set-innerhtml",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/dom-no-dangerously-set-innerhtml",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/dom-no-dangerously-set-innerhtml",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <p dangerouslySetInnerHTML={{ __html: html }} />\n"
+      }
+    },
+    "module:@eslint-react/dom-no-dangerously-set-innerhtml-with-children:038966de9f6b": {
+      "sourceId": "@eslint-react/dom-no-dangerously-set-innerhtml-with-children",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/dom-no-dangerously-set-innerhtml-with-children",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/dom-no-dangerously-set-innerhtml-with-children",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p dangerouslySetInnerHTML={{ __html: html }} />\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <p dangerouslySetInnerHTML={{ __html: html }}>Hello</p>\n"
+      }
+    },
+    "module:@eslint-react/dom-no-find-dom-node:038966de9f6b": {
+      "sourceId": "@eslint-react/dom-no-find-dom-node",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/dom-no-find-dom-node",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/dom-no-find-dom-node",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { findDOMNode } from 'react-dom'\nfindDOMNode(instance)\n"
+      }
+    },
+    "module:@eslint-react/dom-no-flush-sync:038966de9f6b": {
+      "sourceId": "@eslint-react/dom-no-flush-sync",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/dom-no-flush-sync",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/dom-no-flush-sync",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { flushSync } from 'react-dom'\nflushSync(() => {})\n"
+      }
+    },
+    "module:@eslint-react/dom-no-hydrate:038966de9f6b": {
+      "sourceId": "@eslint-react/dom-no-hydrate",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/dom-no-hydrate",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/dom-no-hydrate",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { hydrate } from 'react-dom'\nhydrate(<p>Hello</p>, container)\n"
+      }
+    },
+    "module:@eslint-react/dom-no-missing-button-type:038966de9f6b": {
+      "sourceId": "@eslint-react/dom-no-missing-button-type",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/dom-no-missing-button-type",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/dom-no-missing-button-type",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <button type=\"button\">Hello</button>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <button>Hello</button>\n"
+      }
+    },
+    "module:@eslint-react/dom-no-render:038966de9f6b": {
+      "sourceId": "@eslint-react/dom-no-render",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/dom-no-render",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/dom-no-render",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { render } from 'react-dom'\nrender(<p>Hello</p>, container)\n"
+      }
+    },
+    "module:@eslint-react/dom-no-render-return-value:038966de9f6b": {
+      "sourceId": "@eslint-react/dom-no-render-return-value",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/dom-no-render-return-value",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/dom-no-render-return-value",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import { render } from 'react-dom'\nrender(<p>Hello</p>, container)\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { render } from 'react-dom'\nexport const value = render(<p>Hello</p>, container)\n"
+      }
+    },
+    "module:@eslint-react/dom-no-script-url:080a9ed42855": {
+      "sourceId": "@eslint-react/dom-no-script-url",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/dom-no-script-url",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/dom-no-script-url",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <a href=\"/\">Home</a>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <a href=\"javascript:alert(1)\">Home</a>\n"
+      }
+    },
+    "module:@eslint-react/dom-no-unsafe-iframe-sandbox:080a9ed42855": {
+      "sourceId": "@eslint-react/dom-no-unsafe-iframe-sandbox",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/dom-no-unsafe-iframe-sandbox",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/dom-no-unsafe-iframe-sandbox",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <iframe sandbox=\"allow-scripts\" />\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <iframe sandbox=\"allow-scripts allow-same-origin\" />\n"
+      }
+    },
+    "module:@eslint-react/dom-no-use-form-state:038966de9f6b": {
+      "sourceId": "@eslint-react/dom-no-use-form-state",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/dom-no-use-form-state",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/dom-no-use-form-state",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { useFormState } from 'react-dom'\nexport function View() { useFormState(action, initial); return <p>Hello</p> }\n"
+      }
+    },
+    "module:@eslint-react/dom-no-void-elements-with-children:038966de9f6b": {
+      "sourceId": "@eslint-react/dom-no-void-elements-with-children",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/dom-no-void-elements-with-children",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/dom-no-void-elements-with-children",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <img src=\"image.png\" />\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <img src=\"image.png\">Hello</img>\n"
+      }
+    },
+    "module:@eslint-react/jsx-no-children-prop:080a9ed42855": {
+      "sourceId": "@eslint-react/jsx-no-children-prop",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/jsx-no-children-prop",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/jsx-no-children-prop",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <p children=\"Hello\" />\n"
+      }
+    },
+    "module:@eslint-react/jsx-no-children-prop-with-children:038966de9f6b": {
+      "sourceId": "@eslint-react/jsx-no-children-prop-with-children",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/jsx-no-children-prop-with-children",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/jsx-no-children-prop-with-children",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p children=\"Hello\" />\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <p children=\"Hello\">World</p>\n"
+      }
+    },
+    "module:@eslint-react/jsx-no-comment-textnodes:080a9ed42855": {
+      "sourceId": "@eslint-react/jsx-no-comment-textnodes",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react/jsx-no-comment-textnodes",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/jsx-no-comment-textnodes",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <p>// comment</p>\n"
+      }
+    },
+    "module:@eslint-react/jsx-no-key-after-spread:038966de9f6b": {
+      "sourceId": "@eslint-react/jsx-no-key-after-spread",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/jsx-no-key-after-spread",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/jsx-no-key-after-spread",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <Item key=\"item\" {...props} />\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <Item {...props} key=\"item\" />\n"
+      }
+    },
+    "module:@eslint-react/jsx-no-leaked-dollar:080a9ed42855": {
+      "sourceId": "@eslint-react/jsx-no-leaked-dollar",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/jsx-no-leaked-dollar",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/jsx-no-leaked-dollar",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Value: {value}</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <p>Value: ${value}</p>\n"
+      }
+    },
+    "module:@eslint-react/jsx-no-leaked-semicolon:080a9ed42855": {
+      "sourceId": "@eslint-react/jsx-no-leaked-semicolon",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/jsx-no-leaked-semicolon",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/jsx-no-leaked-semicolon",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p><Item /></p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <p><Item />;\n</p>\n"
+      }
+    },
+    "module:@eslint-react/jsx-no-namespace:038966de9f6b": {
+      "sourceId": "@eslint-react/jsx-no-namespace",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/jsx-no-namespace",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/jsx-no-namespace",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <svg:path />\n"
+      }
+    },
+    "module:@eslint-react/jsx-no-useless-fragment:c6d45ef0194c": {
+      "sourceId": "@eslint-react/jsx-no-useless-fragment",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2,
+        {
+          "allowEmptyFragment": false,
+          "allowExpressions": true
+        }
+      ],
+      "targetId": "react-modern/jsx-no-useless-fragment",
+      "targetValue": [
+        2,
+        {
+          "allowEmptyFragment": false,
+          "allowExpressions": true
+        }
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/jsx-no-useless-fragment",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <><p>Hello</p></>\n"
+      }
+    },
+    "module:@eslint-react/naming-convention-context-name:080a9ed42855": {
+      "sourceId": "@eslint-react/naming-convention-context-name",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/naming-convention-context-name",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/naming-convention-context-name",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import { createContext } from 'react'\nexport const ThemeContext = createContext(null)\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { createContext } from 'react'\nexport const theme = createContext(null)\n"
+      }
+    },
+    "module:@eslint-react/naming-convention-id-name:080a9ed42855": {
+      "sourceId": "@eslint-react/naming-convention-id-name",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/naming-convention-id-name",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/naming-convention-id-name",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import { useId } from 'react'\nexport function View() { const inputId = useId(); return <input id={inputId} /> }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { useId } from 'react'\nexport function View() { const value = useId(); return <input id={value} /> }\n"
+      }
+    },
+    "module:@eslint-react/naming-convention-ref-name:080a9ed42855": {
+      "sourceId": "@eslint-react/naming-convention-ref-name",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/naming-convention-ref-name",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/naming-convention-ref-name",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import { useRef } from 'react'\nexport function View() { const inputRef = useRef(null); return <input ref={inputRef} /> }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { useRef } from 'react'\nexport function View() { const value = useRef(null); return <input ref={value} /> }\n"
+      }
+    },
+    "module:@eslint-react/no-access-state-in-setstate:038966de9f6b": {
+      "sourceId": "@eslint-react/no-access-state-in-setstate",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/no-access-state-in-setstate",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-access-state-in-setstate",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { update() { this.setState((state) => ({ count: state.count + 1 })) } render() { return null } }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { update() { this.setState(() => ({ count: this.state.count + 1 })) } render() { return null } }\n"
+      }
+    },
+    "module:@eslint-react/no-array-index-key:080a9ed42855": {
+      "sourceId": "@eslint-react/no-array-index-key",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react/no-array-index-key",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-array-index-key",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <ul>{items.map((item) => <li key={item.id}>{item.name}</li>)}</ul>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <ul>{items.map((item, index) => <li key={index}>{item.name}</li>)}</ul>\n"
+      }
+    },
+    "module:@eslint-react/no-children-count:080a9ed42855": {
+      "sourceId": "@eslint-react/no-children-count",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/no-children-count",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-children-count",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { Children } from 'react'\nexport const value = Children.count(items)\n"
+      }
+    },
+    "module:@eslint-react/no-children-for-each:080a9ed42855": {
+      "sourceId": "@eslint-react/no-children-for-each",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/no-children-for-each",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-children-for-each",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { Children } from 'react'\nChildren.forEach(items, visit)\n"
+      }
+    },
+    "module:@eslint-react/no-children-map:080a9ed42855": {
+      "sourceId": "@eslint-react/no-children-map",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/no-children-map",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-children-map",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { Children } from 'react'\nexport const value = Children.map(items, visit)\n"
+      }
+    },
+    "module:@eslint-react/no-children-only:080a9ed42855": {
+      "sourceId": "@eslint-react/no-children-only",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/no-children-only",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-children-only",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { Children } from 'react'\nexport const value = Children.only(items)\n"
+      }
+    },
+    "module:@eslint-react/no-children-to-array:080a9ed42855": {
+      "sourceId": "@eslint-react/no-children-to-array",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/no-children-to-array",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-children-to-array",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { Children } from 'react'\nexport const value = Children.toArray(items)\n"
+      }
+    },
+    "module:@eslint-react/no-clone-element:080a9ed42855": {
+      "sourceId": "@eslint-react/no-clone-element",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react/no-clone-element",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-clone-element",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { cloneElement } from 'react'\nexport const value = cloneElement(element, {})\n"
+      }
+    },
+    "module:@eslint-react/no-component-will-mount:038966de9f6b": {
+      "sourceId": "@eslint-react/no-component-will-mount",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/no-component-will-mount",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-component-will-mount",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { componentDidMount() {} render() { return null } }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { componentWillMount() {} render() { return null } }\n"
+      }
+    },
+    "module:@eslint-react/no-component-will-receive-props:038966de9f6b": {
+      "sourceId": "@eslint-react/no-component-will-receive-props",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/no-component-will-receive-props",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-component-will-receive-props",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { componentDidMount() {} render() { return null } }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { componentWillReceiveProps() {} render() { return null } }\n"
+      }
+    },
+    "module:@eslint-react/no-component-will-update:038966de9f6b": {
+      "sourceId": "@eslint-react/no-component-will-update",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/no-component-will-update",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-component-will-update",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { componentDidMount() {} render() { return null } }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { componentWillUpdate() {} render() { return null } }\n"
+      }
+    },
+    "module:@eslint-react/no-context-provider:080a9ed42855": {
+      "sourceId": "@eslint-react/no-context-provider",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/no-context-provider",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-context-provider",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { createContext } from 'react'\nconst Context = createContext(null)\nexport const View = () => <Context.Provider value={null}><p>Hello</p></Context.Provider>\n"
+      }
+    },
+    "module:@eslint-react/no-create-ref:038966de9f6b": {
+      "sourceId": "@eslint-react/no-create-ref",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/no-create-ref",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-create-ref",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { createRef } from 'react'\nexport function View() { const inputRef = createRef(); return <input ref={inputRef} /> }\n"
+      }
+    },
+    "module:@eslint-react/no-direct-mutation-state:038966de9f6b": {
+      "sourceId": "@eslint-react/no-direct-mutation-state",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react/no-direct-mutation-state",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-direct-mutation-state",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { state = { count: 0 }; update() { this.setState({ count: 1 }) } render() { return null } }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { state = { count: 0 }; update() { this.state.count = 1 } render() { return null } }\n"
+      }
+    },
+    "module:@eslint-react/no-forward-ref:080a9ed42855": {
+      "sourceId": "@eslint-react/no-forward-ref",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/no-forward-ref",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-forward-ref",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { forwardRef } from 'react'\nexport const View = forwardRef((props, ref) => <input ref={ref} />)\n"
+      }
+    },
+    "module:@eslint-react/no-missing-component-display-name:038966de9f6b": {
+      "sourceId": "@eslint-react/no-missing-component-display-name",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/no-missing-component-display-name",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-missing-component-display-name",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import { memo } from 'react'\nexport const View = memo(function View() { return <p>Hello</p> })\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { memo } from 'react'\nexport const View = memo(() => <p>Hello</p>)\n"
+      }
+    },
+    "module:@eslint-react/no-missing-key:038966de9f6b": {
+      "sourceId": "@eslint-react/no-missing-key",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/no-missing-key",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-missing-key",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <ul>{items.map((item) => <li key={item.id}>{item.name}</li>)}</ul>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export const View = () => <ul>{items.map((item) => <li>{item.name}</li>)}</ul>\n"
+      }
+    },
+    "module:@eslint-react/no-nested-component-definitions:038966de9f6b": {
+      "sourceId": "@eslint-react/no-nested-component-definitions",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/no-nested-component-definitions",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-nested-component-definitions",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "const Child = () => <p>Hello</p>\nexport const View = () => <Child />\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export function View() { const Child = () => <p>Hello</p>; return <Child /> }\n"
+      }
+    },
+    "module:@eslint-react/no-nested-lazy-component-declarations:038966de9f6b": {
+      "sourceId": "@eslint-react/no-nested-lazy-component-declarations",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/no-nested-lazy-component-declarations",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-nested-lazy-component-declarations",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import { lazy } from 'react'\nconst Child = lazy(() => import('./child'))\nexport const View = () => <Child />\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { lazy } from 'react'\nexport function View() { const Child = lazy(() => import('./child')); return <Child /> }\n"
+      }
+    },
+    "module:@eslint-react/no-set-state-in-component-did-mount:080a9ed42855": {
+      "sourceId": "@eslint-react/no-set-state-in-component-did-mount",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/no-set-state-in-component-did-mount",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-set-state-in-component-did-mount",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { componentDidMount() {} render() { return null } }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { componentDidMount() { this.setState({ count: 1 }) } render() { return null } }\n"
+      }
+    },
+    "module:@eslint-react/no-set-state-in-component-did-update:080a9ed42855": {
+      "sourceId": "@eslint-react/no-set-state-in-component-did-update",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/no-set-state-in-component-did-update",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-set-state-in-component-did-update",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { componentDidUpdate() {} render() { return null } }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { componentDidUpdate() { this.setState({ count: 1 }) } render() { return null } }\n"
+      }
+    },
+    "module:@eslint-react/no-set-state-in-component-will-update:080a9ed42855": {
+      "sourceId": "@eslint-react/no-set-state-in-component-will-update",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/no-set-state-in-component-will-update",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-set-state-in-component-will-update",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { componentWillUpdate() {} render() { return null } }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { componentWillUpdate() { this.setState({ count: 1 }) } render() { return null } }\n"
+      }
+    },
+    "module:@eslint-react/no-unnecessary-use-prefix:080a9ed42855": {
+      "sourceId": "@eslint-react/no-unnecessary-use-prefix",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/no-unnecessary-use-prefix",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-unnecessary-use-prefix",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export function label() { return 1 }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "export function useLabel() { return 1 }\n"
+      }
+    },
+    "module:@eslint-react/no-unsafe-component-will-mount:080a9ed42855": {
+      "sourceId": "@eslint-react/no-unsafe-component-will-mount",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/no-unsafe-component-will-mount",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-unsafe-component-will-mount",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { componentDidMount() {} render() { return null } }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { UNSAFE_componentWillMount() {} render() { return null } }\n"
+      }
+    },
+    "module:@eslint-react/no-unsafe-component-will-receive-props:080a9ed42855": {
+      "sourceId": "@eslint-react/no-unsafe-component-will-receive-props",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/no-unsafe-component-will-receive-props",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-unsafe-component-will-receive-props",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { componentDidMount() {} render() { return null } }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { UNSAFE_componentWillReceiveProps() {} render() { return null } }\n"
+      }
+    },
+    "module:@eslint-react/no-unsafe-component-will-update:080a9ed42855": {
+      "sourceId": "@eslint-react/no-unsafe-component-will-update",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/no-unsafe-component-will-update",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-unsafe-component-will-update",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { componentDidMount() {} render() { return null } }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import React from 'react'\nexport class View extends React.Component { UNSAFE_componentWillUpdate() {} render() { return null } }\n"
+      }
+    },
+    "module:@eslint-react/no-unstable-context-value:038966de9f6b": {
+      "sourceId": "@eslint-react/no-unstable-context-value",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/no-unstable-context-value",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-unstable-context-value",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import { createContext } from 'react'\nconst Context = createContext(null)\nconst value = {}\nexport const View = () => <Context.Provider value={value}><p>Hello</p></Context.Provider>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { createContext } from 'react'\nconst Context = createContext(null)\nexport const View = () => <Context.Provider value={{}}><p>Hello</p></Context.Provider>\n"
+      }
+    },
+    "module:@eslint-react/no-unused-class-component-members:080a9ed42855": {
+      "sourceId": "@eslint-react/no-unused-class-component-members",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/no-unused-class-component-members",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-unused-class-component-members",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import React from 'react'\nclass View extends React.Component { label() { return 1 } componentDidMount() { this.label() } render() { return null } }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import React from 'react'\nclass View extends React.Component { label() { return 1 } render() { return null } }\n"
+      }
+    },
+    "module:@eslint-react/no-use-context:080a9ed42855": {
+      "sourceId": "@eslint-react/no-use-context",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/no-use-context",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/no-use-context",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "export const View = () => <p>Hello</p>\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { createContext, useContext } from 'react'\nconst Context = createContext(null)\nexport function View() { const value = useContext(Context); return <p>{value}</p> }\n"
+      }
+    },
+    "module:@eslint-react/rsc-function-definition:038966de9f6b": {
+      "sourceId": "@eslint-react/rsc-function-definition",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2
+      ],
+      "targetId": "react-modern/rsc-function-definition",
+      "targetValue": [
+        2
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/rsc-function-definition",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "\"use server\"\nexport async function action() { return 1 }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "\"use server\"\nexport function action() { return 1 }\n"
+      }
+    },
+    "module:@eslint-react/use-state:aa4cf64a773c": {
+      "sourceId": "@eslint-react/use-state",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        2,
+        {
+          "enforceAssignment": true,
+          "enforceLazyInitialization": true,
+          "enforceSetterName": true
+        }
+      ],
+      "targetId": "react-modern/use-state",
+      "targetValue": [
+        2,
+        {
+          "enforceAssignment": true,
+          "enforceLazyInitialization": true,
+          "enforceSetterName": true
+        }
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/use-state",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import { useState } from 'react'\nexport function View() { const [count, setCount] = useState(0); return <button type=\"button\" onClick={() => setCount(count + 1)}>{count}</button> }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { useState } from 'react'\nexport function View() { const state = useState(0); return <p>{state}</p> }\n"
+      }
+    },
+    "module:@eslint-react/web-api-no-leaked-event-listener:080a9ed42855": {
+      "sourceId": "@eslint-react/web-api-no-leaked-event-listener",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/web-api-no-leaked-event-listener",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/web-api-no-leaked-event-listener",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import { useEffect } from 'react'\nexport function View() { useEffect(() => { window.addEventListener(\"resize\", handler); return () => { window.removeEventListener(\"resize\", handler) } }, []); return <p>Hello</p> }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { useEffect } from 'react'\nexport function View() { useEffect(() => { window.addEventListener(\"resize\", handler) }, []); return <p>Hello</p> }\n"
+      }
+    },
+    "module:@eslint-react/web-api-no-leaked-fetch:080a9ed42855": {
+      "sourceId": "@eslint-react/web-api-no-leaked-fetch",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/web-api-no-leaked-fetch",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/web-api-no-leaked-fetch",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import { useEffect } from 'react'\nexport function View() { useEffect(() => { const controller = new AbortController(); fetch(\"/api\", { signal: controller.signal }); return () => { controller.abort() } }, []); return <p>Hello</p> }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { useEffect } from 'react'\nexport function View() { useEffect(() => { fetch(\"/api\") }, []); return <p>Hello</p> }\n"
+      }
+    },
+    "module:@eslint-react/web-api-no-leaked-intersection-observer:080a9ed42855": {
+      "sourceId": "@eslint-react/web-api-no-leaked-intersection-observer",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/web-api-no-leaked-intersection-observer",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/web-api-no-leaked-intersection-observer",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import { useEffect } from 'react'\nexport function View() { useEffect(() => { const observer = new IntersectionObserver(handler); observer.observe(element); return () => { observer.disconnect() } }, []); return <p>Hello</p> }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { useEffect } from 'react'\nexport function View() { useEffect(() => { const observer = new IntersectionObserver(handler); observer.observe(element) }, []); return <p>Hello</p> }\n"
+      }
+    },
+    "module:@eslint-react/web-api-no-leaked-interval:080a9ed42855": {
+      "sourceId": "@eslint-react/web-api-no-leaked-interval",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/web-api-no-leaked-interval",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/web-api-no-leaked-interval",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import { useEffect } from 'react'\nexport function View() { useEffect(() => { const timer = setInterval(handler, 1000); return () => { clearInterval(timer) } }, []); return <p>Hello</p> }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { useEffect } from 'react'\nexport function View() { useEffect(() => { setInterval(handler, 1000) }, []); return <p>Hello</p> }\n"
+      }
+    },
+    "module:@eslint-react/web-api-no-leaked-resize-observer:080a9ed42855": {
+      "sourceId": "@eslint-react/web-api-no-leaked-resize-observer",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/web-api-no-leaked-resize-observer",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/web-api-no-leaked-resize-observer",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import { useEffect } from 'react'\nexport function View() { useEffect(() => { const observer = new ResizeObserver(handler); observer.observe(element); return () => { observer.disconnect() } }, []); return <p>Hello</p> }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { useEffect } from 'react'\nexport function View() { useEffect(() => { const observer = new ResizeObserver(handler); observer.observe(element) }, []); return <p>Hello</p> }\n"
+      }
+    },
+    "module:@eslint-react/web-api-no-leaked-timeout:080a9ed42855": {
+      "sourceId": "@eslint-react/web-api-no-leaked-timeout",
+      "stack": "react",
+      "conditional": false,
+      "sourceValue": [
+        1
+      ],
+      "targetId": "react-modern/web-api-no-leaked-timeout",
+      "targetValue": [
+        1
+      ],
+      "sourceType": "module",
+      "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "fetch": "readonly"
+      },
+      "origin": "https://eslint-react.xyz/docs/rules/web-api-no-leaked-timeout",
+      "valid": {
+        "file": "valid.tsx",
+        "code": "import { useEffect } from 'react'\nexport function View() { useEffect(() => { const timer = setTimeout(handler, 1000); return () => { clearTimeout(timer) } }, []); return <p>Hello</p> }\n"
+      },
+      "invalid": {
+        "file": "invalid.tsx",
+        "code": "import { useEffect } from 'react'\nexport function View() { useEffect(() => { setTimeout(handler, 1000) }, []); return <p>Hello</p> }\n"
       }
     }
   }

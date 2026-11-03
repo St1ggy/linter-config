@@ -1,37 +1,38 @@
 {
   "schemaVersion": 1,
   "engines": {
-    "oxlint": "1.86.0",
-    "oxlint-tsgolint": "7.0.2003",
-    "oxfmt": "0.71.0",
-    "@typescript/native": "7.0.2"
+    "oxlint": "1.90.0",
+    "oxlint-tsgolint": "7.0.2005",
+    "oxfmt": "0.75.0",
+    "typescript": "6.0.3"
   },
   "sourceVersions": {
-    "@next/eslint-plugin-next": "16.3.0",
+    "@eslint-react/eslint-plugin": "5.28.8",
+    "@next/eslint-plugin-next": "16.4.4",
     "@stylistic/eslint-plugin": "5.10.0",
-    "eslint": "10.8.0",
+    "eslint": "10.14.0",
     "eslint-plugin-@babel": "unknown",
     "eslint-plugin-@stylistic/js": "unknown",
     "eslint-plugin-@stylistic/jsx": "unknown",
     "eslint-plugin-@stylistic/ts": "unknown",
-    "eslint-plugin-astro": "3.1.0",
+    "eslint-plugin-astro": "3.2.1",
     "eslint-plugin-babel": "unknown",
     "eslint-plugin-flowtype": "unknown",
     "eslint-plugin-import-x": "4.17.1",
-    "eslint-plugin-prettier": "5.5.6",
-    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-prettier": "5.5.7",
+    "eslint-plugin-react": "unknown",
     "eslint-plugin-react-hooks": "7.1.1",
-    "eslint-plugin-solid": "0.18.0",
-    "eslint-plugin-sonarjs": "4.2.0",
+    "eslint-plugin-solid": "0.18.1",
+    "eslint-plugin-sonarjs": "4.2.2",
     "eslint-plugin-standard": "unknown",
-    "eslint-plugin-svelte": "3.22.0",
+    "eslint-plugin-svelte": "3.23.1",
     "eslint-plugin-unicorn": "73.0.0",
-    "eslint-plugin-vue": "unknown",
-    "typescript-eslint": "8.66.0"
+    "eslint-plugin-vue": "10.12.0",
+    "typescript-eslint": "8.72.1"
   },
   "evidence": {
-    "cases": 708,
-    "conditional": 6
+    "cases": 750,
+    "conditional": 5
   },
   "presets": {
     "common-ox": {
@@ -64,339 +65,339 @@
         "src/probe.cjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "1cad6e0f85bc19c1",
+          "sourceProfile": "694cc67c0f482fc7",
           "counts": {
             "native": 218,
-            "js-plugin": 363,
+            "js-plugin": 375,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 461
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "probe.cjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "1cad6e0f85bc19c1",
+          "sourceProfile": "694cc67c0f482fc7",
           "counts": {
             "native": 218,
-            "js-plugin": 363,
+            "js-plugin": 375,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 461
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "src/probe.cts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "681cc9c1b9aeac07",
+          "sourceProfile": "8726e867ab99561e",
           "counts": {
             "native": 205,
-            "js-plugin": 362,
+            "js-plugin": 374,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 479
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.cts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "681cc9c1b9aeac07",
+          "sourceProfile": "8726e867ab99561e",
           "counts": {
             "native": 205,
-            "js-plugin": 362,
+            "js-plugin": 374,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 479
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.d.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "681cc9c1b9aeac07",
+          "sourceProfile": "8726e867ab99561e",
           "counts": {
             "native": 205,
-            "js-plugin": 362,
+            "js-plugin": 374,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 479
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.d.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "681cc9c1b9aeac07",
+          "sourceProfile": "8726e867ab99561e",
           "counts": {
             "native": 205,
-            "js-plugin": 362,
+            "js-plugin": 374,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 479
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "1cad6e0f85bc19c1",
+          "sourceProfile": "694cc67c0f482fc7",
           "counts": {
             "native": 218,
-            "js-plugin": 363,
+            "js-plugin": 375,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 461
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "probe.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "1cad6e0f85bc19c1",
+          "sourceProfile": "694cc67c0f482fc7",
           "counts": {
             "native": 218,
-            "js-plugin": 363,
+            "js-plugin": 375,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 461
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "src/probe.jsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "1cad6e0f85bc19c1",
+          "sourceProfile": "694cc67c0f482fc7",
           "counts": {
             "native": 218,
-            "js-plugin": 363,
+            "js-plugin": 375,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 461
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "probe.jsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "1cad6e0f85bc19c1",
+          "sourceProfile": "694cc67c0f482fc7",
           "counts": {
             "native": 218,
-            "js-plugin": 363,
+            "js-plugin": 375,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 461
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "src/probe.mjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "1cad6e0f85bc19c1",
+          "sourceProfile": "694cc67c0f482fc7",
           "counts": {
             "native": 218,
-            "js-plugin": 363,
+            "js-plugin": 375,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 461
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "probe.mjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "1cad6e0f85bc19c1",
+          "sourceProfile": "694cc67c0f482fc7",
           "counts": {
             "native": 218,
-            "js-plugin": 363,
+            "js-plugin": 375,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 461
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "src/probe.mts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "681cc9c1b9aeac07",
+          "sourceProfile": "8726e867ab99561e",
           "counts": {
             "native": 205,
-            "js-plugin": 362,
+            "js-plugin": 374,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 479
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.mts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "681cc9c1b9aeac07",
+          "sourceProfile": "8726e867ab99561e",
           "counts": {
             "native": 205,
-            "js-plugin": 362,
+            "js-plugin": 374,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 479
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.svelte": {
           "domain": "svelte",
           "baselineStatus": "parse-error",
-          "sourceProfile": "134e335107f07bef",
+          "sourceProfile": "8bd25b2a3536fc14",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 0,
-            "partial": 579,
-            "unsupported": 63,
-            "disabled": 461
+            "partial": 591,
+            "unsupported": 64,
+            "disabled": 464
           }
         },
         "probe.svelte": {
           "domain": "svelte",
           "baselineStatus": "parse-error",
-          "sourceProfile": "134e335107f07bef",
+          "sourceProfile": "8bd25b2a3536fc14",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 0,
-            "partial": 579,
-            "unsupported": 63,
-            "disabled": 461
+            "partial": 591,
+            "unsupported": 64,
+            "disabled": 464
           }
         },
         "src/probe.svelte.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "1cad6e0f85bc19c1",
+          "sourceProfile": "694cc67c0f482fc7",
           "counts": {
             "native": 218,
-            "js-plugin": 363,
+            "js-plugin": 375,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 461
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "probe.svelte.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "1cad6e0f85bc19c1",
+          "sourceProfile": "694cc67c0f482fc7",
           "counts": {
             "native": 218,
-            "js-plugin": 363,
+            "js-plugin": 375,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 461
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "src/probe.svelte.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "681cc9c1b9aeac07",
+          "sourceProfile": "8726e867ab99561e",
           "counts": {
             "native": 205,
-            "js-plugin": 362,
+            "js-plugin": 374,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 479
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.svelte.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "681cc9c1b9aeac07",
+          "sourceProfile": "8726e867ab99561e",
           "counts": {
             "native": 205,
-            "js-plugin": 362,
+            "js-plugin": 374,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 479
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "681cc9c1b9aeac07",
+          "sourceProfile": "8726e867ab99561e",
           "counts": {
             "native": 205,
-            "js-plugin": 362,
+            "js-plugin": 374,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 479
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "681cc9c1b9aeac07",
+          "sourceProfile": "8726e867ab99561e",
           "counts": {
             "native": 205,
-            "js-plugin": 362,
+            "js-plugin": 374,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 479
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.tsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "681cc9c1b9aeac07",
+          "sourceProfile": "8726e867ab99561e",
           "counts": {
             "native": 205,
-            "js-plugin": 362,
+            "js-plugin": 374,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 479
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.tsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "681cc9c1b9aeac07",
+          "sourceProfile": "8726e867ab99561e",
           "counts": {
             "native": 205,
-            "js-plugin": 362,
+            "js-plugin": 374,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 479
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.vue": {
           "domain": "vue",
           "baselineStatus": "parse-error",
-          "sourceProfile": "1cad6e0f85bc19c1",
+          "sourceProfile": "694cc67c0f482fc7",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 1,
-            "partial": 581,
-            "unsupported": 65,
-            "disabled": 461
+            "partial": 593,
+            "unsupported": 66,
+            "disabled": 464
           }
         },
         "probe.vue": {
           "domain": "vue",
           "baselineStatus": "parse-error",
-          "sourceProfile": "1cad6e0f85bc19c1",
+          "sourceProfile": "694cc67c0f482fc7",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 1,
-            "partial": 581,
-            "unsupported": 65,
-            "disabled": 461
+            "partial": 593,
+            "unsupported": 66,
+            "disabled": 464
           }
         }
       }
@@ -431,339 +432,339 @@
         "src/probe.cjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b01c4f1d2f8a9efd",
+          "sourceProfile": "3c100eda63a87205",
           "counts": {
-            "native": 259,
-            "js-plugin": 378,
+            "native": 235,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "probe.cjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b01c4f1d2f8a9efd",
+          "sourceProfile": "3c100eda63a87205",
           "counts": {
-            "native": 259,
-            "js-plugin": 378,
+            "native": 235,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "src/probe.cts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "c9763cfdc37de5ff",
+          "sourceProfile": "b08e7ceca53cb91d",
           "counts": {
-            "native": 246,
-            "js-plugin": 377,
+            "native": 222,
+            "js-plugin": 441,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.cts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "c9763cfdc37de5ff",
+          "sourceProfile": "b08e7ceca53cb91d",
           "counts": {
-            "native": 246,
-            "js-plugin": 377,
+            "native": 222,
+            "js-plugin": 441,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.d.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "c9763cfdc37de5ff",
+          "sourceProfile": "b08e7ceca53cb91d",
           "counts": {
-            "native": 246,
-            "js-plugin": 377,
+            "native": 222,
+            "js-plugin": 441,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.d.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "c9763cfdc37de5ff",
+          "sourceProfile": "b08e7ceca53cb91d",
           "counts": {
-            "native": 246,
-            "js-plugin": 377,
+            "native": 222,
+            "js-plugin": 441,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b01c4f1d2f8a9efd",
+          "sourceProfile": "3c100eda63a87205",
           "counts": {
-            "native": 259,
-            "js-plugin": 378,
+            "native": 235,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "probe.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b01c4f1d2f8a9efd",
+          "sourceProfile": "3c100eda63a87205",
           "counts": {
-            "native": 259,
-            "js-plugin": 378,
+            "native": 235,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "src/probe.jsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b01c4f1d2f8a9efd",
+          "sourceProfile": "3c100eda63a87205",
           "counts": {
-            "native": 259,
-            "js-plugin": 378,
+            "native": 235,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "probe.jsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b01c4f1d2f8a9efd",
+          "sourceProfile": "3c100eda63a87205",
           "counts": {
-            "native": 259,
-            "js-plugin": 378,
+            "native": 235,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "src/probe.mjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b01c4f1d2f8a9efd",
+          "sourceProfile": "3c100eda63a87205",
           "counts": {
-            "native": 259,
-            "js-plugin": 378,
+            "native": 235,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "probe.mjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b01c4f1d2f8a9efd",
+          "sourceProfile": "3c100eda63a87205",
           "counts": {
-            "native": 259,
-            "js-plugin": 378,
+            "native": 235,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "src/probe.mts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "c9763cfdc37de5ff",
+          "sourceProfile": "b08e7ceca53cb91d",
           "counts": {
-            "native": 246,
-            "js-plugin": 377,
+            "native": 222,
+            "js-plugin": 441,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.mts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "c9763cfdc37de5ff",
+          "sourceProfile": "b08e7ceca53cb91d",
           "counts": {
-            "native": 246,
-            "js-plugin": 377,
+            "native": 222,
+            "js-plugin": 441,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.svelte": {
           "domain": "svelte",
           "baselineStatus": "parse-error",
-          "sourceProfile": "052c11825ad49d4d",
+          "sourceProfile": "53158c30fd8bcf92",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 0,
-            "partial": 638,
+            "partial": 678,
             "unsupported": 64,
-            "disabled": 455
+            "disabled": 464
           }
         },
         "probe.svelte": {
           "domain": "svelte",
           "baselineStatus": "parse-error",
-          "sourceProfile": "052c11825ad49d4d",
+          "sourceProfile": "53158c30fd8bcf92",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 0,
-            "partial": 638,
+            "partial": 678,
             "unsupported": 64,
-            "disabled": 455
+            "disabled": 464
           }
         },
         "src/probe.svelte.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b01c4f1d2f8a9efd",
+          "sourceProfile": "3c100eda63a87205",
           "counts": {
-            "native": 259,
-            "js-plugin": 378,
+            "native": 235,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "probe.svelte.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b01c4f1d2f8a9efd",
+          "sourceProfile": "3c100eda63a87205",
           "counts": {
-            "native": 259,
-            "js-plugin": 378,
+            "native": 235,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "src/probe.svelte.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "c9763cfdc37de5ff",
+          "sourceProfile": "b08e7ceca53cb91d",
           "counts": {
-            "native": 246,
-            "js-plugin": 377,
+            "native": 222,
+            "js-plugin": 441,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.svelte.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "c9763cfdc37de5ff",
+          "sourceProfile": "b08e7ceca53cb91d",
           "counts": {
-            "native": 246,
-            "js-plugin": 377,
+            "native": 222,
+            "js-plugin": 441,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "c9763cfdc37de5ff",
+          "sourceProfile": "b08e7ceca53cb91d",
           "counts": {
-            "native": 246,
-            "js-plugin": 377,
+            "native": 222,
+            "js-plugin": 441,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "c9763cfdc37de5ff",
+          "sourceProfile": "b08e7ceca53cb91d",
           "counts": {
-            "native": 246,
-            "js-plugin": 377,
+            "native": 222,
+            "js-plugin": 441,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.tsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "c9763cfdc37de5ff",
+          "sourceProfile": "b08e7ceca53cb91d",
           "counts": {
-            "native": 246,
-            "js-plugin": 377,
+            "native": 222,
+            "js-plugin": 441,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.tsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "c9763cfdc37de5ff",
+          "sourceProfile": "b08e7ceca53cb91d",
           "counts": {
-            "native": 246,
-            "js-plugin": 377,
+            "native": 222,
+            "js-plugin": 441,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.vue": {
           "domain": "vue",
           "baselineStatus": "parse-error",
-          "sourceProfile": "b01c4f1d2f8a9efd",
+          "sourceProfile": "3c100eda63a87205",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 1,
-            "partial": 640,
+            "partial": 680,
             "unsupported": 66,
-            "disabled": 455
+            "disabled": 464
           }
         },
         "probe.vue": {
           "domain": "vue",
           "baselineStatus": "parse-error",
-          "sourceProfile": "b01c4f1d2f8a9efd",
+          "sourceProfile": "3c100eda63a87205",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 1,
-            "partial": 640,
+            "partial": 680,
             "unsupported": 66,
-            "disabled": 455
+            "disabled": 464
           }
         }
       }
@@ -798,339 +799,339 @@
         "src/probe.cjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "11580fcf10f0f7bd",
+          "sourceProfile": "ea60e7d2463d25fd",
           "counts": {
             "native": 219,
-            "js-plugin": 378,
+            "js-plugin": 390,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 465
+            "unsupported": 58,
+            "disabled": 468
           }
         },
         "probe.cjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "11580fcf10f0f7bd",
+          "sourceProfile": "ea60e7d2463d25fd",
           "counts": {
             "native": 219,
-            "js-plugin": 378,
+            "js-plugin": 390,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 465
+            "unsupported": 58,
+            "disabled": 468
           }
         },
         "src/probe.cts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "877d37841e072ea6",
+          "sourceProfile": "fc2e084c2ec6f9b6",
           "counts": {
             "native": 206,
-            "js-plugin": 376,
+            "js-plugin": 388,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 484
+            "unsupported": 58,
+            "disabled": 487
           }
         },
         "probe.cts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "877d37841e072ea6",
+          "sourceProfile": "fc2e084c2ec6f9b6",
           "counts": {
             "native": 206,
-            "js-plugin": 376,
+            "js-plugin": 388,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 484
+            "unsupported": 58,
+            "disabled": 487
           }
         },
         "src/probe.d.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "877d37841e072ea6",
+          "sourceProfile": "fc2e084c2ec6f9b6",
           "counts": {
             "native": 206,
-            "js-plugin": 376,
+            "js-plugin": 388,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 484
+            "unsupported": 58,
+            "disabled": 487
           }
         },
         "probe.d.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "877d37841e072ea6",
+          "sourceProfile": "fc2e084c2ec6f9b6",
           "counts": {
             "native": 206,
-            "js-plugin": 376,
+            "js-plugin": 388,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 484
+            "unsupported": 58,
+            "disabled": 487
           }
         },
         "src/probe.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "11580fcf10f0f7bd",
+          "sourceProfile": "ea60e7d2463d25fd",
           "counts": {
             "native": 219,
-            "js-plugin": 378,
+            "js-plugin": 390,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 465
+            "unsupported": 58,
+            "disabled": 468
           }
         },
         "probe.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "11580fcf10f0f7bd",
+          "sourceProfile": "ea60e7d2463d25fd",
           "counts": {
             "native": 219,
-            "js-plugin": 378,
+            "js-plugin": 390,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 465
+            "unsupported": 58,
+            "disabled": 468
           }
         },
         "src/probe.jsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "813e4c31c5ee1fef",
+          "sourceProfile": "43ccb6ab00f2dd14",
           "counts": {
             "native": 219,
-            "js-plugin": 388,
+            "js-plugin": 400,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 456
+            "unsupported": 58,
+            "disabled": 459
           }
         },
         "probe.jsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "813e4c31c5ee1fef",
+          "sourceProfile": "43ccb6ab00f2dd14",
           "counts": {
             "native": 219,
-            "js-plugin": 388,
+            "js-plugin": 400,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 456
+            "unsupported": 58,
+            "disabled": 459
           }
         },
         "src/probe.mjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "11580fcf10f0f7bd",
+          "sourceProfile": "ea60e7d2463d25fd",
           "counts": {
             "native": 219,
-            "js-plugin": 378,
+            "js-plugin": 390,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 465
+            "unsupported": 58,
+            "disabled": 468
           }
         },
         "probe.mjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "11580fcf10f0f7bd",
+          "sourceProfile": "ea60e7d2463d25fd",
           "counts": {
             "native": 219,
-            "js-plugin": 378,
+            "js-plugin": 390,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 465
+            "unsupported": 58,
+            "disabled": 468
           }
         },
         "src/probe.mts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "877d37841e072ea6",
+          "sourceProfile": "fc2e084c2ec6f9b6",
           "counts": {
             "native": 206,
-            "js-plugin": 376,
+            "js-plugin": 388,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 484
+            "unsupported": 58,
+            "disabled": 487
           }
         },
         "probe.mts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "877d37841e072ea6",
+          "sourceProfile": "fc2e084c2ec6f9b6",
           "counts": {
             "native": 206,
-            "js-plugin": 376,
+            "js-plugin": 388,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 484
+            "unsupported": 58,
+            "disabled": 487
           }
         },
         "src/probe.svelte": {
           "domain": "svelte",
           "baselineStatus": "parse-error",
-          "sourceProfile": "134e335107f07bef",
+          "sourceProfile": "8bd25b2a3536fc14",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 0,
-            "partial": 579,
-            "unsupported": 63,
-            "disabled": 461
+            "partial": 591,
+            "unsupported": 64,
+            "disabled": 464
           }
         },
         "probe.svelte": {
           "domain": "svelte",
           "baselineStatus": "parse-error",
-          "sourceProfile": "134e335107f07bef",
+          "sourceProfile": "8bd25b2a3536fc14",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 0,
-            "partial": 579,
-            "unsupported": 63,
-            "disabled": 461
+            "partial": 591,
+            "unsupported": 64,
+            "disabled": 464
           }
         },
         "src/probe.svelte.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "11580fcf10f0f7bd",
+          "sourceProfile": "ea60e7d2463d25fd",
           "counts": {
             "native": 219,
-            "js-plugin": 378,
+            "js-plugin": 390,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 465
+            "unsupported": 58,
+            "disabled": 468
           }
         },
         "probe.svelte.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "11580fcf10f0f7bd",
+          "sourceProfile": "ea60e7d2463d25fd",
           "counts": {
             "native": 219,
-            "js-plugin": 378,
+            "js-plugin": 390,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 465
+            "unsupported": 58,
+            "disabled": 468
           }
         },
         "src/probe.svelte.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "877d37841e072ea6",
+          "sourceProfile": "fc2e084c2ec6f9b6",
           "counts": {
             "native": 206,
-            "js-plugin": 376,
+            "js-plugin": 388,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 484
+            "unsupported": 58,
+            "disabled": 487
           }
         },
         "probe.svelte.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "877d37841e072ea6",
+          "sourceProfile": "fc2e084c2ec6f9b6",
           "counts": {
             "native": 206,
-            "js-plugin": 376,
+            "js-plugin": 388,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 484
+            "unsupported": 58,
+            "disabled": 487
           }
         },
         "src/probe.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "877d37841e072ea6",
+          "sourceProfile": "fc2e084c2ec6f9b6",
           "counts": {
             "native": 206,
-            "js-plugin": 376,
+            "js-plugin": 388,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 484
+            "unsupported": 58,
+            "disabled": 487
           }
         },
         "probe.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "877d37841e072ea6",
+          "sourceProfile": "fc2e084c2ec6f9b6",
           "counts": {
             "native": 206,
-            "js-plugin": 376,
+            "js-plugin": 388,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 484
+            "unsupported": 58,
+            "disabled": 487
           }
         },
         "src/probe.tsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b66f8508e1a9166c",
+          "sourceProfile": "392eeff7a423dcc6",
           "counts": {
             "native": 206,
-            "js-plugin": 386,
+            "js-plugin": 398,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 475
+            "unsupported": 58,
+            "disabled": 478
           }
         },
         "probe.tsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b66f8508e1a9166c",
+          "sourceProfile": "392eeff7a423dcc6",
           "counts": {
             "native": 206,
-            "js-plugin": 386,
+            "js-plugin": 398,
             "formatter": 1,
             "partial": 8,
-            "unsupported": 57,
-            "disabled": 475
+            "unsupported": 58,
+            "disabled": 478
           }
         },
         "src/probe.vue": {
           "domain": "vue",
           "baselineStatus": "parse-error",
-          "sourceProfile": "1cad6e0f85bc19c1",
+          "sourceProfile": "694cc67c0f482fc7",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 1,
-            "partial": 581,
-            "unsupported": 65,
-            "disabled": 461
+            "partial": 593,
+            "unsupported": 66,
+            "disabled": 464
           }
         },
         "probe.vue": {
           "domain": "vue",
           "baselineStatus": "parse-error",
-          "sourceProfile": "1cad6e0f85bc19c1",
+          "sourceProfile": "694cc67c0f482fc7",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 1,
-            "partial": 581,
-            "unsupported": 65,
-            "disabled": 461
+            "partial": 593,
+            "unsupported": 66,
+            "disabled": 464
           }
         }
       }
@@ -1165,345 +1166,345 @@
         "src/probe.cjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b03ff2fe52a365a9",
+          "sourceProfile": "972ea875072a8522",
           "counts": {
-            "native": 280,
-            "js-plugin": 379,
+            "native": 256,
+            "js-plugin": 443,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "probe.cjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b03ff2fe52a365a9",
+          "sourceProfile": "972ea875072a8522",
           "counts": {
-            "native": 280,
-            "js-plugin": 379,
+            "native": 256,
+            "js-plugin": 443,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "src/probe.cts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "6c0a1b3ef9f37d43",
+          "sourceProfile": "b8cf252b53ea1379",
           "counts": {
-            "native": 267,
-            "js-plugin": 378,
+            "native": 243,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.cts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "6c0a1b3ef9f37d43",
+          "sourceProfile": "b8cf252b53ea1379",
           "counts": {
-            "native": 267,
-            "js-plugin": 378,
+            "native": 243,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.d.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "6c0a1b3ef9f37d43",
+          "sourceProfile": "b8cf252b53ea1379",
           "counts": {
-            "native": 267,
-            "js-plugin": 378,
+            "native": 243,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.d.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "6c0a1b3ef9f37d43",
+          "sourceProfile": "b8cf252b53ea1379",
           "counts": {
-            "native": 267,
-            "js-plugin": 378,
+            "native": 243,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b03ff2fe52a365a9",
+          "sourceProfile": "972ea875072a8522",
           "counts": {
-            "native": 280,
-            "js-plugin": 379,
+            "native": 256,
+            "js-plugin": 443,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "probe.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b03ff2fe52a365a9",
+          "sourceProfile": "972ea875072a8522",
           "counts": {
-            "native": 280,
-            "js-plugin": 379,
+            "native": 256,
+            "js-plugin": 443,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "src/probe.jsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b03ff2fe52a365a9",
+          "sourceProfile": "972ea875072a8522",
           "counts": {
-            "native": 280,
-            "js-plugin": 379,
+            "native": 256,
+            "js-plugin": 443,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "probe.jsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b03ff2fe52a365a9",
+          "sourceProfile": "972ea875072a8522",
           "counts": {
-            "native": 280,
-            "js-plugin": 379,
+            "native": 256,
+            "js-plugin": 443,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "src/probe.mjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b03ff2fe52a365a9",
+          "sourceProfile": "972ea875072a8522",
           "counts": {
-            "native": 280,
-            "js-plugin": 379,
+            "native": 256,
+            "js-plugin": 443,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "probe.mjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b03ff2fe52a365a9",
+          "sourceProfile": "972ea875072a8522",
           "counts": {
-            "native": 280,
-            "js-plugin": 379,
+            "native": 256,
+            "js-plugin": 443,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "src/probe.mts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "6c0a1b3ef9f37d43",
+          "sourceProfile": "b8cf252b53ea1379",
           "counts": {
-            "native": 267,
-            "js-plugin": 378,
+            "native": 243,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.mts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "6c0a1b3ef9f37d43",
+          "sourceProfile": "b8cf252b53ea1379",
           "counts": {
-            "native": 267,
-            "js-plugin": 378,
+            "native": 243,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.svelte": {
           "domain": "svelte",
           "baselineStatus": "parse-error",
-          "sourceProfile": "9e2f4acf9f6a046d",
+          "sourceProfile": "6cd0042913f3d571",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 0,
-            "partial": 660,
+            "partial": 700,
             "unsupported": 64,
-            "disabled": 455
+            "disabled": 464
           }
         },
         "probe.svelte": {
           "domain": "svelte",
           "baselineStatus": "parse-error",
-          "sourceProfile": "9e2f4acf9f6a046d",
+          "sourceProfile": "6cd0042913f3d571",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 0,
-            "partial": 660,
+            "partial": 700,
             "unsupported": 64,
-            "disabled": 455
+            "disabled": 464
           }
         },
         "src/probe.svelte.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b03ff2fe52a365a9",
+          "sourceProfile": "972ea875072a8522",
           "counts": {
-            "native": 280,
-            "js-plugin": 379,
+            "native": 256,
+            "js-plugin": 443,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "probe.svelte.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "b03ff2fe52a365a9",
+          "sourceProfile": "972ea875072a8522",
           "counts": {
-            "native": 280,
-            "js-plugin": 379,
+            "native": 256,
+            "js-plugin": 443,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 455
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 464
           }
         },
         "src/probe.svelte.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "6c0a1b3ef9f37d43",
+          "sourceProfile": "b8cf252b53ea1379",
           "counts": {
-            "native": 267,
-            "js-plugin": 378,
+            "native": 243,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.svelte.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "6c0a1b3ef9f37d43",
+          "sourceProfile": "b8cf252b53ea1379",
           "counts": {
-            "native": 267,
-            "js-plugin": 378,
+            "native": 243,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "6c0a1b3ef9f37d43",
+          "sourceProfile": "b8cf252b53ea1379",
           "counts": {
-            "native": 267,
-            "js-plugin": 378,
+            "native": 243,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "6c0a1b3ef9f37d43",
+          "sourceProfile": "b8cf252b53ea1379",
           "counts": {
-            "native": 267,
-            "js-plugin": 378,
+            "native": 243,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.tsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "6c0a1b3ef9f37d43",
+          "sourceProfile": "b8cf252b53ea1379",
           "counts": {
-            "native": 267,
-            "js-plugin": 378,
+            "native": 243,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "probe.tsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "6c0a1b3ef9f37d43",
+          "sourceProfile": "b8cf252b53ea1379",
           "counts": {
-            "native": 267,
-            "js-plugin": 378,
+            "native": 243,
+            "js-plugin": 442,
             "formatter": 1,
-            "partial": 12,
-            "unsupported": 57,
-            "disabled": 473
+            "partial": 11,
+            "unsupported": 58,
+            "disabled": 482
           }
         },
         "src/probe.vue": {
           "domain": "vue",
           "baselineStatus": "parse-error",
-          "sourceProfile": "b03ff2fe52a365a9",
+          "sourceProfile": "972ea875072a8522",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 1,
-            "partial": 662,
+            "partial": 702,
             "unsupported": 66,
-            "disabled": 455
+            "disabled": 464
           }
         },
         "probe.vue": {
           "domain": "vue",
           "baselineStatus": "parse-error",
-          "sourceProfile": "b03ff2fe52a365a9",
+          "sourceProfile": "972ea875072a8522",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 1,
-            "partial": 662,
+            "partial": 702,
             "unsupported": 66,
-            "disabled": 455
+            "disabled": 464
           }
         }
       }
     },
     "svelte-ox": {
-      "formatter": "prettier",
+      "formatter": "oxfmt",
       "scopes": {
         "src/probe.astro": {
           "domain": "astro",
@@ -1532,734 +1533,734 @@
         "src/probe.cjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "20acea0b64fa784c",
+          "sourceProfile": "71e43c619f656dde",
           "counts": {
             "native": 218,
-            "js-plugin": 369,
-            "formatter": 0,
+            "js-plugin": 380,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 461
+            "unsupported": 87,
+            "disabled": 464
           }
         },
         "probe.cjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "20acea0b64fa784c",
+          "sourceProfile": "71e43c619f656dde",
           "counts": {
             "native": 218,
-            "js-plugin": 369,
-            "formatter": 0,
+            "js-plugin": 380,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 461
+            "unsupported": 87,
+            "disabled": 464
           }
         },
         "src/probe.cts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "bcbcf3c49866da57",
+          "sourceProfile": "c6557e76affb0247",
           "counts": {
             "native": 205,
-            "js-plugin": 368,
-            "formatter": 0,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 479
+            "unsupported": 87,
+            "disabled": 482
           }
         },
         "probe.cts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "bcbcf3c49866da57",
+          "sourceProfile": "c6557e76affb0247",
           "counts": {
             "native": 205,
-            "js-plugin": 368,
-            "formatter": 0,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 479
+            "unsupported": 87,
+            "disabled": 482
           }
         },
         "src/probe.d.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "bcbcf3c49866da57",
+          "sourceProfile": "c6557e76affb0247",
           "counts": {
             "native": 205,
-            "js-plugin": 368,
-            "formatter": 0,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 479
+            "unsupported": 87,
+            "disabled": 482
           }
         },
         "probe.d.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "bcbcf3c49866da57",
+          "sourceProfile": "c6557e76affb0247",
           "counts": {
             "native": 205,
-            "js-plugin": 368,
-            "formatter": 0,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 479
+            "unsupported": 87,
+            "disabled": 482
           }
         },
         "src/probe.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "20acea0b64fa784c",
+          "sourceProfile": "71e43c619f656dde",
           "counts": {
             "native": 218,
-            "js-plugin": 369,
-            "formatter": 0,
+            "js-plugin": 380,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 461
+            "unsupported": 87,
+            "disabled": 464
           }
         },
         "probe.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "20acea0b64fa784c",
+          "sourceProfile": "71e43c619f656dde",
           "counts": {
             "native": 218,
-            "js-plugin": 369,
-            "formatter": 0,
+            "js-plugin": 380,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 461
+            "unsupported": 87,
+            "disabled": 464
           }
         },
         "src/probe.jsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "20acea0b64fa784c",
+          "sourceProfile": "71e43c619f656dde",
           "counts": {
             "native": 218,
-            "js-plugin": 369,
-            "formatter": 0,
+            "js-plugin": 380,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 461
+            "unsupported": 87,
+            "disabled": 464
           }
         },
         "probe.jsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "20acea0b64fa784c",
+          "sourceProfile": "71e43c619f656dde",
           "counts": {
             "native": 218,
-            "js-plugin": 369,
-            "formatter": 0,
+            "js-plugin": 380,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 461
+            "unsupported": 87,
+            "disabled": 464
           }
         },
         "src/probe.mjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "20acea0b64fa784c",
+          "sourceProfile": "71e43c619f656dde",
           "counts": {
             "native": 218,
-            "js-plugin": 369,
-            "formatter": 0,
+            "js-plugin": 380,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 461
+            "unsupported": 87,
+            "disabled": 464
           }
         },
         "probe.mjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "20acea0b64fa784c",
+          "sourceProfile": "71e43c619f656dde",
           "counts": {
             "native": 218,
-            "js-plugin": 369,
-            "formatter": 0,
+            "js-plugin": 380,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 461
+            "unsupported": 87,
+            "disabled": 464
           }
         },
         "src/probe.mts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "bcbcf3c49866da57",
+          "sourceProfile": "c6557e76affb0247",
           "counts": {
             "native": 205,
-            "js-plugin": 368,
-            "formatter": 0,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 479
+            "unsupported": 87,
+            "disabled": 482
           }
         },
         "probe.mts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "bcbcf3c49866da57",
+          "sourceProfile": "c6557e76affb0247",
           "counts": {
             "native": 205,
-            "js-plugin": 368,
-            "formatter": 0,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 479
+            "unsupported": 87,
+            "disabled": 482
           }
         },
         "src/probe.svelte": {
           "domain": "svelte",
           "baselineStatus": "lintable",
-          "sourceProfile": "b20e5bd6f80dc567",
+          "sourceProfile": "dc34dd2d49bae23a",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 0,
-            "partial": 586,
-            "unsupported": 92,
-            "disabled": 464
+            "partial": 598,
+            "unsupported": 93,
+            "disabled": 467
           }
         },
         "probe.svelte": {
           "domain": "svelte",
           "baselineStatus": "lintable",
-          "sourceProfile": "b20e5bd6f80dc567",
+          "sourceProfile": "dc34dd2d49bae23a",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 0,
-            "partial": 586,
-            "unsupported": 92,
-            "disabled": 464
+            "partial": 598,
+            "unsupported": 93,
+            "disabled": 467
           }
         },
         "src/probe.svelte.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "20acea0b64fa784c",
+          "sourceProfile": "71e43c619f656dde",
           "counts": {
             "native": 218,
-            "js-plugin": 369,
-            "formatter": 0,
+            "js-plugin": 380,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 461
+            "unsupported": 87,
+            "disabled": 464
           }
         },
         "probe.svelte.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "20acea0b64fa784c",
+          "sourceProfile": "71e43c619f656dde",
           "counts": {
             "native": 218,
-            "js-plugin": 369,
-            "formatter": 0,
+            "js-plugin": 380,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 461
+            "unsupported": 87,
+            "disabled": 464
           }
         },
         "src/probe.svelte.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "8e92004732b25749",
+          "sourceProfile": "4f8f40926963456f",
           "counts": {
             "native": 205,
-            "js-plugin": 368,
-            "formatter": 0,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 480
+            "unsupported": 87,
+            "disabled": 483
           }
         },
         "probe.svelte.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "8e92004732b25749",
+          "sourceProfile": "4f8f40926963456f",
           "counts": {
             "native": 205,
-            "js-plugin": 368,
-            "formatter": 0,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 480
+            "unsupported": 87,
+            "disabled": 483
           }
         },
         "src/probe.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "bcbcf3c49866da57",
+          "sourceProfile": "c6557e76affb0247",
           "counts": {
             "native": 205,
-            "js-plugin": 368,
-            "formatter": 0,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 479
+            "unsupported": 87,
+            "disabled": 482
           }
         },
         "probe.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "bcbcf3c49866da57",
+          "sourceProfile": "c6557e76affb0247",
           "counts": {
             "native": 205,
-            "js-plugin": 368,
-            "formatter": 0,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 479
+            "unsupported": 87,
+            "disabled": 482
           }
         },
         "src/probe.tsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "bcbcf3c49866da57",
+          "sourceProfile": "c6557e76affb0247",
           "counts": {
             "native": 205,
-            "js-plugin": 368,
-            "formatter": 0,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 479
+            "unsupported": 87,
+            "disabled": 482
           }
         },
         "probe.tsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "bcbcf3c49866da57",
+          "sourceProfile": "c6557e76affb0247",
           "counts": {
             "native": 205,
-            "js-plugin": 368,
-            "formatter": 0,
+            "js-plugin": 379,
+            "formatter": 1,
             "partial": 11,
-            "unsupported": 86,
-            "disabled": 479
+            "unsupported": 87,
+            "disabled": 482
           }
         },
         "src/probe.vue": {
           "domain": "vue",
           "baselineStatus": "parse-error",
-          "sourceProfile": "20acea0b64fa784c",
+          "sourceProfile": "71e43c619f656dde",
           "counts": {
             "native": 0,
             "js-plugin": 0,
-            "formatter": 0,
-            "partial": 590,
-            "unsupported": 94,
-            "disabled": 461
+            "formatter": 1,
+            "partial": 601,
+            "unsupported": 95,
+            "disabled": 464
           }
         },
         "probe.vue": {
           "domain": "vue",
           "baselineStatus": "parse-error",
-          "sourceProfile": "20acea0b64fa784c",
+          "sourceProfile": "71e43c619f656dde",
           "counts": {
             "native": 0,
             "js-plugin": 0,
-            "formatter": 0,
-            "partial": 590,
-            "unsupported": 94,
-            "disabled": 461
+            "formatter": 1,
+            "partial": 601,
+            "unsupported": 95,
+            "disabled": 464
           }
         }
       }
     },
     "astro-ox": {
-      "formatter": "prettier",
+      "formatter": "oxfmt",
       "scopes": {
         "src/probe.astro": {
           "domain": "astro",
           "baselineStatus": "lintable",
-          "sourceProfile": "96412d31b63d0a32",
+          "sourceProfile": "6df598c189857372",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 0,
-            "partial": 572,
-            "unsupported": 67,
-            "disabled": 455
+            "partial": 584,
+            "unsupported": 68,
+            "disabled": 458
           }
         },
         "probe.astro": {
           "domain": "astro",
           "baselineStatus": "lintable",
-          "sourceProfile": "96412d31b63d0a32",
+          "sourceProfile": "6df598c189857372",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 0,
-            "partial": 572,
-            "unsupported": 67,
-            "disabled": 455
+            "partial": 584,
+            "unsupported": 68,
+            "disabled": 458
           }
         },
         "src/probe.cjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "38f96e5b998a57a1",
+          "sourceProfile": "cced12ca92fa4c81",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
-            "formatter": 0,
+            "js-plugin": 375,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 461
+            "unsupported": 67,
+            "disabled": 464
           }
         },
         "probe.cjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "38f96e5b998a57a1",
+          "sourceProfile": "cced12ca92fa4c81",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
-            "formatter": 0,
+            "js-plugin": 375,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 461
+            "unsupported": 67,
+            "disabled": 464
           }
         },
         "src/probe.cts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "4b7d165ca07bf30e",
+          "sourceProfile": "19e22ac31e5e0417",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
-            "formatter": 0,
+            "js-plugin": 374,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 479
+            "unsupported": 67,
+            "disabled": 482
           }
         },
         "probe.cts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "4b7d165ca07bf30e",
+          "sourceProfile": "19e22ac31e5e0417",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
-            "formatter": 0,
+            "js-plugin": 374,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 479
+            "unsupported": 67,
+            "disabled": 482
           }
         },
         "src/probe.d.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "4b7d165ca07bf30e",
+          "sourceProfile": "19e22ac31e5e0417",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
-            "formatter": 0,
+            "js-plugin": 374,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 479
+            "unsupported": 67,
+            "disabled": 482
           }
         },
         "probe.d.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "4b7d165ca07bf30e",
+          "sourceProfile": "19e22ac31e5e0417",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
-            "formatter": 0,
+            "js-plugin": 374,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 479
+            "unsupported": 67,
+            "disabled": 482
           }
         },
         "src/probe.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "38f96e5b998a57a1",
+          "sourceProfile": "cced12ca92fa4c81",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
-            "formatter": 0,
+            "js-plugin": 375,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 461
+            "unsupported": 67,
+            "disabled": 464
           }
         },
         "probe.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "38f96e5b998a57a1",
+          "sourceProfile": "cced12ca92fa4c81",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
-            "formatter": 0,
+            "js-plugin": 375,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 461
+            "unsupported": 67,
+            "disabled": 464
           }
         },
         "src/probe.jsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "38f96e5b998a57a1",
+          "sourceProfile": "cced12ca92fa4c81",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
-            "formatter": 0,
+            "js-plugin": 375,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 461
+            "unsupported": 67,
+            "disabled": 464
           }
         },
         "probe.jsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "38f96e5b998a57a1",
+          "sourceProfile": "cced12ca92fa4c81",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
-            "formatter": 0,
+            "js-plugin": 375,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 461
+            "unsupported": 67,
+            "disabled": 464
           }
         },
         "src/probe.mjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "38f96e5b998a57a1",
+          "sourceProfile": "cced12ca92fa4c81",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
-            "formatter": 0,
+            "js-plugin": 375,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 461
+            "unsupported": 67,
+            "disabled": 464
           }
         },
         "probe.mjs": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "38f96e5b998a57a1",
+          "sourceProfile": "cced12ca92fa4c81",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
-            "formatter": 0,
+            "js-plugin": 375,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 461
+            "unsupported": 67,
+            "disabled": 464
           }
         },
         "src/probe.mts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "4b7d165ca07bf30e",
+          "sourceProfile": "19e22ac31e5e0417",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
-            "formatter": 0,
+            "js-plugin": 374,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 479
+            "unsupported": 67,
+            "disabled": 482
           }
         },
         "probe.mts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "4b7d165ca07bf30e",
+          "sourceProfile": "19e22ac31e5e0417",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
-            "formatter": 0,
+            "js-plugin": 374,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 479
+            "unsupported": 67,
+            "disabled": 482
           }
         },
         "src/probe.svelte": {
           "domain": "svelte",
           "baselineStatus": "parse-error",
-          "sourceProfile": "60e8920cb4a91209",
+          "sourceProfile": "4e5ce4d23fb15f47",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 0,
-            "partial": 579,
-            "unsupported": 72,
-            "disabled": 461
+            "partial": 591,
+            "unsupported": 73,
+            "disabled": 464
           }
         },
         "probe.svelte": {
           "domain": "svelte",
           "baselineStatus": "parse-error",
-          "sourceProfile": "60e8920cb4a91209",
+          "sourceProfile": "4e5ce4d23fb15f47",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 0,
-            "partial": 579,
-            "unsupported": 72,
-            "disabled": 461
+            "partial": 591,
+            "unsupported": 73,
+            "disabled": 464
           }
         },
         "src/probe.svelte.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "38f96e5b998a57a1",
+          "sourceProfile": "cced12ca92fa4c81",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
-            "formatter": 0,
+            "js-plugin": 375,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 461
+            "unsupported": 67,
+            "disabled": 464
           }
         },
         "probe.svelte.js": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "38f96e5b998a57a1",
+          "sourceProfile": "cced12ca92fa4c81",
           "counts": {
             "native": 218,
-            "js-plugin": 364,
-            "formatter": 0,
+            "js-plugin": 375,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 461
+            "unsupported": 67,
+            "disabled": 464
           }
         },
         "src/probe.svelte.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "4b7d165ca07bf30e",
+          "sourceProfile": "19e22ac31e5e0417",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
-            "formatter": 0,
+            "js-plugin": 374,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 479
+            "unsupported": 67,
+            "disabled": 482
           }
         },
         "probe.svelte.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "4b7d165ca07bf30e",
+          "sourceProfile": "19e22ac31e5e0417",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
-            "formatter": 0,
+            "js-plugin": 374,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 479
+            "unsupported": 67,
+            "disabled": 482
           }
         },
         "src/probe.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "4b7d165ca07bf30e",
+          "sourceProfile": "19e22ac31e5e0417",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
-            "formatter": 0,
+            "js-plugin": 374,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 479
+            "unsupported": 67,
+            "disabled": 482
           }
         },
         "probe.ts": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "4b7d165ca07bf30e",
+          "sourceProfile": "19e22ac31e5e0417",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
-            "formatter": 0,
+            "js-plugin": 374,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 479
+            "unsupported": 67,
+            "disabled": 482
           }
         },
         "src/probe.tsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "4b7d165ca07bf30e",
+          "sourceProfile": "19e22ac31e5e0417",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
-            "formatter": 0,
+            "js-plugin": 374,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 479
+            "unsupported": 67,
+            "disabled": 482
           }
         },
         "probe.tsx": {
           "domain": "module",
           "baselineStatus": "lintable",
-          "sourceProfile": "4b7d165ca07bf30e",
+          "sourceProfile": "19e22ac31e5e0417",
           "counts": {
             "native": 205,
-            "js-plugin": 363,
-            "formatter": 0,
+            "js-plugin": 374,
+            "formatter": 1,
             "partial": 8,
-            "unsupported": 66,
-            "disabled": 479
+            "unsupported": 67,
+            "disabled": 482
           }
         },
         "src/probe.vue": {
           "domain": "vue",
           "baselineStatus": "parse-error",
-          "sourceProfile": "38f96e5b998a57a1",
+          "sourceProfile": "cced12ca92fa4c81",
           "counts": {
             "native": 0,
             "js-plugin": 0,
-            "formatter": 0,
-            "partial": 582,
-            "unsupported": 74,
-            "disabled": 461
+            "formatter": 1,
+            "partial": 593,
+            "unsupported": 75,
+            "disabled": 464
           }
         },
         "probe.vue": {
           "domain": "vue",
           "baselineStatus": "parse-error",
-          "sourceProfile": "38f96e5b998a57a1",
+          "sourceProfile": "cced12ca92fa4c81",
           "counts": {
             "native": 0,
             "js-plugin": 0,
-            "formatter": 0,
-            "partial": 582,
-            "unsupported": 74,
-            "disabled": 461
+            "formatter": 1,
+            "partial": 593,
+            "unsupported": 75,
+            "disabled": 464
           }
         },
         "src/probe.astro/1_1.ts": {
           "domain": "astro-client",
           "baselineStatus": "lintable",
-          "sourceProfile": "a4025cbdbd7f2325",
+          "sourceProfile": "ab0d2dc8fadae407",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 0,
-            "partial": 539,
-            "unsupported": 102,
-            "disabled": 480
+            "partial": 551,
+            "unsupported": 103,
+            "disabled": 483
           }
         },
         "probe.astro/1_2.ts": {
           "domain": "astro-client",
           "baselineStatus": "lintable",
-          "sourceProfile": "a4025cbdbd7f2325",
+          "sourceProfile": "ab0d2dc8fadae407",
           "counts": {
             "native": 0,
             "js-plugin": 0,
             "formatter": 0,
-            "partial": 539,
-            "unsupported": 102,
-            "disabled": 480
+            "partial": 551,
+            "unsupported": 103,
+            "disabled": 483
           }
         }
       }

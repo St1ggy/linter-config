@@ -5,6 +5,8 @@ import path from 'node:path'
 import process from 'node:process'
 import test from 'node:test'
 
+import { OXFMT_STACKS } from '../src/oxlint/stacks.js'
+
 import { temporaryProject } from './fixtures/oxlint-cases.mjs'
 import {
   PACKAGE,
@@ -20,10 +22,10 @@ import {
   stackPackages,
   wrapperFileNames,
 } from './linter-init-core.mjs'
-import { OX_STACKS, ROOT } from './oxlint-tools.mjs'
+import { ROOT } from './oxlint-tools.mjs'
 
-test('All twelve stacks generate the selected engine and retain init/migrate semantics', (context) => {
-  assert.equal(STACK_KEYS.length, 12)
+test('All fifteen stacks generate the selected engine and retain init/migrate semantics', (context) => {
+  assert.equal(STACK_KEYS.length, 15)
   assert.deepEqual(
     STACK_CHOICES.map((choice) => choice.value),
     STACK_KEYS,
@@ -39,7 +41,7 @@ test('All twelve stacks generate the selected engine and retain init/migrate sem
     assert.deepEqual(existingWrapperFiles(directory, stack), names)
     assert.equal(
       readFileSync(path.join(directory, names[0]), 'utf8'),
-      `export { default } from '${PACKAGE}/${STACKS[stack].linterPreset}'${STACKS[stack].formatterPreset === 'oxfmt-common' ? '' : ';'}\n`,
+      `export { default } from '${PACKAGE}/${STACKS[stack].linterPreset}'${stack.endsWith('-ox') ? '' : ';'}\n`,
     )
     writeFileSync(path.join(directory, names[0]), '// custom\n')
     run('create', directory, stack, { quiet: true })
@@ -53,8 +55,10 @@ test('All twelve stacks generate the selected engine and retain init/migrate sem
     PACKAGE,
     'oxlint',
     'oxlint-tsgolint',
+    'oxfmt',
+    'eslint',
     'eslint-plugin-astro',
-    'prettier-plugin-astro',
+    '@astrojs/compiler-rs',
   ])
 })
 
@@ -122,9 +126,9 @@ for (const pm of ['npm', 'pnpm', 'yarn', 'bun']) {
     })
     const args = JSON.parse(readFileSync(log, 'utf8'))
 
-    assert.ok(args.includes('oxlint@1.86.0'))
-    assert.ok(args.includes('oxlint-tsgolint@7.0.2003'))
-    assert.ok(args.includes('oxfmt@0.71.0'))
+    assert.ok(args.includes('oxlint@1.90.0'))
+    assert.ok(args.includes('oxlint-tsgolint@7.0.2005'))
+    assert.ok(args.includes('oxfmt@0.75.0'))
     assert.ok(args.includes(pm === 'npm' || pm === 'pnpm' ? '--save-exact' : '--exact'))
   })
 
@@ -145,9 +149,9 @@ test('skip-install and already-correct versions do not invoke a package manager'
 
   ensureDevDependencies(directory, ['oxlint'], true, { specs: stackPackageSpecs('common-ox') })
   assert.ok(!existsSync(log))
-  writeFileSync(path.join(directory, 'package.json'), '{"type":"module","devDependencies":{"oxlint":"1.86.0"}}\n')
+  writeFileSync(path.join(directory, 'package.json'), '{"type":"module","devDependencies":{"oxlint":"1.90.0"}}\n')
   mkdirSync(path.join(directory, 'node_modules/oxlint'), { recursive: true })
-  writeFileSync(path.join(directory, 'node_modules/oxlint/package.json'), '{"name":"oxlint","version":"1.86.0"}\n')
+  writeFileSync(path.join(directory, 'node_modules/oxlint/package.json'), '{"name":"oxlint","version":"1.90.0"}\n')
   ensureDevDependencies(directory, ['oxlint'], false, { quiet: true, specs: stackPackageSpecs('common-ox') })
   assert.ok(!existsSync(log))
 })
@@ -157,7 +161,7 @@ test('Published CLI help and each shell shortcut expose the new stack flags', ()
 
   assert.equal(help.status, 0, help.stderr)
 
-  for (const stack of OX_STACKS) {
+  for (const stack of OXFMT_STACKS) {
     assert.ok(help.stdout.includes(`--${stack}-ox`))
     const file = path.join(ROOT, `scripts/init-${stack}-ox.sh`)
     const checked = spawnSync('/bin/bash', ['-n', file], { encoding: 'utf8' })

@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 // @st1ggy/linter-config — interactive menu (TTY) or minimist CLI.
 
-import { CancelPromptError, ExitPromptError } from '@inquirer/core'
 import { confirm, input, select } from '@inquirer/prompts'
 import minimist from 'minimist'
 import process from 'node:process'
@@ -11,6 +10,7 @@ import {
   PACKAGE,
   STACK_CHOICES,
   STACK_KEYS,
+  assertStackRuntime,
   ensureDevDependencies,
   existingWrapperFiles,
   isSelfPackageRoot,
@@ -130,6 +130,8 @@ async function runInteractive(command, values) {
     )
   }
 
+  assertStackRuntime(resolved, selectedStack)
+
   const shouldSkipInstall = values['skip-install'] === true
   const existing = existingWrapperFiles(resolved, selectedStack)
   const filesToRemove = await selectLegacyFiles(selectedCommand, resolved, selectedStack)
@@ -215,7 +217,7 @@ async function runInteractiveOrHandleErrors(command, values) {
     warnLegacyFlags(values)
     await runInteractive(command, values)
   } catch (error) {
-    if (error instanceof ExitPromptError || error instanceof CancelPromptError) {
+    if (error instanceof Error && (error.name === 'ExitPromptError' || error.name === 'CancelPromptError')) {
       process.stdout.write('\nCancelled.\n')
       process.exitCode = 0
 

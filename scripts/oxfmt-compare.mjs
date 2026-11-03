@@ -8,7 +8,7 @@ import { format as formatPrettier } from 'prettier'
 import oxfmtConfig from '../src/oxfmt/oxfmt.config.common.js'
 import prettierConfig from '../src/prettier/prettier.config.common.js'
 
-import { ROOT } from './oxlint-tools.mjs'
+import { ROOT, packageExecutable } from './oxlint-tools.mjs'
 import { readInventory } from './oxlint-values.mjs'
 
 export async function compareFormatters() {
@@ -66,7 +66,14 @@ export async function compareFormatters() {
     }
   }
 
-  return { versions: { oxfmt: '0.71.0', prettier: '3.9.6' }, counts, differences }
+  const versions = Object.fromEntries(
+    ['oxfmt', 'prettier'].map((name) => [
+      name,
+      JSON.parse(readFileSync(packageExecutable(name, 'package.json'), 'utf8')).version,
+    ]),
+  )
+
+  return { versions, counts, differences }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

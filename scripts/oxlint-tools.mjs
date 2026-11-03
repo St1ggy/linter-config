@@ -49,19 +49,19 @@ export function nativeRules() {
 
 export function engineVersions() {
   return Object.fromEntries(
-    ['oxlint', 'oxlint-tsgolint', 'oxfmt', '@typescript/native'].map((name) => [
+    ['oxlint', 'oxlint-tsgolint', 'oxfmt', 'typescript'].map((name) => [
       name,
       JSON.parse(readFileSync(packageExecutable(name, 'package.json'), 'utf8')).version,
     ]),
   )
 }
 
-export function selectedStacks(args = process.argv.slice(2)) {
+export function selectedStacks(args = process.argv.slice(2), available = OX_STACKS) {
   const position = args.indexOf('--stacks')
-  const stacks = position === -1 ? OX_STACKS : args[position + 1].split(',')
+  const stacks = position === -1 ? available : args[position + 1].split(',')
 
   for (const stack of stacks) {
-    if (!OX_STACKS.includes(stack)) {
+    if (!available.includes(stack)) {
       throw new Error(`Unknown Oxlint stack: ${stack}`)
     }
   }

@@ -36,7 +36,7 @@ jobs:
       - uses: actions/setup-node@v6
         if: ${{ steps.release.outputs.prs_created == 'true' }}
         with:
-          node-version: latest
+          node-version: lts/*
           cache: npm
       - if: ${{ steps.release.outputs.prs_created == 'true' }}
         run: npm ci
@@ -49,9 +49,7 @@ jobs:
       - if: ${{ steps.release.outputs.prs_created == 'true' }}
         run: node --test scripts/solid-config.test.mjs
       - if: ${{ steps.release.outputs.prs_created == 'true' }}
-        run: node ./node_modules/typescript/bin/tsc --noEmit
-      - if: ${{ steps.release.outputs.prs_created == 'true' }}
-        run: npm run typecheck:ox
+        run: npm run typecheck
       - if: ${{ steps.release.outputs.prs_created == 'true' }}
         run: npm run generate:ox:check
       - if: ${{ steps.release.outputs.prs_created == 'true' }}
@@ -95,7 +93,7 @@ jobs:
       - uses: actions/setup-node@v6
         if: ${{ steps.release.outputs.release_created == 'true' }}
         with:
-          node-version: latest
+          node-version: lts/*
           registry-url: https://registry.npmjs.org
           cache: npm
       - if: ${{ steps.release.outputs.release_created == 'true' }}
@@ -109,9 +107,7 @@ jobs:
       - if: ${{ steps.release.outputs.release_created == 'true' }}
         run: node --test scripts/solid-config.test.mjs
       - if: ${{ steps.release.outputs.release_created == 'true' }}
-        run: node ./node_modules/typescript/bin/tsc --noEmit
-      - if: ${{ steps.release.outputs.release_created == 'true' }}
-        run: npm run typecheck:ox
+        run: npm run typecheck
       - if: ${{ steps.release.outputs.release_created == 'true' }}
         run: npm run generate:ox:check
       - if: ${{ steps.release.outputs.release_created == 'true' }}

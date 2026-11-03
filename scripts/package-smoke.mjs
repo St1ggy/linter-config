@@ -8,6 +8,8 @@ import path from 'node:path'
 import process from 'node:process'
 import { pathToFileURL } from 'node:url'
 
+import { OXFMT_STACKS, OXFMT_VERSION, OX_ESLINT_VERSION, OX_VERSIONS, SUPPLEMENT_STACKS } from '../src/oxlint/stacks.js'
+
 import { STACKS, run } from './linter-init-core.mjs'
 import { OX_STACKS, ROOT, packageExecutable, runOxfmt, runOxlint, selectedStacks } from './oxlint-tools.mjs'
 
@@ -59,7 +61,7 @@ function installProject(directory, tarball, packages) {
     const settings = [
       'nodeLinker: isolated',
       'autoInstallPeers: false',
-      'strictPeerDependencies: false',
+      'strictPeerDependencies: true',
       'overrides:',
       ...Object.entries(overrides).map(([name, version]) => `  '${name}': '${version}'`),
       '',
@@ -70,7 +72,7 @@ function installProject(directory, tarball, packages) {
 
   const args =
     pm === 'npm'
-      ? ['install', '--ignore-scripts', '--legacy-peer-deps', '--no-audit', '--no-fund', '--package-lock=false']
+      ? ['install', '--ignore-scripts', '--strict-peer-deps', '--no-audit', '--no-fund', '--package-lock=false']
       : ['install', '--ignore-scripts', '--no-frozen-lockfile', '--reporter=append-only']
 
   pmCommand(args, directory)
@@ -103,7 +105,11 @@ function checkTypes(directory) {
 
 const markers = {
   common: { file: 'invalid.ts', code: 'export enum State { Pending }\n', rule: 'no-restricted-syntax' },
-  react: { file: 'invalid.tsx', code: 'export const View = () => <button>Hello</button>\n', rule: 'button-has-type' },
+  react: {
+    file: 'invalid.tsx',
+    code: 'export const View = () => <button>Hello</button>\n',
+    rule: 'dom-no-missing-button-type',
+  },
   solid: {
     file: 'invalid.tsx',
     code: 'export const View = ({ name }: { name: string }) => <p>{name}</p>\n',
@@ -116,6 +122,81 @@ const markers = {
   },
   svelte: { file: 'invalid.svelte', code: '<script>\n$inspect(1)\n</script>\n<p>Hello</p>\n', rule: 'no-inspect' },
   astro: { file: 'invalid.astro', code: '---\ndebugger\n---\n<p>Hello</p>\n', rule: 'no-debugger' },
+  vue: {
+    file: 'InvalidView.vue',
+    code: '<script setup>export const value = 1</script>\n<template><p>Hello</p></template>\n',
+    rule: 'no-export-in-script-setup',
+  },
+  nuxt: { file: 'invalid.ts', code: 'export const value = process.client\n', rule: 'prefer-import-meta' },
+  angular: {
+    file: 'invalid.component.ts',
+    code: "import { Component } from '@angular/core'\n@Component({ selector: 'app-probe', template: '', outputs: ['changed'] })\nexport class Probe {}\n",
+    rule: 'no-outputs-metadata-property',
+  },
+}
+
+function checkSupplement(directory, stack) {
+  const templates = {
+    svelte: {
+      file: 'template.svelte',
+      valid: '<p>Hello</p>\n',
+      invalid: '<p>{@html content}</p>\n',
+      rule: 'svelte/no-at-html-tags',
+    },
+    astro: {
+      file: 'template.astro',
+      valid: '<p>Hello</p>\n',
+      invalid: '<div set:html={content}>Hello</div>\n',
+      rule: 'astro/no-conflict-set-directives',
+    },
+    vue: {
+      file: 'TemplateView.vue',
+      valid: '<template><p>Hello</p></template>\n',
+      invalid: '<template><p v-for="item in items">{{ item }}</p></template>\n',
+      rule: 'vue/require-v-for-key',
+    },
+    nuxt: {
+      file: 'TemplateView.vue',
+      valid: '<template><p>Hello</p></template>\n',
+      invalid: '<template><p v-for="item in items">{{ item }}</p></template>\n',
+      rule: 'vue/require-v-for-key',
+    },
+    angular: {
+      file: 'template.component.html',
+      valid: '<p>Hello</p>\n',
+      invalid: '<img src="image.png">\n',
+      rule: '@angular-eslint/template/alt-text',
+    },
+  }
+  const specimen = templates[stack]
+  const executable = packageExecutable('eslint', 'bin/eslint.js', directory)
+  const versionArgs =
+    pm === 'npm' ? ['exec', '--offline', '--', 'eslint', '--version'] : ['exec', 'eslint', '--version']
+
+  assert.equal(pmCommand(versionArgs, directory).trim(), `v${OX_ESLINT_VERSION}`)
+
+  for (const kind of ['valid', 'invalid']) {
+    writeFileSync(path.join(directory, specimen.file), specimen[kind])
+    const checked = spawnSync(process.execPath, [executable, specimen.file, '--format', 'json'], {
+      cwd: directory,
+      encoding: 'utf8',
+      timeout: 60_000,
+    })
+
+    assert.ok(checked.status === 0 || checked.status === 1, checked.stderr + checked.stdout)
+    const [result] = JSON.parse(checked.stdout)
+
+    assert.equal(result.fatalErrorCount, 0, JSON.stringify(result.messages))
+
+    if (kind === 'valid') {
+      assert.equal(result.errorCount, 0, JSON.stringify(result.messages))
+    } else {
+      assert.ok(
+        result.messages.some(({ ruleId }) => ruleId === specimen.rule),
+        JSON.stringify(result.messages),
+      )
+    }
+  }
 }
 
 async function checkOxStack(directory, stack) {
@@ -135,30 +216,21 @@ async function checkOxStack(directory, stack) {
         skipLibCheck: true,
         noEmit: true,
       },
-      include: ['*.ts', '*.tsx', '*.js'],
+      include: ['*.ts', '*.tsx', '*.js', '*.svelte', '*.vue'],
     }),
   )
-  let file = stack === 'common' ? 'valid.ts' : 'valid.tsx'
-
-  if (stack === 'svelte' || stack === 'astro') {
-    file = `valid.${stack}`
-  }
-
-  let code = stack === 'common' ? 'export const isExample = true\n' : 'export const View = () => <p>Hello</p>\n'
-
-  if (stack === 'svelte') {
-    code = '<script>\nconst text = "Hello"\n</script>\n<p>{text}</p>\n'
-  } else if (stack === 'astro') {
-    code = '---\nconst text = "Hello"\n---\n<p>{text}</p>\n'
-  }
+  const { file, code } = validSpecimen(stack)
 
   writeFileSync(path.join(directory, file), code)
   const valid = runOxlint([file], { cwd: directory, toolDirectory: directory })
 
   assert.equal(valid.status, 0, valid.stdout + valid.stderr)
 
-  if (STACKS[`${stack}-ox`].formatterPreset === 'oxfmt-common') {
+  if (STACKS[`${stack}-ox`].formatterFile === 'oxfmt.config.ts') {
     const formatFiles = [file, 'oxfmt.config.ts', 'oxlint.config.ts', 'stylelint.config.js']
+    const written = runOxfmt(['--write', ...formatFiles], { cwd: directory, toolDirectory: directory })
+
+    assert.equal(written.status, 0, written.stdout + written.stderr)
     const formatted = runOxfmt(['--check', ...formatFiles], { cwd: directory, toolDirectory: directory })
 
     assert.equal(formatted.status, 0, formatted.stdout + formatted.stderr)
@@ -170,7 +242,7 @@ async function checkOxStack(directory, stack) {
     assert.equal(readFileSync(path.join(directory, 'unformatted.ts'), 'utf8'), "export const value = 'hello'\n")
     const fmtManifest = readFileSync(packageExecutable('oxfmt', 'package.json', directory), 'utf8')
 
-    assert.equal(JSON.parse(fmtManifest).version, '0.71.0')
+    assert.equal(JSON.parse(fmtManifest).version, OXFMT_VERSION)
   }
 
   const marker = markers[stack]
@@ -184,21 +256,91 @@ async function checkOxStack(directory, stack) {
   const oxManifest = readFileSync(packageExecutable('oxlint', 'package.json', directory), 'utf8')
   const tsManifest = readFileSync(packageExecutable('oxlint-tsgolint', 'package.json', directory), 'utf8')
 
-  assert.equal(JSON.parse(oxManifest).version, '1.86.0')
-  assert.equal(JSON.parse(tsManifest).version, '7.0.2003')
+  assert.equal(JSON.parse(oxManifest).version, OX_VERSIONS.oxlint)
+  assert.equal(JSON.parse(tsManifest).version, OX_VERSIONS['oxlint-tsgolint'])
+
+  if (SUPPLEMENT_STACKS.includes(stack)) {
+    checkSupplement(directory, stack)
+  }
+
   process.stdout.write(`${pm}: packed ${stack}-ox CLI, formatter, marker and native typed checks passed\n`)
+}
+
+function validSpecimen(stack) {
+  const specimens = {
+    common: { file: 'valid.ts', code: 'export const isExample = true\n' },
+    angular: { file: 'valid.ts', code: 'export const isExample = true\n' },
+    svelte: { file: 'valid.svelte', code: '<p>Hello</p>\n' },
+    astro: { file: 'valid.astro', code: '<p>Hello</p>\n' },
+    vue: { file: 'valid-view.vue', code: '<template><p>Hello</p></template>\n' },
+    nuxt: { file: 'valid-view.vue', code: '<template><p>Hello</p></template>\n' },
+  }
+
+  return specimens[stack] ?? { file: 'valid.tsx', code: 'export const View = () => <p>Hello</p>\n' }
 }
 
 function checkLegacy(directory) {
   const imports = OX_STACKS.map((stack) => `eslint-${stack}`)
-  const code = `import assert from 'node:assert/strict'; for (const preset of ${JSON.stringify(imports)}) { const config = await import('@st1ggy/linter-config/'+preset); assert.ok(Array.isArray(config.default)); }`
+  const cases = OX_STACKS.map((stack) => {
+    let valid = 'export const View = () => <p>Hello</p>\n'
+
+    if (stack === 'common') {
+      valid = 'export const isExample = true\n'
+    } else if (stack === 'svelte' || stack === 'astro') {
+      valid = '<p>Hello</p>\n'
+    }
+
+    return { preset: `eslint-${stack}`, marker: markers[stack], valid }
+  })
+
+  writeFileSync(
+    path.join(directory, 'tsconfig.json'),
+    JSON.stringify({
+      compilerOptions: { allowJs: true, jsx: 'preserve', noEmit: true },
+      include: ['*.ts', '*.tsx', '*.svelte', '*.astro'],
+    }),
+  )
+  writeFileSync(
+    path.join(directory, 'prettier.config.js'),
+    "export { default } from '@st1ggy/linter-config/prettier-common'\n",
+  )
+  const code = `
+    import assert from 'node:assert/strict';
+    import { writeFileSync } from 'node:fs';
+    import path from 'node:path';
+    import { ESLint } from 'eslint';
+    const cases = ${JSON.stringify(cases)};
+    for (const { preset, marker, valid } of cases) {
+      writeFileSync(path.resolve(preset + '-valid-' + marker.file), valid);
+      writeFileSync(path.resolve(preset + '-' + marker.file), marker.code);
+    }
+    for (const { preset, marker } of cases) {
+      const { default: config } = await import('@st1ggy/linter-config/' + preset);
+      assert.ok(Array.isArray(config));
+      const eslint = new ESLint({
+        cwd: process.cwd(),
+        overrideConfigFile: true,
+        overrideConfig: [
+          ...config,
+          { languageOptions: { parserOptions: { tsconfigRootDir: process.cwd() } } },
+        ],
+      });
+      const [accepted] = await eslint.lintFiles([path.resolve(preset + '-valid-' + marker.file)]);
+      assert.equal(accepted.fatalErrorCount, 0, JSON.stringify(accepted.messages));
+      assert.equal(accepted.errorCount, 0, preset + ': ' + JSON.stringify(accepted.messages));
+      const [rejected] = await eslint.lintFiles([path.resolve(preset + '-' + marker.file)]);
+      assert.equal(rejected.fatalErrorCount, 0, JSON.stringify(rejected.messages));
+      assert.ok(rejected.messages.some(({ ruleId }) => ruleId?.endsWith(marker.rule)),
+        preset + ': ' + JSON.stringify(rejected.messages));
+    }
+  `
   const result = spawnSync(process.execPath, ['--input-type=module', '-e', code], { cwd: directory, encoding: 'utf8' })
 
   assert.equal(result.status, 0, result.stderr)
   // Preserve the old wrapper-generation smoke test alongside the new engines.
   run('init', directory, 'solid', { quiet: true })
   assert.ok(readFileSync(path.join(directory, 'eslint.config.js'), 'utf8').includes('eslint-solid'))
-  process.stdout.write(`${pm}: all six packed legacy ESLint imports passed\n`)
+  process.stdout.write(`${pm}: all ${imports.length} packed legacy ESLint imports and diagnostics passed\n`)
 }
 
 const directory = mkdtempSync(path.join(tmpdir(), 'linter-package-'))
@@ -209,7 +351,7 @@ try {
   )
   const packedPaths = new Set(files.map((file) => file.path))
 
-  for (const stack of OX_STACKS) {
+  for (const stack of OXFMT_STACKS) {
     assert.ok(packedPaths.has(`src/oxlint/oxlint.config.${stack}.js`))
     assert.ok(packedPaths.has(`scripts/init-${stack}-ox.sh`))
   }
@@ -223,9 +365,11 @@ try {
   )
   const tarball = path.join(directory, filename)
 
-  for (const stack of selectedStacks()) {
+  const stacks = selectedStacks(process.argv.slice(2), OXFMT_STACKS)
+
+  for (const stack of stacks) {
     const target = path.join(directory, stack)
-    const packages = [...STACKS[`${stack}-ox`].packages, ...(stack === 'svelte' ? ['svelte'] : [])]
+    const packages = STACKS[`${stack}-ox`].packages
 
     installProject(target, tarball, packages)
     await checkOxStack(target, stack)
@@ -235,6 +379,7 @@ try {
   const legacyPackages = new Set(OX_STACKS.flatMap((stack) => STACKS[stack].packages))
 
   legacyPackages.add('svelte')
+  legacyPackages.add('eslint')
   installProject(legacy, tarball, [...legacyPackages])
   checkLegacy(legacy)
 } finally {

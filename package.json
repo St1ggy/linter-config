@@ -30,7 +30,6 @@
     "@stylistic/eslint-plugin": "^5.10.0",
     "eslint": "^10.8.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-import-resolver-custom-alias": "^1.3.2",
     "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import-x": "^4.17.1",
     "eslint-plugin-prettier": "^5.5.6",
@@ -123,6 +122,46 @@
       "import": "./src/oxlint/oxlint.config.astro.js",
       "default": "./src/oxlint/oxlint.config.astro.js"
     },
+    "./angular-ox": {
+      "types": "./src/oxlint/index.d.ts",
+      "import": "./src/oxlint/oxlint.config.angular.js",
+      "default": "./src/oxlint/oxlint.config.angular.js"
+    },
+    "./vue-ox": {
+      "types": "./src/oxlint/index.d.ts",
+      "import": "./src/oxlint/oxlint.config.vue.js",
+      "default": "./src/oxlint/oxlint.config.vue.js"
+    },
+    "./nuxt-ox": {
+      "types": "./src/oxlint/index.d.ts",
+      "import": "./src/oxlint/oxlint.config.nuxt.js",
+      "default": "./src/oxlint/oxlint.config.nuxt.js"
+    },
+    "./eslint-svelte-ox": {
+      "types": "./src/eslint/ox-supplement.d.ts",
+      "import": "./src/eslint/eslint.config.svelte-ox.js",
+      "default": "./src/eslint/eslint.config.svelte-ox.js"
+    },
+    "./eslint-astro-ox": {
+      "types": "./src/eslint/ox-supplement.d.ts",
+      "import": "./src/eslint/eslint.config.astro-ox.js",
+      "default": "./src/eslint/eslint.config.astro-ox.js"
+    },
+    "./eslint-angular-ox": {
+      "types": "./src/eslint/ox-supplement.d.ts",
+      "import": "./src/eslint/eslint.config.angular-ox.js",
+      "default": "./src/eslint/eslint.config.angular-ox.js"
+    },
+    "./eslint-vue-ox": {
+      "types": "./src/eslint/ox-supplement.d.ts",
+      "import": "./src/eslint/eslint.config.vue-ox.js",
+      "default": "./src/eslint/eslint.config.vue-ox.js"
+    },
+    "./eslint-nuxt-ox": {
+      "types": "./src/eslint/ox-supplement.d.ts",
+      "import": "./src/eslint/eslint.config.nuxt-ox.js",
+      "default": "./src/eslint/eslint.config.nuxt-ox.js"
+    },
     "./prettier-common": {
       "types": "./index.d.ts",
       "import": "./src/prettier/prettier.config.common.js",
@@ -132,6 +171,21 @@
       "types": "./src/oxfmt/index.d.ts",
       "import": "./src/oxfmt/oxfmt.config.common.js",
       "default": "./src/oxfmt/oxfmt.config.common.js"
+    },
+    "./oxfmt-svelte": {
+      "types": "./src/oxfmt/index.d.ts",
+      "import": "./src/oxfmt/oxfmt.config.svelte.js",
+      "default": "./src/oxfmt/oxfmt.config.svelte.js"
+    },
+    "./oxfmt-astro": {
+      "types": "./src/oxfmt/index.d.ts",
+      "import": "./src/oxfmt/oxfmt.config.astro.js",
+      "default": "./src/oxfmt/oxfmt.config.astro.js"
+    },
+    "./oxfmt-angular": {
+      "types": "./src/oxfmt/index.d.ts",
+      "import": "./src/oxfmt/oxfmt.config.angular.js",
+      "default": "./src/oxfmt/oxfmt.config.angular.js"
     },
     "./prettier-svelte": {
       "types": "./index.d.ts",
@@ -172,7 +226,7 @@
     "changelog:dry": "conventional-changelog -p conventionalcommits",
     "publish:npm": "npm publish --access public",
     "inventory": "node ./scripts/inventory.mjs",
-    "typecheck:ox": "node ./node_modules/@typescript/native/bin/tsc --noEmit",
+    "typecheck": "node ./node_modules/typescript/bin/tsc --noEmit",
     "generate:ox": "node scripts/oxlint-generate.mjs",
     "generate:ox:check": "node scripts/oxlint-generate.mjs --check",
     "inventory:ox": "node scripts/oxlint-inventory.mjs --write",
@@ -187,36 +241,64 @@
     "config:remove-current": "bash ./scripts/remove-current.sh"
   },
   "peerDependencies": {
+    "@angular-eslint/eslint-plugin": "^22.6.0",
+    "@angular-eslint/eslint-plugin-template": "^22.6.0",
+    "@angular-eslint/template-parser": "^22.6.0",
+    "@astrojs/compiler-rs": "^0.5.2",
+    "@eslint-react/eslint-plugin": "^5.28.8",
+    "@nuxt/eslint-plugin": "^1.17.0",
     "astro": ">=4.0.0",
     "eslint": "^10.8.0",
     "eslint-plugin-astro": "^3.1.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-jsx-a11y-x": "^0.2.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-solid": "^0.18.0",
     "eslint-plugin-svelte": "^3.22.0",
+    "eslint-plugin-vue": "^10.12.0",
     "next": "^16.3.0",
-    "oxlint": "1.86.0",
-    "oxfmt": "0.71.0",
-    "oxlint-tsgolint": "7.0.2003",
+    "oxfmt": "0.75.0",
+    "oxlint": "1.90.0",
+    "oxlint-tsgolint": "7.0.2005",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-svelte": "^4.1.1",
     "react": "^18.0.0 || ^19.0.0",
     "stylelint": "^17.14.1",
-    "svelte": "^4.0.0 || ^5.0.0"
+    "svelte": "^4.0.0 || ^5.0.0",
+    "vue-eslint-parser": "^10.4.1"
   },
   "peerDependenciesMeta": {
+    "@angular-eslint/eslint-plugin": {
+      "optional": true
+    },
+    "@angular-eslint/eslint-plugin-template": {
+      "optional": true
+    },
+    "@angular-eslint/template-parser": {
+      "optional": true
+    },
+    "@astrojs/compiler-rs": {
+      "optional": true
+    },
+    "@nuxt/eslint-plugin": {
+      "optional": true
+    },
+    "eslint-plugin-vue": {
+      "optional": true
+    },
+    "vue-eslint-parser": {
+      "optional": true
+    },
     "eslint": {
       "optional": true
     },
     "eslint-plugin-astro": {
       "optional": true
     },
-    "eslint-plugin-jsx-a11y": {
+    "eslint-plugin-jsx-a11y-x": {
       "optional": true
     },
-    "eslint-plugin-react": {
+    "@eslint-react/eslint-plugin": {
       "optional": true
     },
     "eslint-plugin-react-hooks": {
@@ -263,24 +345,33 @@
     }
   },
   "devDependencies": {
-    "@typescript/native": "npm:typescript@7.0.2",
-    "pnpm": "10.32.1",
+    "@angular-eslint/eslint-plugin": "^22.6.0",
+    "@angular-eslint/eslint-plugin-template": "^22.6.0",
+    "@angular-eslint/template-parser": "^22.6.0",
+    "@angular/core": "^22.2.4",
+    "@astrojs/compiler-rs": "^0.5.2",
+    "@eslint-react/eslint-plugin": "^5.28.8",
     "@next/eslint-plugin-next": "^16.3.0",
+    "@nuxt/eslint-plugin": "^1.17.0",
     "@stylistic/eslint-plugin-migrate": "^4.4.1",
     "conventional-changelog": "^8.1.0",
     "conventional-changelog-conventionalcommits": "^10.2.1",
     "eslint-plugin-astro": "^3.1.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-jsx-a11y-x": "0.2.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-solid": "^0.18.0",
     "eslint-plugin-svelte": "^3.22.0",
-    "oxlint": "1.86.0",
-    "oxfmt": "0.71.0",
-    "oxlint-tsgolint": "7.0.2003",
+    "eslint-plugin-vue": "^10.12.0",
+    "oxfmt": "0.75.0",
+    "oxlint": "1.90.0",
+    "oxlint-tsgolint": "7.0.2005",
+    "pnpm": "10.34.9",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-svelte": "^4.1.1",
+    "rxjs": "^7.8.2",
     "solid-js": "^1.9.15",
-    "svelte": "^5.56.8"
+    "svelte": "^5.56.8",
+    "vue": "^3.5.44",
+    "vue-eslint-parser": "^10.4.1"
   }
 }

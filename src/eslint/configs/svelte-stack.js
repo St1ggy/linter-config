@@ -4,8 +4,6 @@ import { parser } from 'typescript-eslint'
 
 const svelteFiles = ['**/*.svelte', '**/*.svelte.ts']
 
-const extensions = ['.js']
-
 export default defineConfig([
   sveltePlugin.configs['flat/recommended'],
   {
@@ -22,15 +20,10 @@ export default defineConfig([
       },
     },
     settings: {
-      'import-x/resolver': {
-        'eslint-import-resolver-custom-alias': {
-          alias: {
-            $lib: 'src/lib',
-            $app: 'node_modules/@sveltejs/kit/src/runtime/app',
-            '@sveltejs/kit': 'node_modules/@sveltejs/kit/src/exports/index.js',
-          },
-          extensions,
-        },
+      'st1ggy/import-aliases': {
+        $lib: 'src/lib',
+        $app: 'node_modules/@sveltejs/kit/src/runtime/app',
+        '@sveltejs/kit': 'node_modules/@sveltejs/kit/src/exports/index.js',
       },
     },
   },

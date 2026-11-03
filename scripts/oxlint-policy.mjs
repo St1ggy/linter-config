@@ -10,7 +10,7 @@ export const jsNamespaces = {
   unicorn: 'unicorn-js',
   sonarjs: 'sonarjs',
   prettier: 'prettier',
-  react: 'react-js',
+  '@eslint-react': 'react-modern',
   'react-hooks': 'react-hooks-js',
   '@next/next': 'next-js',
   solid: 'solid',
@@ -24,11 +24,12 @@ const nativeNamespaces = {
   unicorn: 'unicorn',
   'import-x': 'import',
   react: 'react',
+  '@eslint-react': 'react',
   'react-hooks': 'react',
   '@next/next': 'nextjs',
 }
 
-// These Sonar rules have corresponding native rules backed by the TS7 checker.
+// These Sonar rules have corresponding native rules backed by Oxlint's own typed checker.
 const sonarNative = {
   'svelte/no-inner-declarations': 'eslint/no-inner-declarations',
   'sonarjs/deprecation': 'typescript/no-deprecated',
@@ -57,7 +58,7 @@ const astroScriptRules = new Set([
   'no-prerender-export-outside-pages',
 ])
 
-// Native 1.86.0 rejects these effective options; keep the original JS implementation.
+// Reviewed native option/behavior gaps; keep JS implementations until paired fixtures prove equivalence.
 const nativeOptionGaps = new Set([
   '@typescript-eslint/array-type',
   'preserve-caught-error',
@@ -81,7 +82,7 @@ const nativeOptionGaps = new Set([
   'unicorn/prefer-string-raw',
   'unicorn/prefer-string-starts-ends-with',
   'unicorn/prefer-structured-clone',
-  'react/boolean-prop-naming',
+  '@eslint-react/jsx-no-useless-fragment',
   'svelte/no-inner-declarations',
 ])
 
